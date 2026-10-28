@@ -15,6 +15,9 @@ pub fn nfc(s: &str) -> String {
 pub fn is_kana(c: char) -> bool {
     ('ぁ'..='ゖ').contains(&c) || c == 'ー'
 }
+pub fn is_typing_kana(c: char) -> bool {
+    is_kana(c) || c == '、'
+}
 pub fn is_kanji(c: char) -> bool {
     ('一'..='鿿').contains(&c) || c == '々'
 }
@@ -110,7 +113,7 @@ pub fn validate_segment(s: &Segment) -> Result<()> {
         "invalid text/NFC"
     );
     ensure!(
-        s.kana == nfc(&s.kana) && s.kana.chars().all(is_kana),
+        s.kana == nfc(&s.kana) && s.kana.chars().all(is_typing_kana),
         "invalid kana/NFC"
     );
     ensure!(
@@ -118,8 +121,13 @@ pub fn validate_segment(s: &Segment) -> Result<()> {
         "missing reading"
     );
     ensure!(
-        !punctuation(&s.surface) || s.kana.is_empty(),
-        "punctuation must have empty reading"
+        !punctuation(&s.surface) || s.kana.is_empty() || (s.surface == "、" && s.kana == "、"),
+        "punctuation must have empty reading except a typed comma"
+    );
+    ensure!(
+        s.surface.matches('、').count() == s.kana.matches('、').count()
+            || (s.surface == "、" && s.kana.is_empty()),
+        "comma mismatch"
     );
     ensure!(!s.pos.is_empty(), "missing pos");
     if ["は", "へ", "を"].contains(&s.surface.as_str()) && s.pos == "助詞" {
@@ -133,7 +141,7 @@ pub fn validate_pair(text: &str, kana: &str, segments: &[Segment]) -> Result<()>
         "empty/long text"
     );
     ensure!(
-        !kana.is_empty() && kana.chars().count() <= 40 && kana.chars().all(is_kana),
+        !kana.is_empty() && kana.chars().count() <= 40 && kana.chars().all(is_typing_kana),
         "invalid kana"
     );
     ensure!(!segments.is_empty(), "empty segments");
@@ -298,7 +306,14 @@ impl TypingPrompt {
         }
         self
     }
-    pub fn from_segments(segments: Vec<Segment>, source: PromptSource) -> Self {
+    pub fn from_segments(mut segments: Vec<Segment>, source: PromptSource) -> Self {
+        // Older model vocabularies store commas with an empty reading.
+        // Public prompts include them as typing input without changing token IDs.
+        for segment in &mut segments {
+            if segment.surface == "、" && segment.kana.is_empty() {
+                segment.kana = "、".into();
+            }
+        }
         let reading_validation = match source {
             PromptSource::Model => "structural_only; contextual_reading_not_verified",
             PromptSource::ModelConstrained => {
@@ -388,6 +403,34 @@ mod tests {
             assert!(validate_pair(text, "ねこ", &[s(text, "ねこ", "語")]).is_err());
         }
         assert!(validate_pair("「猫」。", "ねこ", &[s("「猫」。", "ねこ", "語")]).is_ok());
+    }
+    #[test]
+    fn typing_commas_preserve_roundtrips_and_count_toward_difficulty() {
+        let prompt = TypingPrompt::from_segments(
+            vec![
+                s("猫", "ねこ", "名詞"),
+                s("、", "", "記号"),
+                s("眠る", "ねむる", "動詞"),
+                s("。", "", "記号"),
+            ],
+            PromptSource::Model,
+        )
+        .without_terminal_period();
+        assert_eq!(prompt.text, "猫、眠る");
+        assert_eq!(prompt.kana, "ねこ、ねむる");
+        assert_eq!(prompt.segments[1].kana, "、");
+        let mut options = GenerateOptions {
+            difficulty: Difficulty::Easy,
+            ..Default::default()
+        };
+        prompt.validate(&options).unwrap();
+        options.max_kana_chars = 5;
+        assert!(prompt.validate(&options).is_err());
+        assert!(validate_segment(&s("猫", "ね、こ", "名詞")).is_err());
+        assert!(validate_segment(&s("、", "ねこ", "記号")).is_err());
+        // Existing model vocabulary remains readable.
+        assert!(validate_segment(&s("、", "", "記号")).is_ok());
+        assert!(validate_segment(&s("、", "、", "記号")).is_ok());
     }
     #[test]
     fn particles_and_readings() {

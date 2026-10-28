@@ -744,7 +744,7 @@ impl TypingGenerator {
                         ended = true;
                         break;
                     }
-                    kana_len += vocab.tokens[id].kana.chars().count();
+                    kana_len += typing_token_len(&vocab.tokens[id]);
                     if kana_len > max {
                         break;
                     }
@@ -870,6 +870,13 @@ fn can_end(token: &Token) -> bool {
         _ => false,
     }
 }
+fn typing_token_len(token: &Token) -> usize {
+    if token.surface == "、" {
+        1
+    } else {
+        token.kana.chars().count()
+    }
+}
 fn mask_candidates(
     logits: &mut [f32],
     vocab: &Vocab,
@@ -898,7 +905,7 @@ fn mask_candidates(
                     .pos
                     .split('-')
                     .any(|part| matches!(part, "人名" | "固有名詞"))
-                && kana_len + token.kana.chars().count() <= max
+                && kana_len + typing_token_len(token) <= max
                 && (!terminal || (kana_len >= min && previous.is_some_and(can_end)))
         };
         if !allowed {
@@ -1257,6 +1264,27 @@ mod tests {
         mask_candidates(&mut logits, &vocab, &[0, 3, 7, 8], 12, 5, 12);
         assert_eq!(logits.iter().filter(|x| x.is_finite()).count(), 1);
         assert!(logits[1].is_finite());
+    }
+    #[test]
+    fn comma_counts_as_one_input_character_at_generation_boundary() {
+        let comma = Token {
+            id: 7,
+            surface: "、".into(),
+            kana: String::new(),
+            pos: "記号".into(),
+            metadata: Value::Null,
+        };
+        assert_eq!(typing_token_len(&comma), 1);
+        let vocab = Vocab {
+            version: VERSION.into(),
+            encoding: "UTF-8".into(),
+            tokens: vec![comma; 8],
+        };
+        for (length, allowed) in [(11, true), (12, false)] {
+            let mut logits = vec![0.0; 8];
+            mask_candidates(&mut logits, &vocab, &[0, 3], length, 5, 12);
+            assert_eq!(logits[7].is_finite(), allowed);
+        }
     }
     #[test]
     fn typing_prompts_exclude_character_spelling_and_named_entities() {

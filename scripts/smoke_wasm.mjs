@@ -15,6 +15,9 @@ for (const model of models.length ? models : ['model', 'model-int8']) {
     assert.equal(prompt.source, manifest.generation_constraints ? 'model_constrained' : 'model');
     assert.equal(prompt.text, prompt.segments.map(s => s.surface).join(''));
     assert.equal(prompt.kana, prompt.segments.map(s => s.kana).join(''));
+    assert.equal(prompt.text.split('、').length, prompt.kana.split('、').length);
+    const [min, max] = [[5, 12], [13, 22], [23, 40]][i % 3];
+    assert(prompt.kana.length >= min && prompt.kana.length <= max);
     assert(!prompt.text.endsWith('。'));
     prompts.push(prompt.text);
   }

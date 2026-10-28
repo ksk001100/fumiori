@@ -64,7 +64,8 @@ const path = require('node:path');
         for (const {prompt:p} of model.samples) {
           assert.equal(p.text,p.segments.map(s=>s.surface).join(''));
           assert.equal(p.kana,p.segments.map(s=>s.kana).join(''));
-          assert.match(p.kana,/^[ぁ-ゖー]+$/u);
+          assert.match(p.kana,/^[ぁ-ゖー、]+$/u);
+          assert.equal(p.text.split('、').length, p.kana.split('、').length);
           assert(['model','model_constrained'].includes(p.source));
           assert(!p.text.endsWith('。'));
         }

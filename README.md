@@ -28,7 +28,7 @@ fn main() -> anyhow::Result<()> {
 
 上のモデルパスはプロセスの作業ディレクトリからの相対パス。配布時はモデルの5ファイルをアプリの配置先に同梱し、そのパスを指定する。`TypingGenerator::from_bytes` と `include_bytes!` による実行ファイルへの埋め込みにも対応する。生成器は読み込み後に使い回す。同期処理のためGUIではワーカースレッドでの実行が適する。
 
-`options.difficulty` に `Difficulty::Easy` / `Normal` / `Hard` を指定できる。かな長はそれぞれ5〜12 / 13〜22 / 23〜40文字。返り値は `text`、`kana`、`segments`、`source`、`model_version`、`reading_validation` を持つ。かなは助詞「は・へ・を」を正書法のまま返す。公開出力は末尾の「。」を省く。
+`options.difficulty` に `Difficulty::Easy` / `Normal` / `Hard` を指定できる。かな長はそれぞれ5〜12 / 13〜22 / 23〜40文字。返り値は `text`、`kana`、`segments`、`source`、`model_version`、`reading_validation` を持つ。かなは助詞「は・へ・を」を正書法のまま返す。読点「、」は `kana` と各区切りの `kana` にも含み、かな長に1文字として数える。公開出力は末尾の「。」を省く。
 
 ## 生成とWebデモ
 

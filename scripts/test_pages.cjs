@@ -37,7 +37,7 @@ const path = require('node:path');
       await page.click('#generate');
       await page.waitForFunction(() => !document.querySelector('#generate').disabled, null, { timeout: 120000 });
       assert.match(await page.textContent('#source'), /^モデル生成/);
-      assert.match(await page.textContent('#kana'), /^[ぁ-ゖー]+$/u);
+      assert.match(await page.textContent('#kana'), /^[ぁ-ゖー、]+$/u);
       assert.equal(await page.textContent('#status'), '準備完了');
     }
     assert.deepEqual(errors, []);
