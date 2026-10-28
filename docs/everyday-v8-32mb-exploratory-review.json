@@ -1,0 +1,835 @@
+{
+  "stage": "exploratory independent-seed review; not a promotion review",
+  "selection": {
+    "seed": 9013,
+    "count": 100,
+    "method": "Uniform indices over all 600 requests; no quality/novelty filtering"
+  },
+  "reviewer": "Codex",
+  "reviewer_type": "Language review by Codex; not independent human review",
+  "independent_human_review": "pending",
+  "weights_sha256": "48ac2e9025066b947cc756194687619280163c12eef6ee358e444991e3b68a52",
+  "decoder_sha256": "31af99dc3493d8f15e67ada3eb205e7810661dbb8b76fece6a9d535e50ca39e3",
+  "runtime_identity": {
+    "cli_sha256": "464ca4742a6ce39a9f8d152f561310ae9a3e64955170e4f18dace206471f1c6f",
+    "rust_source_sha256": {
+      "Cargo.toml": "4007e8be6bb53601cdb9a632712d5ac750689708c32e81e4b41df17b10f87ade",
+      "Cargo.lock": "35796c4b13d86b651909e7e974fcb600d526a495acf59ef985f09731eee39373",
+      "crates/fumiori-cli/Cargo.toml": "dcb289ac81d59cae04531357bea3115020deb0dba499abfdad6a30790ea7b265",
+      "crates/fumiori-core/Cargo.toml": "090ad955e7a639fa856727c8590b8656ed369c799739a2c476f29abd75a8cd28",
+      "crates/fumiori-data/Cargo.toml": "983c11047e5ecac710a1ec1e830e964d1ccec3d823a8fc2f1f712d4258fa3683",
+      "crates/fumiori-inference/Cargo.toml": "14634c29637003d6900b302aec1de004b0fbbecd0d74973ece4a15779b473ae1",
+      "crates/fumiori-wasm/Cargo.toml": "15934ba53cd3cb16d3c4ae1f90cab48649de6e036a1adee6fe5b8716602b678a",
+      "crates/fumiori-cli/src/main.rs": "8919aad71d248569c4e8e5cc4e3be5ca84b0aa2342283edc9ef3ffd6166f5802",
+      "crates/fumiori-core/src/lib.rs": "7b83e3bcc95252eb51f244f59433e84f82ea58e4a954b4bd0fb6544be9449180",
+      "crates/fumiori-data/src/main.rs": "3fcb16feded76423ee986afafb62c2e05457b79bb50063f5cabb6625b1b86787",
+      "crates/fumiori-inference/src/lexical_subwords.rs": "5272dde8aebdb97536a4fb7a651977b3ee814e4b5de6618a6fd252aab3ee7b18",
+      "crates/fumiori-inference/src/lib.rs": "c865751265e1e11dd564e29a16057406b316315aa1c7e6e9d53461901f76350e",
+      "crates/fumiori-wasm/src/lib.rs": "53b631abe82a204450c81280fc2a419f3c31aadd5abe48e8f9815c867d0608ea"
+    }
+  },
+  "ratings": [
+    {
+      "sample_id": 1,
+      "text": "布でバスの模型を作る",
+      "kana": "ぬのでばすのもけいをつくる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 3,
+      "text": "くたくただ",
+      "kana": "くたくただ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 8,
+      "text": "警察は事故の原因を調査中である",
+      "kana": "けいさつはじこのげんいんをちょうさちゅうである",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 9,
+      "text": "彼は死を恐れている",
+      "kana": "かれはしをおそれている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 10,
+      "text": "この文は文法的に間違いがある",
+      "kana": "このぶんはぶんぽうてきにまちがいがある",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 18,
+      "text": "あなたの推理は的だ",
+      "kana": "あなたのすいりはまとだ",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "「推理は的だ」では述語が不自然。「的を射ている」等が必要。"
+    },
+    {
+      "sample_id": 22,
+      "text": "そういえば、今、お昼ご飯食べてる",
+      "kana": "そういえば、いま、おひるごはんたべてる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 28,
+      "text": "祖父と家で苗の様子を図で記録する",
+      "kana": "そふといえでなえのようすをずできろくする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 33,
+      "text": "仕事は終わった",
+      "kana": "しごとはおわった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 45,
+      "text": "犬が怖いの",
+      "kana": "いぬがこわいの",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 60,
+      "text": "おじいちゃんが来る",
+      "kana": "おじいちゃんがくる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 63,
+      "text": "彼はよくしゃべる",
+      "kana": "かれはよくしゃべる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 68,
+      "text": "祖父と教室で昆虫の様子を写真で記録する",
+      "kana": "そふときょうしつでこんちゅうのようすをしゃしんできろくする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 69,
+      "text": "玄関の鍵を閉めた",
+      "kana": "げんかんのかぎをしめた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 74,
+      "text": "私たちは学校の先生を尊敬している",
+      "kana": "わたしたちはがっこうのせんせいをそんけいしている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 86,
+      "text": "彼はその知らせを聞いて少なからず驚いた",
+      "kana": "かれはそのしらせをきいてすくなからずおどろいた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 92,
+      "text": "彼の忠告は結局は実行すべきである",
+      "kana": "かれのちゅうこくはけっきょくはじっこうすべきである",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 103,
+      "text": "夕方に帰宅したいので、電話する",
+      "kana": "ゆうがたにきたくしたいので、でんわする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 113,
+      "text": "我々は民主主義の社会であるべきだ",
+      "kana": "われわれはみんしゅしゅぎのしゃかいであるべきだ",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "人々を表す主語と「社会である」の述語が対応していない。"
+    },
+    {
+      "sample_id": 118,
+      "text": "彼は、彼の忠告に従った",
+      "kana": "かれは、かれのちゅうこくにしたがった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 120,
+      "text": "袋にペンを入れる",
+      "kana": "ふくろにぺんをいれる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 123,
+      "text": "窓から海が見える",
+      "kana": "まどからうみがみえる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 126,
+      "text": "青い上着を探す",
+      "kana": "あおいうわぎをさがす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 128,
+      "text": "その少年はまるで犬のような大きな犬に見えました",
+      "kana": "そのしょうねんはまるでいぬのようなおおきないぬにみえました",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "少年が犬のような犬に見えるという記述で意味が破綻。"
+    },
+    {
+      "sample_id": 131,
+      "text": "健康のためにもっと運動をしなさいと彼女は言った",
+      "kana": "けんこうのためにもっとうんどうをしなさいとかのじょはいった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 132,
+      "text": "あれは革のベルトです",
+      "kana": "あれはかわのべるとです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 139,
+      "text": "どちらの道を行けばいいの",
+      "kana": "どちらのみちをいけばいいの",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 144,
+      "text": "素敵な場所ですね",
+      "kana": "すてきなばしょですね",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 167,
+      "text": "彼女はその本を読んでから彼の小説を読むようになった",
+      "kana": "かのじょはそのほんをよんでからかれのしょうせつをよむようになった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 168,
+      "text": "さあ、行くよ",
+      "kana": "さあ、いくよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 169,
+      "text": "この本は初心者に適している",
+      "kana": "このほんはしょしんしゃにてきしている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 180,
+      "text": "詩集を箱に戻す",
+      "kana": "ししゅうをはこにもどす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 188,
+      "text": "彼はその問題を詳しく調査し、その問題を調査した",
+      "kana": "かれはそのもんだいをくわしくちょうさし、そのもんだいをちょうさした",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "同じ問題を調査したことを同一文中で繰り返す。"
+    },
+    {
+      "sample_id": 191,
+      "text": "海外旅行の計画を立てる前に、しっかり計画を立てておきたいですむ",
+      "kana": "かいがいりょこうのけいかくをたてるまえに、しっかりけいかくをたてておきたいですむ",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "文末の「ですむ」が不正な連結。"
+    },
+    {
+      "sample_id": 192,
+      "text": "赤い箱を買う",
+      "kana": "あかいはこをかう",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 198,
+      "text": "彼女、好きだよ",
+      "kana": "かのじょ、すきだよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 202,
+      "text": "とても疲れていたので、休んだほうがいいよ",
+      "kana": "とてもつかれていたので、やすんだほうがいいよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 208,
+      "text": "彼と一緒に行くことは、とても楽しい",
+      "kana": "かれといっしょにいくことは、とてもたのしい",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 212,
+      "text": "次の月曜からずっと雨が降っているので、傘を持っていった",
+      "kana": "つぎのげつようからずっとあめがふっているので、かさをもっていった",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "未来の「次の月曜から」と、すでに降っている雨・過去の行動の時制が不整合。"
+    },
+    {
+      "sample_id": 219,
+      "text": "この車は動かない",
+      "kana": "このくるまはうごかない",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 231,
+      "text": "誰が来たの",
+      "kana": "だれがきたの",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 239,
+      "text": "昨日はあまりにも寒かったので、散歩はできませんでした",
+      "kana": "きのうはあまりにもさむかったので、さんぽはできませんでした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 247,
+      "text": "彼女はその本を読んでから寝た",
+      "kana": "かのじょはそのほんをよんでからねた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 250,
+      "text": "彼はその問題を簡単に解決した",
+      "kana": "かれはそのもんだいをかんたんにかいけつした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 254,
+      "text": "その問題をどうやって解くか教えてください",
+      "kana": "そのもんだいをどうやってとくかおしえてください",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 256,
+      "text": "資料の読み方をノートに書き留める",
+      "kana": "しりょうのよみかたをのーとにかきとめる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 259,
+      "text": "おばあさんは、おじいさんの世話をした",
+      "kana": "おばあさんは、おじいさんのせわをした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 266,
+      "text": "地下鉄の出口は左側ですが、出口は左側です",
+      "kana": "ちかてつのでぐちはひだりがわですが、でぐちはひだりがわです",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "同じ出口の位置を「ですが」でつないで繰り返す。"
+    },
+    {
+      "sample_id": 275,
+      "text": "姉に教わったスープの作り方を読書帳に書き残す",
+      "kana": "あねにおそわったすーぷのつくりかたをどくしょちょうにかきのこす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 286,
+      "text": "わたしは、おじいちゃんにそっくりだ",
+      "kana": "わたしは、おじいちゃんにそっくりだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 303,
+      "text": "静かにしてください",
+      "kana": "しずかにしてください",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 309,
+      "text": "祖父と蓮根を買う",
+      "kana": "そふとれんこんをかう",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 329,
+      "text": "そのニュースは直接聞いたことはあるが直接聞いたことはない",
+      "kana": "そのにゅーすはちょくせつきいたことはあるがちょくせつきいたことはない",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "直接聞いた経験があることと、ないことを同一文中で述べる。"
+    },
+    {
+      "sample_id": 330,
+      "text": "彼はとても親切だ",
+      "kana": "かれはとてもしんせつだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 332,
+      "text": "彼女をどうやって見つけたのですか、教えて下さい",
+      "kana": "かのじょをどうやってみつけたのですか、おしえてください",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 342,
+      "text": "彼はとても怒っている",
+      "kana": "かれはとてもおこっている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 345,
+      "text": "図鑑で名前を調べる",
+      "kana": "ずかんでなまえをしらべる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 356,
+      "text": "それらの提案に賛成の者もいれば反対の者もいる",
+      "kana": "それらのていあんにさんせいのものもいればはんたいのものもいる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 357,
+      "text": "黒い缶を選ぶ",
+      "kana": "くろいかんをえらぶ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 361,
+      "text": "絶対にそんなことはしないよ",
+      "kana": "ぜったいにそんなことはしないよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 365,
+      "text": "彼はその事故の深刻さに気づいているのですか",
+      "kana": "かれはそのじこのしんこくさにきづいているのですか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 368,
+      "text": "雨がやんだら祖父と川沿いへ散歩に出かける",
+      "kana": "あめがやんだらそふとかわぞいへさんぽにでかける",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 375,
+      "text": "先生は学生です",
+      "kana": "せんせいはがくせいです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 376,
+      "text": "僕は彼女のことが大好きだ",
+      "kana": "ぼくはかのじょのことがだいすきだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 378,
+      "text": "つまらない",
+      "kana": "つまらない",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 379,
+      "text": "君は本当に幽霊を信じますか",
+      "kana": "きみはほんとうにゆうれいをしんじますか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 382,
+      "text": "彼女はそれをすっかり忘れていた",
+      "kana": "かのじょはそれをすっかりわすれていた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 383,
+      "text": "君は、自分の人生を犠牲にして戦いに勝った",
+      "kana": "きみは、じぶんのじんせいをぎせいにしてたたかいにかった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 385,
+      "text": "医師は彼にタバコをやめるよう忠告した",
+      "kana": "いしはかれにたばこをやめるようちゅうこくした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 393,
+      "text": "手術は成功した",
+      "kana": "しゅじゅつはせいこうした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 408,
+      "text": "彼に電話したんだ",
+      "kana": "かれにでんわしたんだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 410,
+      "text": "彼はその有名な女優と結婚しました",
+      "kana": "かれはそのゆうめいなじょゆうとけっこんしました",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 422,
+      "text": "彼はそのニュースを聞いてとても驚いたのでした",
+      "kana": "かれはそのにゅーすをきいてとてもおどろいたのでした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 433,
+      "text": "彼はその仕事に精通している",
+      "kana": "かれはそのしごとにせいつうしている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 434,
+      "text": "あそこの建物は、当社が所有してるんですよ",
+      "kana": "あそこのたてものは、とうしゃがしょゆうしてるんですよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 455,
+      "text": "研修で設計の手順を手帳に書き留める",
+      "kana": "けんしゅうでせっけいのてじゅんをてちょうにかきとめる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 464,
+      "text": "彼女は新しいドレスを着ることがうれしくてたまらない",
+      "kana": "かのじょはあたらしいどれすをきることがうれしくてたまらない",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "「ドレスを着ることがうれしくてたまらない」は語の組み合わせがぎこちない。"
+    },
+    {
+      "sample_id": 477,
+      "text": "黄色いタオルを描く",
+      "kana": "きいろいたおるをえがく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 478,
+      "text": "ひどく痛みが走るんですよ",
+      "kana": "ひどくいたみがはしるんですよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 481,
+      "text": "その本はあの本と同じくらい価値がある",
+      "kana": "そのほんはあのほんとおなじくらいかちがある",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 485,
+      "text": "先生は私たちのクラスにどのくらいいたのですか",
+      "kana": "せんせいはわたしたちのくらすにどのくらいいたのですか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 486,
+      "text": "猫は寝る",
+      "kana": "ねこはねる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 492,
+      "text": "寝る前に電話する",
+      "kana": "ねるまえにでんわする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 494,
+      "text": "郵便局の近くですよ、郵便局の近くですよ",
+      "kana": "ゆうびんきょくのちかくですよ、ゆうびんきょくのちかくですよ",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "同じ節をそのまま繰り返す。"
+    },
+    {
+      "sample_id": 502,
+      "text": "彼女はその質問に答えた",
+      "kana": "かのじょはそのしつもんにこたえた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 508,
+      "text": "音楽室は予約がいっぱいだった",
+      "kana": "おんがくしつはよやくがいっぱいだった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 517,
+      "text": "その計画はうまくいかなかった",
+      "kana": "そのけいかくはうまくいかなかった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 518,
+      "text": "彼はその手紙を投函するため銀行へ行った",
+      "kana": "かれはそのてがみをとうかんするためぎんこうへいった",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "手紙を投函する目的地が銀行になっている。"
+    },
+    {
+      "sample_id": 522,
+      "text": "すぐここへ来なさい",
+      "kana": "すぐここへきなさい",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 543,
+      "text": "お茶をください",
+      "kana": "おちゃをください",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 547,
+      "text": "今回は、お客さんが来ないといいです",
+      "kana": "こんかいは、おきゃくさんがこないといいです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 556,
+      "text": "彼らはその計画に賛成した",
+      "kana": "かれらはそのけいかくにさんせいした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 557,
+      "text": "我々は、その計画に賛成しているのですか",
+      "kana": "われわれは、そのけいかくにさんせいしているのですか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 560,
+      "text": "彼はそのニュースを聞いてとてもうれしく感じた",
+      "kana": "かれはそのにゅーすをきいてとてもうれしくかんじた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 564,
+      "text": "部屋は汚い",
+      "kana": "へやはきたない",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 570,
+      "text": "この本はいくらですか",
+      "kana": "このほんはいくらですか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 577,
+      "text": "食べ物は豊富にあるんだよ",
+      "kana": "たべものはほうふにあるんだよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 579,
+      "text": "もうすぐ春です",
+      "kana": "もうすぐはるです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 588,
+      "text": "黄色いマフラーを干す",
+      "kana": "きいろいまふらーをほす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 598,
+      "text": "恋人たちはお互いに知り合いだ",
+      "kana": "こいびとたちはおたがいにしりあいだ",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "恋人同士が知り合いであるという自明な内容だけでお題として不自然。"
+    }
+  ],
+  "natural_and_reading_acceptable": 88,
+  "genre_and_topic_review": "not performed for this rejected pilot"
+}

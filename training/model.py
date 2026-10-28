@@ -15,11 +15,12 @@ class ModelConfig:
     max_seq_len: int = 64
     dropout: float = 0.0
     version: str = "0.1.0"
+    approximate_gelu: bool = False
 
     def __post_init__(self):
         if not (8 <= self.vocab_size <= 16000 and 0 < self.d_model <= 512
                 and 0 < self.n_heads <= self.d_model and self.d_model % self.n_heads == 0
-                and 0 < self.n_layers <= 16 and 0 < self.d_ff <= 2048
+                and 0 < self.n_layers <= 16 and 0 < self.d_ff <= 4096
                 and 3 <= self.max_seq_len <= 64 and 0 <= self.dropout < 1 and self.version == "0.1.0"):
             raise ValueError("unsupported model configuration")
 
@@ -28,6 +29,7 @@ class Block(nn.Module):
     def __init__(self, c):
         super().__init__()
         self.n_heads = c.n_heads
+        self.approximate_gelu = c.approximate_gelu
         self.ln1 = nn.LayerNorm(c.d_model, eps=1e-5)
         self.qkv = nn.Linear(c.d_model, 3 * c.d_model)
         self.attn_out = nn.Linear(c.d_model, c.d_model)
@@ -45,7 +47,7 @@ class Block(nn.Module):
         scores = scores.masked_fill(mask, float("-inf"))
         z = (scores.softmax(-1) @ v).transpose(1, 2).contiguous().reshape(b, t, d)
         x = x + self.dropout(self.attn_out(z))
-        return x + self.dropout(self.fc2(F.gelu(self.fc1(self.ln2(x)), approximate="none")))
+        return x + self.dropout(self.fc2(F.gelu(self.fc1(self.ln2(x)), approximate="tanh" if self.approximate_gelu else "none")))
 
 
 class Transformer(nn.Module):

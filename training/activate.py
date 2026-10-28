@@ -26,7 +26,7 @@ def activate(build='build', fp32_source='stories-v2-diverse-3mb', int8_source='s
             or fm['vocab_sha256'] != qm['vocab_sha256'] or fm['config_sha256'] != qm['config_sha256']
             or fm.get('generation_constraints') != qm.get('generation_constraints')
             or any(fm.get(key) != qm.get(key) for key in
-                ('generation_mode', 'allow_static_fallback', 'generation_defaults', 'lexical_boundary_guard', 'polite_boundary_guard', 'reading_normalization'))
+                ('generation_mode', 'allow_static_fallback', 'generation_defaults', 'lexical_boundary_guard', 'polite_boundary_guard', 'reading_normalization', 'subword_start_temperature', 'subword_difficulty_prefix'))
             or qm['quantization']['source_weights_sha256'] != fm['weights_sha256']):
         raise ValueError('FP32 and INT8 exports do not describe the same model')
     updates = [('model', fp32, fm), ('model-int8', int8, qm)]

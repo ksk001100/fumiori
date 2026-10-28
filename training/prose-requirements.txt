@@ -1,0 +1,4 @@
+# Optional public-prose preparation only; never needed by Rust/WASM inference.
+SudachiPy==0.7.0
+SudachiDict-core==20261015
+sentencepiece==0.2.1

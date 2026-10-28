@@ -61,8 +61,8 @@ enum Commands {
         count: usize,
         #[arg(long)]
         seed: Option<u64>,
-        #[arg(long, default_value = "16")]
-        history_size: usize,
+        #[arg(long)]
+        history_size: Option<usize>,
         #[arg(long)]
         unconstrained: bool,
         #[arg(long,default_value="jsonl",value_parser=["jsonl"])]
@@ -109,6 +109,23 @@ enum Commands {
         #[arg(long, default_value = "100")]
         samples: usize,
         #[arg(long, default_value = "build/bench.json")]
+        report: PathBuf,
+    },
+    /// Measure different seeds independently, without a shared duplicate history.
+    EvaluateSeeds {
+        #[arg(long)]
+        model: PathBuf,
+        #[arg(long, default_value = "1000")]
+        samples: usize,
+        #[arg(long, default_value = "100000")]
+        seed: u64,
+        #[arg(long, value_enum, default_value = "mixed")]
+        difficulty: Level,
+        #[arg(long)]
+        temperature: Option<f32>,
+        #[arg(long)]
+        top_p: Option<f32>,
+        #[arg(long, default_value = "build/independent-seeds.json")]
         report: PathBuf,
     },
 }
@@ -172,7 +189,9 @@ fn main() -> Result<()> {
             } else {
                 TypingGenerator::load(model.context("model required")?)?
             };
-            g.set_history_size(history_size);
+            if let Some(size) = history_size {
+                g.set_history_size(size);
+            }
             g.set_constraints_enabled(!unconstrained);
             let levels: Vec<_> = difficulty
                 .difficulties()
@@ -318,6 +337,71 @@ fn main() -> Result<()> {
             let success = outputs.len();
             let r = json!({"history_size":history_size,"requested":samples,"success":success,"model_count":model_n,"fallback_count":fallback_n,"failures":failures,"attempts":attempts,"rejected":rejected,"rejection_rate":if attempts>0{Some(rejected as f64/attempts as f64)}else{None},"fallback_rate":if success>0{Some(fallback_n as f64/success as f64)}else{None},"unique_texts":unique.len(),"duplicate_rate":if success>0{Some(1.0-unique.len() as f64/success as f64)}else{None},"model_training_exact_rate":training.as_ref().and_then(|_|if model_n>0{Some(exact as f64/model_n as f64)}else{None}),"model_training_near_rate":training.as_ref().and_then(|_|if !skip_near_statistics && model_n>0{Some(near as f64/model_n as f64)}else{None}),"model_token_frequency":frequency,"kana_length_distributions":distributions,"samples":outputs,"human_quality":"not evaluated; structural checks do not guarantee naturalness/contextual reading","environment":env_info()});
             write_report(&report, &r)
+        }
+        Commands::EvaluateSeeds {
+            model,
+            samples,
+            seed,
+            difficulty,
+            temperature,
+            top_p,
+            report,
+        } => {
+            ensure!((1..=100000).contains(&samples), "samples must be 1..100000");
+            ensure!(
+                seed.checked_add(samples as u64 - 1).is_some(),
+                "seed range overflows"
+            );
+            let mut g = TypingGenerator::load(&model)?;
+            g.set_history_size(0);
+            let mut options = g.default_options();
+            if let Some(value) = temperature {
+                options.temperature = value;
+            }
+            if let Some(value) = top_p {
+                options.top_p = value;
+            }
+            let levels = difficulty.difficulties();
+            let mut first_seed = BTreeMap::new();
+            let mut duplicates = Vec::new();
+            let mut outputs = Vec::new();
+            let mut failures = Vec::new();
+            let mut durations = Vec::new();
+            let mut attempts = 0;
+            for i in 0..samples {
+                let current_seed = seed + i as u64;
+                options.seed = Some(current_seed);
+                options.difficulty = levels[i % levels.len()];
+                g.clear_history();
+                let start = Instant::now();
+                match g.generate(&options) {
+                    Ok(prompt) => {
+                        if let Some(previous) = first_seed.insert(prompt.text.clone(), current_seed)
+                        {
+                            duplicates.push(json!({"text":prompt.text,"previous_seed":previous,"seed":current_seed}));
+                        }
+                        let mut value = serde_json::to_value(prompt)?;
+                        value["seed"] = json!(current_seed);
+                        outputs.push(value);
+                    }
+                    Err(error) => {
+                        failures.push(json!({"seed":current_seed,"error":error.to_string()}))
+                    }
+                }
+                attempts += g.last_stats.attempts;
+                durations.push(start.elapsed().as_secs_f64() * 1000.0);
+            }
+            write_report(
+                &report,
+                &json!({"requested":samples,"success":outputs.len(),"unique_texts":first_seed.len(),
+                "unique_ratio":first_seed.len() as f64/samples as f64,"duplicate_count":duplicates.len(),
+                "duplicate_examples":duplicates.into_iter().take(20).collect::<Vec<_>>(),"failures":failures,
+                "history_size":0,"seed_start":seed,"seed_end":seed+samples as u64-1,
+                "protocol":"Independent seed per request; history disabled and cleared; no training-reference filtering",
+                "sampling":{"temperature":options.temperature,"top_p":options.top_p,"start_temperature":g.default_start_temperature()},"attempts":attempts,
+                "p50_ms":percentile(&durations,0.5),"p95_ms":percentile(&durations,0.95),
+                "samples":outputs,"environment":env_info()}),
+            )
         }
         Commands::Bench {
             model,

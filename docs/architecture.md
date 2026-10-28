@@ -38,3 +38,9 @@ fn main() -> anyhow::Result<()> {
 このモデルは静的fallbackを禁止し、生成失敗はエラーになる。
 
 学習はCUDA/PyTorch、アプリ推論はRust/Candle CPU。WASM版も同じgeneratorを呼び、Web Workerで同期推論を実行する。詳細は [モデルの設計と評価](three-mb-generation.md)。
+
+## 次期モデルの試作
+
+`sentencepiece_lexicon_v1` 形式では、モデルがsubword IDを予測し、単語の辞書を使って表記・かな・品詞に分割する。辞書のtrieは単語の綴りを制約するために使う。文型や全文一覧は含めない。同じ表記の読みは、学習データの直前2語の観測数と語の頻度から選ぶため、未見の文脈の読みまで保証できない。
+
+`generation_defaults.history_size` を省略したモデルは履歴16件。`set_history_size(0)` で重複回避を無効にできる。CLIの `evaluate-seeds` は各要求に別のseedを設定し、履歴を無効化・消去して重複を測る。標準配布モデルは引き続き上記の現行モデル。試作の評価は [日常文モデルの実験](everyday-generation.md) を参照。

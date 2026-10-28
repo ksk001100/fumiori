@@ -45,13 +45,18 @@ def package(source, output, strip_token_metadata=False):
         minimal['quantization'] = manifest['quantization']
     if 'generation_constraints' in manifest:
         minimal['generation_constraints'] = manifest['generation_constraints']
-    for key in ('generation_mode', 'allow_static_fallback', 'generation_defaults', 'lexical_boundary_guard', 'polite_boundary_guard', 'reading_normalization'):
+    for key in ('generation_mode', 'allow_static_fallback', 'generation_defaults', 'lexical_boundary_guard', 'polite_boundary_guard', 'reading_normalization', 'subword_start_temperature', 'subword_difficulty_prefix'):
         if key in manifest:
             minimal[key] = manifest[key]
     minimal['source_manifest_sha256'] = digest(manifest_bytes)
     minimal['quality'] = 'experimental; independent human review pending'
     files['manifest.json'] = compact_json(minimal)
     files['LICENSE'] = (Path(__file__).resolve().parents[1] / 'LICENSE').read_bytes()
+    if 'third_party_notices_sha256' in manifest:
+        notices = (source/'THIRD_PARTY_NOTICES.txt').read_bytes()
+        if digest(notices) != manifest['third_party_notices_sha256']:
+            raise ValueError('checksum mismatch: THIRD_PARTY_NOTICES.txt')
+        files['LICENSE'] += b'\n\nTHIRD-PARTY ATTRIBUTION AND LICENSES\n\n' + notices
     if output.exists() and any(output.iterdir()):
         # Avoid bundling stale checkpoints or untracked extras accidentally.
         if set(p.name for p in output.iterdir()) != set(files):

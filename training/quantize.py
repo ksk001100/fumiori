@@ -27,6 +27,8 @@ def quantize(source, output):
     save_file(tensors, output / "model.safetensors")
     for name in ("vocab.json", "model-config.json"):
         shutil.copyfile(source / name, output / name)
+    if (source / 'THIRD_PARTY_NOTICES.txt').exists():
+        shutil.copyfile(source / 'THIRD_PARTY_NOTICES.txt', output / 'THIRD_PARTY_NOTICES.txt')
     manifest = json.loads((source / "manifest.json").read_text(encoding="utf-8"))
     manifest.update(dtype="I8_ROW_F32", quantization={
         "scheme": "symmetric_per_row", "storage": "U8_offset_128", "range": [-127, 127],

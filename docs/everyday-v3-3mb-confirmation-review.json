@@ -1,0 +1,810 @@
+{
+  "weights_sha256": "c5ca389007a4e33f157b7a0a7ceb0aa036ddebefd111f9e0cba405faee84b057",
+  "decoder_sha256": "c1945dfc7277d47d6f7f81eb1654f1550af8c5e22ab7f46e38a5cc8f8db72c2c",
+  "sample_sha256": "9c764afe8a95e254d8e19493e1f6b6b66416da4841375909bb3221aa8155a4eb",
+  "reviewer": "Codex",
+  "reviewer_type": "Codex language and genre review; not independent human review",
+  "policy": "Natural grammar, collocations and contextual readings; nature/landscape topics are allowed. Fairy-tale tone judged from the sentence, not keyword presence. All 100 texts and readings inspected.",
+  "ratings": [
+    {
+      "sample_id": 4,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 10,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "nature",
+      "notes": ""
+    },
+    {
+      "sample_id": 22,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "everyday",
+      "notes": ""
+    },
+    {
+      "sample_id": 35,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 40,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "food",
+      "notes": ""
+    },
+    {
+      "sample_id": 41,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "travel",
+      "notes": ""
+    },
+    {
+      "sample_id": 58,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "season",
+      "notes": ""
+    },
+    {
+      "sample_id": 59,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "music",
+      "notes": ""
+    },
+    {
+      "sample_id": 60,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "nature",
+      "notes": ""
+    },
+    {
+      "sample_id": 62,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 69,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "cooking",
+      "notes": ""
+    },
+    {
+      "sample_id": 76,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "music",
+      "notes": ""
+    },
+    {
+      "sample_id": 83,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "sport",
+      "notes": ""
+    },
+    {
+      "sample_id": 99,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "everyday",
+      "notes": ""
+    },
+    {
+      "sample_id": 103,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "nature",
+      "notes": ""
+    },
+    {
+      "sample_id": 108,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "nature",
+      "notes": ""
+    },
+    {
+      "sample_id": 111,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 114,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "care",
+      "notes": ""
+    },
+    {
+      "sample_id": 115,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 118,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "animals",
+      "notes": ""
+    },
+    {
+      "sample_id": 141,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "books",
+      "notes": ""
+    },
+    {
+      "sample_id": 146,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "music",
+      "notes": ""
+    },
+    {
+      "sample_id": 147,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 149,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "travel",
+      "notes": ""
+    },
+    {
+      "sample_id": 157,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "travel",
+      "notes": ""
+    },
+    {
+      "sample_id": 164,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "books",
+      "notes": ""
+    },
+    {
+      "sample_id": 175,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 176,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "home",
+      "notes": ""
+    },
+    {
+      "sample_id": 179,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 183,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 190,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "food",
+      "notes": ""
+    },
+    {
+      "sample_id": 191,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "books",
+      "notes": ""
+    },
+    {
+      "sample_id": 198,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 201,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "animals",
+      "notes": ""
+    },
+    {
+      "sample_id": 211,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 213,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "other",
+      "notes": "並木道が聞こえるという対象と感覚の組み合わせが不適切"
+    },
+    {
+      "sample_id": 216,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "books",
+      "notes": ""
+    },
+    {
+      "sample_id": 217,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 222,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "making",
+      "notes": ""
+    },
+    {
+      "sample_id": 235,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "sport",
+      "notes": ""
+    },
+    {
+      "sample_id": 242,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "animals",
+      "notes": ""
+    },
+    {
+      "sample_id": 246,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 254,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "social",
+      "notes": ""
+    },
+    {
+      "sample_id": 272,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 287,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "game",
+      "notes": ""
+    },
+    {
+      "sample_id": 289,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 291,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "nature",
+      "notes": ""
+    },
+    {
+      "sample_id": 303,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 310,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 311,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "health",
+      "notes": ""
+    },
+    {
+      "sample_id": 315,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 318,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "season",
+      "notes": ""
+    },
+    {
+      "sample_id": 320,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "shopping",
+      "notes": ""
+    },
+    {
+      "sample_id": 324,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 340,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 346,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 347,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "home",
+      "notes": ""
+    },
+    {
+      "sample_id": 354,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "senses",
+      "notes": ""
+    },
+    {
+      "sample_id": 355,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 360,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 362,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "game",
+      "notes": ""
+    },
+    {
+      "sample_id": 368,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 370,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 373,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "music",
+      "notes": ""
+    },
+    {
+      "sample_id": 377,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "animals",
+      "notes": ""
+    },
+    {
+      "sample_id": 378,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "cooking",
+      "notes": ""
+    },
+    {
+      "sample_id": 391,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 416,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "everyday",
+      "notes": ""
+    },
+    {
+      "sample_id": 419,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "making",
+      "notes": ""
+    },
+    {
+      "sample_id": 430,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "shopping",
+      "notes": ""
+    },
+    {
+      "sample_id": 439,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "travel",
+      "notes": ""
+    },
+    {
+      "sample_id": 443,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "nature",
+      "notes": ""
+    },
+    {
+      "sample_id": 445,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "cooking",
+      "notes": ""
+    },
+    {
+      "sample_id": 451,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "books",
+      "notes": ""
+    },
+    {
+      "sample_id": 462,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 466,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "everyday",
+      "notes": ""
+    },
+    {
+      "sample_id": 468,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 469,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "home",
+      "notes": ""
+    },
+    {
+      "sample_id": 470,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "shopping",
+      "notes": ""
+    },
+    {
+      "sample_id": 473,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": "色鉛筆で買うという道具と動作の組み合わせが不適切"
+    },
+    {
+      "sample_id": 474,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 501,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "books",
+      "notes": ""
+    },
+    {
+      "sample_id": 510,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "music",
+      "notes": ""
+    },
+    {
+      "sample_id": 512,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "food",
+      "notes": ""
+    },
+    {
+      "sample_id": 513,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "town",
+      "notes": ""
+    },
+    {
+      "sample_id": 517,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "shopping",
+      "notes": ""
+    },
+    {
+      "sample_id": 520,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "home",
+      "notes": ""
+    },
+    {
+      "sample_id": 539,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 540,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 546,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "music",
+      "notes": ""
+    },
+    {
+      "sample_id": 547,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 554,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "science",
+      "notes": ""
+    },
+    {
+      "sample_id": 558,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 567,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 571,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "town",
+      "notes": ""
+    },
+    {
+      "sample_id": 576,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "exercise",
+      "notes": ""
+    },
+    {
+      "sample_id": 579,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "learning",
+      "notes": ""
+    },
+    {
+      "sample_id": 589,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "art",
+      "notes": ""
+    },
+    {
+      "sample_id": 590,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "work",
+      "notes": ""
+    },
+    {
+      "sample_id": 599,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "topic": "shopping",
+      "notes": ""
+    }
+  ]
+}

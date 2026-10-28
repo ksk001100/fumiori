@@ -10,6 +10,7 @@ use std::{
     fs,
     path::Path,
 };
+mod lexical_subwords;
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct ModelConfig {
@@ -20,6 +21,8 @@ pub struct ModelConfig {
     pub d_ff: usize,
     pub max_seq_len: usize,
     pub version: String,
+    #[serde(default)]
+    pub approximate_gelu: bool,
 }
 impl ModelConfig {
     fn validate(&self) -> Result<()> {
@@ -33,7 +36,7 @@ impl ModelConfig {
                 && self.n_heads > 0
                 && self.d_model.is_multiple_of(self.n_heads)
                 && (1..=16).contains(&self.n_layers)
-                && (1..=2048).contains(&self.d_ff)
+                && (1..=4096).contains(&self.d_ff)
                 && (3..=64).contains(&self.max_seq_len),
             "invalid model dimensions"
         );
@@ -82,9 +85,13 @@ impl Block {
             .contiguous()?
             .reshape((b, t, d))?;
         let x = (x + self.attn_out.forward(&z)?)?;
-        let y = self
-            .fc2
-            .forward(&self.fc1.forward(&self.ln2.forward(&x)?)?.gelu_erf()?)?;
+        let hidden = self.fc1.forward(&self.ln2.forward(&x)?)?;
+        let activated = if c.approximate_gelu {
+            hidden.gelu()?
+        } else {
+            hidden.gelu_erf()?
+        };
+        let y = self.fc2.forward(&activated)?;
         Ok((&x + y)?)
     }
 }
@@ -96,11 +103,16 @@ pub struct Model {
     final_ln: LayerNorm,
 }
 impl Model {
-    fn load(config_bytes: &[u8], weights: &[u8], vocab: &Vocab, quantized: bool) -> Result<Self> {
+    fn load(
+        config_bytes: &[u8],
+        weights: &[u8],
+        vocab_size: usize,
+        quantized: bool,
+    ) -> Result<Self> {
         let config: ModelConfig = serde_json::from_slice(config_bytes)?;
         config.validate()?;
         ensure!(
-            config.vocab_size == vocab.tokens.len(),
+            config.vocab_size == vocab_size,
             "model vocabulary size mismatch"
         );
         let mut tensors = candle_core::safetensors::load_buffer(weights, &Device::Cpu)?;
@@ -432,6 +444,9 @@ impl FrameConstraints {
 pub struct TypingGenerator {
     pub vocab: Option<Vocab>,
     model: Option<Model>,
+    subword_lexicon: Option<lexical_subwords::Lexicon>,
+    subword_start_temperature: Option<f32>,
+    subword_difficulty_prefix: bool,
     constraints: Option<FrameConstraints>,
     constraints_enabled: bool,
     static_fallback_enabled: bool,
@@ -462,6 +477,9 @@ impl TypingGenerator {
         Ok(Self {
             vocab: None,
             model: None,
+            subword_lexicon: None,
+            subword_start_temperature: None,
+            subword_difficulty_prefix: true,
             constraints: None,
             constraints_enabled: true,
             static_fallback_enabled: true,
@@ -531,17 +549,32 @@ impl TypingGenerator {
                 "checksum mismatch: {file}"
             );
         }
-        let vocab: Vocab = serde_json::from_slice(vocab_bytes)?;
-        vocab.validate()?;
-        let model = Model::load(config, weights, &vocab, quantized)?;
-        let constraints = manifest
-            .get("generation_constraints")
-            .map(|value| FrameConstraints::load(value, &vocab, model.config.max_seq_len))
-            .transpose()?;
         let mut g = Self::fallback_only()?;
-        g.vocab = Some(vocab);
-        g.model = Some(model);
-        g.constraints = constraints;
+        let encoded: Value = serde_json::from_slice(vocab_bytes)?;
+        if encoded["encoding"] == "sentencepiece_lexicon_v1" {
+            ensure!(
+                manifest.get("generation_constraints").is_none(),
+                "subword model cannot contain sentence constraints"
+            );
+            let lexicon = lexical_subwords::Lexicon::load(serde_json::from_value(encoded)?)?;
+            g.model = Some(Model::load(
+                config,
+                weights,
+                lexicon.pieces.len(),
+                quantized,
+            )?);
+            g.subword_lexicon = Some(lexicon);
+        } else {
+            let vocab: Vocab = serde_json::from_value(encoded)?;
+            vocab.validate()?;
+            let model = Model::load(config, weights, vocab.tokens.len(), quantized)?;
+            g.constraints = manifest
+                .get("generation_constraints")
+                .map(|value| FrameConstraints::load(value, &vocab, model.config.max_seq_len))
+                .transpose()?;
+            g.vocab = Some(vocab);
+            g.model = Some(model);
+        }
         g.lexical_boundary_guard = manifest
             .get("lexical_boundary_guard")
             .map(|v| v.as_bool().context("invalid lexical boundary guard"))
@@ -568,6 +601,28 @@ impl TypingGenerator {
                 .as_f64()
                 .context("invalid default top_p")? as f32;
             g.default_options.bounds()?;
+            if let Some(value) = defaults.get("history_size") {
+                let size = value.as_u64().context("invalid default history size")?;
+                ensure!(size <= 1024, "default history size exceeds 1024");
+                g.set_history_size(size as usize);
+            }
+        }
+        if let Some(value) = manifest.get("subword_start_temperature") {
+            let value = value
+                .as_f64()
+                .context("invalid subword start temperature")? as f32;
+            ensure!(
+                g.subword_lexicon.is_some() && value.is_finite() && (0.05..=2.0).contains(&value),
+                "invalid subword start temperature"
+            );
+            g.subword_start_temperature = Some(value);
+        }
+        if let Some(value) = manifest.get("subword_difficulty_prefix") {
+            ensure!(
+                g.subword_lexicon.is_some(),
+                "difficulty prefix applies to subword models only"
+            );
+            g.subword_difficulty_prefix = value.as_bool().context("invalid difficulty prefix")?;
         }
         g.static_fallback_enabled = manifest
             .get("allow_static_fallback")
@@ -589,6 +644,10 @@ impl TypingGenerator {
     /// Model-recommended sampling; explicit options passed to generate still take precedence.
     pub fn default_options(&self) -> GenerateOptions {
         self.default_options.clone()
+    }
+    /// Optional opening-word sampling used by the dictionary-backed subword model.
+    pub fn default_start_temperature(&self) -> Option<f32> {
+        self.subword_start_temperature
     }
     pub fn logits(&self, ids: &[usize]) -> Result<Vec<Vec<f32>>> {
         self.model.as_ref().context("no model loaded")?.logits(ids)
@@ -626,6 +685,9 @@ impl TypingGenerator {
                 None => StdRng::from_entropy(),
             };
             self.seed = o.seed;
+        }
+        if self.subword_lexicon.is_some() {
+            return self.generate_subwords(o, min, max);
         }
         if let (Some(model), Some(vocab)) = (&self.model, &self.vocab) {
             let constraints = self
@@ -811,6 +873,74 @@ impl TypingGenerator {
         let p = candidates[self.rng.gen_range(0..candidates.len())].clone();
         self.remember(&p.text);
         Ok(p.without_terminal_period())
+    }
+    fn generate_subwords(
+        &mut self,
+        options: &GenerateOptions,
+        min: usize,
+        max: usize,
+    ) -> Result<TypingPrompt> {
+        let lexicon = self
+            .subword_lexicon
+            .as_ref()
+            .context("no subword lexicon")?;
+        let model = self.model.as_ref().context("no subword model")?;
+        for _ in 0..options.max_attempts {
+            self.last_stats.attempts += 1;
+            let mut ids = if self.subword_difficulty_prefix {
+                vec![0, options.difficulty.id()]
+            } else {
+                vec![0]
+            };
+            let mut states = vec![lexical_subwords::State::initial()];
+            let mut initial = true;
+            let mut visible = false;
+            while ids.len() < model.config.max_seq_len {
+                let mut logits = model.logits(&ids)?.last().context("empty logits")?.clone();
+                let mut continuations = Vec::with_capacity(logits.len());
+                for (id, logit) in logits.iter_mut().enumerate() {
+                    let next = if id >= 7 {
+                        lexicon.advance(&states, id, initial, min, max)
+                    } else {
+                        vec![]
+                    };
+                    if (id == 1 && !lexicon.finished(&states)) || (id != 1 && next.is_empty()) {
+                        *logit = f32::NEG_INFINITY;
+                    }
+                    continuations.push(next);
+                }
+                if !logits.iter().any(|x| x.is_finite()) {
+                    break;
+                }
+                let temperature = if visible {
+                    options.temperature
+                } else {
+                    self.subword_start_temperature
+                        .unwrap_or(options.temperature)
+                };
+                let id =
+                    sample_with_entropy(&logits, temperature, options.top_p, None, &mut self.rng)?;
+                self.last_stats.model_tokens += 1;
+                if id == 1 {
+                    let mut candidate =
+                        TypingPrompt::from_segments(lexicon.decode(&states)?, PromptSource::Model);
+                    candidate.reading_validation = "dictionary-constrained subwords; contextual reading not independently verified".into();
+                    if candidate.validate(options).is_ok()
+                        && !self.history.contains(&candidate.text)
+                    {
+                        self.remember(&candidate.text);
+                        return Ok(candidate.without_terminal_period());
+                    }
+                    break;
+                }
+                initial = false;
+                visible |= !lexicon.pieces[id].trim_start_matches('▁').is_empty();
+                states = std::mem::take(&mut continuations[id]);
+                ids.push(id);
+            }
+            self.last_stats.rejected += 1;
+        }
+        anyhow::bail!("subword generation exhausted attempts")
     }
 }
 // Small structural guard, not a semantic or contextual-reading validator.

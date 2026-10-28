@@ -14,6 +14,7 @@ import pyarrow.parquet as pq
 
 from scripts.generalization import evaluation_text
 from scripts.semantic_keys import core_key
+from scripts.lexical_rules import lexical_collision
 
 
 ICHIDAN = ('食べる', '見る', '寝る', '起きる', '借りる', '開ける', '閉める', '入れる',
@@ -125,12 +126,6 @@ class Aligner:
         difficulty = 3 if len(kana)<=12 else 4 if len(kana)<=22 else 5
         return dict(text=text,kana=kana,segments=segments,ids=[0,difficulty,*[t['id'] for t in tokens],1],
             trust='auto_aligned',source='SimpleStories/SimpleStories-JA',license='MIT')
-
-
-def lexical_collision(previous, token):
-    kanji = lambda c: '\u4e00'<=c<='\u9fff' or c=='々'
-    return (kanji(previous['surface'][-1]) and previous['pos']=='名詞' and
-            ((kanji(token['surface'][0]) and token['pos']=='名詞') or token['pos']=='文字'))
 
 
 def main():

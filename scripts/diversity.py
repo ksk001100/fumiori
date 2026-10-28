@@ -88,3 +88,26 @@ def lexical_factors(rows, strength=.5, max_ratio=3.0):
         for i, score in scores.items():
             factors[i] = math.exp(max(-limit, min(limit, score - center)))
     return factors
+
+
+def topic_factors(rows, strength=.5, max_ratio=4.0):
+    """Soften concentration in authored topic labels, using training rows only."""
+    if not math.isfinite(strength) or not 0 <= strength <= 1:
+        raise ValueError('topic balance strength must be in [0, 1]')
+    if not math.isfinite(max_ratio) or not 1 <= max_ratio <= 10:
+        raise ValueError('topic balance max_ratio must be in [1, 10]')
+    groups = defaultdict(list)
+    for i, row in enumerate(rows):
+        topic = (row.get('generation') or {}).get('topic')
+        if not isinstance(topic, str) or not topic:
+            raise ValueError('topic balance requires explicit authored topic labels')
+        groups[row['ids'][1]].append((i, topic))
+    factors = [1.0] * len(rows)
+    for group in groups.values():
+        counts = Counter(topic for _, topic in group)
+        center = sum(math.log(counts[t]) for _, t in group) / len(group)
+        limit = math.log(max_ratio) / 2
+        for i, topic in group:
+            score = strength * (center - math.log(counts[topic]))
+            factors[i] = math.exp(max(-limit, min(limit, score)))
+    return factors

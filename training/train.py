@@ -36,13 +36,25 @@ def load_checkpoint(path):
     return model.eval(), ck
 
 
-def sampling_weights(rows, lexical_balance=None):
+def sampling_weights(rows, lexical_balance=None, topic_balance=None, corpus_mixture=None):
     """Equal expected mass for each observed difficulty; no held-out rows used."""
     counts = {d: sum(r['ids'][1] == d for r in rows) for d in (3, 4, 5)}
-    if lexical_balance is None:
+    if lexical_balance is None and topic_balance is None and corpus_mixture is None:
         return torch.tensor([1.0 / counts[r['ids'][1]] for r in rows], dtype=torch.float64)
-    from scripts.diversity import lexical_factors
-    factors = lexical_factors(rows, **lexical_balance)
+    from scripts.diversity import lexical_factors, topic_factors
+    factors = lexical_factors(rows, **lexical_balance) if lexical_balance is not None else [1.0] * len(rows)
+    if topic_balance is not None:
+        factors = [a * b for a, b in zip(factors, topic_factors(rows, **topic_balance))]
+    if corpus_mixture is not None:
+        if (not corpus_mixture or any(not isinstance(k, str) or not math.isfinite(v) or v <= 0
+                                     for k, v in corpus_mixture.items())
+                or any(r.get('training_group') not in corpus_mixture for r in rows)):
+            raise ValueError('corpus mixture requires positive finite masses and explicit training_group labels')
+        groups = {(r['ids'][1], r['training_group']) for r in rows}
+        group_totals = {key: sum(f for r, f in zip(rows, factors)
+                                if (r['ids'][1], r['training_group']) == key) for key in groups}
+        factors = [f * corpus_mixture[r['training_group']] / group_totals[(r['ids'][1], r['training_group'])]
+                   for r, f in zip(rows, factors)]
     totals = {d: sum(f for r, f in zip(rows, factors) if r['ids'][1] == d) for d in counts}
     return torch.tensor([f / totals[r['ids'][1]] for r, f in zip(rows, factors)], dtype=torch.float64)
 
@@ -80,6 +92,12 @@ def train(config_path):
     device = torch.device(c.get("device", "cpu"))
     if device.type == 'cuda' and not torch.cuda.is_available():
         raise RuntimeError('CUDA requested but unavailable; install CUDA-enabled PyTorch. CPU fallback is not automatic.')
+    precision = c.get('precision', 'fp32')
+    if precision not in ('fp32', 'bf16'):
+        raise ValueError('precision must be fp32 or bf16')
+    use_bf16 = precision == 'bf16'
+    if use_bf16 and (device.type != 'cuda' or not torch.cuda.is_bf16_supported()):
+        raise ValueError('bf16 training requires a supported CUDA device')
     device_name = torch.cuda.get_device_name(device) if device.type == 'cuda' else platform.processor()
     print(json.dumps(dict(training_device=str(device), device_name=device_name, torch_version=str(torch.__version__)), ensure_ascii=True), flush=True)
     if device.type == 'cuda':
@@ -105,10 +123,26 @@ def train(config_path):
             if not (3 <= len(ids) <= 64 and ids[0] == 0 and ids[1] in (3, 4, 5)
                     and ids[-1] == 1 and all(7 <= i < len(vocab["tokens"]) for i in ids[2:-1])):
                 raise ValueError("invalid prepared token sequence")
-            if ("".join(vocab["tokens"][i]["surface"] for i in ids[2:-1]) != r["text"]
-                    or "".join(vocab["tokens"][i]["kana"] for i in ids[2:-1]) != r["kana"]):
+            if vocab.get('encoding') == 'sentencepiece_lexicon_v1':
+                text = ''.join(vocab['tokens'][i]['surface'] for i in ids[2:-1]).replace('▁','')
+                kana = ''.join(s['kana'] for s in r['segments'])
+                if ''.join(s['surface'] for s in r['segments']) != r['text']:
+                    raise ValueError('subword lexical segments differ from text')
+            else:
+                text = ''.join(vocab['tokens'][i]['surface'] for i in ids[2:-1])
+                kana = ''.join(vocab['tokens'][i]['kana'] for i in ids[2:-1])
+            if text != r['text'] or kana != r['kana']:
                 raise ValueError("prepared data roundtrip mismatch")
     model = Transformer(ModelConfig(vocab_size=len(vocab["tokens"]), **c["model"])).to(device)
+    initialization = None
+    if c.get('initialize_from'):
+        initial_path = Path(c['initialize_from'])
+        initial = torch.load(initial_path, map_location='cpu', weights_only=True)
+        if initial.get('vocab_sha256') != manifest['vocab_sha256']:
+            raise ValueError('pretrained initialization vocabulary differs')
+        model.load_state_dict(initial['state_dict'], strict=True)
+        initialization = dict(checkpoint_sha256=hashlib.sha256(initial_path.read_bytes()).hexdigest(),
+                              source=initial['source'])
     smoothing = c.get('label_smoothing', 0.0)
     if not 0 <= smoothing < 1:
         raise ValueError('label_smoothing must be in [0, 1)')
@@ -116,11 +150,20 @@ def train(config_path):
     if not 0 <= context_dropout < 1:
         raise ValueError('noun_context_dropout must be in [0, 1)')
     noun_ids = torch.tensor([t['pos'] == '名詞' for t in vocab['tokens']], device=device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=c["learning_rate"], weight_decay=c.get('weight_decay', 0.01))
+    if c.get('body_lr_ratio') is not None:
+        ratio = c['body_lr_ratio']
+        if not 0 < ratio <= 1:
+            raise ValueError('body_lr_ratio must be in (0, 1]')
+        embedding = list(model.token_emb.parameters()) + list(model.pos_emb.parameters())
+        body = [p for name,p in model.named_parameters() if not name.startswith(('token_emb.', 'pos_emb.'))]
+        parameters = [dict(params=embedding, lr_scale=1.0), dict(params=body, lr_scale=ratio)]
+    else:
+        parameters = model.parameters()
+    optimizer = torch.optim.AdamW(parameters, lr=c["learning_rate"], weight_decay=c.get('weight_decay', 0.01))
     train_batch = tensor_batch(rows["train"], device)
-    if c.get('lexical_balance') is not None and not c.get('balance_difficulties', False):
-        raise ValueError('lexical balance requires balance_difficulties')
-    weights = sampling_weights(rows['train'], c.get('lexical_balance')).to(device) if c.get('balance_difficulties', False) else None
+    if any(c.get(k) is not None for k in ('lexical_balance', 'topic_balance', 'corpus_mixture')) and not c.get('balance_difficulties', False):
+        raise ValueError('lexical/topic balance requires balance_difficulties')
+    weights = sampling_weights(rows['train'], c.get('lexical_balance'), c.get('topic_balance'), c.get('corpus_mixture')).to(device) if c.get('balance_difficulties', False) else None
     val_batch = tensor_batch(rows["validation"], device)
     train_eval = train_batch
     if c.get('train_loss_samples'):
@@ -136,7 +179,7 @@ def train(config_path):
         raise ValueError("batch_size must be positive")
     def measured_loss(batch):
         weighted, count = 0.0, 0
-        with torch.no_grad():
+        with torch.no_grad(), torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=use_bf16):
             for part in batch.split(batch_size):
                 n = int((part[:, 1:] != 2).sum())
                 weighted += float(loss_for(model, part)) * n
@@ -153,7 +196,7 @@ def train(config_path):
     for step in range(c["steps"] + 1):
         rate = learning_rate_at(c, step)
         for group in optimizer.param_groups:
-            group['lr'] = rate
+            group['lr'] = rate * group.get('lr_scale', 1.0)
         model.train()
         if weights is not None:
             indices = torch.multinomial(weights, batch_size, replacement=True)
@@ -161,7 +204,8 @@ def train(config_path):
             indices = torch.randperm(len(train_batch), device=device)[:batch_size] if len(train_batch) > batch_size else None
         sampled = train_batch if indices is None else train_batch[indices]
         context = noun_context(sampled, noun_ids, context_dropout) if context_dropout else None
-        loss = loss_for(model, sampled, smoothing, context_ids=context)
+        with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=use_bf16):
+            loss = loss_for(model, sampled, smoothing, context_ids=context)
         if step % c.get("log_every", 50) == 0 or step == c["steps"]:
             model.eval()
             val = measured_loss(val_batch)
@@ -190,7 +234,7 @@ def train(config_path):
         model.load_state_dict(best_state)
     if device.type == 'cuda':
         torch.cuda.synchronize(device)
-    metadata = dict(training_device=str(device), device_name=device_name, cuda_version=torch.version.cuda,
+    metadata = dict(training_device=str(device), device_name=device_name, cuda_version=torch.version.cuda, initialization=initialization,
                     peak_cuda_memory_bytes=torch.cuda.max_memory_allocated(device) if device.type == 'cuda' else None, selected_step=best_step if select_best else step,
                     best_validation_loss=best_validation_loss, stopped_early=stopped_early,
                     config=c, model_config=vars(model.config), vocab=vocab,

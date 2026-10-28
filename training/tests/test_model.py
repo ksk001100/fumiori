@@ -315,3 +315,99 @@ def test_fixed_idiom_completes_without_fallback(exported):
     assert result.returncode==0,result.stderr
     prompt=json.loads(result.stdout)
     assert prompt['text']=='一期一会' and prompt['source']=='model_constrained'
+
+
+def test_model_history_default_and_explicit_cli_override(exported):
+    from training.constraints import attach_constraints
+    rows = [dict(text=animal+'が眠る。', kana=kana+'がねむる', segments=[
+        dict(surface=animal, kana=kana, pos='名詞'), dict(surface='が', kana='が', pos='助詞'),
+        dict(surface='眠る', kana='ねむる', pos='動詞'), dict(surface='。', kana='', pos='記号')])
+        for animal, kana in [('猫', 'ねこ'), ('犬', 'いぬ')]]
+    attach_constraints(exported, rows)
+    path = exported / 'manifest.json'
+    manifest = json.loads(path.read_text(encoding='utf-8'))
+    manifest.update(allow_static_fallback=False, generation_defaults=dict(temperature=2, top_p=1, history_size=2))
+    path.write_text(json.dumps(manifest), encoding='utf-8')
+    args = ('generate', '--model', exported, '--difficulty', 'easy', '--seed', '42', '--count', '3')
+    assert cli(*args).returncode != 0  # Two texts cannot fill three requests with history 2.
+    result = cli(*args, '--history-size', '0')
+    assert result.returncode == 0, result.stderr
+    assert len(result.stdout.splitlines()) == 3
+    manifest['generation_defaults']['history_size'] = 1025
+    path.write_text(json.dumps(manifest), encoding='utf-8')
+    result = cli(*args)
+    assert 'default history size exceeds 1024' in result.stderr
+
+
+def test_independent_seed_command_exposes_catalogue_collisions(exported, tmp_path):
+    from training.constraints import attach_constraints
+    row = dict(text='猫が眠る。', kana='ねこがねむる', segments=[
+        dict(surface='猫',kana='ねこ',pos='名詞'), dict(surface='が',kana='が',pos='助詞'),
+        dict(surface='眠る',kana='ねむる',pos='動詞'), dict(surface='。',kana='',pos='記号')])
+    attach_constraints(exported, [row])
+    result = cli('evaluate-seeds','--model',exported,'--difficulty','easy',
+                 '--samples','5','--seed','900','--report',tmp_path/'seeds.json')
+    assert result.returncode == 0, result.stderr
+    report = json.loads(result.stdout)
+    assert report['history_size'] == 0
+    assert report['success'] == 5 and report['unique_texts'] == 1
+    assert report['duplicate_count'] == 4
+    assert [row['seed'] for row in report['samples']] == list(range(900,905))
+
+
+def test_tanh_gelu_export_matches_native_runtime(exported, tmp_path):
+    checkpoint = exported.parent / 'model.pt'
+    state = torch.load(checkpoint, weights_only=True)
+    state['model_config']['approximate_gelu'] = True
+    torch.save(state, checkpoint)
+    target = tmp_path / 'tanh-export'
+    export(checkpoint, target)
+    result = cli('parity', '--model', target)
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout)['passed']
+
+
+def test_runtime_package_checks_and_includes_third_party_notices(exported, tmp_path):
+    import hashlib
+    from training.package import package
+    notices = b'Fixture third-party attribution and license text'
+    (exported / 'THIRD_PARTY_NOTICES.txt').write_bytes(notices)
+    path = exported / 'manifest.json'
+    manifest = json.loads(path.read_text(encoding='utf-8'))
+    manifest['third_party_notices_sha256'] = hashlib.sha256(notices).hexdigest()
+    path.write_text(json.dumps(manifest), encoding='utf-8')
+    target = tmp_path / 'licensed-runtime'
+    package(exported, target)
+    assert notices in (target / 'LICENSE').read_bytes()
+    assert len(list(target.iterdir())) == 5
+    (exported / 'THIRD_PARTY_NOTICES.txt').write_bytes(b'changed')
+    with pytest.raises(ValueError, match='THIRD_PARTY_NOTICES'):
+        package(exported, target)
+
+
+def test_dictionary_constrained_subword_bundle_loads_generates_and_packages(exported, tmp_path):
+    import hashlib
+    from training.package import package
+    path = exported / 'vocab.json'
+    original = json.loads(path.read_text(encoding='utf-8'))
+    words = original['tokens'][7:]
+    pieces = original['tokens'][:7] + [dict(id=7+i,surface=s,kana='',pos='subword')
+        for i,s in enumerate(['▁猫','が','眠る','。','▁犬'])]
+    encoded = dict(version='0.1.0', encoding='sentencepiece_lexicon_v1', tokens=pieces, lexicon=words)
+    payload = json.dumps(encoded,ensure_ascii=False).encode()
+    path.write_bytes(payload)
+    manifest_path = exported / 'manifest.json'
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+    manifest.update(vocab_sha256=hashlib.sha256(payload).hexdigest(),generation_mode='autoregressive',allow_static_fallback=False)
+    manifest_path.write_text(json.dumps(manifest),encoding='utf-8')
+    assert cli('parity','--model',exported).returncode == 0
+    result = cli('generate','--model',exported,'--difficulty','easy','--seed','42','--temperature','2','--top-p','1')
+    assert result.returncode == 0, result.stderr
+    prompt = json.loads(result.stdout)
+    assert prompt['source'] == 'model'
+    assert prompt['kana'] == ''.join(s['kana'] for s in prompt['segments'])
+    assert prompt['text'] == ''.join(s['surface'] for s in prompt['segments'])
+    assert all(s['surface'] in {w['surface'] for w in words} for s in prompt['segments'])
+    runtime = tmp_path / 'subword-runtime'
+    package(exported,runtime,strip_token_metadata=True)
+    assert cli('generate','--model',runtime,'--difficulty','easy','--seed','42','--temperature','2','--top-p','1').stdout == result.stdout

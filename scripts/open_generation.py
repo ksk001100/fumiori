@@ -41,14 +41,14 @@ def audit(samples, train, domain, requested):
         warning='author-support is exact offline reference membership, not an independent quality rating; outside-reference texts are unjudged')
 
 
-def measure(cli, directory, train, domain, seeds, temperature=.8, top_p=.9, report_dir=Path('build/stories-v1-3mb-evaluation'), skip_near_statistics=False):
+def measure(cli, directory, train, domain, seeds, temperature=.8, top_p=.9, report_dir=Path('build/stories-v1-3mb-evaluation'), skip_near_statistics=False, history_size=16):
     identity = runtime_identity(cli)
     report_dir.mkdir(parents=True, exist_ok=True)
     samples, runs = [], []
     for seed in seeds:
         # There is no filtering by train membership, support or quality after generation.
         command = [str(cli), 'evaluate', '--model', str(directory), '--samples', '200',
-            '--seed', str(seed), '--history-size', '16', '--unconstrained',
+            '--seed', str(seed), '--history-size', str(history_size), '--unconstrained',
             '--temperature', str(temperature), '--top-p', str(top_p),
             '--training-data', str(train), '--report', str(report_dir / f'{directory.name}-{seed}.json')]
         if skip_near_statistics:
