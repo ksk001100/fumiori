@@ -30,15 +30,17 @@ jobs:
       - name: Install wasm-bindgen CLI
         run: cargo install wasm-bindgen-cli --version 0.2.127 --locked
       - name: Build demo with bundled model
-        run: python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
+        run: python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v8-32mb
       - name: Check WASM inference
-        run: node scripts/smoke_wasm.mjs model-int8
+        run: node scripts/smoke_wasm.mjs model-int8 model-experimental
       - name: Install browser test dependencies
         run: |
           npm install --no-save --package-lock=false playwright@1.56.1
           npx playwright install --with-deps chromium
       - name: Check demo under a Pages project path
         run: node scripts/test_pages.cjs
+        env:
+          FUMIORI_REQUIRE_EXPERIMENTAL: '1'
       - uses: actions/upload-pages-artifact@v4
         with:
           path: build/web

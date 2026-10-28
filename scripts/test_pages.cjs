@@ -30,18 +30,33 @@ const path = require('node:path');
     page.on('pageerror', error => errors.push(String(error)));
     page.on('response', response => { if (!response.ok()) errors.push(`${response.status()} ${response.url()}`); });
     await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
-    await page.click('#load');
-    await page.waitForFunction(() => !document.querySelector('#generate').disabled, null, { timeout: 120000 });
-    for (const difficulty of ['easy', 'normal', 'hard']) {
-      await page.selectOption('#difficulty', difficulty);
-      await page.click('#generate');
+    const models = await page.locator('#model option').evaluateAll(options => options.map(o => o.value));
+    if (process.env.FUMIORI_REQUIRE_EXPERIMENTAL) assert(models.includes('model-experimental'));
+    const visits = models.length > 1 ? [...models, models[0]] : models;
+    for (const model of visits) {
+      await page.selectOption('#model', model);
+      assert(await page.isDisabled('#generate'));
+      assert.equal(await page.textContent('#kana'), '');
+      if (model === 'model-experimental') assert.match(await page.textContent('#model-info'), /試作/);
+      await page.click('#load');
       await page.waitForFunction(() => !document.querySelector('#generate').disabled, null, { timeout: 120000 });
-      assert.match(await page.textContent('#source'), /^モデル生成/);
-      assert.match(await page.textContent('#kana'), /^[ぁ-ゖー、]+$/u);
-      assert.equal(await page.textContent('#status'), '準備完了');
+      const loaded = JSON.parse(await page.textContent('#metrics'));
+      assert.equal(loaded.model, model);
+      const files = ['manifest.json', 'model-config.json', 'vocab.json', 'model.safetensors'];
+      const sizes = await Promise.all(files.map(async name => (await fs.stat(path.join(root, model, name))).size));
+      assert.equal(loaded.bundle_bytes, sizes.reduce((sum, size) => sum + size, 0));
+      for (const difficulty of ['easy', 'normal', 'hard']) {
+        await page.selectOption('#difficulty', difficulty);
+        await page.click('#generate');
+        await page.waitForFunction(() => !document.querySelector('#generate').disabled, null, { timeout: 120000 });
+        assert.match(await page.textContent('#source'), /^モデル生成/);
+        assert.match(await page.textContent('#kana'), /^[ぁ-ゖー、]+$/u);
+        assert.equal(await page.textContent('#status'), '準備完了');
+        assert.equal(await page.textContent('#active-model'), await page.locator('#model option:checked').textContent());
+      }
     }
     assert.deepEqual(errors, []);
-    console.log('Pages project path: model loading and all three difficulties passed');
+    console.log(`Pages project path: ${visits.join(' -> ')}; all three difficulties passed`);
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));

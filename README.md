@@ -43,11 +43,13 @@ cd fumiori
 
 ```powershell
 cargo run --release -p fumiori-cli -- generate --model models/stories-v2-diverse-3mb --difficulty mixed --count 10 --seed 3432
-python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
+python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v8-32mb
 python -m http.server 8000 --bind 127.0.0.1 --directory build/web
 ```
 
 ブラウザで http://127.0.0.1:8000 を開く。Web Workerで生成する。ビルドには `wasm32-unknown-unknown` と `wasm-bindgen-cli 0.2.127` が必要。
+
+「モデル」で既存モデルv2（約2.9MB）または試作モデルv8（約30.8MB）を選び、「読み込む」→「お題を生成」で試せる。選んだモデルだけをダウンロードする。v8は自然さ・読みの課題が残る比較用で、アプリ向けの標準モデルは引き続きv2。試作の測定結果は [日常文モデルの実験](docs/everyday-generation.md) を参照。
 
 ### GitHub Pagesへの公開
 
@@ -57,12 +59,12 @@ PRではビルドと推論・ブラウザ検証のみを実行する。Actions�
 初回はGitHubリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する。
 公開URLはデプロイジョブの出力から確認できる。プロジェクトサイトの `/fumiori/` のようなサブパスにも対応する。
 
-公開ビルドはGit管理された `models/stories-v2-diverse-3mb/` の約2.90MBのINT8配布モデルを使う。学習・PyTorch・`build/` 内の既存ファイルは不要。
+公開ビルドは `models/stories-v2-diverse-3mb/` と比較用の `models/everyday-v8-32mb/` のINT8保存モデルを使う。学習・PyTorch・`build/` 内の既存ファイルは不要。
 同じ構成をローカルで確認する場合:
 
 ```powershell
-python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
-node scripts/smoke_wasm.mjs model-int8
+python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v8-32mb
+node scripts/smoke_wasm.mjs model-int8 model-experimental
 python -m http.server 8000 --bind 127.0.0.1 --directory build/web
 ```
 

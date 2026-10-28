@@ -7,25 +7,33 @@ body{font:18px system-ui;max-width:800px;margin:64px auto;padding:0 24px;backgro
 <h1>Fumiori</h1><p>日本語タイピングのお題を、この端末で生成します。</p>
 <label>モデル <select id="model"><option value="model">FP32</option><option value="model-int8">INT8保存</option></select></label>
 <button id="load">読み込む</button><br>
+<p><small id="model-info"></small></p>
 <label>難易度 <select id="difficulty"><option value="easy">かんたん</option><option value="normal" selected>ふつう</option><option value="hard">むずかしい</option></select></label>
 <button id="generate" disabled>お題を生成</button>
 <p id="status" role="status">モデルを読み込んでください。</p>
-<article><p id="text">お題がここに表示されます。</p><p id="kana"></p><small id="source"></small></article>
+<article><small id="active-model"></small><p id="text">お題がここに表示されます。</p><p id="kana"></p><small id="source"></small></article>
 <p><small>実験用モデルです。自然さ・文脈上の読みは人手評価待ちです。</small></p>
 <details><summary>測定結果</summary><pre id="metrics"></pre></details>
 <script type="module">
 const worker = new Worker('./worker.js', {type:'module'});
 const $ = id => document.getElementById(id);
-const load = () => { $('generate').disabled=true; $('load').disabled=true; $('status').textContent='読み込み中…'; worker.postMessage({command:'load',model:$('model').value}); };
+let loadedModel;
+const clearPrompt = () => { $('text').textContent='お題がここに表示されます。'; $('kana').textContent=''; $('source').textContent=''; $('active-model').textContent=''; $('metrics').textContent=''; };
+const modelInfo = () => { $('model-info').textContent=$('model').selectedOptions[0]?.dataset.description || ''; };
+const busy = value => { $('model').disabled=value; $('load').disabled=value; $('difficulty').disabled=value; $('generate').disabled=true; };
+const load = () => { loadedModel=undefined; clearPrompt(); busy(true); $('status').textContent='読み込み中…'; worker.postMessage({command:'load',model:$('model').value}); };
 $('load').onclick=load;
-$('model').onchange=()=>{ $('generate').disabled=true; $('status').textContent='選んだモデルを読み込んでください。'; };
-$('generate').onclick=()=>{ $('generate').disabled=true; worker.postMessage({command:'generate',difficulty:$('difficulty').value,seed:42}); };
+$('model').onchange=()=>{ loadedModel=undefined; clearPrompt(); modelInfo(); $('generate').disabled=true; $('status').textContent='選んだモデルを読み込んでください。'; };
+$('generate').onclick=()=>{ busy(true); $('status').textContent='生成中…'; worker.postMessage({command:'generate',difficulty:$('difficulty').value,seed:42}); };
 worker.onmessage=({data})=>{
-  $('load').disabled=false;
-  $('generate').disabled=data.command==='error';
+  busy(false);
+  if(data.command==='loaded') loadedModel=data.model;
+  $('generate').disabled=data.command==='error' || loadedModel!==$('model').value;
   $('status').textContent=data.command==='error'?data.message:'準備完了';
   $('metrics').textContent=JSON.stringify(data,null,2);
+  if(loadedModel===$('model').value) $('active-model').textContent=$('model').selectedOptions[0].textContent;
   if(data.prompt){ $('text').textContent=data.prompt.text; $('kana').textContent=data.prompt.kana; $('source').textContent=data.prompt.source==='model_constrained'?'モデル生成（文型制約あり）':data.prompt.source==='model'?'モデル生成':'静的フォールバック'; }
 };
-worker.onerror=e=>{ $('status').textContent=e.message; $('load').disabled=false; $('generate').disabled=true; };
+worker.onerror=e=>{ busy(false); loadedModel=undefined; $('status').textContent=e.message; };
+modelInfo();
 </script></html>

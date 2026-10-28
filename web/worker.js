@@ -16,7 +16,7 @@ self.onmessage = async ({data}) => {
         return new Uint8Array(await response.arrayBuffer());
       }));
       generator = new Generator(...files);
-      self.postMessage({command:'loaded', load_ms:performance.now()-start,
+      self.postMessage({command:'loaded', model:data.model, load_ms:performance.now()-start,
         wasm_linear_memory_bytes:memory.buffer.byteLength, bundle_bytes:files.reduce((n,b)=>n+b.length,0)});
     } else if (data.command === 'logits') {
       if (!generator) throw Error('Load a model first');
