@@ -37,7 +37,12 @@ def main():
     shutil.copytree("web", out, dirs_exist_ok=True)
     subprocess.run(["wasm-bindgen", "target/wasm32-unknown-unknown/release/fumiori_wasm.wasm",
                     "--target", "web", "--out-dir", str(out / "pkg")], check=True)
+    # The HTML, Worker protocol, JS glue and WASM must belong to the same build.
+    # A browser can otherwise reuse an older Worker after refreshing the page.
+    assets = [out / 'worker.js', out / 'pkg/fumiori_wasm.js', out / 'pkg/fumiori_wasm_bg.wasm']
+    version = hashlib.sha256(b''.join(p.read_bytes() for p in assets)).hexdigest()[:20]
     page = (out / 'index.html').read_text(encoding='utf-8')
+    page = page.replace("new Worker('./worker.js',", f"new Worker('./worker.js?v={version}',")
     labels = {'model': '既存モデル v2（FP32）', 'model-int8': '既存モデル v2（約2.9MB）',
               'model-experimental': '試作モデル v8（約30.8MB）'}
     descriptions = {'model': '現在の標準モデルです。', 'model-int8': '現在の標準モデルです。',
@@ -65,7 +70,7 @@ def main():
             source = runtime if runtime and name != 'parity.json' else model
             shutil.copyfile(Path("build") / source / name, target / name)
         shutil.copyfile(Path('LICENSE'), target / 'LICENSE')
-    print("Serve: python -m http.server 8000 --bind 127.0.0.1 --directory build/web")
+    print("Serve: python scripts/serve_demo.py")
 
 
 if __name__ == "__main__":

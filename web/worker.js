@@ -1,4 +1,10 @@
-import init, { Generator } from './pkg/fumiori_wasm.js';
+const version = new URL(import.meta.url).searchParams.get('v');
+const assetURL = path => {
+  const url = new URL(path, import.meta.url);
+  if (version) url.searchParams.set('v', version);
+  return url;
+};
+let wasmModule;
 let generator;
 let memory;
 self.onmessage = async ({data}) => {
@@ -7,11 +13,12 @@ self.onmessage = async ({data}) => {
       generator?.free();
       generator = undefined;
       const start = performance.now();
-      const wasm = await init();
+      const { default: init, Generator } = await (wasmModule ??= import(assetURL('./pkg/fumiori_wasm.js').href));
+      const wasm = await init({module_or_path:assetURL('./pkg/fumiori_wasm_bg.wasm')});
       memory = wasm.memory;
       const names = ['manifest.json', 'model-config.json', 'vocab.json', 'model.safetensors'];
       const files = await Promise.all(names.map(async name => {
-        const response = await fetch(`./${data.model}/${name}`);
+        const response = await fetch(`./${data.model}/${name}`, {cache:'no-store', signal:AbortSignal.timeout(30000)});
         if (!response.ok) throw Error(`${name}: HTTP ${response.status}`);
         return new Uint8Array(await response.arrayBuffer());
       }));

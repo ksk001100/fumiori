@@ -44,7 +44,7 @@ cd fumiori
 ```powershell
 cargo run --release -p fumiori-cli -- generate --model models/stories-v2-diverse-3mb --difficulty mixed --count 10 --seed 3432
 python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v8-32mb
-python -m http.server 8000 --bind 127.0.0.1 --directory build/web
+python scripts/serve_demo.py
 ```
 
 ブラウザで http://127.0.0.1:8000 を開く。Web Workerで生成する。ビルドには `wasm32-unknown-unknown` と `wasm-bindgen-cli 0.2.127` が必要。
@@ -65,7 +65,7 @@ PRではビルドと推論・ブラウザ検証のみを実行する。Actions�
 ```powershell
 python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v8-32mb
 node scripts/smoke_wasm.mjs model-int8 model-experimental
-python -m http.server 8000 --bind 127.0.0.1 --directory build/web
+python scripts/serve_demo.py
 ```
 
 モデルの更新手順は [models/README.md](models/README.md) を参照。

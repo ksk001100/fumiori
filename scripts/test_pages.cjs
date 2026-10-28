@@ -30,6 +30,8 @@ const path = require('node:path');
     page.on('pageerror', error => errors.push(String(error)));
     page.on('response', response => { if (!response.ok()) errors.push(`${response.status()} ${response.url()}`); });
     await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
+    const html = await fs.readFile(path.join(root, 'index.html'), 'utf8');
+    assert.match(html, /new Worker\('\.\/worker\.js\?v=[a-f0-9]{20}'/);
     const models = await page.locator('#model option').evaluateAll(options => options.map(o => o.value));
     if (process.env.FUMIORI_REQUIRE_EXPERIMENTAL) assert(models.includes('model-experimental'));
     const visits = models.length > 1 ? [...models, models[0]] : models;
@@ -56,6 +58,17 @@ const path = require('node:path');
       }
     }
     assert.deepEqual(errors, []);
+    // An old cached Worker used to report ready without identifying the model.
+    // The UI must explain the mismatch instead of leaving a silent disabled button.
+    const stale = await browser.newPage();
+    await stale.route('**/worker.js*', route => route.fulfill({ contentType: 'text/javascript',
+      body: "self.onmessage=()=>self.postMessage({command:'loaded',bundle_bytes:1});" }));
+    await stale.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
+    await stale.click('#load');
+    await stale.waitForFunction(() => document.querySelector('#status').textContent.includes('再読み込み'));
+    assert(await stale.isDisabled('#generate'));
+    assert(!(await stale.isDisabled('#load')));
+    await stale.close();
     console.log(`Pages project path: ${visits.join(' -> ')}; all three difficulties passed`);
   } finally {
     if (browser) await browser.close();

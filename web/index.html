@@ -27,6 +27,11 @@ $('model').onchange=()=>{ loadedModel=undefined; clearPrompt(); modelInfo(); $('
 $('generate').onclick=()=>{ busy(true); $('status').textContent='生成中…'; worker.postMessage({command:'generate',difficulty:$('difficulty').value,seed:42}); };
 worker.onmessage=({data})=>{
   busy(false);
+  if(data.command==='loaded' && data.model!==$('model').value){
+    loadedModel=undefined;
+    $('status').textContent='読み込み処理が更新されています。ページを再読み込みしてから、もう一度モデルを読み込んでください。';
+    return;
+  }
   if(data.command==='loaded') loadedModel=data.model;
   $('generate').disabled=data.command==='error' || loadedModel!==$('model').value;
   $('status').textContent=data.command==='error'?data.message:'準備完了';
