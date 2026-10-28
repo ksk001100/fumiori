@@ -1,0 +1,610 @@
+{
+  "reviewer": "Codex",
+  "reviewer_type": "agent; not independent human review",
+  "weights_sha256": "ad0e5fa24a3487f52da455c700472cd441f03bd2c8896dc3f3a9acb2eeb6fce8",
+  "sample_sha256": "6d4cde259e52d5a387f9ce4137ce625189d3bcaac20670d4f2bc53155b3d5894",
+  "ratings": [
+    {
+      "sample_id": 2,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 8,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "心の中に夢を思い出すの助詞・構成が不自然 活用文脈でおもいだしましたと出力されることを再確認"
+    },
+    {
+      "sample_id": 9,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 15,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 17,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 19,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 28,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 37,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 39,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 42,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 60,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 64,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 67,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 76,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 81,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 87,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 99,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 103,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 122,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 123,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 125,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 126,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 127,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 137,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "ぜんたいの森の中という修飾が不自然"
+    },
+    {
+      "sample_id": 146,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 153,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 157,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 190,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 199,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 207,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 209,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 210,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "少しずつあきらめませんでしたという組み合わせが不自然"
+    },
+    {
+      "sample_id": 218,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 221,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 231,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 234,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 237,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 238,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "青い空と白い雲が浮かぶという主語と述語の不整合"
+    },
+    {
+      "sample_id": 239,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 241,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 242,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 256,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 260,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 271,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 274,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 277,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 282,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 292,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 301,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "きっかけは〜見つけましたという名詞述語の欠落"
+    },
+    {
+      "sample_id": 310,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 313,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 317,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 318,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 330,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 334,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 345,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 346,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 353,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 366,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 377,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 381,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 383,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 387,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 389,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 390,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 399,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 405,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 407,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 411,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 415,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 420,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "じゅうたくの村という語の結び付きが不自然"
+    },
+    {
+      "sample_id": 422,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 453,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 459,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 460,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 467,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "友達のような色という意味関係が不明瞭"
+    },
+    {
+      "sample_id": 471,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 476,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 477,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "自分の絵を見てくれましたの視点・恩恵関係が不自然"
+    },
+    {
+      "sample_id": 482,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 485,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 498,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 500,
+      "natural": true,
+      "reading_ok": true,
+      "notes": " 活用文脈でおもいだしましたと出力されることを再確認"
+    },
+    {
+      "sample_id": 504,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 509,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "ぎりぎり読んでいたは意味が不明瞭（ぎりぎりまでなら自然）"
+    },
+    {
+      "sample_id": 510,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 529,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 531,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 541,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 546,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 549,
+      "natural": true,
+      "reading_ok": true,
+      "notes": " 活用文脈でおもいだしましたと出力されることを再確認"
+    },
+    {
+      "sample_id": 550,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 552,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 555,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 556,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 559,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 566,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 572,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 590,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "おそろしく絵を見せたという副詞の結び付きが不自然"
+    },
+    {
+      "sample_id": 595,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    }
+  ],
+  "decoder_sha256": "c1945dfc7277d47d6f7f81eb1654f1550af8c5e22ab7f46e38a5cc8f8db72c2c",
+  "review_note": "All surface texts unchanged; the previously identified recall-stem readings are rechecked after lexical morphology normalization. Naturalness ratings unchanged."
+}

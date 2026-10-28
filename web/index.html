@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Fumiori ローカル生成デモ</title>
+<style>
+body{font:18px system-ui;max-width:800px;margin:64px auto;padding:0 24px;background:#f7f5ef;color:#263a36}h1{font-size:32px}button,select{font:inherit;padding:10px;margin:5px}article{background:white;padding:24px;border-radius:12px;margin-top:24px}#text{font-size:26px}pre{font-size:13px;white-space:pre-wrap}small{color:#586663}
+</style>
+<h1>Fumiori</h1><p>日本語タイピングのお題を、この端末で生成します。</p>
+<label>モデル <select id="model"><option value="model">v1 FP32</option><option value="model-int8">v1 INT8保存</option></select></label>
+<button id="load">読み込む</button><br>
+<label>難易度 <select id="difficulty"><option value="easy">かんたん</option><option value="normal" selected>ふつう</option><option value="hard">むずかしい</option></select></label>
+<button id="generate" disabled>お題を生成</button>
+<p id="status" role="status">モデルを読み込んでください。</p>
+<article><p id="text">お題がここに表示されます。</p><p id="kana"></p><small id="source"></small></article>
+<p><small>実験用モデルです。自然さ・文脈上の読みは人手評価待ちです。</small></p>
+<details><summary>測定結果</summary><pre id="metrics"></pre></details>
+<script type="module">
+const worker = new Worker('./worker.js', {type:'module'});
+const $ = id => document.getElementById(id);
+const load = () => { $('generate').disabled=true; $('load').disabled=true; $('status').textContent='読み込み中…'; worker.postMessage({command:'load',model:$('model').value}); };
+$('load').onclick=load;
+$('model').onchange=()=>{ $('generate').disabled=true; $('status').textContent='選んだモデルを読み込んでください。'; };
+$('generate').onclick=()=>{ $('generate').disabled=true; worker.postMessage({command:'generate',difficulty:$('difficulty').value,seed:42}); };
+worker.onmessage=({data})=>{
+  $('load').disabled=false;
+  $('generate').disabled=data.command==='error';
+  $('status').textContent=data.command==='error'?data.message:'準備完了';
+  $('metrics').textContent=JSON.stringify(data,null,2);
+  if(data.prompt){ $('text').textContent=data.prompt.text; $('kana').textContent=data.prompt.kana; $('source').textContent=data.prompt.source==='model_constrained'?'モデル生成（文型制約あり）':data.prompt.source==='model'?'モデル生成':'静的フォールバック'; }
+};
+worker.onerror=e=>{ $('status').textContent=e.message; $('load').disabled=false; $('generate').disabled=true; };
+</script></html>

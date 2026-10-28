@@ -1,0 +1,19 @@
+# データの由来と配布範囲
+
+## stories-v1-3mbの学習データ
+
+学習データは自作の対応付き散文2,500文と、日本語SimpleStoriesから追加した97,500文の合計10万文。
+
+自作散文は [data/paired-v1](../data/paired-v1/README.md) に表記・かな・品詞・出自とともに収録する。適用可能な権利の範囲でCC0-1.0として提供する。独立した人間の言語レビューは未実施。
+
+[日本語SimpleStories](https://huggingface.co/datasets/SimpleStories/SimpleStories-JA) はThe SimpleStories Projectの合成物語データで、主にgpt-4o-miniにより生成された。取得時のデータカードのライセンス表記はMIT。公開trainの1shardを使用し、upstream testは取得・学習していない。revision・原本SHA-256・データカードは `build/simple-stories/source.json` / `README.md` に保持する。
+
+配布用 `build/fumiori-stories-v1-3mb` の `manifest.json` に `data_sources` として出典を記録する。語彙の学習用metadataは配布用パッケージから除き、ID・表記・かな・品詞を保持する。取得・対応付け・学習splitの詳細は [モデルの説明](three-mb-generation.md)。
+
+## 同梱のテストfixture
+
+[data/examples](../data/examples/README.md) の30文、明示segments、98語の自作辞書ソース、解析fixtureはライブラリの検証用。エージェント作成・読み点検の由来を保持し、適用可能な権利の範囲でCC0-1.0として提供する。v1の学習用散文と区別する。独立した人間の言語レビューは未実施。
+
+## ソフトウェアと推論時の入力
+
+ソフトウェアはMIT。推論はCandle、データ加工はLinderaを使用する。推論時はモデルに同梱した語彙と重みを読み、外部辞書・外部LLM・学習文一覧は使わない。

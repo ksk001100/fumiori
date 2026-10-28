@@ -1,0 +1,5 @@
+{"id": "analyze-0", "text": "猫が眠る。", "kana": "ねこがねむる", "source": "original-agent-authored", "license": "CC0-1.0", "review": {"status": "agent_curated", "reviewer": "Codex; independent human review pending"}}
+{"id": "analyze-6", "text": "本を読む。", "kana": "ほんをよむ", "source": "original-agent-authored", "license": "CC0-1.0", "review": {"status": "agent_curated", "reviewer": "Codex; independent human review pending"}}
+{"id": "analyze-7", "text": "空は青い。", "kana": "そらはあおい", "source": "original-agent-authored", "license": "CC0-1.0", "review": {"status": "agent_curated", "reviewer": "Codex; independent human review pending"}}
+{"id": "analyze-14", "text": "学校へゆっくり歩いた。", "kana": "がっこうへゆっくりあるいた", "source": "original-agent-authored", "license": "CC0-1.0", "review": {"status": "agent_curated", "reviewer": "Codex; independent human review pending"}}
+{"id": "intentional-reading-mismatch", "text": "猫が眠る。", "kana": "いぬがねむる", "source": "original-agent-authored", "license": "CC0-1.0", "review": {"status": "agent_curated", "reviewer": "Codex; independent human review pending"}}

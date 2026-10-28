@@ -1,0 +1,49 @@
+{
+  "development": {
+    "passed": true,
+    "reviewed": 100,
+    "acceptable": 90,
+    "novel_reviewed": 67,
+    "novel_acceptable": 57,
+    "reviewer": "Codex",
+    "reviewer_type": "agent; not independent human review",
+    "independent_human_review": "pending",
+    "policy": ">=90/100 acceptable overall; >=30 novel reviewed; >=85% acceptable among novel; structural gate also required"
+  },
+  "confirmation": {
+    "passed": true,
+    "reviewed": 100,
+    "acceptable": 90,
+    "novel_reviewed": 61,
+    "novel_acceptable": 53,
+    "reviewer": "Codex",
+    "reviewer_type": "agent; not independent human review",
+    "independent_human_review": "pending",
+    "policy": ">=90/100 acceptable overall; >=30 novel reviewed; >=85% acceptable among novel; structural gate also required"
+  },
+  "passed": true,
+  "package": {
+    "files_bytes": {
+      "vocab.json": 196884,
+      "model-config.json": 118,
+      "model.safetensors": 2703840,
+      "manifest.json": 1371,
+      "LICENSE": 1077
+    },
+    "runtime_bytes": 2903290,
+    "zip_bytes": 2498243,
+    "zip_sha256": "dd264d689123d1608b3f9849cb1b64e430edb373df6bbb075167046537b13e6e",
+    "source_manifest_sha256": "cf2372e30f4d192c89f7139bbb54c3660bb5b6b8b6f3e08ffbbd22b2389df6ff"
+  },
+  "activation": {
+    "model": "build\\model",
+    "model_int8": "build\\model-int8",
+    "fp32_source": "stories-v1-3mb",
+    "int8_source": "stories-v1-3mb-int8",
+    "weights_sha256": "f168cdb016bdf530e25aad8e25430255a5aac27600e943d8ef545f21d5db9b1c",
+    "int8_weights_sha256": "ad0e5fa24a3487f52da455c700472cd441f03bd2c8896dc3f3a9acb2eeb6fce8",
+    "backups": [],
+    "training_data": "build/stories-v1-data",
+    "quality": "experimental; independent human review pending"
+  }
+}

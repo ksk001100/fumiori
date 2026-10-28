@@ -1,0 +1,17 @@
+{
+  "description": "Original paired prose inputs for stories-v1-3mb",
+  "license": "CC0-1.0",
+  "split_sha256": {
+    "train.jsonl": "83a03921891e29159ffadd9c7e7f25c4ad128186dbcc48df991c76087c2bc9e7",
+    "validation.jsonl": "a1a2ced5eac365fcc0082d3e0a2e48abdfce4f6deaf3a5fc5452acbfbd2bbe3c",
+    "test.jsonl": "5eaedb5c6cb6fdf762db9949bfb6eb6e1dd58a98129506c35198ed45879df533",
+    "family-test.jsonl": "d61b5af496ff6b4e3e14d6aaa67c2badd8105c253744404c8dca1c0de97ab585"
+  },
+  "splits": {
+    "train": 2500,
+    "validation": 300,
+    "test": 300,
+    "family-test": 300
+  },
+  "vocab_sha256": "c0eb465fe3264b9b30283923960bab57bcda9b17840041eb972e9ed61635256a"
+}

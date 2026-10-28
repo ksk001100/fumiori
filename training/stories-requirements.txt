@@ -1,0 +1,2 @@
+# Optional data import only. Not needed for inference or existing experiments.
+pyarrow==21.0.0
