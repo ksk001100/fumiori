@@ -1,14 +1,14 @@
 # データの由来と配布範囲
 
-## stories-v1-3mbの学習データ
+## 現行モデルと従来モデルの学習データ
 
-学習データは自作の対応付き散文2,500文と、日本語SimpleStoriesから追加した97,500文の合計10万文。
+現行のstories-v2-diverse-3mbは、自作の対応付き散文2,500文と、日本語SimpleStoriesから生成条件を満たす28,300文を追加した合計30,800文で学習した。従来のstories-v1-3mbは同じ自作散文と日本語SimpleStoriesから追加した97,500文の合計10万文。
 
 自作散文は [data/paired-v1](../data/paired-v1/README.md) に表記・かな・品詞・出自とともに収録する。適用可能な権利の範囲でCC0-1.0として提供する。独立した人間の言語レビューは未実施。
 
 [日本語SimpleStories](https://huggingface.co/datasets/SimpleStories/SimpleStories-JA) はThe SimpleStories Projectの合成物語データで、主にgpt-4o-miniにより生成された。取得時のデータカードのライセンス表記はMIT。公開trainの1shardを使用し、upstream testは取得・学習していない。revision・原本SHA-256・データカードは `build/simple-stories/source.json` / `README.md` に保持する。
 
-配布用 `build/fumiori-stories-v1-3mb` の `manifest.json` に `data_sources` として出典を記録する。語彙の学習用metadataは配布用パッケージから除き、ID・表記・かな・品詞を保持する。取得・対応付け・学習splitの詳細は [モデルの説明](three-mb-generation.md)。
+配布用モデルの [`models/stories-v2-diverse-3mb/manifest.json`](../models/stories-v2-diverse-3mb/manifest.json) に `data_sources` として出典を記録する。語彙の学習用metadataは配布用パッケージから除き、ID・表記・かな・品詞を保持する。取得・対応付け・学習splitの詳細は [モデルの説明](three-mb-generation.md)。
 
 ## 同梱のテストfixture
 

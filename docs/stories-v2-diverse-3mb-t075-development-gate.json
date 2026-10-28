@@ -1,0 +1,14 @@
+{
+  "development": {
+    "passed": false,
+    "reviewed": 100,
+    "acceptable": 91,
+    "novel_reviewed": 49,
+    "novel_acceptable": 41,
+    "reviewer": "Codex",
+    "reviewer_type": "Codex language review; not independent human review",
+    "independent_human_review": "pending",
+    "policy": ">=90/100 acceptable overall; >=30 novel reviewed; >=85% acceptable among novel; structural gate also required"
+  },
+  "passed": false
+}

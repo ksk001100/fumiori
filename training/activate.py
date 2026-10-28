@@ -18,7 +18,7 @@ def checked_files(source):
     return files, manifest
 
 
-def activate(build='build', fp32_source='stories-v1-3mb', int8_source='stories-v1-3mb-int8'):
+def activate(build='build', fp32_source='stories-v2-diverse-3mb', int8_source='stories-v2-diverse-3mb-int8'):
     build = Path(build)
     fp32, fm = checked_files(build / fp32_source)
     int8, qm = checked_files(build / int8_source)
@@ -58,7 +58,7 @@ def activate(build='build', fp32_source='stories-v1-3mb', int8_source='stories-v
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', choices=['stories-v1-3mb'], default='stories-v1-3mb')
+    parser.add_argument('--source', choices=['stories-v1-3mb', 'stories-v2-diverse-3mb'], default='stories-v2-diverse-3mb')
     args = parser.parse_args()
     source = args.source
     print(json.dumps(activate(fp32_source=source, int8_source=source + '-int8'), ensure_ascii=True))

@@ -195,6 +195,8 @@ def main():
         alignment='longest explicit lexeme; unknown kanji rejected; literal kana chars tagged as characters, not guessed POS',
         split_strategy='protected paired prose splits plus upstream train stories partitioned by story SHA256; duplicate normalized texts removed',
         stats=dict(stats),stories_scanned=story_count,independent_human_review='pending',
+        requested_train_limit=args.train_limit,
+        source_exhausted_before_limit=len(parts['train']) < args.train_limit,
         source_generator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     for name,rows in parts.items():
         data=''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in rows).encode()

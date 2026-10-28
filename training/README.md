@@ -1,12 +1,12 @@
 # Training
 
-現行モデルは `configs/stories-v1-3mb.json` / `scripts/stories_pipeline.py` を使用する。日本語SimpleStoriesの公開trainの一部と対応付き散文を合わせた10万文で学習する。
+現行モデルは `configs/stories-v2-diverse-3mb.json` / `scripts/stories_pipeline.py` を使用する。日本語SimpleStoriesの公開trainの一部と対応付き散文を合わせ、生成条件を満たす30,800文で学習する。
 
 ```powershell
 py -3.12 -m pip --python .venv/Scripts/python.exe install -r training/stories-requirements.txt
 .venv/Scripts/python.exe scripts/fetch_stories.py
 .venv/Scripts/python.exe scripts/stories_pipeline.py
-# 既存のv1 checkpointを使ってexportと評価を再実行
+# 既存のv2 checkpointを使ってexportと評価を再実行
 .venv/Scripts/python.exe scripts/stories_pipeline.py --skip-training
 # 開発・確認の採用条件を通過した場合だけ標準へ配置
 .venv/Scripts/python.exe scripts/stories_pipeline.py --skip-training --activate
@@ -14,8 +14,10 @@ py -3.12 -m pip --python .venv/Scripts/python.exe install -r training/stories-re
 
 CUDA版PyTorchと `training/requirements.txt` の依存も必要。学習設定はCUDAを指定し、GPUが使えなければエラーになる。推論にはPython・PyTorch・CUDAは不要。
 
-checkpointは `build/checkpoints/stories-v1-3mb.pt`、データは `build/stories-v1-data`、exportは `build/stories-v1-3mb` / `build/stories-v1-3mb-int8`。配布用は `build/fumiori-stories-v1-3mb`。標準の `build/model` / `build/model-int8` も同じv1を参照する。`python -m training.activate` の既定もv1で、標準の読み込み先に配置する。
+checkpointは `build/checkpoints/stories-v2-diverse-3mb.pt`、データは `build/stories-v2-data`、exportは `build/stories-v2-diverse-3mb` / `build/stories-v2-diverse-3mb-int8`。配布用は `build/fumiori-stories-v2-diverse-3mb`。標準の `build/model` / `build/model-int8` も同じv2を参照する。`python -m training.activate` の既定もv2で、標準の読み込み先に配置する。
 
 自作の対応付き散文は `data/paired-v1` に収録する。入力のSHA-256を照合してから、日本語SimpleStoriesの短文を追加する。
 
 構造はcausal mask、pre-LayerNorm、GELU、tied embedding。PADを無視したnext-token cross entropyで学習し、validation lossでcheckpointを選択する。点検票とモデル・語彙・生成方針のhashが合わなければ採用しない。出典・容量・評価・再現条件は [3MBモデルの説明](../docs/three-mb-generation.md) を参照。
+
+語彙の偏りを抑える候補の学習・比較手順は[多様性改善](../docs/diversity.md)を参照。`lexical_balance` は学習splitのみから重みを計算し、文章自体を書き換えない。指定しない既存設定のサンプリング動作は従来どおり。

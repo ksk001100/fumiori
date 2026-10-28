@@ -1,0 +1,609 @@
+{
+  "weights_sha256": "f5436b73432f6eb7cc7c23374239e0892fae838a6f208a32101de084c9944839",
+  "decoder_sha256": "c1945dfc7277d47d6f7f81eb1654f1550af8c5e22ab7f46e38a5cc8f8db72c2c",
+  "sample_sha256": "a4d6522fc181caffea0580de48fa310276137939febed92f992037c2a199e279",
+  "reviewer": "Codex",
+  "reviewer_type": "Codex language review; not independent human review",
+  "ratings": [
+    {
+      "sample_id": 2,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 8,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "因果と描写がつながらず単独のお題として不自然"
+    },
+    {
+      "sample_id": 9,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 15,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 17,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "雪だ校庭という破綻"
+    },
+    {
+      "sample_id": 19,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 28,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 37,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 39,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "だからの参照先と目的語が不明"
+    },
+    {
+      "sample_id": 42,
+      "natural": true,
+      "reading_ok": false,
+      "notes": "本を開いたはひらいたが適切で、あいたは誤読"
+    },
+    {
+      "sample_id": 60,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 64,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 67,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 76,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 81,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 87,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 99,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 103,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 122,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 123,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 125,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 126,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 127,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 137,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 146,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 153,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "理由だけで単独の文として不十分"
+    },
+    {
+      "sample_id": 157,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "音楽を見せるという語の組み合わせが不自然"
+    },
+    {
+      "sample_id": 190,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 199,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 207,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 209,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "心は広がりますという不明瞭な表現"
+    },
+    {
+      "sample_id": 210,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 218,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 221,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "家で顔を作ったという組み合わせが不明瞭"
+    },
+    {
+      "sample_id": 231,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "色と作った絵という構文の破綻"
+    },
+    {
+      "sample_id": 234,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 237,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 238,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 239,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 241,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 242,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 256,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 260,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 271,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 274,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 277,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 282,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 292,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 301,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 310,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 313,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "拍手に対して逆接のがを用いるのが不自然"
+    },
+    {
+      "sample_id": 317,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 318,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 330,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 334,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 345,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 346,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 353,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 366,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "人の集団が羽を見せるという不自然な組み合わせ"
+    },
+    {
+      "sample_id": 377,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 381,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 383,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 387,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 389,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 390,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 399,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 405,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "雪だいていた色という構文の破綻"
+    },
+    {
+      "sample_id": 407,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "勇気をしたという誤った述語"
+    },
+    {
+      "sample_id": 411,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 415,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 420,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 422,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 453,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "帽子を見つけて楽しむという関係が不明瞭"
+    },
+    {
+      "sample_id": 459,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 460,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 467,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 471,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 476,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 477,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "大きな雪だではという構文の破綻"
+    },
+    {
+      "sample_id": 482,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 485,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "心を温かいという格の誤り"
+    },
+    {
+      "sample_id": 498,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 500,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 504,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 509,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "降雪と拍手の因果が単独では不明瞭"
+    },
+    {
+      "sample_id": 510,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 529,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 531,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "雪だ落ちていましたという構文の破綻"
+    },
+    {
+      "sample_id": 541,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "助詞はで始まる主題の欠落"
+    },
+    {
+      "sample_id": 546,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 549,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 550,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "心が楽しいという不自然な表現"
+    },
+    {
+      "sample_id": 552,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 555,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 556,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 559,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 566,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 572,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 590,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 595,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    }
+  ]
+}

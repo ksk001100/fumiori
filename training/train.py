@@ -36,10 +36,15 @@ def load_checkpoint(path):
     return model.eval(), ck
 
 
-def sampling_weights(rows):
+def sampling_weights(rows, lexical_balance=None):
     """Equal expected mass for each observed difficulty; no held-out rows used."""
     counts = {d: sum(r['ids'][1] == d for r in rows) for d in (3, 4, 5)}
-    return torch.tensor([1.0 / counts[r['ids'][1]] for r in rows], dtype=torch.float64)
+    if lexical_balance is None:
+        return torch.tensor([1.0 / counts[r['ids'][1]] for r in rows], dtype=torch.float64)
+    from scripts.diversity import lexical_factors
+    factors = lexical_factors(rows, **lexical_balance)
+    totals = {d: sum(f for r, f in zip(rows, factors) if r['ids'][1] == d) for d in counts}
+    return torch.tensor([f / totals[r['ids'][1]] for r, f in zip(rows, factors)], dtype=torch.float64)
 
 
 def noun_context(batch, noun_ids, probability):
@@ -88,6 +93,10 @@ def train(config_path):
         if hashlib.sha256((data / file).read_bytes()).hexdigest() != expected:
             raise ValueError(f"prepared split hash mismatch: {file}")
     rows = {s: read_rows(data / f"{s}.jsonl") for s in ("train", "validation", "test")}
+    if c.get('require_generation_eligible', False):
+        from scripts.diversity import require_generation_eligible
+        for split in rows.values():
+            require_generation_eligible(split)
     for split in rows.values():
         for r in split:
             if r["trust"] != "verified" and not c.get("allow_auto_aligned", False):
@@ -109,7 +118,9 @@ def train(config_path):
     noun_ids = torch.tensor([t['pos'] == '名詞' for t in vocab['tokens']], device=device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=c["learning_rate"], weight_decay=c.get('weight_decay', 0.01))
     train_batch = tensor_batch(rows["train"], device)
-    weights = sampling_weights(rows['train']).to(device) if c.get('balance_difficulties', False) else None
+    if c.get('lexical_balance') is not None and not c.get('balance_difficulties', False):
+        raise ValueError('lexical balance requires balance_difficulties')
+    weights = sampling_weights(rows['train'], c.get('lexical_balance')).to(device) if c.get('balance_difficulties', False) else None
     val_batch = tensor_batch(rows["validation"], device)
     train_eval = train_batch
     if c.get('train_loss_samples'):

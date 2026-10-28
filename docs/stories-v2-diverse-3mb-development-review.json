@@ -1,0 +1,610 @@
+{
+  "weights_sha256": "5dd650cb062798a43a841dd26ef1d450902255e1c0a587a76cc95a39576a028b",
+  "decoder_sha256": "c1945dfc7277d47d6f7f81eb1654f1550af8c5e22ab7f46e38a5cc8f8db72c2c",
+  "sample_sha256": "8dd5254b8a133a98ce587847a7c46bbfdabb70ed366d61ff9b901e2678c93214",
+  "reviewer": "Codex",
+  "reviewer_type": "Codex language review; not independent human review",
+  "policy": "Standalone typing prose; clear grammatical, collocational and reading errors fail; figurative or fictional scenes alone do not fail.",
+  "ratings": [
+    {
+      "sample_id": 2,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 8,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 9,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 15,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 17,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "森の中でいましたの存在場所の助詞が不適切"
+    },
+    {
+      "sample_id": 19,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 28,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 37,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "笑顔にいましたを用いる述語の組み合わせが不自然"
+    },
+    {
+      "sample_id": 39,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 42,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 60,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 64,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 67,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 76,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 81,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 87,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 99,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 103,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 122,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 123,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 125,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 126,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 127,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 137,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 146,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 153,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 157,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 190,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 199,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 207,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 209,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 210,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "笑顔が幸せに広がるという修飾が不自然"
+    },
+    {
+      "sample_id": 218,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 221,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 231,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 234,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 237,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 238,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 239,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 241,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 242,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 256,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 260,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 271,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 274,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 277,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 282,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 292,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 301,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 310,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 313,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "からですの重複"
+    },
+    {
+      "sample_id": 317,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 318,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 330,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 334,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 345,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 346,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "人々に笑顔を見てという格関係の破綻"
+    },
+    {
+      "sample_id": 353,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 366,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 377,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 381,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 383,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 387,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 389,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 390,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 399,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 405,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 407,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 411,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "ましたのでしたという文末の破綻"
+    },
+    {
+      "sample_id": 415,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 420,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 422,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 453,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 459,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 460,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 467,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 471,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 476,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 477,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 482,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 485,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 498,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 500,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 504,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 509,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 510,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 529,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 531,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 541,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 546,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 549,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 550,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 552,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "出てからの主語関係といましたからですという文末の破綻"
+    },
+    {
+      "sample_id": 555,
+      "natural": false,
+      "reading_ok": true,
+      "notes": "蝶に絵を描くという対象と行為の組み合わせが不自然"
+    },
+    {
+      "sample_id": 556,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 559,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 566,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 572,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 590,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 595,
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    }
+  ]
+}

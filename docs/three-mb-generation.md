@@ -1,5 +1,7 @@
 # 3MB以内での未知の日本語短文生成
 
+現行モデルは `stories-v2-diverse-3mb`。改善・現行評価・再現手順は[多様性改善](diversity.md)を参照。以下はv1の設計と当時の評価記録。
+
 モデル名は `stories-v1-3mb`。文を全文候補から選ぶ方式ではなく、モデルが語彙IDを逐次予測する。学習文との一致を理由に出力を捨てる処理は使わない。
 
 ## 容量と方式
@@ -66,7 +68,7 @@ py -3.12 -m pip --python .venv/Scripts/python.exe install -r training/stories-re
 
 重み・生成方針・点検対象のhashが一致しない既存の採点は再利用しない。新しい実験の点検票がなければ自動的に合格扱いせず停止する。
 
-標準 `build/model` / `build/model-int8` に反映済み。配布には `build/fumiori-stories-v1-3mb` の5ファイルを使用する。FP32診断用exportとparityデータを一緒に配布する必要はない。
+標準 `build/model` / `build/model-int8` に反映済み。配布用の5ファイルは [`models/stories-v1-3mb/`](../models/stories-v1-3mb/) に同梱している。学習後のパッケージ出力先は `build/fumiori-stories-v1-3mb`。FP32診断用exportとparityデータを一緒に配布する必要はない。
 
 Rustでは `TypingGenerator::load` 後に `default_options()` でモデル別の推奨設定を取得できる。明示した生成オプションを上書きしない。学習データ・Python・PyArrow・CUDAはアプリ実行時に不要。`scripts/build_wasm.py` の既定はINT8標準モデルで、Web用にもmetadataを削減した語彙を使用する。
 

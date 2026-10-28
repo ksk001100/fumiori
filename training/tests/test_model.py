@@ -138,8 +138,8 @@ def test_current_model_activation_replaces_old_bundle_and_installs_matching_expo
     from training.activate import activate
     from training.quantize import quantize
     build = tmp_path / 'build'
-    shutil.copytree(exported, build / 'stories-v1-3mb')
-    quantize(build / 'stories-v1-3mb', build / 'stories-v1-3mb-int8')
+    shutil.copytree(exported, build / 'stories-v2-diverse-3mb')
+    quantize(build / 'stories-v2-diverse-3mb', build / 'stories-v2-diverse-3mb-int8')
     old = build / 'model'
     old.mkdir()
     (old / 'manifest.json').write_bytes(b'previous-model')
@@ -147,14 +147,14 @@ def test_current_model_activation_replaces_old_bundle_and_installs_matching_expo
     result = activate(build)
     assert result['backups'] == []
     assert not (build / 'model-history').exists()
-    assert result['fp32_source'] == 'stories-v1-3mb'
+    assert result['fp32_source'] == 'stories-v2-diverse-3mb'
     assert (old / 'notes.txt').read_bytes() == b'keep this review'
     assert (old / 'model.safetensors').read_bytes() == (exported / 'model.safetensors').read_bytes()
     assert cli('parity', '--model', old).returncode == 0
     assert cli('parity', '--model', build / 'model-int8').returncode == 0
     assert activate(build)['backups'] == []
     before = (old / 'manifest.json').read_bytes()
-    (build / 'stories-v1-3mb-int8' / 'model.safetensors').write_bytes(b'broken')
+    (build / 'stories-v2-diverse-3mb-int8' / 'model.safetensors').write_bytes(b'broken')
     with pytest.raises(ValueError, match='checksum mismatch'):
         activate(build)
     assert (old / 'manifest.json').read_bytes() == before

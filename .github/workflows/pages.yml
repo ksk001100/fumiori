@@ -30,7 +30,7 @@ jobs:
       - name: Install wasm-bindgen CLI
         run: cargo install wasm-bindgen-cli --version 0.2.127 --locked
       - name: Build demo with bundled model
-        run: python scripts/build_wasm.py --runtime-model models/stories-v1-3mb
+        run: python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
       - name: Check WASM inference
         run: node scripts/smoke_wasm.mjs model-int8
       - name: Install browser test dependencies

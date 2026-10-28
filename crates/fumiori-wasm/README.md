@@ -11,7 +11,7 @@ From the repository root, run `python scripts/build_wasm.py` after preparing
 Serve `build/web` over localhost HTTP. See [measurements and limitations](../../docs/three-mb-generation.md).
 
 For a fresh checkout without training exports, use
-`python scripts/build_wasm.py --runtime-model models/stories-v1-3mb`.
+`python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb`.
 This is also the GitHub Pages build; the bundled runtime files are checked against
 the manifest hashes. See the [deployment instructions](../../README.md#github-pagesへの公開).
 

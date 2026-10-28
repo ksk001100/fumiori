@@ -1,15 +1,17 @@
 # 構成とAPI
 
-現行モデルは `stories-v1-3mb`。`JSONL → fumiori-data → vocab + split + manifest → PyTorch → checkpoint → safetensors → Candle` の順で作成する。表記・かな・品詞を同じ語彙IDに持たせ、別の読みモデルは実行しない。
+現行モデルは `stories-v2-diverse-3mb`。`JSONL → fumiori-data → vocab + split + manifest → PyTorch → checkpoint → safetensors → Candle` の順で作成する。表記・かな・品詞を同じ語彙IDに持たせ、別の読みモデルは実行しない。
 
 ## Rust利用
+
+CargoのGit依存の指定とモデルの取得・配置は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。以下はモデルをアプリの `models/stories-v2-diverse-3mb/` に配置した場合の例。
 
 ```rust,no_run
 use fumiori_core::Difficulty;
 use fumiori_inference::TypingGenerator;
 
 fn main() -> anyhow::Result<()> {
-    let mut generator = TypingGenerator::load("build/fumiori-stories-v1-3mb")?;
+    let mut generator = TypingGenerator::load("models/stories-v2-diverse-3mb")?;
     let mut options = generator.default_options();
     options.difficulty = Difficulty::Normal;
     options.seed = Some(42);

@@ -14,6 +14,7 @@ import sys
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.open_generation import measure
+from scripts.diversity import diversity_report
 from training.package import package
 from training.train import read_rows
 
@@ -21,9 +22,9 @@ from training.train import read_rows
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--confirmation',action='store_true')
-    parser.add_argument('--model-name',default='stories-v1-3mb')
-    parser.add_argument('--data-dir',type=Path,default=Path('build/stories-v1-data'))
-    parser.add_argument('--temperature',type=float,default=.75)
+    parser.add_argument('--model-name',default='stories-v2-diverse-3mb')
+    parser.add_argument('--data-dir',type=Path,default=Path('build/stories-v2-data'))
+    parser.add_argument('--temperature',type=float,default=.8)
     parser.add_argument('--top-p',type=float,default=.95)
     args=parser.parse_args()
     if Path(args.model_name).name != args.model_name or args.model_name in ('.','..'):
@@ -45,6 +46,7 @@ def main():
     seeds=(3432,811,1907) if args.confirmation else (42,2026,73)
     references=sum((read_rows(data/f'{s}.jsonl') for s in ('train','validation','test','family-test')),[])
     result=measure(cli,model,data/'train.jsonl',references,seeds,args.temperature,args.top_p,directory,skip_near_statistics=True)
+    result['diversity'] = diversity_report(result['samples'])
     result.update(stage=stage,seeds=seeds,data_dir=str(data),sampling=dict(temperature=args.temperature,top_p=args.top_p),
         weights_sha256=manifest['weights_sha256'],vocab_sha256=manifest['vocab_sha256'],
         quality='not inferred from novelty; explicit review required',

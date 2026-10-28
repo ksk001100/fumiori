@@ -32,7 +32,7 @@ def main():
     subprocess.run(["wasm-bindgen", "target/wasm32-unknown-unknown/release/fumiori_wasm.wasm",
                     "--target", "web", "--out-dir", str(out / "pkg")], check=True)
     page = (out / 'index.html').read_text(encoding='utf-8')
-    labels = {'model': 'v1 FP32', 'model-int8': 'v1 INT8保存'}
+    labels = {'model': 'FP32', 'model-int8': 'INT8保存'}
     start = page.index('<select id="model">') + len('<select id="model">')
     end = page.index('</select>', start)
     page = page[:start] + ''.join(f'<option value="{name}">{labels[name]}</option>' for name in args.models) + page[end:]
@@ -44,7 +44,7 @@ def main():
             for name in runtime_files:
                 shutil.copyfile(args.runtime_model / name, target / name)
             continue
-        runtime = {'model-int8': 'fumiori-stories-v1-3mb'}.get(model)
+        runtime = {'model-int8': 'fumiori-stories-v2-diverse-3mb'}.get(model)
         if runtime:
             subprocess.run([sys.executable, '-m', 'training.package', '--model', f'build/{model}',
                             '--output', f'build/{runtime}', '--strip-token-metadata'], check=True)

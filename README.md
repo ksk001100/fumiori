@@ -1,24 +1,26 @@
 # Fumiori — Tiny Japanese Typing Generator
 
 日本語タイピング用の短文を、本文・かな・品詞付きの区切りとして生成するRustライブラリ。
-モデルは **stories-v1-3mb**。
+モデルは **stories-v2-diverse-3mb**。
 
-配布用モデルは重み・語彙・設定・manifest・LICENSEを含め約2.90MB。10万文で学習した自己回帰モデルが語彙IDを逐次予測し、全文候補や学習文の除外リストは推論に使わない。INT8は保存形式で、CPU/WASMではFP32で計算する。Python・PyTorch・CUDAはアプリ実行時に不要。
+配布用モデルは重み・語彙・設定・manifest・LICENSEを含め約2.90MB。30,800文で学習した自己回帰モデルが語彙IDを逐次予測し、全文候補や学習文の除外リストは推論に使わない。INT8は保存形式で、CPU/WASMではFP32で計算する。Python・PyTorch・CUDAはアプリ実行時に不要。
 
 ## Rustアプリへの組み込み
 
 ```toml
 [dependencies]
 anyhow = "1"
-fumiori-core = { path = "../fumiori/crates/fumiori-core" }
-fumiori-inference = { path = "../fumiori/crates/fumiori-inference" }
+fumiori-core = { git = "https://github.com/ksk001100/fumiori.git" }
+fumiori-inference = { git = "https://github.com/ksk001100/fumiori.git" }
 ```
+
+モデルは [GitHubリポジトリの `models/stories-v2-diverse-3mb/`](https://github.com/ksk001100/fumiori/tree/main/models/stories-v2-diverse-3mb) にある5ファイル（`model.safetensors`、`vocab.json`、`model-config.json`、`manifest.json`、`LICENSE`）を取得し、アプリの `models/stories-v2-diverse-3mb/` に配置する。CargoのGit依存とは別にモデルの配置が必要。
 
 ```rust,no_run
 use fumiori_inference::TypingGenerator;
 
 fn main() -> anyhow::Result<()> {
-    let mut generator = TypingGenerator::load("build/fumiori-stories-v1-3mb")?;
+    let mut generator = TypingGenerator::load("models/stories-v2-diverse-3mb")?;
     let options = generator.default_options();
     let prompt = generator.generate(&options)?;
     println!("{} / {}", prompt.text, prompt.kana);
@@ -32,10 +34,17 @@ fn main() -> anyhow::Result<()> {
 
 ## 生成とWebデモ
 
+リポジトリを取得し、ルートディレクトリで実行する。同梱モデルを使うため、学習は不要。
+
 ```powershell
-cargo run --release -p fumiori-cli -- generate --model build/fumiori-stories-v1-3mb --difficulty mixed --count 10 --seed 3432
-.venv/Scripts/python.exe scripts/build_wasm.py
-.venv/Scripts/python.exe -m http.server 8000 --bind 127.0.0.1 --directory build/web
+git clone https://github.com/ksk001100/fumiori.git
+cd fumiori
+```
+
+```powershell
+cargo run --release -p fumiori-cli -- generate --model models/stories-v2-diverse-3mb --difficulty mixed --count 10 --seed 3432
+python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
+python -m http.server 8000 --bind 127.0.0.1 --directory build/web
 ```
 
 ブラウザで http://127.0.0.1:8000 を開く。Web Workerで生成する。ビルドには `wasm32-unknown-unknown` と `wasm-bindgen-cli 0.2.127` が必要。
@@ -48,11 +57,11 @@ PRではビルドと推論・ブラウザ検証のみを実行する。Actions�
 初回はGitHubリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する。
 公開URLはデプロイジョブの出力から確認できる。プロジェクトサイトの `/fumiori/` のようなサブパスにも対応する。
 
-公開ビルドはGit管理された `models/stories-v1-3mb/` の約2.90MBのINT8配布モデルを使う。学習・PyTorch・`build/` 内の既存ファイルは不要。
+公開ビルドはGit管理された `models/stories-v2-diverse-3mb/` の約2.90MBのINT8配布モデルを使う。学習・PyTorch・`build/` 内の既存ファイルは不要。
 同じ構成をローカルで確認する場合:
 
 ```powershell
-python scripts/build_wasm.py --runtime-model models/stories-v1-3mb
+python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
 node scripts/smoke_wasm.mjs model-int8
 python -m http.server 8000 --bind 127.0.0.1 --directory build/web
 ```
@@ -63,19 +72,20 @@ python -m http.server 8000 --bind 127.0.0.1 --directory build/web
 
 | パス | 用途 |
 |---|---|
-| `build/fumiori-stories-v1-3mb/` / `.zip` | アプリ配布用の5ファイル |
-| `build/stories-v1-3mb/` | FP32の診断用export |
-| `build/stories-v1-3mb-int8/` | INT8の診断用export |
-| `build/model/` / `build/model-int8/` | 同じv1モデルの標準読み込み先 |
-| `build/checkpoints/stories-v1-3mb.pt` | v1の学習済みcheckpoint |
-| `build/stories-v1-data/` | 学習・検証データ |
+| [`models/stories-v2-diverse-3mb/`](models/stories-v2-diverse-3mb/) | GitHubに同梱されたアプリ配布用の5ファイル |
+| `build/fumiori-stories-v2-diverse-3mb/` / `.zip` | アプリ配布用の5ファイル |
+| `build/stories-v2-diverse-3mb/` | FP32の診断用export |
+| `build/stories-v2-diverse-3mb-int8/` | INT8の診断用export |
+| `build/model/` / `build/model-int8/` | 同じv2モデルの標準読み込み先 |
+| `build/checkpoints/stories-v2-diverse-3mb.pt` | v2の学習済みcheckpoint |
+| `build/stories-v2-data/` | 学習・検証データ |
 | `build/current-model.json` | 標準配置元と重みのSHA-256 |
 
-再現手順は [学習README](training/README.md)、設計・評価は [3MBモデルの説明](docs/three-mb-generation.md)、出典は [データライセンス](docs/data-licenses.md) を参照。
+再現手順は [学習README](training/README.md)、今回の改善と測定は [多様性改善](docs/diversity.md)、従来設計は [3MBモデルの説明](docs/three-mb-generation.md)、出典は [データライセンス](docs/data-licenses.md) を参照。
 
 ## 品質と検証
 
-確認用600文では595種類、学習にない正規化本文59.2%。無作為抽出100文のCodex点検で90文が自然さ・読みの両方に合格した。独立した人間の評価は未実施で、童話調への偏り、不自然さ・読み間違いは残る。学習文の再現や重複を完全には防がない。生成失敗やモデル破損は `Result` で返し、このモデルは静的fallbackを使わない。
+確認用600文では584種類、学習にない正規化本文53.2%。無作為抽出100文のCodex点検で90文が自然さ・読みの両方に合格した。独立した人間の評価は未実施で、童話調への偏り、不自然さ・読み間違いは残る。学習文の再現や重複を完全には防がない。生成失敗やモデル破損は `Result` で返し、このモデルは静的fallbackを使わない。
 
 ```powershell
 cargo fmt --all -- --check

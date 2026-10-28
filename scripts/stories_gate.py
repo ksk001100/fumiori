@@ -41,7 +41,7 @@ def review_gate(report, review, sample_bytes, training):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--model-name',default='stories-v1-3mb')
+    parser.add_argument('--model-name',default='stories-v2-diverse-3mb')
     parser.add_argument('--activate',action='store_true')
     parser.add_argument('--stage',choices=['development','both'],default='both')
     parser.add_argument('--require-pass',action='store_true')
@@ -62,6 +62,8 @@ def main():
             previous=report
         elif any(report[k]!=previous[k] for k in ('weights_sha256','vocab_sha256','sampling','decoder_sha256')):
             raise ValueError('confirmation used a different model or sampling')
+        elif report.get('runtime_identity') != previous.get('runtime_identity'):
+            raise ValueError('confirmation used a different runtime')
     result['passed']=all(result[s]['passed'] for s in stages)
     if args.activate and result['passed']:
         for model in (name,name+'-int8'):

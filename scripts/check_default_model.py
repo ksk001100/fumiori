@@ -1,4 +1,4 @@
-"""Audit the current v1 standard model and its documented generation command."""
+"""Audit the current standard model and its documented generation command."""
 from collections import Counter
 import hashlib
 import json
@@ -27,7 +27,7 @@ def main():
     cli = Path('target/release/fumiori-cli' + ('.exe' if os.name == 'nt' else '')).resolve()
     current = json.loads(Path('build/model/manifest.json').read_text(encoding='utf-8'))
     activation = json.loads(Path('build/current-model.json').read_text(encoding='utf-8'))
-    source = Path('build') / activation.get('fp32_source', 'stories-v1-3mb')
+    source = Path('build') / activation.get('fp32_source', 'stories-v2-diverse-3mb')
     source_manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
     if any(current.get(key) != source_manifest.get(key) for key in
            ('weights_sha256', 'generation_constraints', 'vocab_sha256', 'generation_mode',
