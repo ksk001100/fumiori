@@ -891,7 +891,14 @@ fn mask_candidates(
         } else {
             let token = &vocab.tokens[id];
             let terminal = matches!(token.surface.as_str(), "。" | "！" | "？");
-            kana_len + token.kana.chars().count() <= max
+            // Literal characters let the story model spell arbitrary names
+            // without a dictionary entry. Typing prompts use lexical tokens.
+            token.pos != "文字"
+                && !token
+                    .pos
+                    .split('-')
+                    .any(|part| matches!(part, "人名" | "固有名詞"))
+                && kana_len + token.kana.chars().count() <= max
                 && (!terminal || (kana_len >= min && previous.is_some_and(can_end)))
         };
         if !allowed {
@@ -1250,6 +1257,51 @@ mod tests {
         mask_candidates(&mut logits, &vocab, &[0, 3, 7, 8], 12, 5, 12);
         assert_eq!(logits.iter().filter(|x| x.is_finite()).count(), 1);
         assert!(logits[1].is_finite());
+    }
+    #[test]
+    fn typing_prompts_exclude_character_spelling_and_named_entities() {
+        let mut tokens: Vec<_> = fumiori_core::SPECIALS
+            .iter()
+            .enumerate()
+            .map(|(id, surface)| Token {
+                id,
+                surface: (*surface).into(),
+                kana: String::new(),
+                pos: "special".into(),
+                metadata: Value::Null,
+            })
+            .collect();
+        for (surface, kana, pos) in [
+            ("ま", "ま", "文字"),
+            ("ト", "と", "文字"),
+            ("太郎", "たろう", "名詞-固有名詞-人名"),
+            ("東京", "とうきょう", "固有名詞"),
+            ("花子", "はなこ", "人名"),
+            ("猫", "ねこ", "名詞"),
+            ("みかん", "みかん", "名詞"),
+            ("が", "が", "助詞"),
+            ("眠る", "ねむる", "動詞"),
+        ] {
+            tokens.push(Token {
+                id: tokens.len(),
+                surface: surface.into(),
+                kana: kana.into(),
+                pos: pos.into(),
+                metadata: Value::Null,
+            });
+        }
+        let vocab = Vocab {
+            version: VERSION.into(),
+            encoding: "UTF-8".into(),
+            tokens,
+        };
+        vocab.validate().unwrap();
+        for (ids, kana_len) in [(vec![0, 3], 0), (vec![0, 3, 12, 14], 3)] {
+            let mut logits = vec![0.0; vocab.tokens.len()];
+            mask_candidates(&mut logits, &vocab, &ids, kana_len, 5, 12);
+            assert!(logits[7..12].iter().all(|x| !x.is_finite()));
+            assert!(logits[12..].iter().all(|x| x.is_finite()));
+        }
     }
     #[test]
     fn reproducible_sampling() {

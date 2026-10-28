@@ -105,6 +105,10 @@ class Aligner:
             token = next((t for t in self.by_first[text[position]] if text.startswith(t['surface'],position)), None)
             if token is None:
                 return None
+            # Do not teach prompts to spell names or unknown words using kana
+            # characters. Keep literal tokens in the vocab for ID compatibility.
+            if token['pos'] == '文字' or any(p in ('人名', '固有名詞') for p in token['pos'].split('-')):
+                return None
             if tokens and lexical_collision(tokens[-1], token):
                 return None
             tokens.append(token); position += len(token['surface'])

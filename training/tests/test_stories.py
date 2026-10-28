@@ -52,6 +52,8 @@ def test_story_alignment_rejects_unknown_kanji_and_preserves_readings():
     assert aligner.align('象が眠りました。') is None
     assert aligner.align('猫が眠って。') is None
     assert aligner.align('猫が行きました。')['kana'] == 'ねこがいきました'
+    for text in ('まりやが眠りました。', 'トモが眠りました。', '猫の名前はれいなでした。'):
+        assert aligner.align(text) is None
     from scripts.prepare_stories import lexical_collision
     assert lexical_collision(dict(surface='風',pos='名詞'),dict(surface='船',pos='名詞'))
     assert lexical_collision(dict(surface='光',pos='名詞'),dict(surface='る',pos='文字'))
