@@ -9,7 +9,7 @@ from pathlib import Path
 import time
 os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG', ':4096:8')
 import torch
-from .model import ModelConfig, Transformer, greedy, loss_for
+from .model import ModelConfig, Transformer, make_model, greedy, loss_for
 
 
 def read_json(path):
@@ -39,7 +39,7 @@ def tensor_batch(rows, device):
 
 def load_checkpoint(path):
     ck = torch.load(path, map_location="cpu", weights_only=True)
-    model = Transformer(ModelConfig(**ck["model_config"]))
+    model = make_model(ModelConfig(**ck["model_config"]))
     model.load_state_dict(ck["state_dict"], strict=True)
     return model.eval(), ck
 
@@ -141,7 +141,7 @@ def train(config_path):
                 kana = ''.join(vocab['tokens'][i]['kana'] for i in ids[2:-1])
             if text != r['text'] or kana != r['kana']:
                 raise ValueError("prepared data roundtrip mismatch")
-    model = Transformer(ModelConfig(vocab_size=len(vocab["tokens"]), **c["model"])).to(device)
+    model = make_model(ModelConfig(vocab_size=len(vocab["tokens"]), **c["model"])).to(device)
     initialization = None
     if c.get('initialize_from'):
         initial_path = Path(c['initialize_from'])
@@ -151,6 +151,11 @@ def train(config_path):
         model.load_state_dict(initial['state_dict'], strict=True)
         initialization = dict(checkpoint_sha256=hashlib.sha256(initial_path.read_bytes()).hexdigest(),
                               source=initial['source'])
+    if c.get('quantization_aware_bits') is not None:
+        if c['quantization_aware_bits'] != 4:
+            raise ValueError('only block-128 INT4 QAT is supported')
+        from .qat import enable_int4
+        enable_int4(model)
     smoothing = c.get('label_smoothing', 0.0)
     if not 0 <= smoothing < 1:
         raise ValueError('label_smoothing must be in [0, 1)')
@@ -162,8 +167,9 @@ def train(config_path):
         ratio = c['body_lr_ratio']
         if not 0 < ratio <= 1:
             raise ValueError('body_lr_ratio must be in (0, 1]')
-        embedding = list(model.token_emb.parameters()) + list(model.pos_emb.parameters())
-        body = [p for name,p in model.named_parameters() if not name.startswith(('token_emb.', 'pos_emb.'))]
+        embedding_names = ('embed_tokens.', 'lm_head.') if model.config.architecture=='llama' else ('token_emb.', 'pos_emb.')
+        embedding = [p for name,p in model.named_parameters() if name.startswith(embedding_names)]
+        body = [p for name,p in model.named_parameters() if not name.startswith(embedding_names)]
         parameters = [dict(params=embedding, lr_scale=1.0), dict(params=body, lr_scale=ratio)]
     else:
         parameters = model.parameters()
@@ -261,7 +267,8 @@ def train(config_path):
                     torch_version=str(torch.__version__), python=platform.python_version(),
                     platform=platform.platform(), parameter_count=model.parameter_count(),
                     training_seconds=time.perf_counter() - start, logs=logs)
-    torch.save(dict(state_dict={k: v.detach().cpu() for k, v in model.state_dict().items()}, **metadata), out)
+    from .qat import plain_state
+    torch.save(dict(state_dict=plain_state(model), **metadata), out)
     # Byte payload retained in checkpoint to preserve the exact cross-language hash.
     summary = {k: v for k, v in metadata.items() if k not in ("vocab_bytes", "vocab")}
     out.with_suffix(".metrics.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")

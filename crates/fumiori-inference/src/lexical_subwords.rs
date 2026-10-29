@@ -29,10 +29,17 @@ struct Node {
     children: BTreeMap<char, usize>,
     words: Vec<usize>,
 }
+#[derive(Default)]
+struct PieceNode {
+    children: BTreeMap<char, usize>,
+    ids: Vec<usize>,
+    bare_any: bool,
+}
 pub(crate) struct Lexicon {
     pub pieces: Vec<String>,
     pub words: Vec<Token>,
     nodes: Vec<Node>,
+    piece_nodes: Vec<PieceNode>,
     readings: BTreeMap<(String, String, String, String), BTreeMap<usize, u64>>,
 }
 #[derive(Clone)]
@@ -75,6 +82,24 @@ impl Lexicon {
                 "invalid piece ID/length"
             );
             pieces.push(piece.surface);
+        }
+        let mut piece_nodes = vec![PieceNode::default()];
+        for (id, piece) in pieces.iter().enumerate().skip(7) {
+            let bare = !piece.starts_with('▁');
+            let mut node = 0;
+            piece_nodes[node].bare_any |= bare;
+            for c in piece.trim_start_matches('▁').chars() {
+                node = if let Some(&next) = piece_nodes[node].children.get(&c) {
+                    next
+                } else {
+                    let next = piece_nodes.len();
+                    piece_nodes.push(PieceNode::default());
+                    piece_nodes[node].children.insert(c, next);
+                    next
+                };
+                piece_nodes[node].bare_any |= bare;
+            }
+            piece_nodes[node].ids.push(id);
         }
         let mut nodes = vec![Node::default()];
         let mut unique = BTreeSet::new();
@@ -131,6 +156,7 @@ impl Lexicon {
             pieces,
             words: definition.lexicon,
             nodes,
+            piece_nodes,
             readings,
         })
     }
@@ -169,115 +195,151 @@ impl Lexicon {
         }
         let mut current = states.to_vec();
         for c in text.chars() {
-            let mut next_states = vec![];
-            for state in current {
-                if state.ended {
-                    continue;
-                }
-                let Some(&next) = self.nodes[state.node].children.get(&c) else {
-                    continue;
-                };
-                if !self.nodes[next].children.is_empty() {
-                    let mut partial = state.clone();
-                    partial.node = next;
-                    next_states.push(partial);
-                }
-                for &word_id in &self.nodes[next].words {
-                    let word = &self.words[word_id];
-                    let previous = state.path.last().map(|&i| &self.words[i]);
-                    if word.pos == "接尾辞"
-                        && previous.is_none_or(|p| {
-                            !p.pos.starts_with("名詞")
-                                && !p.pos.starts_with("動詞")
-                                && !p.pos.starts_with("形容詞")
-                        })
-                    {
-                        continue;
-                    }
-                    let prior2 = state
-                        .path
-                        .iter()
-                        .rev()
-                        .nth(1)
-                        .map(|&i| self.words[i].surface.clone())
-                        .unwrap_or_default();
-                    let key = (
-                        prior2,
-                        previous.map(|p| p.surface.clone()).unwrap_or_default(),
-                        word.surface.clone(),
-                        word.pos.clone(),
-                    );
-                    let local = self.readings.get(&key);
-                    // Resolve readings before length checks. A shorter, wrong
-                    // reading must never be selected to fit a difficulty bound.
-                    let preferred = self.nodes[next]
-                        .words
-                        .iter()
-                        .copied()
-                        .filter(|&i| self.words[i].pos == word.pos)
-                        .max_by_key(|&i| {
-                            (
-                                local.and_then(|m| m.get(&i)).copied().unwrap_or(0),
-                                self.words[i]
-                                    .metadata
-                                    .get("count")
-                                    .and_then(|n| n.as_u64())
-                                    .unwrap_or(1),
-                                std::cmp::Reverse(i),
-                            )
-                        });
-                    if preferred != Some(word_id) {
-                        continue;
-                    }
-                    if let Some(prior) = previous {
-                        if lexical_collision(prior, word)
-                            || polite_collision(prior, word)
-                            || (prior.pos == "助詞" && word.pos == "助詞")
-                        {
-                            continue;
-                        }
-                    }
-                    if word.surface == "。" && (state.kana < min || !previous.is_some_and(can_end))
-                    {
-                        continue;
-                    }
-                    if word.surface == "、" && previous.is_none_or(|w| w.surface == "、") {
-                        continue;
-                    }
-                    if state.path.iter().rev().take(2).count() == 2
-                        && state.path.iter().rev().take(2).all(|&i| i == word_id)
-                    {
-                        continue;
-                    }
-                    let length = if word.surface == "、" {
-                        1
-                    } else {
-                        word.kana.chars().count()
-                    };
-                    if state.kana + length > max {
-                        continue;
-                    }
-                    let mut complete = state.clone();
-                    complete.node = 0;
-                    complete.kana += length;
-                    complete.path.push(word_id);
-                    complete.ended = word.surface == "。";
-                    let count = word
-                        .metadata
-                        .get("count")
-                        .and_then(|n| n.as_u64())
-                        .unwrap_or(1);
-                    // Prefer complete dictionary compounds to arbitrary finer splits.
-                    complete.score += (count as f64 + 1.).ln() * 0.1 - 10.;
-                    next_states.push(complete);
-                }
-            }
-            current = Self::compact(next_states);
+            current = self.advance_char(&current, c, min, max);
             if current.is_empty() {
                 break;
             }
         }
         current
+    }
+    fn advance_char(&self, current: &[State], c: char, min: usize, max: usize) -> Vec<State> {
+        let mut next_states = vec![];
+        for state in current {
+            if state.ended {
+                continue;
+            }
+            let Some(&next) = self.nodes[state.node].children.get(&c) else {
+                continue;
+            };
+            if !self.nodes[next].children.is_empty() {
+                let mut partial = state.clone();
+                partial.node = next;
+                next_states.push(partial);
+            }
+            for &word_id in &self.nodes[next].words {
+                let word = &self.words[word_id];
+                let previous = state.path.last().map(|&i| &self.words[i]);
+                if word.pos == "接尾辞"
+                    && previous.is_none_or(|p| {
+                        !p.pos.starts_with("名詞")
+                            && !p.pos.starts_with("動詞")
+                            && !p.pos.starts_with("形容詞")
+                    })
+                {
+                    continue;
+                }
+                let prior2 = state
+                    .path
+                    .iter()
+                    .rev()
+                    .nth(1)
+                    .map(|&i| self.words[i].surface.clone())
+                    .unwrap_or_default();
+                let key = (
+                    prior2,
+                    previous.map(|p| p.surface.clone()).unwrap_or_default(),
+                    word.surface.clone(),
+                    word.pos.clone(),
+                );
+                let local = self.readings.get(&key);
+                // Resolve readings before length checks. A shorter, wrong
+                // reading must never be selected to fit a difficulty bound.
+                let preferred = self.nodes[next]
+                    .words
+                    .iter()
+                    .copied()
+                    .filter(|&i| self.words[i].pos == word.pos)
+                    .max_by_key(|&i| {
+                        (
+                            local.and_then(|m| m.get(&i)).copied().unwrap_or(0),
+                            self.words[i]
+                                .metadata
+                                .get("count")
+                                .and_then(|n| n.as_u64())
+                                .unwrap_or(1),
+                            std::cmp::Reverse(i),
+                        )
+                    });
+                if preferred != Some(word_id) {
+                    continue;
+                }
+                if let Some(prior) = previous {
+                    if lexical_collision(prior, word)
+                        || polite_collision(prior, word)
+                        || (prior.pos == "助詞" && word.pos == "助詞")
+                    {
+                        continue;
+                    }
+                }
+                if word.surface == "。" && (state.kana < min || !previous.is_some_and(can_end)) {
+                    continue;
+                }
+                if word.surface == "、" && previous.is_none_or(|w| w.surface == "、") {
+                    continue;
+                }
+                if state.path.iter().rev().take(2).count() == 2
+                    && state.path.iter().rev().take(2).all(|&i| i == word_id)
+                {
+                    continue;
+                }
+                let length = if word.surface == "、" {
+                    1
+                } else {
+                    word.kana.chars().count()
+                };
+                if state.kana + length > max {
+                    continue;
+                }
+                let mut complete = state.clone();
+                complete.node = 0;
+                complete.kana += length;
+                complete.path.push(word_id);
+                complete.ended = word.surface == "。";
+                let count = word
+                    .metadata
+                    .get("count")
+                    .and_then(|n| n.as_u64())
+                    .unwrap_or(1);
+                // Prefer complete dictionary compounds to arbitrary finer splits.
+                complete.score += (count as f64 + 1.).ln() * 0.1 - 10.;
+                next_states.push(complete);
+            }
+        }
+        Self::compact(next_states)
+    }
+    pub fn valid_pieces(
+        &self,
+        states: &[State],
+        initial: bool,
+        min: usize,
+        max: usize,
+    ) -> Vec<bool> {
+        let mut valid = vec![false; self.pieces.len()];
+        self.walk_pieces(0, states, initial, (min, max), &mut valid);
+        valid
+    }
+    fn walk_pieces(
+        &self,
+        node: usize,
+        states: &[State],
+        initial: bool,
+        bounds: (usize, usize),
+        valid: &mut [bool],
+    ) {
+        for &id in &self.piece_nodes[node].ids {
+            if initial || (node != 0 && !self.pieces[id].starts_with('▁')) {
+                valid[id] = true;
+            }
+        }
+        for (&c, &child) in &self.piece_nodes[node].children {
+            if !initial && !self.piece_nodes[child].bare_any {
+                continue;
+            }
+            let next = self.advance_char(states, c, bounds.0, bounds.1);
+            if !next.is_empty() {
+                self.walk_pieces(child, &next, initial, bounds, valid);
+            }
+        }
     }
     pub fn finished(&self, states: &[State]) -> bool {
         states.iter().any(|s| s.ended)
@@ -309,7 +371,20 @@ mod tests {
     use serde_json::json;
     fn fixture() -> Result<Lexicon> {
         let mut pieces = vec!["BOS", "EOS", "PAD", "EASY", "NORMAL", "HARD", "UNK"];
-        pieces.extend(["▁本を", "読", "んだ", "。", "▁トム", "▁本棚", "▁本を取り"]);
+        pieces.extend([
+            "▁本を",
+            "読",
+            "んだ",
+            "。",
+            "▁トム",
+            "▁本棚",
+            "▁本を取り",
+            "▁本",
+            "本",
+            "を",
+            "本を",
+            "▁",
+        ]);
         let words = [
             ("本", "ほん", "名詞"),
             ("を", "を", "助詞"),
@@ -349,6 +424,28 @@ mod tests {
         assert!(lexicon
             .advance(&[State::initial()], 11, true, 5, 40)
             .is_empty());
+        Ok(())
+    }
+    #[test]
+    fn shared_piece_prefix_masks_equal_individual_transitions() -> Result<()> {
+        let lexicon = fixture()?;
+        for bounds in [(1, 3), (5, 12), (13, 22), (1, 40)] {
+            let mut frontier = vec![(vec![State::initial()], true)];
+            for _ in 0..5 {
+                let mut next_frontier = Vec::new();
+                for (states, initial) in frontier {
+                    let valid = lexicon.valid_pieces(&states, initial, bounds.0, bounds.1);
+                    for (id, &allowed) in valid.iter().enumerate() {
+                        let next = lexicon.advance(&states, id, initial, bounds.0, bounds.1);
+                        assert_eq!(allowed, !next.is_empty(), "piece {id}, initial {initial}");
+                        if allowed {
+                            next_frontier.push((next, false));
+                        }
+                    }
+                }
+                frontier = next_frontier;
+            }
+        }
         Ok(())
     }
     #[test]

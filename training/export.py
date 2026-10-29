@@ -100,11 +100,15 @@ def export(checkpoint, output, generation_mode=None, polite_boundary_guard=False
             origin = ck['initialization']['source']
             notices += ('\n\nPretrained initialization: ' + origin['model'] + '\n'
                         + origin['authors'] + '\n' + origin['url'] + '\n'
-                        'Released by the authors under the MIT license.\n'
-                        + (Path(__file__).resolve().parents[1] / 'LICENSE').read_text(encoding='utf-8').replace(
-                            'Copyright (c) 2026 Fumiori contributors', 'Copyright (c) rinna Co., Ltd.') + '\n'
-                        +
-                        'Word embeddings were remapped and the model was fine-tuned for this application.\n')
+                        + 'Source model license: ' + origin['license'] + '\n')
+            if origin['license'] == 'MIT':
+                notices += (Path(__file__).resolve().parents[1] / 'LICENSE').read_text(encoding='utf-8').replace(
+                    'Copyright (c) 2026 Fumiori contributors','Copyright (c) '+origin['authors'])+'\n'
+            elif origin['license'] == 'Apache-2.0':
+                notices += 'The Apache License 2.0 text above applies to the source model.\n'
+            else:
+                raise ValueError('unsupported pretrained source license')
+            notices += 'Vocabulary embeddings were remapped; weights may be task-fine-tuned and quantized.\n'
         for generated in ck['data_manifest'].get('synthetic_sources', []):
             teacher = generated['teacher']
             notices += ('\n\nOffline synthetic-data teacher: ' + teacher['model'] + '\n'

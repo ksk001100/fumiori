@@ -4,12 +4,14 @@
 GitHub Actionsはこのモデルを使い、学習・データ取得なしでWebデモをビルドする。
 ビルド時にmanifestのSHA-256と実ファイルの一致を検証する。
 
-`everyday-v8-32mb/` は比較用の試作モデルの5ファイル。標準モデルへの昇格ではなく、デモでv2と切り替えて試すために同梱する。生成設定は評価時と同じtemperature 0.5、top-p 0.9、冒頭temperature 1.0。デモでは履歴16件の重複回避を使う。履歴なしでの評価と品質の限界は [実験結果](../docs/everyday-generation.md) を参照。
+`everyday-v3-3mb/` は2,423,935 bytesの小型試作の5ファイル。以前の日常文v3を、3MB・0.1秒という最新目標に対する比較基準としてデモに使う。生成設定は点検時のtemperature 1.0、top-p 0.95、履歴128件。自然さの点検結果は良好だったが新規率は約33〜34%であり、新規生成の目標を達成したモデルとしての昇格ではない。[速度](../docs/lightweight-generation.md) と [品質の限界](../docs/everyday-generation.md) を参照。
+
+`everyday-v8-32mb/` は過去の比較用の研究資産。最新のデモビルドには含めない。
 
 両方を含むデモのビルド:
 
 ```powershell
-python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v8-32mb
+python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v3-3mb
 node scripts/smoke_wasm.mjs model-int8 model-experimental
 ```
 

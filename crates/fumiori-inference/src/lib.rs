@@ -11,6 +11,18 @@ use std::{
     path::Path,
 };
 mod lexical_subwords;
+mod llama;
+mod model_weights;
+
+fn default_architecture() -> String {
+    "gpt2".into()
+}
+fn default_rope_theta() -> f64 {
+    10000.0
+}
+fn default_norm_eps() -> f64 {
+    1e-5
+}
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct ModelConfig {
@@ -23,6 +35,12 @@ pub struct ModelConfig {
     pub version: String,
     #[serde(default)]
     pub approximate_gelu: bool,
+    #[serde(default = "default_architecture")]
+    pub architecture: String,
+    #[serde(default = "default_rope_theta")]
+    pub rope_theta: f64,
+    #[serde(default = "default_norm_eps")]
+    pub norm_eps: f64,
 }
 impl ModelConfig {
     fn validate(&self) -> Result<()> {
@@ -40,6 +58,21 @@ impl ModelConfig {
                 && (3..=64).contains(&self.max_seq_len),
             "invalid model dimensions"
         );
+        ensure!(
+            matches!(self.architecture.as_str(), "gpt2" | "llama")
+                && self.rope_theta.is_finite()
+                && self.rope_theta > 0.0
+                && self.norm_eps.is_finite()
+                && self.norm_eps > 0.0
+                && self.norm_eps < 1.0,
+            "invalid architecture/normalization"
+        );
+        if self.architecture == "llama" {
+            ensure!(
+                (self.d_model / self.n_heads).is_multiple_of(2),
+                "invalid RoPE dimensions"
+            );
+        }
         Ok(())
     }
 }
@@ -97,74 +130,80 @@ impl Block {
 }
 pub struct Model {
     pub config: ModelConfig,
-    token_emb: Tensor,
-    pos_emb: Tensor,
-    blocks: Vec<Block>,
-    final_ln: LayerNorm,
+    backend: Backend,
+}
+enum Backend {
+    Gpt2(GptModel),
+    Llama(llama::LlamaModel),
 }
 impl Model {
-    fn load(
-        config_bytes: &[u8],
-        weights: &[u8],
-        vocab_size: usize,
-        quantized: bool,
-    ) -> Result<Self> {
+    fn load(config_bytes: &[u8], weights: &[u8], vocab_size: usize, storage: &str) -> Result<Self> {
         let config: ModelConfig = serde_json::from_slice(config_bytes)?;
         config.validate()?;
         ensure!(
             config.vocab_size == vocab_size,
             "model vocabulary size mismatch"
         );
-        let mut tensors = candle_core::safetensors::load_buffer(weights, &Device::Cpu)?;
-        if quantized {
-            let names: Vec<_> = tensors
-                .keys()
-                .filter(|n| !n.ends_with(".scale"))
-                .cloned()
-                .collect();
-            for name in names {
-                if tensors[&name].rank() == 2 {
-                    let q = tensors.remove(&name).context("missing quantized matrix")?;
-                    ensure!(q.dtype() == DType::U8, "expected INT8 matrix: {name}");
-                    let scale = tensors
-                        .remove(&format!("{name}.scale"))
-                        .context("missing row scale")?;
-                    ensure!(
-                        scale.dtype() == DType::F32 && scale.dims() == [q.dim(0)?, 1],
-                        "invalid row scale shape"
-                    );
-                    ensure!(
-                        scale
-                            .flatten_all()?
-                            .to_vec1::<f32>()?
-                            .iter()
-                            .all(|s| s.is_finite() && *s > 0.0),
-                        "invalid row scale"
-                    );
-                    tensors.insert(
-                        name,
-                        (q.to_dtype(DType::F32)? - 128.0)?.broadcast_mul(&scale)?,
-                    );
-                }
-            }
+        let backend = if config.architecture == "llama" {
+            Backend::Llama(llama::LlamaModel::load(
+                &config,
+                model_weights::load(weights, storage)?,
+            )?)
+        } else {
+            Backend::Gpt2(GptModel::load(config_bytes, weights, vocab_size, storage)?)
+        };
+        Ok(Self { config, backend })
+    }
+    pub fn logits(&self, ids: &[usize]) -> Result<Vec<Vec<f32>>> {
+        ensure!(
+            !ids.is_empty() && ids.len() <= self.config.max_seq_len,
+            "invalid sequence length"
+        );
+        ensure!(
+            ids.iter().all(|i| *i < self.config.vocab_size),
+            "unknown input ID"
+        );
+        match &self.backend {
+            Backend::Gpt2(model) => model.compute_logits(ids, false),
+            Backend::Llama(model) => model.compute_logits(ids, &self.config, false),
         }
+    }
+    pub fn next_logits(&self, ids: &[usize]) -> Result<Vec<f32>> {
+        ensure!(
+            !ids.is_empty() && ids.len() <= self.config.max_seq_len,
+            "invalid sequence length"
+        );
+        ensure!(
+            ids.iter().all(|i| *i < self.config.vocab_size),
+            "unknown input ID"
+        );
+        let mut rows = match &self.backend {
+            Backend::Gpt2(model) => model.compute_logits(ids, true)?,
+            Backend::Llama(model) => model.compute_logits(ids, &self.config, true)?,
+        };
+        rows.pop().context("empty next logits")
+    }
+}
+struct GptModel {
+    pub config: ModelConfig,
+    token_emb: Tensor,
+    pos_emb: Tensor,
+    blocks: Vec<Block>,
+    final_ln: LayerNorm,
+}
+impl GptModel {
+    fn load(config_bytes: &[u8], weights: &[u8], vocab_size: usize, storage: &str) -> Result<Self> {
+        let config: ModelConfig = serde_json::from_slice(config_bytes)?;
+        config.validate()?;
+        ensure!(
+            config.vocab_size == vocab_size,
+            "model vocabulary size mismatch"
+        );
+        let tensors = model_weights::load(weights, storage)?;
         ensure!(
             tensors.len() == 4 + 12 * config.n_layers,
             "unexpected/missing weight tensors"
         );
-        ensure!(
-            tensors.values().all(|t| t.dtype() == DType::F32),
-            "only FP32 weights supported"
-        );
-        for (name, t) in &tensors {
-            ensure!(
-                t.flatten_all()?
-                    .to_vec1::<f32>()?
-                    .iter()
-                    .all(|x| x.is_finite()),
-                "nonfinite weights in {name}"
-            );
-        }
         let vb = VarBuilder::from_tensors(tensors, DType::F32, &Device::Cpu);
         let token_emb = vb.get((config.vocab_size, config.d_model), "token_emb.weight")?;
         let pos_emb = vb.get((config.max_seq_len, config.d_model), "pos_emb.weight")?;
@@ -180,7 +219,7 @@ impl Model {
             final_ln,
         })
     }
-    pub fn logits(&self, ids: &[usize]) -> Result<Vec<Vec<f32>>> {
+    fn compute_logits(&self, ids: &[usize], last_only: bool) -> Result<Vec<Vec<f32>>> {
         ensure!(
             !ids.is_empty() && ids.len() <= self.config.max_seq_len,
             "invalid sequence length"
@@ -198,11 +237,13 @@ impl Model {
         for block in &self.blocks {
             x = block.forward(&x, &self.config)?;
         }
-        let logits = self
-            .final_ln
-            .forward(&x)?
-            .squeeze(0)?
-            .matmul(&self.token_emb.t()?)?;
+        let hidden = self.final_ln.forward(&x)?.squeeze(0)?;
+        let hidden = if last_only {
+            hidden.narrow(0, ids.len() - 1, 1)?
+        } else {
+            hidden
+        };
+        let logits = hidden.matmul(&self.token_emb.t()?)?;
         Ok(logits.to_vec2::<f32>()?)
     }
 }
@@ -502,7 +543,7 @@ impl TypingGenerator {
             ("manifest.json", 1_048_576),
             ("model-config.json", 65536),
             ("vocab.json", 16_000_000),
-            ("model.safetensors", 128_000_000),
+            ("model.safetensors", 256_000_000),
         ] {
             ensure!(
                 fs::metadata(dir.join(file))
@@ -533,14 +574,16 @@ impl TypingGenerator {
             manifest["version"] == VERSION,
             "unsupported manifest version"
         );
-        let quantized = manifest["dtype"] == "I8_ROW_F32";
+        let storage = manifest["dtype"]
+            .as_str()
+            .context("missing weight storage")?;
         ensure!(
-            quantized || manifest["dtype"] == "F32",
+            matches!(storage, "F32" | "I8_ROW_F32" | "I4_BLOCK128_F32"),
             "unsupported manifest dtype"
         );
         for (file, key, bytes, max) in [
             ("vocab.json", "vocab_sha256", vocab_bytes, 16_000_000),
-            ("model.safetensors", "weights_sha256", weights, 128_000_000),
+            ("model.safetensors", "weights_sha256", weights, 256_000_000),
             ("model-config.json", "config_sha256", config, 65536),
         ] {
             ensure!(bytes.len() <= max, "oversized {file}");
@@ -557,17 +600,12 @@ impl TypingGenerator {
                 "subword model cannot contain sentence constraints"
             );
             let lexicon = lexical_subwords::Lexicon::load(serde_json::from_value(encoded)?)?;
-            g.model = Some(Model::load(
-                config,
-                weights,
-                lexicon.pieces.len(),
-                quantized,
-            )?);
+            g.model = Some(Model::load(config, weights, lexicon.pieces.len(), storage)?);
             g.subword_lexicon = Some(lexicon);
         } else {
             let vocab: Vocab = serde_json::from_value(encoded)?;
             vocab.validate()?;
-            let model = Model::load(config, weights, vocab.tokens.len(), quantized)?;
+            let model = Model::load(config, weights, vocab.tokens.len(), storage)?;
             g.constraints = manifest
                 .get("generation_constraints")
                 .map(|value| FrameConstraints::load(value, &vocab, model.config.max_seq_len))
@@ -651,6 +689,12 @@ impl TypingGenerator {
     }
     pub fn logits(&self, ids: &[usize]) -> Result<Vec<Vec<f32>>> {
         self.model.as_ref().context("no model loaded")?.logits(ids)
+    }
+    pub fn next_logits(&self, ids: &[usize]) -> Result<Vec<f32>> {
+        self.model
+            .as_ref()
+            .context("no model loaded")?
+            .next_logits(ids)
     }
     pub fn set_history_size(&mut self, n: usize) {
         self.history_size = n;
@@ -736,8 +780,7 @@ impl TypingGenerator {
                 let mut kana_len = 0;
                 let mut frame_node = o.difficulty.id() - 3;
                 while ids.len() < model.config.max_seq_len {
-                    let logits = model.logits(&ids)?;
-                    let mut last = logits.last().unwrap().clone();
+                    let mut last = model.next_logits(&ids)?;
                     mask_candidates(&mut last, vocab, &ids, kana_len, min, max);
                     if self.lexical_boundary_guard || self.polite_boundary_guard {
                         if let Some(previous) = ids
@@ -896,18 +939,12 @@ impl TypingGenerator {
             let mut initial = true;
             let mut visible = false;
             while ids.len() < model.config.max_seq_len {
-                let mut logits = model.logits(&ids)?.last().context("empty logits")?.clone();
-                let mut continuations = Vec::with_capacity(logits.len());
+                let mut logits = model.next_logits(&ids)?;
+                let valid = lexicon.valid_pieces(&states, initial, min, max);
                 for (id, logit) in logits.iter_mut().enumerate() {
-                    let next = if id >= 7 {
-                        lexicon.advance(&states, id, initial, min, max)
-                    } else {
-                        vec![]
-                    };
-                    if (id == 1 && !lexicon.finished(&states)) || (id != 1 && next.is_empty()) {
+                    if (id == 1 && !lexicon.finished(&states)) || (id != 1 && !valid[id]) {
                         *logit = f32::NEG_INFINITY;
                     }
-                    continuations.push(next);
                 }
                 if !logits.iter().any(|x| x.is_finite()) {
                     break;
@@ -933,9 +970,9 @@ impl TypingGenerator {
                     }
                     break;
                 }
+                states = lexicon.advance(&states, id, initial, min, max);
                 initial = false;
                 visible |= !lexicon.pieces[id].trim_start_matches('▁').is_empty();
-                states = std::mem::take(&mut continuations[id]);
                 ids.push(id);
             }
             self.last_stats.rejected += 1;

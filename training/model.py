@@ -16,6 +16,9 @@ class ModelConfig:
     dropout: float = 0.0
     version: str = "0.1.0"
     approximate_gelu: bool = False
+    architecture: str = 'gpt2'
+    rope_theta: float = 10000.0
+    norm_eps: float = 1e-5
 
     def __post_init__(self):
         if not (8 <= self.vocab_size <= 16000 and 0 < self.d_model <= 512
@@ -23,6 +26,10 @@ class ModelConfig:
                 and 0 < self.n_layers <= 16 and 0 < self.d_ff <= 4096
                 and 3 <= self.max_seq_len <= 64 and 0 <= self.dropout < 1 and self.version == "0.1.0"):
             raise ValueError("unsupported model configuration")
+        if self.architecture not in ('gpt2','llama') or not math.isfinite(self.rope_theta) or self.rope_theta <= 0 or not 0 < self.norm_eps < 1:
+            raise ValueError('unsupported architecture/normalization')
+        if self.architecture == 'llama' and (self.d_model // self.n_heads) % 2:
+            raise ValueError('RoPE head dimension must be even')
 
 
 class Block(nn.Module):
@@ -53,6 +60,8 @@ class Block(nn.Module):
 class Transformer(nn.Module):
     def __init__(self, config):
         super().__init__()
+        if config.architecture != 'gpt2':
+            raise ValueError('use make_model for non-GPT2 architectures')
         self.config = config
         self.token_emb = nn.Embedding(config.vocab_size, config.d_model)
         self.pos_emb = nn.Embedding(config.max_seq_len, config.d_model)
@@ -78,6 +87,13 @@ class Transformer(nn.Module):
 
     def parameter_count(self):
         return sum(p.numel() for p in self.parameters())
+
+
+def make_model(config):
+    if config.architecture == 'llama':
+        from .llama_model import LlamaTransformer
+        return LlamaTransformer(config)
+    return Transformer(config)
 
 
 def loss_for(model, batch, label_smoothing=0.0, context_ids=None):

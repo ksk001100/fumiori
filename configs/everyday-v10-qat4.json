@@ -1,0 +1,66 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "threads": 2,
+  "data_dir": "build/everyday-v10-data",
+  "allow_auto_aligned": true,
+  "checkpoint": "build/checkpoints/everyday-v10-qat4.pt",
+  "steps": 2000,
+  "batch_size": 128,
+  "log_every": 250,
+  "learning_rate": 5e-05,
+  "select_best_validation": true,
+  "early_stopping_patience": 4,
+  "validation_min_delta": 0.0001,
+  "balance_difficulties": true,
+  "label_smoothing": 0,
+  "weight_decay": 0.1,
+  "noun_context_dropout": 0,
+  "model": {
+    "d_model": 512,
+    "n_heads": 8,
+    "n_layers": 12,
+    "d_ff": 2048,
+    "max_seq_len": 64,
+    "dropout": 0.0,
+    "architecture": "llama"
+  },
+  "lr_schedule": "cosine",
+  "warmup_steps": 100,
+  "min_lr_ratio": 0.1,
+  "train_loss_samples": 1024,
+  "lexical_balance": {
+    "strength": 0.3,
+    "max_ratio": 2
+  },
+  "require_generation_eligible": true,
+  "topic_balance": null,
+  "everyday_review": true,
+  "corpus_mixture": {
+    "tatoeba": 0.7,
+    "teacher": 0.15,
+    "everyday": 0.1,
+    "paired": 0.05
+  },
+  "precision": "bf16",
+  "content_review_policy": {
+    "max_runtime_bytes": 32000000,
+    "min_novel_rate": 0.95,
+    "min_unique_ratio": 0.99,
+    "min_novel_acceptable_rate": 0.95,
+    "independent_seed_evaluation": {
+      "samples": 600,
+      "seed": 530000,
+      "min_unique_ratio": 0.99
+    }
+  },
+  "initialize_from": "build/everyday-v10-data/qat-initialization.pt",
+  "body_lr_ratio": 0.3,
+  "validation_corpus_mixture": {
+    "tatoeba": 0.7,
+    "teacher": 0.15,
+    "everyday": 0.1,
+    "paired": 0.05
+  },
+  "quantization_aware_bits": 4
+}

@@ -6,7 +6,7 @@ const http = require('node:http');
 const path = require('node:path');
 
 (async () => {
-  const root = path.resolve('build/web');
+  const root = path.resolve(process.env.FUMIORI_WEB_ROOT || 'build/web');
   const prefix = '/fumiori/';
   const server = http.createServer(async (req, res) => {
     const pathname = new URL(req.url, 'http://localhost').pathname;
@@ -35,6 +35,7 @@ const path = require('node:path');
     const models = await page.locator('#model option').evaluateAll(options => options.map(o => o.value));
     if (process.env.FUMIORI_REQUIRE_EXPERIMENTAL) assert(models.includes('model-experimental'));
     const visits = models.length > 1 ? [...models, models[0]] : models;
+    const timings = [];
     for (const model of visits) {
       await page.selectOption('#model', model);
       assert(await page.isDisabled('#generate'));
@@ -56,6 +57,23 @@ const path = require('node:path');
         assert.equal(await page.textContent('#status'), '準備完了');
         assert.equal(await page.textContent('#active-model'), await page.locator('#model option:checked').textContent());
       }
+      const count = Number(process.env.FUMIORI_TIMING_SAMPLES || 0);
+      if (count > 0 && !timings.some(r => r.model === model)) {
+        await page.selectOption('#difficulty', 'normal');
+        const ms = [];
+        for (let i = 0; i < count; i++) {
+          await page.click('#generate');
+          await page.waitForFunction(() => !document.querySelector('#generate').disabled, null, { timeout: 120000 });
+          const result = JSON.parse(await page.textContent('#metrics'));
+          assert.equal(result.command, 'generated');
+          ms.push(result.generation_ms);
+        }
+        const sorted = [...ms].sort((a,b) => a-b);
+        const manifest = JSON.parse(await fs.readFile(path.join(root, model, 'manifest.json'), 'utf8'));
+        timings.push({model, samples:count, difficulty:'normal', seed:42, generation_defaults:manifest.generation_defaults,
+          weights_sha256:manifest.weights_sha256, p50_ms:sorted[Math.floor((count-1)*.5)],
+          p95_ms:sorted[Math.ceil((count-1)*.95)], all_ms:ms});
+      }
     }
     assert.deepEqual(errors, []);
     // An old cached Worker used to report ready without identifying the model.
@@ -69,6 +87,11 @@ const path = require('node:path');
     assert(await stale.isDisabled('#generate'));
     assert(!(await stale.isDisabled('#load')));
     await stale.close();
+    if (timings.length) {
+      const result = {browser:browser.version(), measurement:'Web Worker generation_ms; model load excluded; configured history retained',timings};
+      console.log(JSON.stringify(result));
+      if (process.env.FUMIORI_TIMING_REPORT) await fs.writeFile(process.env.FUMIORI_TIMING_REPORT, JSON.stringify(result,null,2)+'\n');
+    }
     console.log(`Pages project path: ${visits.join(' -> ')}; all three difficulties passed`);
   } finally {
     if (browser) await browser.close();

@@ -79,6 +79,8 @@ enum Commands {
         model: PathBuf,
         #[arg(long, default_value = "0.0002")]
         tolerance: f32,
+        #[arg(long, default_value = "0")]
+        relative_tolerance: f32,
     },
     Evaluate {
         #[arg(long)]
@@ -228,20 +230,40 @@ fn main() -> Result<()> {
             println!("{}", serde_json::to_string(&g.logits(&ids)?)?);
             Ok(())
         }
-        Commands::Parity { model, tolerance } => {
+        Commands::Parity {
+            model,
+            tolerance,
+            relative_tolerance,
+        } => {
             ensure!(
                 tolerance.is_finite() && tolerance > 0.0,
                 "invalid tolerance"
+            );
+            ensure!(
+                relative_tolerance.is_finite() && relative_tolerance >= 0.0,
+                "invalid relative tolerance"
             );
             let cases: Vec<Value> = serde_json::from_slice(&fs::read(model.join("parity.json"))?)?;
             ensure!(!cases.is_empty(), "empty parity fixtures");
             let g = TypingGenerator::load(&model)?;
             let mut max_error = 0.0f32;
             let mut count = 0;
+            let mut failed = 0;
             for case in &cases {
                 let ids: Vec<usize> = serde_json::from_value(case["ids"].clone())?;
                 let expected: Vec<Vec<f32>> = serde_json::from_value(case["logits"].clone())?;
                 let actual = g.logits(&ids)?;
+                let next = g.next_logits(&ids)?;
+                ensure!(
+                    next.len() == actual.last().context("missing logits")?.len(),
+                    "next logits shape mismatch"
+                );
+                for (x, y) in next.iter().zip(actual.last().unwrap()) {
+                    ensure!(
+                        (x - y).abs() <= tolerance + relative_tolerance * y.abs(),
+                        "next logits differ from full-prefix projection"
+                    );
+                }
                 ensure!(
                     expected.len() == actual.len(),
                     "parity sequence dimension mismatch"
@@ -251,15 +273,17 @@ fn main() -> Result<()> {
                     for (x, y) in a.iter().zip(b) {
                         ensure!(x.is_finite() && y.is_finite(), "nonfinite parity logits");
                         max_error = max_error.max((x - y).abs());
+                        failed +=
+                            usize::from((x - y).abs() > tolerance + relative_tolerance * y.abs());
                         count += 1;
                     }
                 }
             }
             println!(
                 "{}",
-                json!({"cases":cases.len(),"logits_compared":count,"max_absolute_error":max_error,"tolerance":tolerance,"passed":max_error<=tolerance})
+                json!({"cases":cases.len(),"logits_compared":count,"max_absolute_error":max_error,"tolerance":tolerance,"relative_tolerance":relative_tolerance,"failed_logits":failed,"passed":failed==0})
             );
-            ensure!(max_error <= tolerance, "Python/Rust logits parity failed");
+            ensure!(failed == 0, "Python/Rust logits parity failed");
             Ok(())
         }
         Commands::Evaluate {
