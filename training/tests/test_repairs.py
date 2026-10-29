@@ -1,5 +1,7 @@
 import hashlib
 import json
+import sys
+from types import ModuleType, SimpleNamespace
 import torch
 from torch.nn import functional as F
 import pytest
@@ -42,7 +44,10 @@ def test_repair_data_checks_hashes_and_uniform_group_mass(tmp_path):
 
 
 def test_preparation_excludes_parent_holdout_and_rejects_wrong_rollout_seeds(tmp_path,monkeypatch):
-    import sudachipy
+    sudachipy = ModuleType('sudachipy')
+    sudachipy.Dictionary = lambda: SimpleNamespace(tokenizer=lambda: None)
+    sudachipy.SplitMode = SimpleNamespace(C=object())
+    monkeypatch.setitem(sys.modules, 'sudachipy', sudachipy)
     import scripts.prepare_tatoeba
     monkeypatch.chdir(tmp_path)
     roots=[chr(0x4e00+i) for i in range(100)]
@@ -56,7 +61,6 @@ def test_preparation_excludes_parent_holdout_and_rejects_wrong_rollout_seeds(tmp
     def analyze(text,*_):
         return [segments[text[0]],segments['は'],segments[text[2:-1]],segments['。']]
     monkeypatch.setattr(scripts.prepare_tatoeba,'analyze',analyze)
-    monkeypatch.setattr(sudachipy,'Dictionary',lambda:type('Dummy',(),{'tokenizer':lambda self:None})())
     data=tmp_path/'data';data.mkdir()
     vocab=json.dumps(dict(tokens=[{}]*7+tokens),ensure_ascii=False).encode()
     (data/'vocab.json').write_bytes(vocab)
