@@ -21,3 +21,5 @@ checkpointは `build/checkpoints/stories-v2-diverse-3mb.pt`、データは `buil
 構造はcausal mask、pre-LayerNorm、GELU、tied embedding。PADを無視したnext-token cross entropyで学習し、validation lossでcheckpointを選択する。点検票とモデル・語彙・生成方針のhashが合わなければ採用しない。出典・容量・評価・再現条件は [3MBモデルの説明](../docs/three-mb-generation.md) を参照。
 
 語彙の偏りを抑える候補の学習・比較手順は[多様性改善](../docs/diversity.md)を参照。`lexical_balance` は学習splitのみから重みを計算し、文章自体を書き換えない。指定しない既存設定のサンプリング動作は従来どおり。
+
+最新の3MB実験は [小型モデルの改善実験](../docs/compact-generation-research.md)。`branch_balance` はtrainの同一prefixに対する次トークンの頻度から学習lossの重みを作る。推論ファイルには含めない。今回の設定では通常学習より改善せず、標準への採用は行っていない。

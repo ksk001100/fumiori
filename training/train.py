@@ -175,6 +175,11 @@ def train(config_path):
         parameters = model.parameters()
     optimizer = torch.optim.AdamW(parameters, lr=c["learning_rate"], weight_decay=c.get('weight_decay', 0.01))
     train_batch = tensor_batch(rows["train"], device)
+    token_weights, branch_metadata = None, None
+    if c.get('branch_balance') is not None:
+        from .branches import branch_weights
+        token_weights, branch_metadata = branch_weights(rows['train'], train_batch.shape[1], **c['branch_balance'])
+        token_weights = token_weights.to(device)
     if any(c.get(k) is not None for k in ('lexical_balance', 'topic_balance', 'corpus_mixture')) and not c.get('balance_difficulties', False):
         raise ValueError('lexical/topic balance requires balance_difficulties')
     weights = sampling_weights(rows['train'], c.get('lexical_balance'), c.get('topic_balance'), c.get('corpus_mixture')).to(device) if c.get('balance_difficulties', False) else None
@@ -225,8 +230,9 @@ def train(config_path):
             indices = torch.randperm(len(train_batch), device=device)[:batch_size] if len(train_batch) > batch_size else None
         sampled = train_batch if indices is None else train_batch[indices]
         context = noun_context(sampled, noun_ids, context_dropout) if context_dropout else None
+        sampled_token_weights = None if token_weights is None else (token_weights if indices is None else token_weights[indices])
         with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=use_bf16):
-            loss = loss_for(model, sampled, smoothing, context_ids=context)
+            loss = loss_for(model, sampled, smoothing, context_ids=context, token_weights=sampled_token_weights)
         if step % c.get("log_every", 50) == 0 or step == c["steps"]:
             model.eval()
             group_losses = {name:measured_loss(batch) for name,batch in validation_groups.items()} if validation_groups is not None else None
@@ -260,6 +266,7 @@ def train(config_path):
     if device.type == 'cuda':
         torch.cuda.synchronize(device)
     metadata = dict(training_device=str(device), device_name=device_name, cuda_version=torch.version.cuda, initialization=initialization,
+                    branch_balancing=branch_metadata,
                     peak_cuda_memory_bytes=torch.cuda.max_memory_allocated(device) if device.type == 'cuda' else None, selected_step=best_step if select_best else step,
                     best_validation_loss=best_validation_loss, stopped_early=stopped_early,
                     config=c, model_config=vars(model.config), vocab=vocab,

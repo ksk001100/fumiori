@@ -70,7 +70,8 @@ const path = require('node:path');
         }
         const sorted = [...ms].sort((a,b) => a-b);
         const manifest = JSON.parse(await fs.readFile(path.join(root, model, 'manifest.json'), 'utf8'));
-        timings.push({model, samples:count, difficulty:'normal', seed:42, generation_defaults:manifest.generation_defaults,
+        timings.push({model, samples:count, difficulty:'normal', seed:42,
+          generation_defaults:{temperature:0.8, top_p:0.9, history_size:16, ...manifest.generation_defaults},
           weights_sha256:manifest.weights_sha256, p50_ms:sorted[Math.floor((count-1)*.5)],
           p95_ms:sorted[Math.ceil((count-1)*.95)], all_ms:ms});
       }

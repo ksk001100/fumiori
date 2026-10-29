@@ -1,0 +1,950 @@
+{
+  "date": "2026-10-29",
+  "status": "Research only; no new model adopted",
+  "budget": {
+    "runtime_bytes": 3000000,
+    "normal_generation_ms": 100
+  },
+  "method": "Exact-prefix next-token branch balancing with train-only counts; clipped q/p token weights; no runtime table",
+  "models": {
+    "reference": {
+      "metrics": {
+        "requested": 600,
+        "success": 600,
+        "unique_texts": 530,
+        "unique_ratio": 0.8833333333333333,
+        "duplicate_count": 70,
+        "unique_cores": 530,
+        "core_duplicate_count": 70,
+        "novel_core_count": 220,
+        "novel_core_rate": 0.36666666666666664,
+        "by_difficulty": {
+          "easy": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 155,
+            "unique_ratio": 0.775,
+            "duplicate_count": 45,
+            "unique_cores": 155,
+            "core_duplicate_count": 45,
+            "novel_core_count": 23,
+            "novel_core_rate": 0.115
+          },
+          "normal": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 193,
+            "unique_ratio": 0.965,
+            "duplicate_count": 7,
+            "unique_cores": 193,
+            "core_duplicate_count": 7,
+            "novel_core_count": 118,
+            "novel_core_rate": 0.59
+          },
+          "hard": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 182,
+            "unique_ratio": 0.91,
+            "duplicate_count": 18,
+            "unique_cores": 182,
+            "core_duplicate_count": 18,
+            "novel_core_count": 79,
+            "novel_core_rate": 0.395
+          }
+        },
+        "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+      },
+      "common_reference": {
+        "path": "build\\everyday-v11-data\\train.jsonl",
+        "sha256": "03a39058030d7d10249749e2df325d357eb1ddb3bbce5bdb69d25a6e44574a1c",
+        "metrics": {
+          "requested": 600,
+          "success": 600,
+          "unique_texts": 530,
+          "unique_ratio": 0.8833333333333333,
+          "duplicate_count": 70,
+          "unique_cores": 530,
+          "core_duplicate_count": 70,
+          "novel_core_count": 240,
+          "novel_core_rate": 0.4,
+          "by_difficulty": {
+            "easy": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 155,
+              "unique_ratio": 0.775,
+              "duplicate_count": 45,
+              "unique_cores": 155,
+              "core_duplicate_count": 45,
+              "novel_core_count": 32,
+              "novel_core_rate": 0.16
+            },
+            "normal": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 193,
+              "unique_ratio": 0.965,
+              "duplicate_count": 7,
+              "unique_cores": 193,
+              "core_duplicate_count": 7,
+              "novel_core_count": 119,
+              "novel_core_rate": 0.595
+            },
+            "hard": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 182,
+              "unique_ratio": 0.91,
+              "duplicate_count": 18,
+              "unique_cores": 182,
+              "core_duplicate_count": 18,
+              "novel_core_count": 89,
+              "novel_core_rate": 0.445
+            }
+          },
+          "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+        }
+      },
+      "sampling": {
+        "start_temperature": null,
+        "temperature": 1.0,
+        "top_p": 0.949999988079071
+      },
+      "quality": {
+        "acceptable": 95,
+        "sample_count": 100,
+        "fairy_tale": 0
+      },
+      "review_novel_count": 39,
+      "review_novel_acceptable_count": 34,
+      "weights_sha256": "c5ca389007a4e33f157b7a0a7ceb0aa036ddebefd111f9e0cba405faee84b057",
+      "seed_start": 730000,
+      "seed_end": 730599,
+      "history_size": 0,
+      "union_reference": {
+        "description": "Absent from the union of original v3 and compact v11 task-training texts after body normalization",
+        "novel_core_count": 220,
+        "novel_core_rate": 0.36666666666666664
+      }
+    },
+    "ce": {
+      "metrics": {
+        "requested": 600,
+        "success": 600,
+        "unique_texts": 594,
+        "unique_ratio": 0.99,
+        "duplicate_count": 6,
+        "unique_cores": 594,
+        "core_duplicate_count": 6,
+        "novel_core_count": 494,
+        "novel_core_rate": 0.8233333333333334,
+        "by_difficulty": {
+          "easy": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 194,
+            "unique_ratio": 0.97,
+            "duplicate_count": 6,
+            "unique_cores": 194,
+            "core_duplicate_count": 6,
+            "novel_core_count": 128,
+            "novel_core_rate": 0.64
+          },
+          "normal": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 200,
+            "unique_ratio": 1.0,
+            "duplicate_count": 0,
+            "unique_cores": 200,
+            "core_duplicate_count": 0,
+            "novel_core_count": 184,
+            "novel_core_rate": 0.92
+          },
+          "hard": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 200,
+            "unique_ratio": 1.0,
+            "duplicate_count": 0,
+            "unique_cores": 200,
+            "core_duplicate_count": 0,
+            "novel_core_count": 182,
+            "novel_core_rate": 0.91
+          }
+        },
+        "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+      },
+      "common_reference": {
+        "path": "build\\everyday-v3-data\\train.jsonl",
+        "sha256": "2cfd8b8e9cdba22ccb8c32bc289883221da0af07ed860a4998431fd6063450cb",
+        "metrics": {
+          "requested": 600,
+          "success": 600,
+          "unique_texts": 594,
+          "unique_ratio": 0.99,
+          "duplicate_count": 6,
+          "unique_cores": 594,
+          "core_duplicate_count": 6,
+          "novel_core_count": 544,
+          "novel_core_rate": 0.9066666666666666,
+          "by_difficulty": {
+            "easy": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 194,
+              "unique_ratio": 0.97,
+              "duplicate_count": 6,
+              "unique_cores": 194,
+              "core_duplicate_count": 6,
+              "novel_core_count": 168,
+              "novel_core_rate": 0.84
+            },
+            "normal": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 200,
+              "unique_ratio": 1.0,
+              "duplicate_count": 0,
+              "unique_cores": 200,
+              "core_duplicate_count": 0,
+              "novel_core_count": 193,
+              "novel_core_rate": 0.965
+            },
+            "hard": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 200,
+              "unique_ratio": 1.0,
+              "duplicate_count": 0,
+              "unique_cores": 200,
+              "core_duplicate_count": 0,
+              "novel_core_count": 183,
+              "novel_core_rate": 0.915
+            }
+          },
+          "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+        }
+      },
+      "sampling": {
+        "start_temperature": null,
+        "temperature": 0.800000011920929,
+        "top_p": 0.949999988079071
+      },
+      "quality": {
+        "acceptable": 64,
+        "sample_count": 100,
+        "fairy_tale": 0
+      },
+      "review_novel_count": 84,
+      "review_novel_acceptable_count": 48,
+      "weights_sha256": "f388a6f4ac63918e4d6e3e200275cd1c03b49c2e64efc156e761d2fb8e9cf506",
+      "seed_start": 730000,
+      "seed_end": 730599,
+      "history_size": 0,
+      "runtime_bytes": 2527477,
+      "selected_step": 5000,
+      "training_seconds": 92.2033764000007,
+      "selection_validation_loss": 2.576391625852818,
+      "training_config": {
+        "seed": 42,
+        "device": "cuda",
+        "precision": "bf16",
+        "threads": 2,
+        "data_dir": "build/everyday-v11-data",
+        "allow_auto_aligned": true,
+        "steps": 5000,
+        "batch_size": 128,
+        "log_every": 500,
+        "learning_rate": 0.001,
+        "select_best_validation": true,
+        "early_stopping_patience": 5,
+        "validation_min_delta": 0.0001,
+        "balance_difficulties": true,
+        "weight_decay": 0.1,
+        "model": {
+          "d_model": 128,
+          "n_heads": 4,
+          "n_layers": 4,
+          "d_ff": 384,
+          "max_seq_len": 64,
+          "dropout": 0.1
+        },
+        "lr_schedule": "cosine",
+        "warmup_steps": 200,
+        "min_lr_ratio": 0.1,
+        "train_loss_samples": 2048,
+        "corpus_mixture": {
+          "tatoeba": 0.65,
+          "teacher": 0.15,
+          "everyday": 0.15,
+          "paired": 0.05
+        },
+        "validation_corpus_mixture": {
+          "tatoeba": 0.65,
+          "teacher": 0.15,
+          "everyday": 0.15,
+          "paired": 0.05
+        },
+        "checkpoint": "build/checkpoints/everyday-v11-ce.pt"
+      },
+      "union_reference": {
+        "description": "Absent from the union of original v3 and compact v11 task-training texts after body normalization",
+        "novel_core_count": 494,
+        "novel_core_rate": 0.8233333333333334
+      }
+    },
+    "branch": {
+      "metrics": {
+        "requested": 600,
+        "success": 600,
+        "unique_texts": 593,
+        "unique_ratio": 0.9883333333333333,
+        "duplicate_count": 7,
+        "unique_cores": 593,
+        "core_duplicate_count": 7,
+        "novel_core_count": 459,
+        "novel_core_rate": 0.765,
+        "by_difficulty": {
+          "easy": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 194,
+            "unique_ratio": 0.97,
+            "duplicate_count": 6,
+            "unique_cores": 194,
+            "core_duplicate_count": 6,
+            "novel_core_count": 113,
+            "novel_core_rate": 0.565
+          },
+          "normal": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 200,
+            "unique_ratio": 1.0,
+            "duplicate_count": 0,
+            "unique_cores": 200,
+            "core_duplicate_count": 0,
+            "novel_core_count": 174,
+            "novel_core_rate": 0.87
+          },
+          "hard": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 199,
+            "unique_ratio": 0.995,
+            "duplicate_count": 1,
+            "unique_cores": 199,
+            "core_duplicate_count": 1,
+            "novel_core_count": 172,
+            "novel_core_rate": 0.86
+          }
+        },
+        "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+      },
+      "common_reference": {
+        "path": "build\\everyday-v3-data\\train.jsonl",
+        "sha256": "2cfd8b8e9cdba22ccb8c32bc289883221da0af07ed860a4998431fd6063450cb",
+        "metrics": {
+          "requested": 600,
+          "success": 600,
+          "unique_texts": 593,
+          "unique_ratio": 0.9883333333333333,
+          "duplicate_count": 7,
+          "unique_cores": 593,
+          "core_duplicate_count": 7,
+          "novel_core_count": 534,
+          "novel_core_rate": 0.89,
+          "by_difficulty": {
+            "easy": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 194,
+              "unique_ratio": 0.97,
+              "duplicate_count": 6,
+              "unique_cores": 194,
+              "core_duplicate_count": 6,
+              "novel_core_count": 167,
+              "novel_core_rate": 0.835
+            },
+            "normal": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 200,
+              "unique_ratio": 1.0,
+              "duplicate_count": 0,
+              "unique_cores": 200,
+              "core_duplicate_count": 0,
+              "novel_core_count": 195,
+              "novel_core_rate": 0.975
+            },
+            "hard": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 199,
+              "unique_ratio": 0.995,
+              "duplicate_count": 1,
+              "unique_cores": 199,
+              "core_duplicate_count": 1,
+              "novel_core_count": 172,
+              "novel_core_rate": 0.86
+            }
+          },
+          "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+        }
+      },
+      "sampling": {
+        "start_temperature": null,
+        "temperature": 0.800000011920929,
+        "top_p": 0.949999988079071
+      },
+      "quality": {
+        "acceptable": 64,
+        "sample_count": 100,
+        "fairy_tale": 0
+      },
+      "review_novel_count": 76,
+      "review_novel_acceptable_count": 40,
+      "weights_sha256": "f597b5c1633cfc946c24cad0fc4e6a1c4fce49ba923a865e8761de530d98c79c",
+      "seed_start": 730000,
+      "seed_end": 730599,
+      "history_size": 0,
+      "runtime_bytes": 2527477,
+      "selected_step": 5000,
+      "training_seconds": 146.72053120000055,
+      "selection_validation_loss": 2.6475558208164856,
+      "training_config": {
+        "seed": 42,
+        "device": "cuda",
+        "precision": "bf16",
+        "threads": 2,
+        "data_dir": "build/everyday-v11-data",
+        "allow_auto_aligned": true,
+        "steps": 5000,
+        "batch_size": 128,
+        "log_every": 500,
+        "learning_rate": 0.001,
+        "select_best_validation": true,
+        "early_stopping_patience": 5,
+        "validation_min_delta": 0.0001,
+        "balance_difficulties": true,
+        "weight_decay": 0.1,
+        "model": {
+          "d_model": 128,
+          "n_heads": 4,
+          "n_layers": 4,
+          "d_ff": 384,
+          "max_seq_len": 64,
+          "dropout": 0.1
+        },
+        "lr_schedule": "cosine",
+        "warmup_steps": 200,
+        "min_lr_ratio": 0.1,
+        "train_loss_samples": 2048,
+        "corpus_mixture": {
+          "tatoeba": 0.65,
+          "teacher": 0.15,
+          "everyday": 0.15,
+          "paired": 0.05
+        },
+        "validation_corpus_mixture": {
+          "tatoeba": 0.65,
+          "teacher": 0.15,
+          "everyday": 0.15,
+          "paired": 0.05
+        },
+        "checkpoint": "build/checkpoints/everyday-v11-branch.pt",
+        "branch_balance": {
+          "strength": 0.5,
+          "max_ratio": 4.0
+        }
+      },
+      "branch_balancing": {
+        "prefixes": 361843,
+        "branching_prefixes": 17854,
+        "strength": 0.5,
+        "max_ratio": 4.0,
+        "provenance": "train split only; exact full prefixes; not deployed"
+      },
+      "union_reference": {
+        "description": "Absent from the union of original v3 and compact v11 task-training texts after body normalization",
+        "novel_core_count": 459,
+        "novel_core_rate": 0.765
+      }
+    },
+    "quality": {
+      "metrics": {
+        "requested": 600,
+        "success": 600,
+        "unique_texts": 557,
+        "unique_ratio": 0.9283333333333333,
+        "duplicate_count": 43,
+        "unique_cores": 557,
+        "core_duplicate_count": 43,
+        "novel_core_count": 339,
+        "novel_core_rate": 0.565,
+        "by_difficulty": {
+          "easy": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 167,
+            "unique_ratio": 0.835,
+            "duplicate_count": 33,
+            "unique_cores": 167,
+            "core_duplicate_count": 33,
+            "novel_core_count": 42,
+            "novel_core_rate": 0.21
+          },
+          "normal": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 194,
+            "unique_ratio": 0.97,
+            "duplicate_count": 6,
+            "unique_cores": 194,
+            "core_duplicate_count": 6,
+            "novel_core_count": 133,
+            "novel_core_rate": 0.665
+          },
+          "hard": {
+            "requested": 200,
+            "success": 200,
+            "unique_texts": 196,
+            "unique_ratio": 0.98,
+            "duplicate_count": 4,
+            "unique_cores": 196,
+            "core_duplicate_count": 4,
+            "novel_core_count": 164,
+            "novel_core_rate": 0.82
+          }
+        },
+        "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+      },
+      "common_reference": {
+        "path": "build\\everyday-v3-data\\train.jsonl",
+        "sha256": "2cfd8b8e9cdba22ccb8c32bc289883221da0af07ed860a4998431fd6063450cb",
+        "metrics": {
+          "requested": 600,
+          "success": 600,
+          "unique_texts": 557,
+          "unique_ratio": 0.9283333333333333,
+          "duplicate_count": 43,
+          "unique_cores": 557,
+          "core_duplicate_count": 43,
+          "novel_core_count": 485,
+          "novel_core_rate": 0.8083333333333333,
+          "by_difficulty": {
+            "easy": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 167,
+              "unique_ratio": 0.835,
+              "duplicate_count": 33,
+              "unique_cores": 167,
+              "core_duplicate_count": 33,
+              "novel_core_count": 141,
+              "novel_core_rate": 0.705
+            },
+            "normal": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 194,
+              "unique_ratio": 0.97,
+              "duplicate_count": 6,
+              "unique_cores": 194,
+              "core_duplicate_count": 6,
+              "novel_core_count": 171,
+              "novel_core_rate": 0.855
+            },
+            "hard": {
+              "requested": 200,
+              "success": 200,
+              "unique_texts": 196,
+              "unique_ratio": 0.98,
+              "duplicate_count": 4,
+              "unique_cores": 196,
+              "core_duplicate_count": 4,
+              "novel_core_count": 173,
+              "novel_core_rate": 0.865
+            }
+          },
+          "novelty_scope": "Normalized body absent from task-training file; upstream pretraining membership is unknown. Quality is unjudged."
+        }
+      },
+      "sampling": {
+        "start_temperature": null,
+        "temperature": 0.800000011920929,
+        "top_p": 0.949999988079071
+      },
+      "quality": {
+        "acceptable": 84,
+        "sample_count": 100,
+        "fairy_tale": 0
+      },
+      "review_novel_count": 56,
+      "review_novel_acceptable_count": 41,
+      "weights_sha256": "27c9cb3d6a85741373bdf543d947ce8d18e104e9c82b25bb33d60b559ebdbda7",
+      "seed_start": 730000,
+      "seed_end": 730599,
+      "history_size": 0,
+      "runtime_bytes": 2528978,
+      "selected_step": 250,
+      "training_seconds": 48.14186020000125,
+      "selection_validation_loss": 1.995342290989071,
+      "training_config": {
+        "seed": 42,
+        "device": "cuda",
+        "precision": "bf16",
+        "threads": 2,
+        "data_dir": "build/everyday-v11-data",
+        "allow_auto_aligned": true,
+        "steps": 2500,
+        "batch_size": 128,
+        "log_every": 250,
+        "learning_rate": 0.0002,
+        "select_best_validation": true,
+        "early_stopping_patience": 5,
+        "validation_min_delta": 0.0001,
+        "balance_difficulties": true,
+        "weight_decay": 0.1,
+        "model": {
+          "d_model": 128,
+          "n_heads": 4,
+          "n_layers": 4,
+          "d_ff": 384,
+          "max_seq_len": 64,
+          "dropout": 0.1
+        },
+        "lr_schedule": "cosine",
+        "warmup_steps": 100,
+        "min_lr_ratio": 0.1,
+        "train_loss_samples": 2048,
+        "corpus_mixture": {
+          "tatoeba": 0.1,
+          "teacher": 0.55,
+          "everyday": 0.3,
+          "paired": 0.05
+        },
+        "validation_corpus_mixture": {
+          "tatoeba": 0.1,
+          "teacher": 0.55,
+          "everyday": 0.3,
+          "paired": 0.05
+        },
+        "checkpoint": "build/checkpoints/everyday-v11-quality.pt",
+        "initialize_from": "build/everyday-v11-data/ce-initialization.pt"
+      },
+      "union_reference": {
+        "description": "Absent from the union of original v3 and compact v11 task-training texts after body normalization",
+        "novel_core_count": 339,
+        "novel_core_rate": 0.565
+      }
+    }
+  },
+  "corpus_manifest": {
+    "description": "Train-only paired word vocabulary for compact neural generation",
+    "source": {
+      "dataset": "Tatoeba Japanese",
+      "dataset_url": "https://tatoeba.org/en/downloads",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Tatoeba.org and its contributors",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "files": {
+        "jpn_sentences_detailed.tsv.bz2": {
+          "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences_detailed.tsv.bz2",
+          "bytes": 4462126,
+          "sha256": "e305ecf638ab24cd57b0b5f9fcdc342267ef4a3fdb19c71621f1a49baaf6d84f"
+        },
+        "jpn_transcriptions.tsv.bz2": {
+          "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_transcriptions.tsv.bz2",
+          "bytes": 4280771,
+          "sha256": "dc7a9059f4e1d25aad8e7884266887509ad0dbfb18384e87076ca947ce273be3"
+        }
+      },
+      "note": "Public weekly export; contributor names and sentence IDs retained in prepared data. Transcriptions without a username are not marked reviewed by Tatoeba."
+    },
+    "dictionary": {
+      "name": "SudachiDict-core",
+      "version": "20261015",
+      "analyzer": "0.7.0",
+      "license": "Apache-2.0",
+      "url": "https://github.com/WorksApplications/SudachiDict"
+    },
+    "splits": {
+      "train": 59599,
+      "validation": 3040,
+      "test": 2940,
+      "family-test": 152
+    },
+    "split_sha256": {
+      "train.jsonl": "03a39058030d7d10249749e2df325d357eb1ddb3bbce5bdb69d25a6e44574a1c",
+      "validation.jsonl": "0ad57bf69e331835129130ed70a38211f86c611052a0f774b8a9b09bcd04b1e2",
+      "test.jsonl": "9002b2a22cb4f12654b9010421c49431517b37ff130c2a23a2607ed0b1cdfbca",
+      "family-test.jsonl": "5ee7908aac9d53f39be46f46f22c06d998a2d288315fc8118bd47c24f2eed5db"
+    },
+    "vocab_sha256": "5191ec3cc63fd68612181079a63228e37a84303cd34ee6b0c5e34004255f1dbe",
+    "stats": {
+      "unknown_proper_or_grammar": 73854,
+      "reading_disagreement": 26520,
+      "shape_or_missing_transcription": 23030,
+      "length_or_reading_shape": 6657,
+      "duplicate_or_protected": 203,
+      "vocabulary_filtered_train": 58475,
+      "vocabulary_filtered_test": 1950,
+      "vocabulary_filtered_validation": 2092,
+      "vocabulary_filtered_family-test": 148
+    },
+    "source_generator_sha256": "31ea0772c8ee0d426b189412c31fd26a009eb06cb8e078b7f78c79ac5a84e790",
+    "split_strategy": "Normalized bodies partitioned by SHA256 before train-only vocabulary selection; older held-out bodies protected",
+    "independent_human_review": "pending",
+    "parent_manifest_sha256": "93925d1f63fd31988396de3c1fc0017b5716a9b2acb2d7d3c4abf36def6f843e",
+    "subword_preparation_stats": {
+      "lexical_boundary_train": 2681,
+      "unrepresentable_train": 80,
+      "lexical_boundary_validation": 76,
+      "unrepresentable_validation": 15,
+      "lexical_boundary_test": 76,
+      "unrepresentable_test": 13
+    },
+    "synthetic_sources": [
+      {
+        "teacher": {
+          "model": "llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "revision": "f19510db409090bb1737f24f868d17c4bdc86c8e",
+          "license": "Apache-2.0",
+          "authors": "LLM-jp",
+          "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "role": "offline training teacher only; never packaged for application inference",
+          "files": {
+            "config.json": {
+              "bytes": 720,
+              "sha256": "ccddfc0fe467edcd90f3b250bc9043788b108d0105fe15e90b9b97900bc10bca",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/config.json"
+            },
+            "generation_config.json": {
+              "bytes": 111,
+              "sha256": "ae9c013449dab45501dd67d85b191b5d6068339c2eefd071cf542e04e71f1511",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/generation_config.json"
+            },
+            "model.safetensors": {
+              "bytes": 3735253776,
+              "sha256": "a5608664cb63ed2ee32c26ecdcf88d12f7ed8b45230761b96b857aa64ef65ed3",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/model.safetensors"
+            },
+            "tokenizer.json": {
+              "bytes": 6409995,
+              "sha256": "d0fcf4e1e7a08e855273824678363335b0cd707937332ec1cc48eee259065219",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer.json"
+            },
+            "tokenizer_config.json": {
+              "bytes": 2397,
+              "sha256": "0301e48490b6834df0661966aa8beb9236104e248b8b771b64b773537edb8ca1",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer_config.json"
+            },
+            "special_tokens_map.json": {
+              "bytes": 996,
+              "sha256": "26a314575f93e92920df4aacab5af1d6fe5f7f5bb5fc9c8cef2fd738259ec5ab",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/special_tokens_map.json"
+            },
+            "README.md": {
+              "bytes": 14748,
+              "sha256": "100e1b56d9a7ee0653315fe6b665e9f9839054eaae0ccf41f8f2a3b8e74aece4",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/README.md"
+            }
+          }
+        },
+        "generation": {
+          "seed": 671003,
+          "offset": 72,
+          "requests": 720,
+          "batch_size": 16,
+          "temperature": 0.85,
+          "top_p": 0.95,
+          "repetition_penalty": 1.05,
+          "max_new_tokens": 192
+        },
+        "source_script_sha256": "796a96aec57252fa6784119b458774b8304aa216ffeaea3358de0b7c8b15781b",
+        "fewshot_training_sha256": "83a03921891e29159ffadd9c7e7f25c4ad128186dbcc48df991c76087c2bc9e7",
+        "raw_sha256": "f2d9fe6586ae88c7ce09750cdd115d9580ccd1b4815e83552ae80efb5d6bdc97",
+        "quality": "synthetic; not independently reviewed",
+        "inference_use": "none; prompts and teacher never used by deployed student"
+      }
+    ],
+    "teacher_preparation_stats": {
+      "raw_sentences": 5153,
+      "duplicate_or_existing_body": 529,
+      "unrepresented_subword": 420,
+      "kana_length": 250,
+      "dictionary_or_boundary": 1216,
+      "accepted_train": 2451,
+      "accepted_3": 438,
+      "word_not_in_training_lexicon_test": 29,
+      "accepted_4": 905,
+      "accepted_5": 1333,
+      "accepted_test": 100,
+      "accepted_validation": 125,
+      "word_not_in_training_lexicon_validation": 33
+    },
+    "new_dictionary_words": 902,
+    "teacher_split_strategy": "SHA256 normalized body: 90% train/5% validation/5% test; all prior bodies excluded",
+    "compact_word_stats": {
+      "train.jsonl": {
+        "input": 59599,
+        "kept": 59599,
+        "rejected": {}
+      },
+      "validation.jsonl": {
+        "input": 3045,
+        "kept": 3040,
+        "rejected": {
+          "unseen_word": 5
+        }
+      },
+      "test.jsonl": {
+        "input": 2944,
+        "kept": 2940,
+        "rejected": {
+          "unseen_word": 4
+        }
+      },
+      "family-test.jsonl": {
+        "input": 152,
+        "kept": 152,
+        "rejected": {}
+      }
+    }
+  },
+  "corpus_manifest_sha256": "86c63a67c6e77c51f6870c47a4f7ecf10e2649bccbbd9ea195926d9be79d01ad",
+  "native_bench": {
+    "binary_bytes": 3859968,
+    "cold_load_ms": 18.8629,
+    "environment": {
+      "arch": "x86_64",
+      "build_mode": "release",
+      "cpu": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+      "os": "windows",
+      "peak_rss_bytes": null,
+      "peak_rss_note": "not measured",
+      "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)"
+    },
+    "failures": 0,
+    "fallback_count": 0,
+    "files_bytes": {
+      "LICENSE": 14460,
+      "manifest.json": 1897,
+      "model-config.json": 203,
+      "model.safetensors": 1873528,
+      "vocab.json": 638890
+    },
+    "first_generation_ms": 25.2369,
+    "forward_sampled_tokens": 300,
+    "forward_sampled_tokens_per_second": 378.1499417460015,
+    "model_count": 30,
+    "rejected_attempts": 0,
+    "samples": 30,
+    "warm_p50_ms": 24.0265,
+    "warm_p95_ms": 39.0552
+  },
+  "native_bench_protocol": "Same seed 42 repeated 30 times; history=0; temperature .8 top_p .9; load separate; exploratory only",
+  "browser_bench": {
+    "browser": "156.0.4314.50",
+    "measurement": "Web Worker generation_ms; model load excluded; configured history retained",
+    "timings": [
+      {
+        "model": "model-int8",
+        "samples": 30,
+        "difficulty": "normal",
+        "seed": 42,
+        "generation_defaults": {
+          "temperature": 0.8,
+          "top_p": 0.95,
+          "history_size": 16
+        },
+        "weights_sha256": "5dd650cb062798a43a841dd26ef1d450902255e1c0a587a76cc95a39576a028b",
+        "p50_ms": 20.59999999962747,
+        "p95_ms": 30.399999998509884,
+        "all_ms": [
+          16.59999999962747,
+          15.899999998509884,
+          32.5,
+          20.300000000745058,
+          28.90000000037253,
+          12.699999999254942,
+          15.399999998509884,
+          26,
+          29.800000000745058,
+          16,
+          21.700000001117587,
+          25.799999998882413,
+          15.900000000372529,
+          18.300000000745058,
+          16.100000001490116,
+          20.59999999962747,
+          20.699999999254942,
+          18.90000000037253,
+          15.800000000745058,
+          19.300000000745058,
+          18.799999998882413,
+          29.40000000037253,
+          23.59999999962747,
+          11.300000000745058,
+          24.40000000037253,
+          26.200000001117587,
+          21.199999999254942,
+          21.40000000037253,
+          20.90000000037253,
+          30.399999998509884
+        ]
+      },
+      {
+        "model": "model-experimental",
+        "samples": 30,
+        "difficulty": "normal",
+        "seed": 42,
+        "generation_defaults": {
+          "temperature": 0.8,
+          "top_p": 0.9,
+          "history_size": 16
+        },
+        "weights_sha256": "27c9cb3d6a85741373bdf543d947ce8d18e104e9c82b25bb33d60b559ebdbda7",
+        "p50_ms": 13.699999999254942,
+        "p95_ms": 20.5,
+        "all_ms": [
+          13.700000001117587,
+          13.5,
+          12.599999999627471,
+          13,
+          19.5,
+          11.400000000372529,
+          13.700000001117587,
+          13.400000000372529,
+          20.200000001117587,
+          13,
+          19.300000000745058,
+          13.299999998882413,
+          14.300000000745058,
+          17.59999999962747,
+          19.90000000037253,
+          20.5,
+          13.599999999627471,
+          12,
+          13,
+          19.59999999962747,
+          12.800000000745058,
+          27.5,
+          12.900000000372529,
+          14.400000000372529,
+          12.399999998509884,
+          15.099999999627471,
+          13.899999998509884,
+          12.899999998509884,
+          13.699999999254942,
+          18.40000000037253
+        ]
+      }
+    ]
+  },
+  "browser_bench_protocol": "Isolated build/v11-preview; not live demo. Normal30 requests; history16, temperature .8 top_p .9; warm generation_ms excludes load/UI; limited to this machine",
+  "adoption": "Rejected: all new candidates fail naturalness threshold; branch experiment does not outperform matched CE. Standard v2 and demo v3 retained."
+}

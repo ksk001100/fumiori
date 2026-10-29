@@ -1,0 +1,917 @@
+{
+  "sample_indices": [
+    10,
+    15,
+    19,
+    41,
+    86,
+    89,
+    94,
+    103,
+    104,
+    107,
+    124,
+    129,
+    132,
+    135,
+    137,
+    138,
+    150,
+    154,
+    167,
+    172,
+    173,
+    179,
+    185,
+    190,
+    193,
+    200,
+    203,
+    206,
+    219,
+    227,
+    231,
+    236,
+    240,
+    247,
+    250,
+    252,
+    261,
+    265,
+    267,
+    271,
+    276,
+    277,
+    286,
+    290,
+    293,
+    298,
+    302,
+    314,
+    315,
+    320,
+    326,
+    336,
+    341,
+    344,
+    348,
+    357,
+    371,
+    378,
+    383,
+    394,
+    405,
+    412,
+    416,
+    427,
+    432,
+    433,
+    434,
+    441,
+    445,
+    448,
+    450,
+    451,
+    453,
+    455,
+    456,
+    459,
+    469,
+    471,
+    478,
+    483,
+    485,
+    487,
+    492,
+    498,
+    500,
+    512,
+    518,
+    520,
+    523,
+    526,
+    528,
+    529,
+    531,
+    535,
+    546,
+    552,
+    553,
+    562,
+    591,
+    594
+  ],
+  "selection_seed": 20261029,
+  "selection": "Uniform random 100 of 600 before inspecting candidate outputs",
+  "reviewer": "Codex; not independent human review",
+  "weights_sha256": "f597b5c1633cfc946c24cad0fc4e6a1c4fce49ba923a865e8761de530d98c79c",
+  "report_sha256": "e1c03c649292c1b089903395724b44ecdc4089eeeb043d723c8adede535d8fd0",
+  "policy": "Inspect all selected texts and kana; reject broken grammar, awkward collocations, incoherent connections, redundant fragments. Contextual ambiguity remains; not independent human review. Nature topics allowed.",
+  "ratings": [
+    {
+      "sample_index": 10,
+      "seed": 730010,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "中の中の不要な重複"
+    },
+    {
+      "sample_index": 15,
+      "seed": 730015,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 19,
+      "seed": 730019,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "風が豊かなで文が未完"
+    },
+    {
+      "sample_index": 41,
+      "seed": 730041,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "心がテーブルに入る、意味接続"
+    },
+    {
+      "sample_index": 86,
+      "seed": 730086,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "すみませんが事故は広まった、接続と語の相性"
+    },
+    {
+      "sample_index": 89,
+      "seed": 730089,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 94,
+      "seed": 730094,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 103,
+      "seed": 730103,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "すてきな臭い、表記と語の相性"
+    },
+    {
+      "sample_index": 104,
+      "seed": 730104,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 107,
+      "seed": 730107,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 124,
+      "seed": 730124,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 129,
+      "seed": 730129,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 132,
+      "seed": 730132,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 135,
+      "seed": 730135,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 137,
+      "seed": 730137,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 138,
+      "seed": 730138,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 150,
+      "seed": 730150,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 154,
+      "seed": 730154,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "道は全焼した、語の相性"
+    },
+    {
+      "sample_index": 167,
+      "seed": 730167,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 172,
+      "seed": 730172,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 173,
+      "seed": 730173,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 179,
+      "seed": 730179,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "会員は不注意だった、主題と述語の不一致"
+    },
+    {
+      "sample_index": 185,
+      "seed": 730185,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "自分の多くの人々をもらう、意味破綻"
+    },
+    {
+      "sample_index": 190,
+      "seed": 730190,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 193,
+      "seed": 730193,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 200,
+      "seed": 730200,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 203,
+      "seed": 730203,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "結局・ものだの接続と金への不自然な述語"
+    },
+    {
+      "sample_index": 206,
+      "seed": 730206,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "サンタさんは僕に彼女の会ったら、文法破綻"
+    },
+    {
+      "sample_index": 219,
+      "seed": 730219,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 227,
+      "seed": 730227,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "十分に調査の問題、接続の誤り"
+    },
+    {
+      "sample_index": 231,
+      "seed": 730231,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 236,
+      "seed": 730236,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 240,
+      "seed": 730240,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "どうせが好き、格の誤り"
+    },
+    {
+      "sample_index": 247,
+      "seed": 730247,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "行為は簡単だという不自然な語の組合せ"
+    },
+    {
+      "sample_index": 250,
+      "seed": 730250,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "パンはバターの手に負えない、意味破綻"
+    },
+    {
+      "sample_index": 252,
+      "seed": 730252,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 261,
+      "seed": 730261,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 265,
+      "seed": 730265,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "怒りの煙が内部に変わる、意味破綻"
+    },
+    {
+      "sample_index": 267,
+      "seed": 730267,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "歯を拭く、通常の文脈で不自然な語の組合せ"
+    },
+    {
+      "sample_index": 271,
+      "seed": 730271,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 276,
+      "seed": 730276,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 277,
+      "seed": 730277,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "一人にしなさいといけない、接続の誤り"
+    },
+    {
+      "sample_index": 286,
+      "seed": 730286,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 290,
+      "seed": 730290,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 293,
+      "seed": 730293,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "船のふもと、語の相性"
+    },
+    {
+      "sample_index": 298,
+      "seed": 730298,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 302,
+      "seed": 730302,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "食べるあと、文法と述語の誤り"
+    },
+    {
+      "sample_index": 314,
+      "seed": 730314,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 315,
+      "seed": 730315,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 320,
+      "seed": 730320,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 326,
+      "seed": 730326,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "少し特にありません・お互いに暇、接続の誤り"
+    },
+    {
+      "sample_index": 336,
+      "seed": 730336,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "作物は楽しかった、意味接続"
+    },
+    {
+      "sample_index": 341,
+      "seed": 730341,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 344,
+      "seed": 730344,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 348,
+      "seed": 730348,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 357,
+      "seed": 730357,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "濡れた手が空っぽ、語の相性"
+    },
+    {
+      "sample_index": 371,
+      "seed": 730371,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 378,
+      "seed": 730378,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 383,
+      "seed": 730383,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "助言を求めて興奮したが現れなかった、不自然な意味接続"
+    },
+    {
+      "sample_index": 394,
+      "seed": 730394,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 405,
+      "seed": 730405,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 412,
+      "seed": 730412,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 416,
+      "seed": 730416,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 427,
+      "seed": 730427,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "町を待っている時になります、意味接続"
+    },
+    {
+      "sample_index": 432,
+      "seed": 730432,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 433,
+      "seed": 730433,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "下がったまでいけない、接続の誤り"
+    },
+    {
+      "sample_index": 434,
+      "seed": 730434,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 441,
+      "seed": 730441,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 445,
+      "seed": 730445,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "ジュースを飲むと牛乳が切れた、不自然な接続"
+    },
+    {
+      "sample_index": 448,
+      "seed": 730448,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 450,
+      "seed": 730450,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 451,
+      "seed": 730451,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 453,
+      "seed": 730453,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 455,
+      "seed": 730455,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "翻訳は同意した、文法破綻"
+    },
+    {
+      "sample_index": 456,
+      "seed": 730456,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 459,
+      "seed": 730459,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 469,
+      "seed": 730469,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "子供を聞く、語の相性"
+    },
+    {
+      "sample_index": 471,
+      "seed": 730471,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "昔が来た、意味接続"
+    },
+    {
+      "sample_index": 478,
+      "seed": 730478,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "心に気にする、重複した接続"
+    },
+    {
+      "sample_index": 483,
+      "seed": 730483,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 485,
+      "seed": 730485,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "タクシーを待つように仕事に没頭、比況の不整合"
+    },
+    {
+      "sample_index": 487,
+      "seed": 730487,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 492,
+      "seed": 730492,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "今より雨は降った、不自然な比較"
+    },
+    {
+      "sample_index": 498,
+      "seed": 730498,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 500,
+      "seed": 730500,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 512,
+      "seed": 730512,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 518,
+      "seed": 730518,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "ご実行しなければなりませんかんだ、文法破綻"
+    },
+    {
+      "sample_index": 520,
+      "seed": 730520,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 523,
+      "seed": 730523,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "家がいつ来たか、意味接続"
+    },
+    {
+      "sample_index": 526,
+      "seed": 730526,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 528,
+      "seed": 730528,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 529,
+      "seed": 730529,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "ピクニックに行くため本を読む、目的との接続が不自然"
+    },
+    {
+      "sample_index": 531,
+      "seed": 730531,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 535,
+      "seed": 730535,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 546,
+      "seed": 730546,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 552,
+      "seed": 730552,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 553,
+      "seed": 730553,
+      "natural": false,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": "こんなにクモのようなアニメ、不自然な修飾"
+    },
+    {
+      "sample_index": 562,
+      "seed": 730562,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 591,
+      "seed": 730591,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    },
+    {
+      "sample_index": 594,
+      "seed": 730594,
+      "natural": true,
+      "reading_ok": true,
+      "fairy_tale": false,
+      "notes": ""
+    }
+  ],
+  "summary": {
+    "acceptable": 64,
+    "sample_count": 100,
+    "fairy_tale": 0
+  }
+}

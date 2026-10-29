@@ -96,8 +96,17 @@ def make_model(config):
     return Transformer(config)
 
 
-def loss_for(model, batch, label_smoothing=0.0, context_ids=None):
+def loss_for(model, batch, label_smoothing=0.0, context_ids=None, token_weights=None):
     logits = model(batch[:, :-1] if context_ids is None else context_ids)
+    if token_weights is not None:
+        if token_weights.shape != batch[:, 1:].shape or not torch.isfinite(token_weights).all() or (token_weights < 0).any():
+            raise ValueError('invalid per-token training weights')
+        weights = token_weights.masked_fill(batch[:, 1:] == 2, 0)
+        if not weights.sum() > 0:
+            raise ValueError('empty weighted token batch')
+        losses = F.cross_entropy(logits.transpose(1, 2), batch[:, 1:], ignore_index=2,
+                                label_smoothing=label_smoothing, reduction='none')
+        return (losses * weights).sum() / weights.sum()
     return F.cross_entropy(logits.reshape(-1, logits.shape[-1]), batch[:, 1:].reshape(-1), ignore_index=2,
                            label_smoothing=label_smoothing)
 
