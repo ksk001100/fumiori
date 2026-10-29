@@ -23,3 +23,5 @@ checkpointは `build/checkpoints/stories-v2-diverse-3mb.pt`、データは `buil
 語彙の偏りを抑える候補の学習・比較手順は[多様性改善](../docs/diversity.md)を参照。`lexical_balance` は学習splitのみから重みを計算し、文章自体を書き換えない。指定しない既存設定のサンプリング動作は従来どおり。
 
 最新の3MB実験は [小型モデルの改善実験](../docs/compact-generation-research.md)。`branch_balance` はtrainの同一prefixに対する次トークンの頻度から学習lossの重みを作る。推論ファイルには含めない。今回の設定では通常学習より改善せず、標準への採用は行っていない。
+
+続く [v12の修正学習](../docs/compact-repair-research.md) では `repair_auxiliary` により、通常のCEへ複数修正のsuffix CEと誤り箇所のunlikelihoodを加えられる。明示的に `allow_model_reviewed_repairs` を指定し、親データと修正splitのhashを照合する。修正表は推論へ配布しない。研究用であり、今回の候補は採用していない。

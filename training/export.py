@@ -56,6 +56,8 @@ def export(checkpoint, output, generation_mode=None, polite_boundary_guard=False
         manifest['subword_start_temperature'] = subword_start_temperature
     if 'training_device' in ck:
         manifest['training_hardware'] = {key: ck.get(key) for key in ('training_device', 'device_name', 'cuda_version', 'peak_cuda_memory_bytes')}
+    if ck.get('repair_training') is not None:
+        manifest['repair_training'] = ck['repair_training']
     if 'source' in ck['data_manifest']:
         origin = ck['data_manifest']['source']
         manifest['data_sources'] = [{k:origin[k] for k in ('dataset','revision','license','authors','dataset_url','paper','sha256','attribution','license_url') if k in origin}]

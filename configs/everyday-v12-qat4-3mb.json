@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "precision": "bf16",
+  "threads": 2,
+  "data_dir": "build/everyday-v11-data",
+  "allow_auto_aligned": true,
+  "steps": 6000,
+  "batch_size": 128,
+  "log_every": 500,
+  "learning_rate": 0.001,
+  "select_best_validation": true,
+  "early_stopping_patience": 5,
+  "validation_min_delta": 0.0001,
+  "balance_difficulties": true,
+  "weight_decay": 0.1,
+  "model": {
+    "d_model": 192,
+    "n_heads": 6,
+    "n_layers": 6,
+    "d_ff": 576,
+    "max_seq_len": 64,
+    "dropout": 0.1
+  },
+  "lr_schedule": "cosine",
+  "warmup_steps": 200,
+  "min_lr_ratio": 0.1,
+  "train_loss_samples": 2048,
+  "corpus_mixture": {
+    "tatoeba": 0.5,
+    "teacher": 0.25,
+    "everyday": 0.2,
+    "paired": 0.05
+  },
+  "validation_corpus_mixture": {
+    "tatoeba": 0.5,
+    "teacher": 0.25,
+    "everyday": 0.2,
+    "paired": 0.05
+  },
+  "checkpoint": "build/checkpoints/everyday-v12-qat4.pt",
+  "quantization_aware_bits": 4
+}

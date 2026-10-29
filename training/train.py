@@ -176,6 +176,14 @@ def train(config_path):
     optimizer = torch.optim.AdamW(parameters, lr=c["learning_rate"], weight_decay=c.get('weight_decay', 0.01))
     train_batch = tensor_batch(rows["train"], device)
     token_weights, branch_metadata = None, None
+    repairs = None
+    if c.get('repair_auxiliary') is not None:
+        from .repairs import RepairData
+        rc = c['repair_auxiliary']
+        if not c.get('allow_model_reviewed_repairs',False) or not 0 < rc['positive_weight'] <= 1 or not 0 <= rc['negative_weight'] <= 1 or not 0 < rc['batch_size'] <= 128:
+            raise ValueError('invalid or unacknowledged model-reviewed repair training')
+        repairs = RepairData(rc['data_dir'],manifest['vocab_sha256'],
+            hashlib.sha256((data/'manifest.json').read_bytes()).hexdigest(),device)
     if c.get('branch_balance') is not None:
         from .branches import branch_weights
         token_weights, branch_metadata = branch_weights(rows['train'], train_batch.shape[1], **c['branch_balance'])
@@ -233,6 +241,9 @@ def train(config_path):
         sampled_token_weights = None if token_weights is None else (token_weights if indices is None else token_weights[indices])
         with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=use_bf16):
             loss = loss_for(model, sampled, smoothing, context_ids=context, token_weights=sampled_token_weights)
+            if repairs is not None:
+                positive_loss, negative_loss = repairs.loss(model,rc['batch_size'])
+                loss = loss + rc['positive_weight']*positive_loss + rc['negative_weight']*negative_loss
         if step % c.get("log_every", 50) == 0 or step == c["steps"]:
             model.eval()
             group_losses = {name:measured_loss(batch) for name,batch in validation_groups.items()} if validation_groups is not None else None
@@ -267,6 +278,7 @@ def train(config_path):
         torch.cuda.synchronize(device)
     metadata = dict(training_device=str(device), device_name=device_name, cuda_version=torch.version.cuda, initialization=initialization,
                     branch_balancing=branch_metadata,
+                    repair_training=None if repairs is None else repairs.manifest,
                     peak_cuda_memory_bytes=torch.cuda.max_memory_allocated(device) if device.type == 'cuda' else None, selected_step=best_step if select_best else step,
                     best_validation_loss=best_validation_loss, stopped_early=stopped_early,
                     config=c, model_config=vars(model.config), vocab=vocab,
