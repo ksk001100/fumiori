@@ -20,6 +20,14 @@ def read_rows(path):
     return [json.loads(s) for s in Path(path).read_text(encoding="utf-8").splitlines() if s]
 
 
+def mixture_loss(losses, weights):
+    if (not losses or set(losses) != set(weights)
+            or any(not math.isfinite(v) or v <= 0 for v in weights.values())
+            or any(not math.isfinite(v) or v < 0 for v in losses.values())):
+        raise ValueError('validation mixture needs positive masses and losses for every observed group')
+    return sum(weights[k]*losses[k] for k in losses)/sum(weights.values())
+
+
 def tensor_batch(rows, device):
     if not rows:
         raise ValueError("empty dataset split")
@@ -165,6 +173,13 @@ def train(config_path):
         raise ValueError('lexical/topic balance requires balance_difficulties')
     weights = sampling_weights(rows['train'], c.get('lexical_balance'), c.get('topic_balance'), c.get('corpus_mixture')).to(device) if c.get('balance_difficulties', False) else None
     val_batch = tensor_batch(rows["validation"], device)
+    validation_weights = c.get('validation_corpus_mixture')
+    validation_groups = None
+    if validation_weights is not None:
+        names = {r.get('training_group') for r in rows['validation']}
+        mixture_loss({name:0. for name in names},validation_weights)
+        validation_groups = {name:val_batch[torch.tensor(
+            [i for i,r in enumerate(rows['validation']) if r['training_group']==name],device=device)] for name in names}
     train_eval = train_batch
     if c.get('train_loss_samples'):
         import random
@@ -208,11 +223,15 @@ def train(config_path):
             loss = loss_for(model, sampled, smoothing, context_ids=context)
         if step % c.get("log_every", 50) == 0 or step == c["steps"]:
             model.eval()
-            val = measured_loss(val_batch)
+            group_losses = {name:measured_loss(batch) for name,batch in validation_groups.items()} if validation_groups is not None else None
+            val = mixture_loss(group_losses,validation_weights) if group_losses is not None else measured_loss(val_batch)
             entry = dict(step=step, train_loss=measured_loss(train_eval), train_loss_rows=len(train_eval), validation_loss=val,
                          learning_rate=rate,
                          validation_perplexity=math.exp(min(val, 80)),
                          samples={str(d): greedy(model, d, vocab) for d in (3, 4, 5)})
+            if group_losses is not None:
+                entry['validation_group_losses'] = group_losses
+                entry['validation_selection'] = 'configured corpus mixture; per-group losses retained'
             if val < best_validation_loss - min_delta:
                 best_validation_loss, best_step, bad_checks = val, step, 0
                 if select_best:

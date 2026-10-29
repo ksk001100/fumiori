@@ -59,6 +59,7 @@ def main():
     parser.add_argument('--cli', type=Path, default=Path('target/release/fumiori-cli' + ('.exe' if os.name == 'nt' else '')))
     parser.add_argument('--model', type=Path, required=True)
     parser.add_argument('--training-data', type=Path, required=True)
+    parser.add_argument('--comparison-training-data', type=Path, help='Also measure against an unchanged baseline training reference')
     parser.add_argument('--samples', type=int, default=600)
     parser.add_argument('--seed', type=int, default=420000)
     parser.add_argument('--temperature', type=float, default=.5)
@@ -89,6 +90,11 @@ def main():
     payload = args.training_data.read_bytes()
     report['training_file_sha256'] = hashlib.sha256(payload).hexdigest()
     report['metrics'] = summarize(report, [json.loads(line)['text'] for line in payload.decode('utf-8').splitlines()])
+    if args.comparison_training_data is not None:
+        comparison = args.comparison_training_data.read_bytes()
+        report['common_reference'] = dict(path=str(args.comparison_training_data),
+            sha256=hashlib.sha256(comparison).hexdigest(),
+            metrics=summarize(report,[json.loads(line)['text'] for line in comparison.decode('utf-8').splitlines()]))
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report['metrics'], ensure_ascii=False))
 

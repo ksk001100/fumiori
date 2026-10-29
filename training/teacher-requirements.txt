@@ -1,0 +1,3 @@
+# Offline teacher only. Not a runtime requirement for the app or existing training.
+transformers==4.57.1
+accelerate==1.11.0

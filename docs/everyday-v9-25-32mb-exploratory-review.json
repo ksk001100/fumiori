@@ -1,0 +1,836 @@
+{
+  "stage": "exploratory paired-seed comparison, not a promotion review",
+  "reviewer": "Codex",
+  "reviewer_type": "Codex language review; not independent human review",
+  "independent_human_review": "pending",
+  "selection": {
+    "seed": 9013,
+    "count": 100,
+    "method": "Same uniformly selected request indices as v8; no apparent-quality filtering"
+  },
+  "weights_sha256": "020f47b21219931e5b6ef43f7b3e84786dd00572dd4d165cf64e45b479eb68e0",
+  "decoder_sha256": "31af99dc3493d8f15e67ada3eb205e7810661dbb8b76fece6a9d535e50ca39e3",
+  "runtime_identity": {
+    "cli_sha256": "464ca4742a6ce39a9f8d152f561310ae9a3e64955170e4f18dace206471f1c6f",
+    "rust_source_sha256": {
+      "Cargo.toml": "4007e8be6bb53601cdb9a632712d5ac750689708c32e81e4b41df17b10f87ade",
+      "Cargo.lock": "35796c4b13d86b651909e7e974fcb600d526a495acf59ef985f09731eee39373",
+      "crates/fumiori-cli/Cargo.toml": "dcb289ac81d59cae04531357bea3115020deb0dba499abfdad6a30790ea7b265",
+      "crates/fumiori-core/Cargo.toml": "090ad955e7a639fa856727c8590b8656ed369c799739a2c476f29abd75a8cd28",
+      "crates/fumiori-data/Cargo.toml": "983c11047e5ecac710a1ec1e830e964d1ccec3d823a8fc2f1f712d4258fa3683",
+      "crates/fumiori-inference/Cargo.toml": "14634c29637003d6900b302aec1de004b0fbbecd0d74973ece4a15779b473ae1",
+      "crates/fumiori-wasm/Cargo.toml": "15934ba53cd3cb16d3c4ae1f90cab48649de6e036a1adee6fe5b8716602b678a",
+      "crates/fumiori-cli/src/main.rs": "8919aad71d248569c4e8e5cc4e3be5ca84b0aa2342283edc9ef3ffd6166f5802",
+      "crates/fumiori-core/src/lib.rs": "7b83e3bcc95252eb51f244f59433e84f82ea58e4a954b4bd0fb6544be9449180",
+      "crates/fumiori-data/src/main.rs": "3fcb16feded76423ee986afafb62c2e05457b79bb50063f5cabb6625b1b86787",
+      "crates/fumiori-inference/src/lexical_subwords.rs": "5272dde8aebdb97536a4fb7a651977b3ee814e4b5de6618a6fd252aab3ee7b18",
+      "crates/fumiori-inference/src/lib.rs": "c865751265e1e11dd564e29a16057406b316315aa1c7e6e9d53461901f76350e",
+      "crates/fumiori-wasm/src/lib.rs": "53b631abe82a204450c81280fc2a419f3c31aadd5abe48e8f9815c867d0608ea"
+    }
+  },
+  "ratings": [
+    {
+      "sample_id": 1,
+      "text": "ビールを一杯飲みながら本を読む",
+      "kana": "びーるをいっぱいのみながらほんをよむ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 3,
+      "text": "お風呂に入ります",
+      "kana": "おふろにはいります",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 8,
+      "text": "打ち合わせで調査の方法を日記に書き留める",
+      "kana": "うちあわせでちょうさのほうほうをにっきにかきとめる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 9,
+      "text": "我がチームが負けた",
+      "kana": "わがちーむがまけた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 10,
+      "text": "その事故は運転手の不注意だった",
+      "kana": "そのじこはうんてんしゅのふちゅういだった",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "事故そのものと運転手の不注意を同一視する述語が不自然。"
+    },
+    {
+      "sample_id": 18,
+      "text": "犬の散歩に行く",
+      "kana": "いぬのさんぽにいく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 22,
+      "text": "家の掃除をして気持ちよく過ごしました",
+      "kana": "いえのそうじをしてきもちよくすごしました",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 28,
+      "text": "朝ごはんを食べながら、コーヒーを飲んだ",
+      "kana": "あさごはんをたべながら、こーひーをのんだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 33,
+      "text": "夜道を歩く",
+      "kana": "よみちをあるく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 45,
+      "text": "青いシャツを探す",
+      "kana": "あおいしゃつをさがす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 60,
+      "text": "電車で出かける",
+      "kana": "でんしゃででかける",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 63,
+      "text": "あなたのことは嫌いです",
+      "kana": "あなたのことはきらいです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 68,
+      "text": "雨がやんだら母と遊歩道へ散歩に出かける",
+      "kana": "あめがやんだらははとゆうほどうへさんぽにでかける",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 69,
+      "text": "ピアノを弾く",
+      "kana": "ぴあのをひく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 74,
+      "text": "私たちはテレビを見るために窓を開けたのです",
+      "kana": "わたしたちはてれびをみるためにまどをあけたのです",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "テレビを見る目的で窓を開けるという目的・動作の対応が不自然。"
+    },
+    {
+      "sample_id": 86,
+      "text": "打ち合わせで設計の日程をメモ帳に書き留める",
+      "kana": "うちあわせでせっけいのにっていをめもちょうにかきとめる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 92,
+      "text": "この手紙を読んでから、彼女はすぐに新しい手紙を書きました",
+      "kana": "このてがみをよんでから、かのじょはすぐにあたらしいてがみをかきました",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 103,
+      "text": "彼はその手紙を読んだとき青ざめた",
+      "kana": "かれはそのてがみをよんだときあおざめた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 113,
+      "text": "祖父に教わったケーキの作り方を読書帳に書き残す",
+      "kana": "そふにおそわったけーきのつくりかたをどくしょちょうにかきのこす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 118,
+      "text": "最善を尽くしたが、結果は再び出た",
+      "kana": "さいぜんをつくしたが、けっかはふたたびでた",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "逆接と「結果は再び出た」の意味のつながりが不自然。"
+    },
+    {
+      "sample_id": 120,
+      "text": "ワクワクしてきた",
+      "kana": "わくわくしてきた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 123,
+      "text": "祖母と居間で絵本を読む",
+      "kana": "そぼといまでえほんをよむ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 126,
+      "text": "姉と居間でお茶を飲む",
+      "kana": "あねといまでおちゃをのむ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 128,
+      "text": "彼女はその知らせを聞いて、すぐにわっと泣き出した",
+      "kana": "かのじょはそのしらせをきいて、すぐにわっとなきだした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 131,
+      "text": "近所の公園で、子供たちが元気よく遊んでいる声が聞こえる",
+      "kana": "きんじょのこうえんで、こどもたちがげんきよくあそんでいるこえがきこえる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 132,
+      "text": "母と椅子を直す",
+      "kana": "ははといすをなおす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 139,
+      "text": "よくあることだが、彼はよくやった",
+      "kana": "よくあることだが、かれはよくやった",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "よくあることと、彼がよくやったという評価の接続が不自然。"
+    },
+    {
+      "sample_id": 144,
+      "text": "書類を読み直す",
+      "kana": "しょるいをよみなおす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 167,
+      "text": "彼はその事故で左足に手術を受けた",
+      "kana": "かれはそのじこでひだりあしにしゅじゅつをうけた",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "「左足に手術を受けた」の語句・助詞の組み合わせが不自然。"
+    },
+    {
+      "sample_id": 168,
+      "text": "仕事帰りに寄る",
+      "kana": "しごとがえりによる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 169,
+      "text": "彼はその仕事に精通している",
+      "kana": "かれはそのしごとにせいつうしている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 180,
+      "text": "テニスは得意です",
+      "kana": "てにすはとくいです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 188,
+      "text": "妹と教室で車の絵をクレヨンで描く",
+      "kana": "いもうとときょうしつでくるまのえをくれよんでえがく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 191,
+      "text": "母親は息子の芸術に対する関心を育てるように努めた",
+      "kana": "ははおやはむすこのげいじゅつにたいするかんしんをそだてるようにつとめた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 192,
+      "text": "黒いシャツを畳む",
+      "kana": "くろいしゃつをたたむ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 198,
+      "text": "アイスクリームが好きだ",
+      "kana": "あいすくりーむがすきだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 202,
+      "text": "雨が降ってきたので傘を持って出かけた",
+      "kana": "あめがふってきたのでかさをもってでかけた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 208,
+      "text": "雨が降る中、傘を持って出かけた",
+      "kana": "あめがふるなか、かさをもってでかけた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 212,
+      "text": "こんなにたくさんの本を読むなんて、想像もできない",
+      "kana": "こんなにたくさんのほんをよむなんて、そうぞうもできない",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 219,
+      "text": "彼はきっと来る",
+      "kana": "かれはきっとくる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 231,
+      "text": "赤い箱を描く",
+      "kana": "あかいはこをえがく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 239,
+      "text": "雨が降るといけないから傘を持って行きなさい",
+      "kana": "あめがふるといけないからかさをもっていきなさい",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 247,
+      "text": "彼はその知らせを聞いて青ざめた",
+      "kana": "かれはそのしらせをきいてあおざめた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 250,
+      "text": "今日の朝食はカレーライスだ",
+      "kana": "きょうのちょうしょくはかれーらいすだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 254,
+      "text": "彼女は病気のために休んだそうで、彼女はそれについて彼に尋ねた",
+      "kana": "かのじょはびょうきのためにやすんだそうで、かのじょはそれについてかれにたずねた",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "同じ彼女が休んだ事情を彼に尋ねるという指示関係が不自然。"
+    },
+    {
+      "sample_id": 256,
+      "text": "観察の結果を案内図で記録する",
+      "kana": "かんさつのけっかをあんないずできろくする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 259,
+      "text": "朝起きたらまず顔を洗う",
+      "kana": "あさおきたらまずかおをあらう",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 266,
+      "text": "冬は暖かい日が多いので、コートを羽織って出かける人もいます",
+      "kana": "ふゆはあたたかいひがおおいので、こーとをはおってでかけるひともいます",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "暖かい日が多いことを理由にコートを羽織るという因果が不自然。"
+    },
+    {
+      "sample_id": 275,
+      "text": "図書館で借りた絵本を読み終えたので返しに行く",
+      "kana": "としょかんでかりたえほんをよみおえたのでかえしにいく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 286,
+      "text": "何の科目を専攻しているんですか",
+      "kana": "なんのかもくをせんこうしているんですか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 303,
+      "text": "風呂に入る",
+      "kana": "ふろにはいる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 309,
+      "text": "黒い帽子を選ぶ",
+      "kana": "くろいぼうしをえらぶ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 329,
+      "text": "彼女はいつも親切で、優しい人ですね",
+      "kana": "かのじょはいつもしんせつで、やさしいひとですね",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 330,
+      "text": "犬が庭で遊んでいる",
+      "kana": "いぬがにわであそんでいる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 332,
+      "text": "運転するときは、歩行者に気をつけなさい",
+      "kana": "うんてんするときは、ほこうしゃにきをつけなさい",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 342,
+      "text": "どれも似たようなもんだよ",
+      "kana": "どれもにたようなもんだよ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 345,
+      "text": "雨が降る",
+      "kana": "あめがふる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 356,
+      "text": "会社に行く途中、電車の中でスマホを見ていた",
+      "kana": "かいしゃにいくとちゅう、でんしゃのなかですまほをみていた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 357,
+      "text": "電車が動き出す",
+      "kana": "でんしゃがうごきだす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 361,
+      "text": "地図を乗り場に並べるの忘れないでください",
+      "kana": "ちずをのりばにならべるのわすれないでください",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "地図を乗り場に並べるという行動の組み合わせが不自然。"
+    },
+    {
+      "sample_id": 365,
+      "text": "彼女はその問題の解決策を思いついた",
+      "kana": "かのじょはそのもんだいのかいけつさくをおもいついた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 368,
+      "text": "夜道をジョギングして、心地よい汗を流す",
+      "kana": "よみちをじょぎんぐして、ここちよいあせをながす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 375,
+      "text": "手提げにペンを入れる",
+      "kana": "てさげにぺんをいれる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 376,
+      "text": "その部屋はとても暑かった",
+      "kana": "そのへやはとてもあつかった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 378,
+      "text": "海外に行くつもりだ",
+      "kana": "かいがいにいくつもりだ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 379,
+      "text": "帰り道にスーパーでお惣菜を買う",
+      "kana": "かえりみちにすーぱーでおそうざいをかう",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 382,
+      "text": "彼はもう年をとっているから、彼は若い",
+      "kana": "かれはもうとしをとっているから、かれはわかい",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "年をとっているから若いという矛盾。"
+    },
+    {
+      "sample_id": 383,
+      "text": "新しいパソコンが届いたので、早速設定を勉強する",
+      "kana": "あたらしいぱそこんがとどいたので、さっそくせっていをべんきょうする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 385,
+      "text": "いつからラテン語を勉強しているのですか",
+      "kana": "いつかららてんごをべんきょうしているのですか",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 393,
+      "text": "封筒をください",
+      "kana": "ふうとうをください",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 408,
+      "text": "すぐに点検します",
+      "kana": "すぐにてんけんします",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 410,
+      "text": "妹と教室で花の絵を色鉛筆で描く",
+      "kana": "いもうとときょうしつではなのえをいろえんぴつでえがく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 422,
+      "text": "窓から見える空の景色がとてもきれいだったので、写真を撮った",
+      "kana": "まどからみえるそらのけしきがとてもきれいだったので、しゃしんをとった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 433,
+      "text": "飛行機が着陸する音が聞こえる",
+      "kana": "ひこうきがちゃくりくするおとがきこえる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 434,
+      "text": "朝の光が差し込む窓際で、朝日が差し込む",
+      "kana": "あさのひかりがさしこむまどぎわで、あさひがさしこむ",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "朝日が差し込む内容をそのまま二度繰り返す。"
+    },
+    {
+      "sample_id": 455,
+      "text": "祖母と学校で植木の様子を動画で記録する",
+      "kana": "そぼとがっこうでうえきのようすをどうができろくする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 464,
+      "text": "彼は新しい本をたくさん読んでから新しい本を読むようになった",
+      "kana": "かれはあたらしいほんをたくさんよんでからあたらしいほんをよむようになった",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "新しい本を読むことを始める前に新しい本をたくさん読むという循環した説明。"
+    },
+    {
+      "sample_id": 477,
+      "text": "部屋を掃除する",
+      "kana": "へやをそうじする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 478,
+      "text": "君はもう宿題をやってしまった",
+      "kana": "きみはもうしゅくだいをやってしまった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 481,
+      "text": "電車が動き出す音が聞こえる",
+      "kana": "でんしゃがうごきだすおとがきこえる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 485,
+      "text": "夕方になると、空がオレンジ色に染まっていく",
+      "kana": "ゆうがたになると、そらがおれんじいろにそまっていく",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 486,
+      "text": "祖母と居間で絵本を読む",
+      "kana": "そぼといまでえほんをよむ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 492,
+      "text": "昨日は雨だった",
+      "kana": "きのうはあめだった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 494,
+      "text": "来月の旅行のために、旅行用のバッグを用意する",
+      "kana": "らいげつのりょこうのために、りょこうようのばっぐをよういする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 502,
+      "text": "彼はその詩を暗記したのです",
+      "kana": "かれはそのしをあんきしたのです",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 508,
+      "text": "彼はまだ若いので、よく知っています",
+      "kana": "かれはまだわかいので、よくしっています",
+      "natural": false,
+      "reading_ok": true,
+      "notes": "まだ若いことを理由によく知っているという説明のつながりが不自然。"
+    },
+    {
+      "sample_id": 517,
+      "text": "彼女は英語が話せる",
+      "kana": "かのじょはえいごがはなせる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 518,
+      "text": "庭先の花壇に植えた苗が、少しずつ芽を出した",
+      "kana": "にわさきのかだんにうえたなえが、すこしずつめをだした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 522,
+      "text": "洗濯物を干す",
+      "kana": "せんたくものをほす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 543,
+      "text": "スーパーで買い物する",
+      "kana": "すーぱーでかいものする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 547,
+      "text": "トイレを流す音が聞こえてきた",
+      "kana": "といれをながすおとがきこえてきた",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 556,
+      "text": "お風呂から上がり、お風呂から上がった",
+      "kana": "おふろからうえがり、おふろからあがった",
+      "natural": false,
+      "reading_ok": false,
+      "notes": "お風呂から上がる動作をそのまま繰り返す。 お風呂から上がりの「上がり」が「うえがり」になっている。"
+    },
+    {
+      "sample_id": 557,
+      "text": "今日の夕食はカレーライスにしようと決めている",
+      "kana": "きょうのゆうしょくはかれーらいすにしようときめている",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 560,
+      "text": "祖母と教室で昆虫の様子を写真で記録する",
+      "kana": "そぼときょうしつでこんちゅうのようすをしゃしんできろくする",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 564,
+      "text": "黄色いシャツを探す",
+      "kana": "きいろいしゃつをさがす",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 570,
+      "text": "彼はその本を買った",
+      "kana": "かれはそのほんをかった",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 577,
+      "text": "設計の手順を記録帳に書き留める",
+      "kana": "せっけいのてじゅんをきろくちょうにかきとめる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 579,
+      "text": "窓辺でお茶を飲む",
+      "kana": "まどべでおちゃをのむ",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 588,
+      "text": "拒否した",
+      "kana": "きょひした",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    },
+    {
+      "sample_id": 598,
+      "text": "泥棒が窓から外を見る",
+      "kana": "どろぼうがまどからそとをみる",
+      "natural": true,
+      "reading_ok": true,
+      "notes": ""
+    }
+  ],
+  "acceptable": 87,
+  "genre_and_topic_review": "not performed for rejected candidates",
+  "interpretation": "One reviewer and 100 samples; small score differences are not evidence of a reliable improvement."
+}

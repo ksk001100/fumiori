@@ -75,6 +75,12 @@ def export(checkpoint, output, generation_mode=None, polite_boundary_guard=False
         origin = ck['initialization']['source']
         manifest['initialization'] = ck['initialization']
         manifest.setdefault('data_sources', []).append({k:origin[k] for k in ('model','revision','license','authors','url')})
+    for generated in ck['data_manifest'].get('synthetic_sources', []):
+        teacher = generated['teacher']
+        manifest.setdefault('data_sources', []).append(dict(
+            **{k:teacher[k] for k in ('model','revision','license','authors','url')},
+            role='offline synthetic training teacher; not used at inference',
+            generated_file_sha256=generated['raw_sha256']))
     if 'dictionary' in ck['data_manifest']:
         import importlib.metadata
         dictionary_info = ck['data_manifest']['dictionary']
@@ -99,6 +105,13 @@ def export(checkpoint, output, generation_mode=None, polite_boundary_guard=False
                             'Copyright (c) 2026 Fumiori contributors', 'Copyright (c) rinna Co., Ltd.') + '\n'
                         +
                         'Word embeddings were remapped and the model was fine-tuned for this application.\n')
+        for generated in ck['data_manifest'].get('synthetic_sources', []):
+            teacher = generated['teacher']
+            notices += ('\n\nOffline synthetic-data teacher: ' + teacher['model'] + '\n'
+                        + teacher['authors'] + '\n' + teacher['url'] + '\n'
+                        + 'Teacher weights license: ' + teacher['license'] + '\n'
+                        + 'Teacher weights are not included. Training text was model-generated; '
+                          'its quality was not independently certified.\n')
         notices = notices.encode()
         (out/'THIRD_PARTY_NOTICES.txt').write_bytes(notices)
         manifest['third_party_notices_sha256'] = hashlib.sha256(notices).hexdigest()
