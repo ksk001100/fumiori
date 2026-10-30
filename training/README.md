@@ -27,3 +27,5 @@ checkpointは `build/checkpoints/stories-v2-diverse-3mb.pt`、データは `buil
 続く [v12の修正学習](../docs/compact-repair-research.md) では `repair_auxiliary` により、通常のCEへ複数修正のsuffix CEと誤り箇所のunlikelihoodを加えられる。明示的に `allow_model_reviewed_repairs` を指定し、親データと修正splitのhashを照合する。修正表は推論へ配布しない。研究用であり、今回の候補は採用していない。
 
 修正データ準備の単体テストは形態素解析をモック化し、SudachiPy未導入でも保留データの除外と学習用seedの検証を実行する。実辞書を使う解析テストには `training/prose-requirements.txt` の依存が必要で、未導入時はスキップする。
+
+[v13の組合せ診断](../docs/combination-generalization-research.md)は100対の共起検査と再学習用splitを用意する。`scripts.prepare_combination_holdout` が付ける `combination_holdout` manifestでは、`initialize_from` と `repair_auxiliary` を拒否し、`holdout.json` のSHA-256を検証する。元データを学習済みの重みから続けても未見の組合せにはならないため、共通の乱数初期値から比較する。現時点で再学習による転移の確認は未実施。

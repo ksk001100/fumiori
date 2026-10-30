@@ -1,0 +1,897 @@
+{
+  "manifest": {
+    "description": "Conservative combination holdout; frozen inherited vocabulary; retrain from random initialization only",
+    "source": {
+      "dataset": "Tatoeba Japanese",
+      "dataset_url": "https://tatoeba.org/en/downloads",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Tatoeba.org and its contributors",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "files": {
+        "jpn_sentences_detailed.tsv.bz2": {
+          "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences_detailed.tsv.bz2",
+          "bytes": 4462126,
+          "sha256": "e305ecf638ab24cd57b0b5f9fcdc342267ef4a3fdb19c71621f1a49baaf6d84f"
+        },
+        "jpn_transcriptions.tsv.bz2": {
+          "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_transcriptions.tsv.bz2",
+          "bytes": 4280771,
+          "sha256": "dc7a9059f4e1d25aad8e7884266887509ad0dbfb18384e87076ca947ce273be3"
+        }
+      },
+      "note": "Public weekly export; contributor names and sentence IDs retained in prepared data. Transcriptions without a username are not marked reviewed by Tatoeba."
+    },
+    "dictionary": {
+      "name": "SudachiDict-core",
+      "version": "20261015",
+      "analyzer": "0.7.0",
+      "license": "Apache-2.0",
+      "url": "https://github.com/WorksApplications/SudachiDict"
+    },
+    "splits": {
+      "train": 56593,
+      "validation": 2692,
+      "test": 2642,
+      "family-test": 145
+    },
+    "split_sha256": {
+      "train.jsonl": "0d0f8f1f89c161bea69c40c61267b56ad9cabd5252d19525da20dafa88646ff9",
+      "validation.jsonl": "863993ae4a82795e8f2d91e88a29fd2fe1a5051e75131ae71c9f17d419a9c8c0",
+      "test.jsonl": "85fa5fc5ab1498683e17c8c6325ee356eff947b43465bc0cb0ad2a2e987fdca8",
+      "family-test.jsonl": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e"
+    },
+    "vocab_sha256": "5191ec3cc63fd68612181079a63228e37a84303cd34ee6b0c5e34004255f1dbe",
+    "stats": {
+      "unknown_proper_or_grammar": 73854,
+      "reading_disagreement": 26520,
+      "shape_or_missing_transcription": 23030,
+      "length_or_reading_shape": 6657,
+      "duplicate_or_protected": 203,
+      "vocabulary_filtered_train": 58475,
+      "vocabulary_filtered_test": 1950,
+      "vocabulary_filtered_validation": 2092,
+      "vocabulary_filtered_family-test": 148
+    },
+    "source_generator_sha256": "31ea0772c8ee0d426b189412c31fd26a009eb06cb8e078b7f78c79ac5a84e790",
+    "split_strategy": "Normalized bodies partitioned by SHA256 before train-only vocabulary selection; older held-out bodies protected",
+    "independent_human_review": "pending",
+    "parent_manifest_sha256": "86c63a67c6e77c51f6870c47a4f7ecf10e2649bccbbd9ea195926d9be79d01ad",
+    "subword_preparation_stats": {
+      "lexical_boundary_train": 2681,
+      "unrepresentable_train": 80,
+      "lexical_boundary_validation": 76,
+      "unrepresentable_validation": 15,
+      "lexical_boundary_test": 76,
+      "unrepresentable_test": 13
+    },
+    "synthetic_sources": [
+      {
+        "teacher": {
+          "model": "llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "revision": "f19510db409090bb1737f24f868d17c4bdc86c8e",
+          "license": "Apache-2.0",
+          "authors": "LLM-jp",
+          "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "role": "offline training teacher only; never packaged for application inference",
+          "files": {
+            "config.json": {
+              "bytes": 720,
+              "sha256": "ccddfc0fe467edcd90f3b250bc9043788b108d0105fe15e90b9b97900bc10bca",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/config.json"
+            },
+            "generation_config.json": {
+              "bytes": 111,
+              "sha256": "ae9c013449dab45501dd67d85b191b5d6068339c2eefd071cf542e04e71f1511",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/generation_config.json"
+            },
+            "model.safetensors": {
+              "bytes": 3735253776,
+              "sha256": "a5608664cb63ed2ee32c26ecdcf88d12f7ed8b45230761b96b857aa64ef65ed3",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/model.safetensors"
+            },
+            "tokenizer.json": {
+              "bytes": 6409995,
+              "sha256": "d0fcf4e1e7a08e855273824678363335b0cd707937332ec1cc48eee259065219",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer.json"
+            },
+            "tokenizer_config.json": {
+              "bytes": 2397,
+              "sha256": "0301e48490b6834df0661966aa8beb9236104e248b8b771b64b773537edb8ca1",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer_config.json"
+            },
+            "special_tokens_map.json": {
+              "bytes": 996,
+              "sha256": "26a314575f93e92920df4aacab5af1d6fe5f7f5bb5fc9c8cef2fd738259ec5ab",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/special_tokens_map.json"
+            },
+            "README.md": {
+              "bytes": 14748,
+              "sha256": "100e1b56d9a7ee0653315fe6b665e9f9839054eaae0ccf41f8f2a3b8e74aece4",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/README.md"
+            }
+          }
+        },
+        "generation": {
+          "seed": 671003,
+          "offset": 72,
+          "requests": 720,
+          "batch_size": 16,
+          "temperature": 0.85,
+          "top_p": 0.95,
+          "repetition_penalty": 1.05,
+          "max_new_tokens": 192
+        },
+        "source_script_sha256": "796a96aec57252fa6784119b458774b8304aa216ffeaea3358de0b7c8b15781b",
+        "fewshot_training_sha256": "83a03921891e29159ffadd9c7e7f25c4ad128186dbcc48df991c76087c2bc9e7",
+        "raw_sha256": "f2d9fe6586ae88c7ce09750cdd115d9580ccd1b4815e83552ae80efb5d6bdc97",
+        "quality": "synthetic; not independently reviewed",
+        "inference_use": "none; prompts and teacher never used by deployed student"
+      }
+    ],
+    "teacher_preparation_stats": {
+      "raw_sentences": 5153,
+      "duplicate_or_existing_body": 529,
+      "unrepresented_subword": 420,
+      "kana_length": 250,
+      "dictionary_or_boundary": 1216,
+      "accepted_train": 2451,
+      "accepted_3": 438,
+      "word_not_in_training_lexicon_test": 29,
+      "accepted_4": 905,
+      "accepted_5": 1333,
+      "accepted_test": 100,
+      "accepted_validation": 125,
+      "word_not_in_training_lexicon_validation": 33
+    },
+    "new_dictionary_words": 902,
+    "teacher_split_strategy": "SHA256 normalized body: 90% train/5% validation/5% test; all prior bodies excluded",
+    "compact_word_stats": {
+      "train.jsonl": {
+        "input": 59599,
+        "kept": 59599,
+        "rejected": {}
+      },
+      "validation.jsonl": {
+        "input": 3045,
+        "kept": 3040,
+        "rejected": {
+          "unseen_word": 5
+        }
+      },
+      "test.jsonl": {
+        "input": 2944,
+        "kept": 2940,
+        "rejected": {
+          "unseen_word": 4
+        }
+      },
+      "family-test.jsonl": {
+        "input": 152,
+        "kept": 152,
+        "rejected": {}
+      }
+    },
+    "combination_holdout": {
+      "pairs_sha256": "176bfea07585ddcba5d23c15b00b7360063b77e50545fc4d6a18a49dcfbb2a1f",
+      "report_sha256": "1c07eb4b5747fce18cc79c4738e2c63bc1193dd262ccc6cec9255d0975c8cd7c",
+      "components_observed": 96,
+      "total": 100,
+      "initialization": "random only; no prior task-trained checkpoint"
+    }
+  },
+  "coverage": [
+    {
+      "id": "comb-001",
+      "noun_count": 241,
+      "positive_verb_count": 223,
+      "negative_verb_count": 458,
+      "components_observed": true
+    },
+    {
+      "id": "comb-002",
+      "noun_count": 68,
+      "positive_verb_count": 223,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-003",
+      "noun_count": 80,
+      "positive_verb_count": 223,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-004",
+      "noun_count": 169,
+      "positive_verb_count": 223,
+      "negative_verb_count": 46,
+      "components_observed": true
+    },
+    {
+      "id": "comb-005",
+      "noun_count": 12,
+      "positive_verb_count": 223,
+      "negative_verb_count": 318,
+      "components_observed": true
+    },
+    {
+      "id": "comb-006",
+      "noun_count": 105,
+      "positive_verb_count": 635,
+      "negative_verb_count": 458,
+      "components_observed": true
+    },
+    {
+      "id": "comb-007",
+      "noun_count": 43,
+      "positive_verb_count": 635,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-008",
+      "noun_count": 106,
+      "positive_verb_count": 635,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-009",
+      "noun_count": 99,
+      "positive_verb_count": 8,
+      "negative_verb_count": 458,
+      "components_observed": true
+    },
+    {
+      "id": "comb-010",
+      "noun_count": 57,
+      "positive_verb_count": 8,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-011",
+      "noun_count": 71,
+      "positive_verb_count": 91,
+      "negative_verb_count": 458,
+      "components_observed": true
+    },
+    {
+      "id": "comb-012",
+      "noun_count": 37,
+      "positive_verb_count": 8,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-013",
+      "noun_count": 108,
+      "positive_verb_count": 635,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-014",
+      "noun_count": 97,
+      "positive_verb_count": 223,
+      "negative_verb_count": 46,
+      "components_observed": true
+    },
+    {
+      "id": "comb-015",
+      "noun_count": 35,
+      "positive_verb_count": 635,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-016",
+      "noun_count": 685,
+      "positive_verb_count": 458,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-017",
+      "noun_count": 80,
+      "positive_verb_count": 458,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-018",
+      "noun_count": 50,
+      "positive_verb_count": 458,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-019",
+      "noun_count": 172,
+      "positive_verb_count": 318,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-020",
+      "noun_count": 106,
+      "positive_verb_count": 318,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-021",
+      "noun_count": 173,
+      "positive_verb_count": 318,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-022",
+      "noun_count": 54,
+      "positive_verb_count": 318,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-023",
+      "noun_count": 83,
+      "positive_verb_count": 458,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-024",
+      "noun_count": 120,
+      "positive_verb_count": 458,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-025",
+      "noun_count": 131,
+      "positive_verb_count": 106,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-026",
+      "noun_count": 81,
+      "positive_verb_count": 61,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-027",
+      "noun_count": 74,
+      "positive_verb_count": 61,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-028",
+      "noun_count": 44,
+      "positive_verb_count": 61,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-029",
+      "noun_count": 75,
+      "positive_verb_count": 4,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-030",
+      "noun_count": 29,
+      "positive_verb_count": 4,
+      "negative_verb_count": 458,
+      "components_observed": true
+    },
+    {
+      "id": "comb-031",
+      "noun_count": 9,
+      "positive_verb_count": 4,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-032",
+      "noun_count": 112,
+      "positive_verb_count": 5,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-033",
+      "noun_count": 37,
+      "positive_verb_count": 61,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-034",
+      "noun_count": 44,
+      "positive_verb_count": 61,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-035",
+      "noun_count": 15,
+      "positive_verb_count": 4,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-036",
+      "noun_count": 34,
+      "positive_verb_count": 131,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-037",
+      "noun_count": 5,
+      "positive_verb_count": 131,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-038",
+      "noun_count": 24,
+      "positive_verb_count": 131,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-039",
+      "noun_count": 44,
+      "positive_verb_count": 46,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-040",
+      "noun_count": 1,
+      "positive_verb_count": 58,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-041",
+      "noun_count": 116,
+      "positive_verb_count": 1,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-042",
+      "noun_count": 180,
+      "positive_verb_count": 94,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-043",
+      "noun_count": 122,
+      "positive_verb_count": 28,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-044",
+      "noun_count": 90,
+      "positive_verb_count": 153,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-045",
+      "noun_count": 29,
+      "positive_verb_count": 17,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-046",
+      "noun_count": 39,
+      "positive_verb_count": 131,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-047",
+      "noun_count": 129,
+      "positive_verb_count": 131,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-048",
+      "noun_count": 272,
+      "positive_verb_count": 131,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-049",
+      "noun_count": 36,
+      "positive_verb_count": 186,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-050",
+      "noun_count": 69,
+      "positive_verb_count": 179,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-051",
+      "noun_count": 260,
+      "positive_verb_count": 117,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-052",
+      "noun_count": 644,
+      "positive_verb_count": 4,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-053",
+      "noun_count": 948,
+      "positive_verb_count": 165,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-054",
+      "noun_count": 441,
+      "positive_verb_count": 186,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-055",
+      "noun_count": 254,
+      "positive_verb_count": 458,
+      "negative_verb_count": 123,
+      "components_observed": true
+    },
+    {
+      "id": "comb-056",
+      "noun_count": 21,
+      "positive_verb_count": 123,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-057",
+      "noun_count": 91,
+      "positive_verb_count": 123,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-058",
+      "noun_count": 388,
+      "positive_verb_count": 148,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-059",
+      "noun_count": 185,
+      "positive_verb_count": 446,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-060",
+      "noun_count": 16,
+      "positive_verb_count": 32,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-061",
+      "noun_count": 65,
+      "positive_verb_count": 39,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-062",
+      "noun_count": 493,
+      "positive_verb_count": 38,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-063",
+      "noun_count": 188,
+      "positive_verb_count": 120,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-064",
+      "noun_count": 197,
+      "positive_verb_count": 120,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-065",
+      "noun_count": 248,
+      "positive_verb_count": 120,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-066",
+      "noun_count": 234,
+      "positive_verb_count": 14,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-067",
+      "noun_count": 350,
+      "positive_verb_count": 5,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-068",
+      "noun_count": 91,
+      "positive_verb_count": 45,
+      "negative_verb_count": 0,
+      "components_observed": false
+    },
+    {
+      "id": "comb-069",
+      "noun_count": 262,
+      "positive_verb_count": 20,
+      "negative_verb_count": 5,
+      "components_observed": true
+    },
+    {
+      "id": "comb-070",
+      "noun_count": 60,
+      "positive_verb_count": 20,
+      "negative_verb_count": 123,
+      "components_observed": true
+    },
+    {
+      "id": "comb-071",
+      "noun_count": 226,
+      "positive_verb_count": 27,
+      "negative_verb_count": 5,
+      "components_observed": true
+    },
+    {
+      "id": "comb-072",
+      "noun_count": 131,
+      "positive_verb_count": 27,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-073",
+      "noun_count": 118,
+      "positive_verb_count": 17,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-074",
+      "noun_count": 59,
+      "positive_verb_count": 404,
+      "negative_verb_count": 5,
+      "components_observed": true
+    },
+    {
+      "id": "comb-075",
+      "noun_count": 57,
+      "positive_verb_count": 1,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-076",
+      "noun_count": 11,
+      "positive_verb_count": 0,
+      "negative_verb_count": 5,
+      "components_observed": false
+    },
+    {
+      "id": "comb-077",
+      "noun_count": 295,
+      "positive_verb_count": 33,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-078",
+      "noun_count": 119,
+      "positive_verb_count": 41,
+      "negative_verb_count": 5,
+      "components_observed": true
+    },
+    {
+      "id": "comb-079",
+      "noun_count": 63,
+      "positive_verb_count": 117,
+      "negative_verb_count": 0,
+      "components_observed": false
+    },
+    {
+      "id": "comb-080",
+      "noun_count": 413,
+      "positive_verb_count": 98,
+      "negative_verb_count": 20,
+      "components_observed": true
+    },
+    {
+      "id": "comb-081",
+      "noun_count": 116,
+      "positive_verb_count": 570,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-082",
+      "noun_count": 67,
+      "positive_verb_count": 54,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-083",
+      "noun_count": 82,
+      "positive_verb_count": 12,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-084",
+      "noun_count": 52,
+      "positive_verb_count": 12,
+      "negative_verb_count": 635,
+      "components_observed": true
+    },
+    {
+      "id": "comb-085",
+      "noun_count": 215,
+      "positive_verb_count": 9,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-086",
+      "noun_count": 161,
+      "positive_verb_count": 1163,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-087",
+      "noun_count": 58,
+      "positive_verb_count": 570,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-088",
+      "noun_count": 182,
+      "positive_verb_count": 1163,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-089",
+      "noun_count": 121,
+      "positive_verb_count": 43,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-090",
+      "noun_count": 373,
+      "positive_verb_count": 13,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-091",
+      "noun_count": 19,
+      "positive_verb_count": 13,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-092",
+      "noun_count": 24,
+      "positive_verb_count": 43,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-093",
+      "noun_count": 45,
+      "positive_verb_count": 94,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-094",
+      "noun_count": 41,
+      "positive_verb_count": 192,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-095",
+      "noun_count": 30,
+      "positive_verb_count": 656,
+      "negative_verb_count": 61,
+      "components_observed": true
+    },
+    {
+      "id": "comb-096",
+      "noun_count": 190,
+      "positive_verb_count": 129,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-097",
+      "noun_count": 168,
+      "positive_verb_count": 76,
+      "negative_verb_count": 4,
+      "components_observed": true
+    },
+    {
+      "id": "comb-098",
+      "noun_count": 506,
+      "positive_verb_count": 0,
+      "negative_verb_count": 61,
+      "components_observed": false
+    },
+    {
+      "id": "comb-099",
+      "noun_count": 441,
+      "positive_verb_count": 22,
+      "negative_verb_count": 223,
+      "components_observed": true
+    },
+    {
+      "id": "comb-100",
+      "noun_count": 75,
+      "positive_verb_count": 17,
+      "negative_verb_count": 635,
+      "components_observed": true
+    }
+  ],
+  "removed_rows": {
+    "train.jsonl": 3006,
+    "validation.jsonl": 348,
+    "test.jsonl": 298,
+    "family-test.jsonl": 7
+  },
+  "restrictions": [
+    "No prior task-trained checkpoints or v12 repair auxiliary data",
+    "All additional future training sources must pass the same exclusion",
+    "Dictionary normalization is not synonym or semantic leakage detection",
+    "Inherited vocabulary preserves prior corpus word identities and counts; only sequence-combination holdout",
+    "Existing corpus validation/test also filtered; not comparable to original validation loss"
+  ]
+}

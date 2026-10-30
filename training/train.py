@@ -20,6 +20,16 @@ def read_rows(path):
     return [json.loads(s) for s in Path(path).read_text(encoding="utf-8").splitlines() if s]
 
 
+def validate_combination_holdout(config, manifest, data):
+    holdout = manifest.get('combination_holdout')
+    if holdout is None:
+        return
+    if config.get('initialize_from') or config.get('repair_auxiliary'):
+        raise ValueError('combination holdout requires random initialization and no unaudited repair auxiliary data')
+    if hashlib.sha256((Path(data)/'holdout.json').read_bytes()).hexdigest() != holdout['report_sha256']:
+        raise ValueError('combination holdout report hash mismatch')
+
+
 def mixture_loss(losses, weights):
     if (not losses or set(losses) != set(weights)
             or any(not math.isfinite(v) or v <= 0 for v in weights.values())
@@ -113,6 +123,7 @@ def train(config_path):
     data = Path(c["data_dir"])
     vocab = read_json(data / "vocab.json")
     manifest = read_json(data / "manifest.json")
+    validate_combination_holdout(c, manifest, data)
     if hashlib.sha256((data / "vocab.json").read_bytes()).hexdigest() != manifest["vocab_sha256"]:
         raise ValueError("vocabulary hash mismatch")
     for file, expected in manifest["split_sha256"].items():

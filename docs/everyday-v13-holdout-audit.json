@@ -1,0 +1,4384 @@
+{
+  "version": 1,
+  "scope": "Model-authored literal everyday contrasts; exploratory checkpoint diagnostic, not unseen-combination evaluation or naturalness accuracy",
+  "pairs_sha256": "176bfea07585ddcba5d23c15b00b7360063b77e50545fc4d6a18a49dcfbb2a1f",
+  "script_sha256": "a8a12a85439b2575416f2368dc3bef9b458d59adb491083d0dbcb8cc90d0813b",
+  "parent_manifest_sha256": "77fcaffa8a8ebd4fcb1a3206e3482f50a69a447424f637f767aaab1af538ea94",
+  "vocab_sha256": "5191ec3cc63fd68612181079a63228e37a84303cd34ee6b0c5e34004255f1dbe",
+  "analyzer": {
+    "SudachiPy": "0.7.0",
+    "SudachiDict-core": "20261015"
+  },
+  "overlap_rule": "normalized noun + adjacent particle + subsequent verb in punctuation span; inflections and dictionary variants, no synonym/dependency guarantee",
+  "sources": [
+    {
+      "path": "build/everyday-v13-combination-holdout-final/train.jsonl",
+      "sha256": "0d0f8f1f89c161bea69c40c61267b56ad9cabd5252d19525da20dafa88646ff9",
+      "rows": 56593
+    },
+    {
+      "path": "build/everyday-v13-combination-holdout-final/validation.jsonl",
+      "sha256": "863993ae4a82795e8f2d91e88a29fd2fe1a5051e75131ae71c9f17d419a9c8c0",
+      "rows": 2692
+    },
+    {
+      "path": "build/everyday-v13-combination-holdout-final/test.jsonl",
+      "sha256": "85fa5fc5ab1498683e17c8c6325ee356eff947b43465bc0cb0ad2a2e987fdca8",
+      "rows": 2642
+    },
+    {
+      "path": "build/everyday-v13-combination-holdout-final/family-test.jsonl",
+      "sha256": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e",
+      "rows": 145
+    }
+  ],
+  "cases": [
+    {
+      "id": "comb-001",
+      "prefix": "水を",
+      "positive": "水を飲む。",
+      "negative": "水を読む。",
+      "positive_key": [
+        "水",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "水",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-002",
+      "prefix": "お茶を",
+      "positive": "お茶を飲む。",
+      "negative": "お茶を着る。",
+      "positive_key": [
+        "茶",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "茶",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-003",
+      "prefix": "牛乳を",
+      "positive": "牛乳を飲む。",
+      "negative": "牛乳を履く。",
+      "positive_key": [
+        "牛乳",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "牛乳",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-004",
+      "prefix": "コーヒーを",
+      "positive": "コーヒーを飲む。",
+      "negative": "コーヒーを畳む。",
+      "positive_key": [
+        "コーヒー",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "コーヒー",
+        "を",
+        "畳む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-005",
+      "prefix": "ジュースを",
+      "positive": "ジュースを飲む。",
+      "negative": "ジュースを書く。",
+      "positive_key": [
+        "ジュース",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "ジュース",
+        "を",
+        "書く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-006",
+      "prefix": "パンを",
+      "positive": "パンを食べる。",
+      "negative": "パンを読む。",
+      "positive_key": [
+        "パン",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "パン",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-007",
+      "prefix": "ご飯を",
+      "positive": "ご飯を食べる。",
+      "negative": "ご飯を履く。",
+      "positive_key": [
+        "御飯",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "御飯",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-008",
+      "prefix": "りんごを",
+      "positive": "りんごを食べる。",
+      "negative": "りんごを着る。",
+      "positive_key": [
+        "林檎",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "林檎",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-009",
+      "prefix": "魚を",
+      "positive": "魚を焼く。",
+      "negative": "魚を読む。",
+      "positive_key": [
+        "魚",
+        "を",
+        "焼く"
+      ],
+      "negative_key": [
+        "魚",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-010",
+      "prefix": "肉を",
+      "positive": "肉を焼く。",
+      "negative": "肉を履く。",
+      "positive_key": [
+        "肉",
+        "を",
+        "焼く"
+      ],
+      "negative_key": [
+        "肉",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-011",
+      "prefix": "野菜を",
+      "positive": "野菜を切る。",
+      "negative": "野菜を読む。",
+      "positive_key": [
+        "野菜",
+        "を",
+        "切る"
+      ],
+      "negative_key": [
+        "野菜",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-012",
+      "prefix": "卵を",
+      "positive": "卵を焼く。",
+      "negative": "卵を着る。",
+      "positive_key": [
+        "卵",
+        "を",
+        "焼く"
+      ],
+      "negative_key": [
+        "卵",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-013",
+      "prefix": "ケーキを",
+      "positive": "ケーキを食べる。",
+      "negative": "ケーキを履く。",
+      "positive_key": [
+        "ケーキ",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "ケーキ",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-014",
+      "prefix": "スープを",
+      "positive": "スープを飲む。",
+      "negative": "スープを畳む。",
+      "positive_key": [
+        "スープ",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "スープ",
+        "を",
+        "畳む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-015",
+      "prefix": "弁当を",
+      "positive": "弁当を食べる。",
+      "negative": "弁当を着る。",
+      "positive_key": [
+        "弁当",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "弁当",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-016",
+      "prefix": "本を",
+      "positive": "本を読む。",
+      "negative": "本を飲む。",
+      "positive_key": [
+        "本",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "本",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-017",
+      "prefix": "新聞を",
+      "positive": "新聞を読む。",
+      "negative": "新聞を履く。",
+      "positive_key": [
+        "新聞",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "新聞",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-018",
+      "prefix": "雑誌を",
+      "positive": "雑誌を読む。",
+      "negative": "雑誌を飲む。",
+      "positive_key": [
+        "雑誌",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "雑誌",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-019",
+      "prefix": "手紙を",
+      "positive": "手紙を書く。",
+      "negative": "手紙を履く。",
+      "positive_key": [
+        "手紙",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "手紙",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-020",
+      "prefix": "日記を",
+      "positive": "日記を書く。",
+      "negative": "日記を飲む。",
+      "positive_key": [
+        "日記",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "日記",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-021",
+      "prefix": "名前を",
+      "positive": "名前を書く。",
+      "negative": "名前を食べる。",
+      "positive_key": [
+        "名前",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "名前",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-022",
+      "prefix": "住所を",
+      "positive": "住所を書く。",
+      "negative": "住所を着る。",
+      "positive_key": [
+        "住所",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "住所",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-023",
+      "prefix": "記事を",
+      "positive": "記事を読む。",
+      "negative": "記事を履く。",
+      "positive_key": [
+        "記事",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "記事",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-024",
+      "prefix": "小説を",
+      "positive": "小説を読む。",
+      "negative": "小説を飲む。",
+      "positive_key": [
+        "小説",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "小説",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-025",
+      "prefix": "絵を",
+      "positive": "絵を描く。",
+      "negative": "絵を履く。",
+      "positive_key": [
+        "絵",
+        "を",
+        "描く"
+      ],
+      "negative_key": [
+        "絵",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-026",
+      "prefix": "シャツを",
+      "positive": "シャツを着る。",
+      "negative": "シャツを飲む。",
+      "positive_key": [
+        "シャツ",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "シャツ",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-027",
+      "prefix": "服を",
+      "positive": "服を着る。",
+      "negative": "服を食べる。",
+      "positive_key": [
+        "服",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "服",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-028",
+      "prefix": "上着を",
+      "positive": "上着を着る。",
+      "negative": "上着を飲む。",
+      "positive_key": [
+        "上着",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "上着",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-029",
+      "prefix": "靴を",
+      "positive": "靴を履く。",
+      "negative": "靴を飲む。",
+      "positive_key": [
+        "靴",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "靴",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-030",
+      "prefix": "靴下を",
+      "positive": "靴下を履く。",
+      "negative": "靴下を読む。",
+      "positive_key": [
+        "靴下",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "靴下",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-031",
+      "prefix": "ズボンを",
+      "positive": "ズボンを履く。",
+      "negative": "ズボンを飲む。",
+      "positive_key": [
+        "ズボン",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "ズボン",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-032",
+      "prefix": "帽子を",
+      "positive": "帽子をかぶる。",
+      "negative": "帽子を飲む。",
+      "positive_key": [
+        "帽子",
+        "を",
+        "被る"
+      ],
+      "negative_key": [
+        "帽子",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-033",
+      "prefix": "コートを",
+      "positive": "コートを着る。",
+      "negative": "コートを食べる。",
+      "positive_key": [
+        "コート",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "コート",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-034",
+      "prefix": "セーターを",
+      "positive": "セーターを着る。",
+      "negative": "セーターを飲む。",
+      "positive_key": [
+        "セーター",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "セーター",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-035",
+      "prefix": "スカートを",
+      "positive": "スカートを履く。",
+      "negative": "スカートを飲む。",
+      "positive_key": [
+        "スカート",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "スカート",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-036",
+      "prefix": "皿を",
+      "positive": "皿を洗う。",
+      "negative": "皿を履く。",
+      "positive_key": [
+        "皿",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "皿",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-037",
+      "prefix": "茶碗を",
+      "positive": "茶碗を洗う。",
+      "negative": "茶碗を着る。",
+      "positive_key": [
+        "茶碗",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "茶碗",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-038",
+      "prefix": "コップを",
+      "positive": "コップを洗う。",
+      "negative": "コップを履く。",
+      "positive_key": [
+        "コップ",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "コップ",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-039",
+      "prefix": "タオルを",
+      "positive": "タオルを畳む。",
+      "negative": "タオルを飲む。",
+      "positive_key": [
+        "タオル",
+        "を",
+        "畳む"
+      ],
+      "negative_key": [
+        "タオル",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-040",
+      "prefix": "布団を",
+      "positive": "布団を干す。",
+      "negative": "布団を飲む。",
+      "positive_key": [
+        "布団",
+        "を",
+        "干す"
+      ],
+      "negative_key": [
+        "布団",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-041",
+      "prefix": "傘を",
+      "positive": "傘を差す。",
+      "negative": "傘を飲む。",
+      "positive_key": [
+        "傘",
+        "を",
+        "差す"
+      ],
+      "negative_key": [
+        "傘",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-042",
+      "prefix": "窓を",
+      "positive": "窓を開ける。",
+      "negative": "窓を食べる。",
+      "positive_key": [
+        "窓",
+        "を",
+        "開ける"
+      ],
+      "negative_key": [
+        "窓",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-043",
+      "prefix": "ドアを",
+      "positive": "ドアを閉める。",
+      "negative": "ドアを飲む。",
+      "positive_key": [
+        "ドア",
+        "を",
+        "閉める"
+      ],
+      "negative_key": [
+        "ドア",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-044",
+      "prefix": "鍵を",
+      "positive": "鍵をかける。",
+      "negative": "鍵を食べる。",
+      "positive_key": [
+        "鍵",
+        "を",
+        "かける"
+      ],
+      "negative_key": [
+        "鍵",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-045",
+      "prefix": "歯を",
+      "positive": "歯を磨く。",
+      "negative": "歯を履く。",
+      "positive_key": [
+        "歯",
+        "を",
+        "磨く"
+      ],
+      "negative_key": [
+        "歯",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-046",
+      "prefix": "髪を",
+      "positive": "髪を洗う。",
+      "negative": "髪を飲む。",
+      "positive_key": [
+        "髪",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "髪",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-047",
+      "prefix": "顔を",
+      "positive": "顔を洗う。",
+      "negative": "顔を履く。",
+      "positive_key": [
+        "顔",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "顔",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-048",
+      "prefix": "手を",
+      "positive": "手を洗う。",
+      "negative": "手を着る。",
+      "positive_key": [
+        "手",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "手",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-049",
+      "prefix": "風呂に",
+      "positive": "風呂に入る。",
+      "negative": "風呂に咲く。",
+      "positive_key": [
+        "風呂",
+        "に",
+        "入る"
+      ],
+      "negative_key": [
+        "風呂",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-050",
+      "prefix": "椅子に",
+      "positive": "椅子に座る。",
+      "negative": "椅子に咲く。",
+      "positive_key": [
+        "椅子",
+        "に",
+        "座る"
+      ],
+      "negative_key": [
+        "椅子",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-051",
+      "prefix": "駅に",
+      "positive": "駅に着く。",
+      "negative": "駅に咲く。",
+      "positive_key": [
+        "駅",
+        "に",
+        "着く"
+      ],
+      "negative_key": [
+        "駅",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-052",
+      "prefix": "学校に",
+      "positive": "学校に通う。",
+      "negative": "学校に咲く。",
+      "positive_key": [
+        "学校",
+        "に",
+        "通う"
+      ],
+      "negative_key": [
+        "学校",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-053",
+      "prefix": "家に",
+      "positive": "家に帰る。",
+      "negative": "家に咲く。",
+      "positive_key": [
+        "家",
+        "に",
+        "帰る"
+      ],
+      "negative_key": [
+        "家",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-054",
+      "prefix": "部屋に",
+      "positive": "部屋に入る。",
+      "negative": "部屋に咲く。",
+      "positive_key": [
+        "部屋",
+        "に",
+        "入る"
+      ],
+      "negative_key": [
+        "部屋",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-055",
+      "prefix": "図書館で",
+      "positive": "図書館で読む。",
+      "negative": "図書館で泳ぐ。",
+      "positive_key": [
+        "図書館",
+        "で",
+        "読む"
+      ],
+      "negative_key": [
+        "図書館",
+        "で",
+        "泳ぐ"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-056",
+      "prefix": "プールで",
+      "positive": "プールで泳ぐ。",
+      "negative": "プールで咲く。",
+      "positive_key": [
+        "プール",
+        "で",
+        "泳ぐ"
+      ],
+      "negative_key": [
+        "プール",
+        "で",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-057",
+      "prefix": "海で",
+      "positive": "海で泳ぐ。",
+      "negative": "海で咲く。",
+      "positive_key": [
+        "海",
+        "で",
+        "泳ぐ"
+      ],
+      "negative_key": [
+        "海",
+        "で",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-058",
+      "prefix": "公園で",
+      "positive": "公園で遊ぶ。",
+      "negative": "公園で咲く。",
+      "positive_key": [
+        "公園",
+        "で",
+        "遊ぶ"
+      ],
+      "negative_key": [
+        "公園",
+        "で",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-059",
+      "prefix": "道を",
+      "positive": "道を歩く。",
+      "negative": "道を飲む。",
+      "positive_key": [
+        "道",
+        "を",
+        "歩く"
+      ],
+      "negative_key": [
+        "道",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-060",
+      "prefix": "階段を",
+      "positive": "階段を上る。",
+      "negative": "階段を飲む。",
+      "positive_key": [
+        "階段",
+        "を",
+        "上る"
+      ],
+      "negative_key": [
+        "階段",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-061",
+      "prefix": "橋を",
+      "positive": "橋を渡る。",
+      "negative": "橋を飲む。",
+      "positive_key": [
+        "橋",
+        "を",
+        "渡る"
+      ],
+      "negative_key": [
+        "橋",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-062",
+      "prefix": "車を",
+      "positive": "車を運転する。",
+      "negative": "車を飲む。",
+      "positive_key": [
+        "車",
+        "を",
+        "運転する"
+      ],
+      "negative_key": [
+        "車",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-063",
+      "prefix": "自転車に",
+      "positive": "自転車に乗る。",
+      "negative": "自転車に咲く。",
+      "positive_key": [
+        "自転車",
+        "に",
+        "乗る"
+      ],
+      "negative_key": [
+        "自転車",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-064",
+      "prefix": "電車に",
+      "positive": "電車に乗る。",
+      "negative": "電車に咲く。",
+      "positive_key": [
+        "電車",
+        "に",
+        "乗る"
+      ],
+      "negative_key": [
+        "電車",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-065",
+      "prefix": "バスに",
+      "positive": "バスに乗る。",
+      "negative": "バスに咲く。",
+      "positive_key": [
+        "バス",
+        "に",
+        "乗る"
+      ],
+      "negative_key": [
+        "バス",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-066",
+      "prefix": "猫が",
+      "positive": "猫が鳴く。",
+      "negative": "猫が咲く。",
+      "positive_key": [
+        "猫",
+        "が",
+        "鳴く"
+      ],
+      "negative_key": [
+        "猫",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-067",
+      "prefix": "犬が",
+      "positive": "犬が吠える。",
+      "negative": "犬が咲く。",
+      "positive_key": [
+        "犬",
+        "が",
+        "吠える"
+      ],
+      "negative_key": [
+        "犬",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-068",
+      "prefix": "鳥が",
+      "positive": "鳥が飛ぶ。",
+      "negative": "鳥が沸く。",
+      "positive_key": [
+        "鳥",
+        "が",
+        "飛ぶ"
+      ],
+      "negative_key": [
+        "鳥",
+        "が",
+        "沸く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-069",
+      "prefix": "花が",
+      "positive": "花が咲く。",
+      "negative": "花が吠える。",
+      "positive_key": [
+        "花",
+        "が",
+        "咲く"
+      ],
+      "negative_key": [
+        "花",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-070",
+      "prefix": "桜が",
+      "positive": "桜が咲く。",
+      "negative": "桜が泳ぐ。",
+      "positive_key": [
+        "桜",
+        "が",
+        "咲く"
+      ],
+      "negative_key": [
+        "桜",
+        "が",
+        "泳ぐ"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-071",
+      "prefix": "雨が",
+      "positive": "雨が降る。",
+      "negative": "雨が吠える。",
+      "positive_key": [
+        "雨",
+        "が",
+        "降る"
+      ],
+      "negative_key": [
+        "雨",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-072",
+      "prefix": "雪が",
+      "positive": "雪が降る。",
+      "negative": "雪が食べる。",
+      "positive_key": [
+        "雪",
+        "が",
+        "降る"
+      ],
+      "negative_key": [
+        "雪",
+        "が",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-073",
+      "prefix": "風が",
+      "positive": "風が吹く。",
+      "negative": "風が履く。",
+      "positive_key": [
+        "風",
+        "が",
+        "吹く"
+      ],
+      "negative_key": [
+        "風",
+        "が",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-074",
+      "prefix": "月が",
+      "positive": "月が出る。",
+      "negative": "月が吠える。",
+      "positive_key": [
+        "月",
+        "が",
+        "出る"
+      ],
+      "negative_key": [
+        "月",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-075",
+      "prefix": "星が",
+      "positive": "星が光る。",
+      "negative": "星が食べる。",
+      "positive_key": [
+        "星",
+        "が",
+        "光る"
+      ],
+      "negative_key": [
+        "星",
+        "が",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-076",
+      "prefix": "湯が",
+      "positive": "湯が沸く。",
+      "negative": "湯が吠える。",
+      "positive_key": [
+        "湯",
+        "が",
+        "沸く"
+      ],
+      "negative_key": [
+        "湯",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-077",
+      "prefix": "電話が",
+      "positive": "電話が鳴る。",
+      "negative": "電話が咲く。",
+      "positive_key": [
+        "電話",
+        "が",
+        "鳴る"
+      ],
+      "negative_key": [
+        "電話",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-078",
+      "prefix": "時計が",
+      "positive": "時計が止まる。",
+      "negative": "時計が吠える。",
+      "positive_key": [
+        "時計",
+        "が",
+        "止まる"
+      ],
+      "negative_key": [
+        "時計",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-079",
+      "prefix": "赤ちゃんが",
+      "positive": "赤ちゃんが泣く。",
+      "negative": "赤ちゃんが沸く。",
+      "positive_key": [
+        "赤ちゃん",
+        "が",
+        "泣く"
+      ],
+      "negative_key": [
+        "赤ちゃん",
+        "が",
+        "沸く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-080",
+      "prefix": "子供が",
+      "positive": "子供が笑う。",
+      "negative": "子供が咲く。",
+      "positive_key": [
+        "子供",
+        "が",
+        "笑う"
+      ],
+      "negative_key": [
+        "子供",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-081",
+      "prefix": "音楽を",
+      "positive": "音楽を聴く。",
+      "negative": "音楽を履く。",
+      "positive_key": [
+        "音楽",
+        "を",
+        "聞く"
+      ],
+      "negative_key": [
+        "音楽",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-082",
+      "prefix": "歌を",
+      "positive": "歌を歌う。",
+      "negative": "歌を飲む。",
+      "positive_key": [
+        "歌",
+        "を",
+        "歌う"
+      ],
+      "negative_key": [
+        "歌",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-083",
+      "prefix": "ピアノを",
+      "positive": "ピアノを弾く。",
+      "negative": "ピアノを飲む。",
+      "positive_key": [
+        "ピアノ",
+        "を",
+        "弾く"
+      ],
+      "negative_key": [
+        "ピアノ",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-084",
+      "prefix": "ギターを",
+      "positive": "ギターを弾く。",
+      "negative": "ギターを食べる。",
+      "positive_key": [
+        "ギター",
+        "を",
+        "弾く"
+      ],
+      "negative_key": [
+        "ギター",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-085",
+      "prefix": "写真を",
+      "positive": "写真を撮る。",
+      "negative": "写真を履く。",
+      "positive_key": [
+        "写真",
+        "を",
+        "撮る"
+      ],
+      "negative_key": [
+        "写真",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-086",
+      "prefix": "映画を",
+      "positive": "映画を見る。",
+      "negative": "映画を飲む。",
+      "positive_key": [
+        "映画",
+        "を",
+        "見る"
+      ],
+      "negative_key": [
+        "映画",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-087",
+      "prefix": "ラジオを",
+      "positive": "ラジオを聞く。",
+      "negative": "ラジオを履く。",
+      "positive_key": [
+        "ラジオ",
+        "を",
+        "聞く"
+      ],
+      "negative_key": [
+        "ラジオ",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-088",
+      "prefix": "テレビを",
+      "positive": "テレビを見る。",
+      "negative": "テレビを飲む。",
+      "positive_key": [
+        "テレビ",
+        "を",
+        "見る"
+      ],
+      "negative_key": [
+        "テレビ",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-089",
+      "prefix": "宿題を",
+      "positive": "宿題を終える。",
+      "negative": "宿題を飲む。",
+      "positive_key": [
+        "宿題",
+        "を",
+        "終える"
+      ],
+      "negative_key": [
+        "宿題",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-090",
+      "prefix": "問題を",
+      "positive": "問題を解く。",
+      "negative": "問題を履く。",
+      "positive_key": [
+        "問題",
+        "を",
+        "解く"
+      ],
+      "negative_key": [
+        "問題",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-091",
+      "prefix": "切手を",
+      "positive": "切手を貼る。",
+      "negative": "切手を履く。",
+      "positive_key": [
+        "切手",
+        "を",
+        "張る"
+      ],
+      "negative_key": [
+        "切手",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-092",
+      "prefix": "荷物を",
+      "positive": "荷物を運ぶ。",
+      "negative": "荷物を飲む。",
+      "positive_key": [
+        "荷物",
+        "を",
+        "運ぶ"
+      ],
+      "negative_key": [
+        "荷物",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-093",
+      "prefix": "箱を",
+      "positive": "箱を開ける。",
+      "negative": "箱を飲む。",
+      "positive_key": [
+        "箱",
+        "を",
+        "開ける"
+      ],
+      "negative_key": [
+        "箱",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-094",
+      "prefix": "財布を",
+      "positive": "財布を探す。",
+      "negative": "財布を飲む。",
+      "positive_key": [
+        "財布",
+        "を",
+        "探す"
+      ],
+      "negative_key": [
+        "財布",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-095",
+      "prefix": "切符を",
+      "positive": "切符を買う。",
+      "negative": "切符を着る。",
+      "positive_key": [
+        "切符",
+        "を",
+        "買う"
+      ],
+      "negative_key": [
+        "切符",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-096",
+      "prefix": "予定を",
+      "positive": "予定を決める。",
+      "negative": "予定を飲む。",
+      "positive_key": [
+        "予定",
+        "を",
+        "決める"
+      ],
+      "negative_key": [
+        "予定",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-097",
+      "prefix": "約束を",
+      "positive": "約束を守る。",
+      "negative": "約束を履く。",
+      "positive_key": [
+        "約束",
+        "を",
+        "守る"
+      ],
+      "negative_key": [
+        "約束",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-098",
+      "prefix": "時間を",
+      "positive": "時間を計る。",
+      "negative": "時間を着る。",
+      "positive_key": [
+        "時間",
+        "を",
+        "測る"
+      ],
+      "negative_key": [
+        "時間",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-099",
+      "prefix": "部屋を",
+      "positive": "部屋を掃除する。",
+      "negative": "部屋を飲む。",
+      "positive_key": [
+        "部屋",
+        "を",
+        "掃除する"
+      ],
+      "negative_key": [
+        "部屋",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-100",
+      "prefix": "靴を",
+      "positive": "靴を磨く。",
+      "negative": "靴を食べる。",
+      "positive_key": [
+        "靴",
+        "を",
+        "磨く"
+      ],
+      "negative_key": [
+        "靴",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    }
+  ],
+  "encoded": [
+    {
+      "id": "comb-001",
+      "ids": [
+        [
+          0,
+          3,
+          172,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          172,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-002",
+      "ids": [
+        [
+          0,
+          3,
+          35,
+          599,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          35,
+          599,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 5,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-003",
+      "ids": [
+        [
+          0,
+          3,
+          459,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          459,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-004",
+      "ids": [
+        [
+          0,
+          3,
+          179,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          179,
+          9,
+          2320,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-005",
+      "ids": [
+        [
+          0,
+          3,
+          1825,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1825,
+          9,
+          284,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-006",
+      "ids": [
+        [
+          0,
+          3,
+          330,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          330,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-007",
+      "ids": [
+        [
+          0,
+          3,
+          900,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          900,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-008",
+      "ids": [
+        [
+          0,
+          3,
+          1109,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1109,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-009",
+      "ids": [
+        [
+          0,
+          3,
+          485,
+          9,
+          7464,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          485,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-010",
+      "ids": [
+        [
+          0,
+          3,
+          872,
+          9,
+          7464,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          872,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-011",
+      "ids": [
+        [
+          0,
+          3,
+          681,
+          9,
+          1331,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          681,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-012",
+      "ids": [
+        [
+          0,
+          3,
+          1271,
+          9,
+          7464,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1271,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-013",
+      "ids": [
+        [
+          0,
+          3,
+          362,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          362,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-014",
+      "ids": [
+        [
+          0,
+          3,
+          469,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          469,
+          9,
+          2320,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-015",
+      "ids": [
+        [
+          0,
+          3,
+          2090,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          2090,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-016",
+      "ids": [
+        [
+          0,
+          3,
+          50,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          50,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-017",
+      "ids": [
+        [
+          0,
+          3,
+          360,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          360,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-018",
+      "ids": [
+        [
+          0,
+          3,
+          644,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          644,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-019",
+      "ids": [
+        [
+          0,
+          3,
+          186,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          186,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-020",
+      "ids": [
+        [
+          0,
+          3,
+          421,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          421,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-021",
+      "ids": [
+        [
+          0,
+          3,
+          232,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          232,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-022",
+      "ids": [
+        [
+          0,
+          3,
+          775,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          775,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-023",
+      "ids": [
+        [
+          0,
+          3,
+          500,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          500,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-024",
+      "ids": [
+        [
+          0,
+          3,
+          292,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          292,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-025",
+      "ids": [
+        [
+          0,
+          3,
+          51,
+          9,
+          58,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          51,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-026",
+      "ids": [
+        [
+          0,
+          3,
+          537,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          537,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-027",
+      "ids": [
+        [
+          0,
+          3,
+          374,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          374,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-028",
+      "ids": [
+        [
+          0,
+          3,
+          875,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          875,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-029",
+      "ids": [
+        [
+          0,
+          3,
+          551,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          551,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-030",
+      "ids": [
+        [
+          0,
+          3,
+          1595,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1595,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-031",
+      "ids": [
+        [
+          0,
+          3,
+          4091,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          4091,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-033",
+      "ids": [
+        [
+          0,
+          3,
+          963,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          963,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-034",
+      "ids": [
+        [
+          0,
+          3,
+          942,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          942,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-035",
+      "ids": [
+        [
+          0,
+          3,
+          2751,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          2751,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-036",
+      "ids": [
+        [
+          0,
+          3,
+          1191,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1191,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-037",
+      "ids": [
+        [
+          0,
+          3,
+          5846,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          5846,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-038",
+      "ids": [
+        [
+          0,
+          3,
+          1712,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1712,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-039",
+      "ids": [
+        [
+          0,
+          3,
+          1074,
+          9,
+          2320,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1074,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-040",
+      "ids": [
+        [
+          0,
+          3,
+          6827,
+          9,
+          1728,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          6827,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-041",
+      "ids": [
+        [
+          0,
+          3,
+          291,
+          9,
+          8321,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          291,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-042",
+      "ids": [
+        [
+          0,
+          3,
+          182,
+          9,
+          1175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          182,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-043",
+      "ids": [
+        [
+          0,
+          3,
+          321,
+          9,
+          3229,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          321,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-044",
+      "ids": [
+        [
+          0,
+          3,
+          444,
+          9,
+          1815,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          444,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-045",
+      "ids": [
+        [
+          0,
+          3,
+          984,
+          9,
+          1939,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          984,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-046",
+      "ids": [
+        [
+          0,
+          3,
+          1127,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1127,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-047",
+      "ids": [
+        [
+          0,
+          3,
+          315,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          315,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-048",
+      "ids": [
+        [
+          0,
+          3,
+          157,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          157,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-049",
+      "ids": [
+        [
+          0,
+          3,
+          615,
+          11,
+          843,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          615,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-050",
+      "ids": [
+        [
+          0,
+          3,
+          740,
+          11,
+          2286,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          740,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-051",
+      "ids": [
+        [
+          0,
+          3,
+          147,
+          11,
+          1743,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          147,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-053",
+      "ids": [
+        [
+          0,
+          3,
+          40,
+          11,
+          708,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          40,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-054",
+      "ids": [
+        [
+          0,
+          3,
+          86,
+          11,
+          843,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          86,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-055",
+      "ids": [
+        [
+          0,
+          3,
+          146,
+          14,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          146,
+          14,
+          1410,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-056",
+      "ids": [
+        [
+          0,
+          3,
+          1604,
+          14,
+          1410,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1604,
+          14,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-057",
+      "ids": [
+        [
+          0,
+          3,
+          332,
+          14,
+          1410,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          332,
+          14,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-058",
+      "ids": [
+        [
+          0,
+          3,
+          75,
+          14,
+          918,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          75,
+          14,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-059",
+      "ids": [
+        [
+          0,
+          3,
+          231,
+          9,
+          568,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          231,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-061",
+      "ids": [
+        [
+          0,
+          3,
+          392,
+          9,
+          2419,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          392,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-062",
+      "ids": [
+        [
+          0,
+          3,
+          78,
+          9,
+          326,
+          27,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          78,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-063",
+      "ids": [
+        [
+          0,
+          3,
+          211,
+          11,
+          991,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          211,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-064",
+      "ids": [
+        [
+          0,
+          3,
+          185,
+          11,
+          991,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          185,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-065",
+      "ids": [
+        [
+          0,
+          3,
+          159,
+          11,
+          991,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          159,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-066",
+      "ids": [
+        [
+          0,
+          3,
+          156,
+          12,
+          7590,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          156,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-067",
+      "ids": [
+        [
+          0,
+          3,
+          108,
+          12,
+          7304,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          108,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-069",
+      "ids": [
+        [
+          0,
+          3,
+          119,
+          12,
+          1725,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          119,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-070",
+      "ids": [
+        [
+          0,
+          3,
+          799,
+          12,
+          1725,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          799,
+          12,
+          1410,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-071",
+      "ids": [
+        [
+          0,
+          3,
+          99,
+          12,
+          1126,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          99,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-072",
+      "ids": [
+        [
+          0,
+          3,
+          271,
+          12,
+          1126,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          271,
+          12,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-073",
+      "ids": [
+        [
+          0,
+          3,
+          354,
+          12,
+          4554,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          354,
+          12,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-074",
+      "ids": [
+        [
+          0,
+          3,
+          728,
+          12,
+          510,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          728,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-077",
+      "ids": [
+        [
+          0,
+          3,
+          130,
+          12,
+          3717,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          130,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-078",
+      "ids": [
+        [
+          0,
+          3,
+          380,
+          12,
+          3607,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          380,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-080",
+      "ids": [
+        [
+          0,
+          3,
+          117,
+          12,
+          3391,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          117,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-081",
+      "ids": [
+        [
+          0,
+          3,
+          282,
+          9,
+          1282,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          282,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-082",
+      "ids": [
+        [
+          0,
+          3,
+          526,
+          9,
+          1799,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          526,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-083",
+      "ids": [
+        [
+          0,
+          3,
+          451,
+          9,
+          2175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          451,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-084",
+      "ids": [
+        [
+          0,
+          3,
+          772,
+          9,
+          2175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          772,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-085",
+      "ids": [
+        [
+          0,
+          3,
+          123,
+          9,
+          386,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          123,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-086",
+      "ids": [
+        [
+          0,
+          3,
+          151,
+          9,
+          160,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          151,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-087",
+      "ids": [
+        [
+          0,
+          3,
+          695,
+          9,
+          520,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          695,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-088",
+      "ids": [
+        [
+          0,
+          3,
+          155,
+          9,
+          160,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          155,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-089",
+      "ids": [
+        [
+          0,
+          3,
+          349,
+          9,
+          4298,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          349,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-090",
+      "ids": [
+        [
+          0,
+          3,
+          112,
+          9,
+          2214,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          112,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-092",
+      "ids": [
+        [
+          0,
+          3,
+          1870,
+          9,
+          2342,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1870,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-093",
+      "ids": [
+        [
+          0,
+          3,
+          7499,
+          9,
+          1175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          7499,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-094",
+      "ids": [
+        [
+          0,
+          3,
+          1122,
+          9,
+          811,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1122,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-095",
+      "ids": [
+        [
+          0,
+          3,
+          1204,
+          9,
+          233,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1204,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-096",
+      "ids": [
+        [
+          0,
+          3,
+          210,
+          9,
+          882,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          210,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-097",
+      "ids": [
+        [
+          0,
+          3,
+          218,
+          9,
+          966,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          218,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-099",
+      "ids": [
+        [
+          0,
+          3,
+          86,
+          9,
+          371,
+          27,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          86,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-100",
+      "ids": [
+        [
+          0,
+          3,
+          551,
+          9,
+          1939,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          551,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "comb-032",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "かぶる"
+      ]
+    },
+    {
+      "id": "comb-052",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "通う"
+      ]
+    },
+    {
+      "id": "comb-060",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "上る"
+      ]
+    },
+    {
+      "id": "comb-068",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "沸く"
+      ]
+    },
+    {
+      "id": "comb-075",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "光る"
+      ]
+    },
+    {
+      "id": "comb-076",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "沸く"
+      ]
+    },
+    {
+      "id": "comb-079",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "沸く"
+      ]
+    },
+    {
+      "id": "comb-091",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "貼る"
+      ]
+    },
+    {
+      "id": "comb-098",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "計る"
+      ]
+    }
+  ],
+  "checkpoints": []
+}

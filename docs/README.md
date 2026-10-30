@@ -11,6 +11,7 @@ stories-v2-diverse-3mbの利用・組み込み・学習に関する文書。
 | [diversity.md](diversity.md) | 語彙の集中度測定、学習の偏り調整、候補モデルの比較 |
 | [limitations.md](limitations.md) | 品質・性能・対応環境の限界 |
 | [data-licenses.md](data-licenses.md) | 学習データとfixtureの出典 |
+| [combination-generalization-research.md](combination-generalization-research.md) | v13の語の組合せ診断、学習データとの重なり、再学習用split |
 | [学習README](../training/README.md) | 学習・export・標準配置 |
 | [学習設定](../configs/README.md) | 設定ファイルと出力先 |
 
