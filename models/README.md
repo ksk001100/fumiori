@@ -14,7 +14,9 @@ GitHub Actionsはこのモデルを使い、学習・データ取得なしでWeb
 
 `everyday-v16-branch-{count,mass}-3mb/` は各2,527,550 bytesの2モデル。従来の行数基準と実際の抽選質量を使う分岐補正を比較した。標準には採用しないが、比較用として両方デモへ追加している。[v16記録](../docs/compositional-generation-v16.md)を参照。
 
-登録した全10モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
+`everyday-v17-{small,expanded}-3mb/` は各2,528,193 bytes。語彙・構造・5,000stepを保ち、ローカル教師の新規文を500件／2,518件追加して再学習した比較用2モデル。自然で読みが合う非一致文は同じ混合比の対照より増えたが、近似文が多く、独立人手評価もなく標準には採用しない。両モデルをデモへ追加した。[v17記録](../docs/compositional-generation-v17.md)を参照。
+
+登録した全12モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
 
 ```powershell
 python scripts/build_wasm.py --model-catalog configs/demo-models.json

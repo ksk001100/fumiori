@@ -35,18 +35,18 @@ TOPICS = {
     'making': '修理、組み立て、制作、手作り',
 }
 @lru_cache(maxsize=1)
-def length_examples():
-    rows = [json.loads(line) for line in Path('data/paired-v1/train.jsonl').read_text(encoding='utf-8').splitlines()]
+def length_examples(path='data/paired-v1/train.jsonl'):
+    rows = [json.loads(line) for line in Path(path).read_text(encoding='utf-8').splitlines()]
     return [[r['text'] for r in rows if low <= len(r['kana']) <= high]
             for low,high in ((5,8),(13,18),(25,35))]
 
 
-def prompt_for(index, seed, count=8):
+def prompt_for(index, seed, count=8, examples_path='data/paired-v1/train.jsonl'):
     topic = list(TOPICS)[index % len(TOPICS)]
     rng = random.Random(seed + index)
     subject = rng.choice(TOPICS[topic].split('、'))
     level = index // len(TOPICS) % 3
-    examples = '\n'.join(rng.sample(length_examples()[level],3))
+    examples = '\n'.join(rng.sample(length_examples(str(examples_path))[level],3))
     prompt = (f'次の見本と同じ程度の長さの日本語の短文を{count}文書いてください。\n見本：\n{examples}\n'
               f'今回の話題は「{subject}」。見本とは異なる内容にし、文の型は自由に変えてください。'
               'それぞれ独立した自然な日常文にしてください。'
@@ -80,6 +80,7 @@ def main():
     parser.add_argument('--batch-size', type=int, default=8)
     parser.add_argument('--max-new-tokens', type=int, default=256)
     parser.add_argument('--seed', type=int, default=671003)
+    parser.add_argument('--examples',type=Path,default=Path('data/paired-v1/train.jsonl'),help='TRAIN-only JSONL for few-shot examples; use the filtered train source for combination studies')
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError('output exists; use a new path rather than mixing generation runs')
@@ -102,7 +103,7 @@ def main():
     with args.output.open('w', encoding='utf-8') as output:
         for batch_start in range(0, args.requests, args.batch_size):
             indices = list(range(args.offset+batch_start, args.offset+min(batch_start+args.batch_size,args.requests)))
-            prompts = [prompt_for(i,args.seed) for i in indices]
+            prompts = [prompt_for(i,args.seed,examples_path=args.examples) for i in indices]
             rendered = [tokenizer.apply_chat_template([
                 dict(role='system',content='あなたは日本語の編集者です。自然で簡潔な文を書きます。'),
                 dict(role='user',content=p)],tokenize=False,add_generation_prompt=True) for _,p in prompts]
@@ -123,7 +124,8 @@ def main():
         generation=dict(seed=args.seed,offset=args.offset,requests=args.requests,batch_size=args.batch_size,
         temperature=.85,top_p=.95,repetition_penalty=1.05,max_new_tokens=args.max_new_tokens),
         source_script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        fewshot_training_sha256=hashlib.sha256(Path('data/paired-v1/train.jsonl').read_bytes()).hexdigest(),
+        fewshot_training_sha256=hashlib.sha256(args.examples.read_bytes()).hexdigest(),
+        fewshot_training_path=str(args.examples),
         raw_sha256=hashlib.sha256(payload).hexdigest(),quality='synthetic; not independently reviewed',
         inference_use='none; prompts and teacher never used by deployed student'),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 

@@ -1,0 +1,28 @@
+{
+  "data_sha256": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777",
+  "rows": 282,
+  "scope": "FP32 PyTorch next-token NLL including difficulty/period/EOS, PAD ignored; teacher-generated heldout bodies, not naturalness or semantic generalization accuracy",
+  "results": [
+    {
+      "name": "control",
+      "checkpoint_sha256": "431b79e45050a5b884b916229e0e6be87c50c66d4992fdc20f26cf7c99d298ba",
+      "nll": 2.8596034819255975,
+      "perplexity": 17.454604498069664,
+      "tokens": 3496
+    },
+    {
+      "name": "small",
+      "checkpoint_sha256": "964c368675f5f3a658485d6d8eb0f200b7920ef7b526cf0aae92657d03b916d9",
+      "nll": 2.6376652135865366,
+      "perplexity": 13.980523935214238,
+      "tokens": 3496
+    },
+    {
+      "name": "expanded",
+      "checkpoint_sha256": "292bd5b062960e8d05e614b47ec063c2d9edffe338a85371c928c5390234b3b7",
+      "nll": 2.222764175461959,
+      "perplexity": 9.232816751434168,
+      "tokens": 3496
+    }
+  ]
+}

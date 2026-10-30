@@ -1,0 +1,138 @@
+{
+  "report_sha256": "fd883563865aa6f53e80fbd396ebaf1e0096bd487945e129e7c05851b0819789",
+  "mapping_sha256": "1a34d4b4629335a34f7da089847ffee74f08221e98878e5c518709d98e1c086a",
+  "ratings_sha256": "e71210b59801ea16e6e7ce56d11326da6fa484bf6f5da674039a5d10854ee7d3",
+  "script_sha256": "b741ab69173d0f3da36687a69c41c4cfcdba8a46f36efc37446a267ba2621cee",
+  "scope": "NFKC/terminal-period training membership and character-bigram Dice only, not semantic novelty. Joint means explicit naturalness AND reading labels. Rates among rated successes; incomplete reviews are not gates.",
+  "by_condition": {
+    "quality-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 63,
+            "natural": 63,
+            "reading": 62,
+            "joint": 62
+          },
+          "train_nonexact": {
+            "reviewed": 37,
+            "natural": 25,
+            "reading": 36,
+            "joint": 25
+          },
+          "joint_nonexact_count": 25,
+          "joint_nonexact_rate_among_rated": 0.25,
+          "joint_not_near_count": 8,
+          "joint_not_near_rate_among_rated": 0.08
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    },
+    "small-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 59,
+            "natural": 58,
+            "reading": 59,
+            "joint": 58
+          },
+          "train_nonexact": {
+            "reviewed": 41,
+            "natural": 32,
+            "reading": 41,
+            "joint": 32
+          },
+          "joint_nonexact_count": 32,
+          "joint_nonexact_rate_among_rated": 0.32,
+          "joint_not_near_count": 8,
+          "joint_not_near_rate_among_rated": 0.08
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    },
+    "expanded-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 49,
+            "natural": 49,
+            "reading": 49,
+            "joint": 49
+          },
+          "train_nonexact": {
+            "reviewed": 51,
+            "natural": 43,
+            "reading": 51,
+            "joint": 43
+          },
+          "joint_nonexact_count": 43,
+          "joint_nonexact_rate_among_rated": 0.43,
+          "joint_not_near_count": 14,
+          "joint_not_near_rate_among_rated": 0.14
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 # データの由来と配布範囲
 
+v17の2モデルはv13除去済みtrainに、既存ローカル `llm-jp/llm-jp-3.1-1.8b-instruct4` の新規出力500件／2,518件を追加する。教師revision・モデルファイル・few-shot train由来・原本のhashは[v17データ記録](everyday-v17-data.json)に保持し、配布manifestとLICENSEにも教師ソースを追記した。教師モデルのメタデータはApache-2.0だが、合成文や混合コーパス全体をApache-2.0またはCC0とする主張ではない。教師・プロンプト・生成文一覧はアプリへ配布しない。元のTatoeba・自作文・辞書等の出典を継承する。[実験記録](compositional-generation-v17.md)を参照。
+
 v16の2モデルはv15と同じv13除去splitを使い、変更はtrain内の分岐頻度を数える基準とlossの重み付けのみ。新しい文・教師生成・修正文は追加せず、親manifestと配布LICENSEの出典を継承する。[v16記録](compositional-generation-v16.md)を参照。
 
 v15の4モデルもv13の同じ除去splitを使う。変更は学習時の抽選比率と入力マスクで、外部データ・教師生成・修正文の追加はない。親manifestと配布LICENSEの出典を継承する。[v15記録](compositional-generation-v15.md)を参照。

@@ -1,0 +1,64 @@
+{
+  "report_sha256": "fd883563865aa6f53e80fbd396ebaf1e0096bd487945e129e7c05851b0819789",
+  "mapping_sha256": "1a34d4b4629335a34f7da089847ffee74f08221e98878e5c518709d98e1c086a",
+  "ratings_sha256": "e71210b59801ea16e6e7ce56d11326da6fa484bf6f5da674039a5d10854ee7d3",
+  "by_condition": {
+    "quality-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.88,
+          "reading_accuracy": 0.98,
+          "joint_rate": 0.87
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    },
+    "small-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.9,
+          "reading_accuracy": 1.0,
+          "joint_rate": 0.9
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    },
+    "expanded-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.92,
+          "reading_accuracy": 1.0,
+          "joint_rate": 0.92
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    }
+  }
+}

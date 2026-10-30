@@ -1,0 +1,46 @@
+[
+  {
+    "variant": "small",
+    "storage": "fp32",
+    "cases": 3,
+    "failed_logits": 0,
+    "logits_compared": 88020,
+    "max_absolute_error": 6.67572021484375e-06,
+    "passed": true,
+    "relative_tolerance": 0.0,
+    "tolerance": 0.00019999999494757503
+  },
+  {
+    "variant": "small",
+    "storage": "int8",
+    "cases": 3,
+    "failed_logits": 0,
+    "logits_compared": 88020,
+    "max_absolute_error": 6.198883056640625e-06,
+    "passed": true,
+    "relative_tolerance": 0.0,
+    "tolerance": 0.00019999999494757503
+  },
+  {
+    "variant": "expanded",
+    "storage": "fp32",
+    "cases": 3,
+    "failed_logits": 0,
+    "logits_compared": 88020,
+    "max_absolute_error": 5.7220458984375e-06,
+    "passed": true,
+    "relative_tolerance": 0.0,
+    "tolerance": 0.00019999999494757503
+  },
+  {
+    "variant": "expanded",
+    "storage": "int8",
+    "cases": 3,
+    "failed_logits": 0,
+    "logits_compared": 88020,
+    "max_absolute_error": 7.152557373046875e-06,
+    "passed": true,
+    "relative_tolerance": 0.0,
+    "tolerance": 0.00019999999494757503
+  }
+]

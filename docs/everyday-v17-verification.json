@@ -1,0 +1,20 @@
+{
+  "python_tests": 129,
+  "python_log_sha256": "68a8e7ce1e478a5c5b9c41b0a39e63b08f4f93152146d1667bb2899fdb8f75c7",
+  "default_check_log_sha256": "2b69024aeead1ba872162bbd19303cd3f06ff2e50da167403ce7d52bfbc5e267",
+  "wasm_smoke_log_sha256": "1708591647447d0ca44766c097970c95a41e5b85cbd6f6eb5069d24629f90b7d",
+  "wasm_models": 12,
+  "wasm_samples_per_model": 30,
+  "browser_log_sha256": "921236e352c9a6970a400ba46fa07d3ca8012f24e94e77110e9fe3cfecfbb2cb",
+  "browser_models": 12,
+  "browser_difficulties": [
+    "easy",
+    "normal",
+    "hard"
+  ],
+  "local_url": "http://127.0.0.1:8000/",
+  "http_status": 200,
+  "pages_deployed": false,
+  "rust_workspace_tests_rerun": false,
+  "timing_note": "Browser test began during final part of exploratory CLI evaluation; new v17 models were visited last, after CLI evaluation ended. Dedicated CPU normal measurements ran afterwards without other project tests/training. Not a real-time bound."
+}

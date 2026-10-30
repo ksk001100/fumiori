@@ -58,5 +58,17 @@
     "directory": "models/everyday-v16-branch-mass-3mb",
     "label": "v16 分岐補正・抽選比率基準（約2.5MB）",
     "description": "実際の学習文の抽選比率から続きの偏りを補正する試作です。追加の文一覧や補正表は推論に使わず、効果と制限は実験記録に残します。"
+  },
+  {
+    "id": "model-v17-small",
+    "directory": "models/everyday-v17-small-3mb",
+    "label": "v17 新規文500件追加（約2.5MB）",
+    "description": "既存の語彙・構造を保ち、ローカル教師の新規文500件を追加して学び直した試作です。生成の自然さ・文脈読みは保証せず、標準への採用はしていません。"
+  },
+  {
+    "id": "model-v17-expanded",
+    "directory": "models/everyday-v17-expanded-3mb",
+    "label": "v17 新規文2518件追加（約2.5MB）",
+    "description": "重複・評価用組合せ等を除いた新規文2518件を追加した比較用モデルです。教師や学習文一覧は実行時に不要で、品質は実験記録で確認できます。"
   }
 ]

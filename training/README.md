@@ -1,5 +1,7 @@
 # Training
 
+[v17](../docs/compositional-generation-v17.md)はローカル教師の新規文500件／2,518件を追加し、同じ語彙・構造・最終5,000stepで比較する。`scripts.prepare_word_teacher` が原本・few-shot train由来・辞書・語彙hashを照合し、旧splitと既存評価出力の重複・評価用組合せを除外する。新teacher-testは学習に含めない。比較のコピー参照は各条件trainの和集合で、`evaluate_candidates` の `common_reference_data` と条件別 `data` で指定する。全モデルをデモへ追加した。
+
 [v16](../docs/compositional-generation-v16.md)は分岐補正の頻度を数える基準を比較する。`branch_balance.frequency_source` は省略時 `uniform_rows`、`sampling_mass` では難易度・corpus mixture等を適用した実際のtrain行抽選質量を使う。明示的な抽選重みがない場合は後者を拒否する。表は学習時だけ使い、配布モデルへ入れない。試作2モデルはデモへ追加している。
 
 [v15](../docs/compositional-generation-v15.md)は名詞入力マスクとcorpus mixtureを2×2で比較する。`independent_data_rng: true` により学習文抽選と入力マスクの乱数を分離し、初期重みと更新batch行番号列のSHA-256をcheckpointへ保存する。同じ混合比の対照実験でマスクの有無が抽選を変えないことを検査できる。省略した既存設定の乱数経路は従来どおり。試作4モデルは全てデモに追加している。

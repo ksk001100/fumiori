@@ -1,0 +1,14 @@
+{
+  "data": "build/everyday-v13-combination-holdout-final",
+  "common_reference_data": "build/everyday-v17-expanded-data",
+  "seed": 880000,
+  "samples": 600,
+  "review_count": 100,
+  "review_seed": 9041,
+  "near_threshold": 0.8,
+  "conditions": [
+    {"name": "quality", "model": "models/everyday-v15-quality-3mb", "temperature": 0.8, "top_p": 0.95, "max_candidates": 1},
+    {"name": "small", "model": "models/everyday-v17-small-3mb", "data": "build/everyday-v17-small-data", "temperature": 0.8, "top_p": 0.95, "max_candidates": 1},
+    {"name": "expanded", "model": "models/everyday-v17-expanded-3mb", "data": "build/everyday-v17-expanded-data", "temperature": 0.8, "top_p": 0.95, "max_candidates": 1}
+  ]
+}

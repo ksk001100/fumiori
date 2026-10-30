@@ -1,5 +1,7 @@
 # 学習設定
 
+`everyday-v17-data.json` は教師文を旧語彙へ対応付け、500件／全2,518件を追加する設定。`everyday-v17-{small,expanded}.json` は最終5,000stepを使う学習設定。`everyday-v17-evaluation.json` は条件別 `data` と実際のtrain和集合に一致する `common_reference_data` を指定し、異なる参照による見かけの新規性を避ける。[v17記録](../docs/compositional-generation-v17.md)を参照。
+
 `everyday-v16-branch-{count,mass}.json` はv15比率変更モデルと同じ条件で、分岐の頻度源 `uniform_rows` / `sampling_mass` だけを比較する。`everyday-v16-evaluation.json` はv15の不変な対照2種類と新モデル2種類を同じ開発seedで評価する。[v16記録](../docs/compositional-generation-v16.md)を参照。
 
 `everyday-v15-{base,context,quality,quality-context}.json` は名詞入力マスクと学習データ比率の2×2比較。validation基準と容量・学習量を固定し、`independent_data_rng` で入力マスクによる学習文抽選のずれを避ける。`everyday-v15-evaluation.json` が各600要求・100件点検の設定。[v15記録](../docs/compositional-generation-v15.md)を参照。

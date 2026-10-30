@@ -1,0 +1,21 @@
+{
+  "report_sha256": "4285442b41dae62a89dbe1d6dca708e622859f9382ecf89bdcebda5ca9d252f4",
+  "ratings_sha256": "e99522b333c31fa0194d14daa3d76484fd589f64ad82b5c4d86fdd626368503f",
+  "selected": 50,
+  "unrated": 0,
+  "by_reviewer_kind": {
+    "independent_human": {
+      "rated": 0,
+      "natural_rate": null,
+      "reading_accuracy": null,
+      "joint_rate": null
+    },
+    "agent": {
+      "rated": 50,
+      "natural_rate": 0.98,
+      "reading_accuracy": 1.0,
+      "joint_rate": 0.98
+    }
+  },
+  "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+}

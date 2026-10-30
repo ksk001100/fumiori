@@ -8,6 +8,7 @@ stories-v2-diverse-3mbの利用・組み込み・学習に関する文書。
 | [architecture.md](architecture.md) | モデル構成と公開API |
 | [three-mb-generation.md](three-mb-generation.md) | データ、モデル、品質評価、再現手順 |
 | [evaluation.md](evaluation.md) | 評価条件と検証コマンド |
+| [compositional-generation-v17.md](compositional-generation-v17.md) | 新規教師文500件／2,518件の追加、共通コピー参照による比較とデモへの追加 |
 | [compositional-generation-v16.md](compositional-generation-v16.md) | 行数／抽選質量による分岐補正、固定した対照評価票の再利用とデモへの追加 |
 | [compositional-generation-v15.md](compositional-generation-v15.md) | 名詞入力マスク・データ比率の2×2比較、自然な非一致文の評価とデモへの追加 |
 | [compositional-generation-v14.md](compositional-generation-v14.md) | 除去splitからの再学習、サンプリング・候補選別比較とデモへの追加 |
