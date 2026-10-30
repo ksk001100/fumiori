@@ -5,9 +5,10 @@ from scripts.curate_training_data import cap_group, coverage, style_key
 
 @pytest.fixture
 def key():
-    from sudachipy import Dictionary, SplitMode
-    tokenizer=Dictionary().tokenizer()
-    return lambda text:style_key(text,tokenizer,SplitMode.C)
+    sudachi = pytest.importorskip('sudachipy')
+    pytest.importorskip('sudachidict_core')
+    tokenizer=sudachi.Dictionary().tokenizer()
+    return lambda text:style_key(text,tokenizer,sudachi.SplitMode.C)
 
 
 def test_style_dedup_keeps_tense_negation_voice_and_mood(key):
