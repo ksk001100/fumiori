@@ -1,0 +1,32 @@
+{
+  "configs/everyday-v20-layers4.json": {
+    "config_sha256": "15e5d5c2061208ee38f478b3578b7ffaf61f92cd6d8ad8ebc4df22ecd3d105de",
+    "source_mass": {
+      "everyday": 0.01813930334434366,
+      "paired": 0.019137214219218913,
+      "stories": 0.40380884912297416,
+      "tatoeba": 0.5126903992114228,
+      "teacher": 0.04622423410204043
+    },
+    "stories_mass_by_difficulty": {
+      "3": 0.2072506417882412,
+      "4": 0.3486251047492838,
+      "5": 0.6555508008313974
+    }
+  },
+  "configs/everyday-v21-source10.json": {
+    "config_sha256": "be210c161b42366cc839f811c6966c2176d543492402c37e50b07fb134072482",
+    "source_mass": {
+      "everyday": 0.027143866457035547,
+      "paired": 0.026050137322221455,
+      "stories": 0.1,
+      "tatoeba": 0.7606620752663203,
+      "teacher": 0.08614392095442261
+    },
+    "stories_mass_by_difficulty": {
+      "3": 0.10000000000000002,
+      "4": 0.10000000000000002,
+      "5": 0.1
+    }
+  }
+}

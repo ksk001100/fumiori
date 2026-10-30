@@ -114,3 +114,27 @@ def test_everyday_corpus_preserves_protected_splits_readings_and_unseen_combinat
         assert old_ids <= {r['id'] for r in data}
         cores[split] = {core_key(r['text']) for r in data}
     assert not any(cores['train'] & cores[s] for s in ('validation', 'test', 'family-test'))
+
+
+def test_grouped_sources_cap_mass_and_preserve_relative_base_weights():
+    data = [dict(ids=[0, d, 7, 1], training_group=g)
+            for d, count in [(3, 2), (4, 9), (5, 30)]
+            for g in ['tatoeba'] * count + ['teacher'] * 2 + ['stories'] * (40-count)]
+    original = [dict(r) for r in data]
+    mapping = dict(tatoeba='base', teacher='base', stories='stories')
+    weights = sampling_weights(data, corpus_mixture=dict(base=.9, stories=.1), corpus_group_map=mapping)
+    for d in (3, 4, 5):
+        selected = [(r, float(w)) for r, w in zip(data, weights) if r['ids'][1] == d]
+        assert sum(w for _, w in selected) == pytest.approx(1)
+        assert sum(w for r, w in selected if r['training_group'] == 'stories') == pytest.approx(.1)
+        base_weights = [w for r, w in selected if r['training_group'] != 'stories']
+        assert max(base_weights) == pytest.approx(min(base_weights))
+    assert data == original
+    for bad in [dict(tatoeba='base'), dict(mapping, extra='base'), dict(mapping, teacher=None)]:
+        with pytest.raises(ValueError):
+            sampling_weights(data, corpus_mixture=dict(base=.9, stories=.1), corpus_group_map=bad)
+    with pytest.raises(ValueError):
+        sampling_weights(data, corpus_group_map=mapping)
+    with pytest.raises(ValueError, match='every group'):
+        sampling_weights([r for r in data if not (r['ids'][1] == 3 and r['training_group'] == 'stories')],
+                         corpus_mixture=dict(base=.9, stories=.1), corpus_group_map=mapping)

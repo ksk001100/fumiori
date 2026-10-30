@@ -112,7 +112,7 @@ def audit(data, configs, samples, seed):
         config = json.loads(Path(config_path).read_text(encoding='utf-8'))
         if Path(config['data_dir']).resolve() != data.resolve():
             raise ValueError('config must use the audited data')
-        weights = sampling_weights(rows, config.get('lexical_balance'), config.get('topic_balance'), config.get('corpus_mixture'))
+        weights = sampling_weights(rows, config.get('lexical_balance'), config.get('topic_balance'), config.get('corpus_mixture'), config.get('corpus_group_map'))
         weights = (weights/weights.sum()).tolist()
         largest = sorted(skeletons.items(), key=lambda kv:-sum(weights[i] for i in kv[1]))[:10]
         sampling[config_path] = dict(config_sha256=sha(config_path),

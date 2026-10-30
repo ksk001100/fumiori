@@ -14,7 +14,7 @@ def test_catalog_retains_all_published_model_variants():
     assert list(catalog) == ['model-int8','model-experimental','model-v14-ce','model-v14-smooth',
                              'model-v15-base','model-v15-context','model-v15-quality','model-v15-quality-context',
                              'model-v16-branch-count','model-v16-branch-mass','model-v17-small','model-v17-expanded','model-v18-expanded-base','model-v19-curated','model-v19-refined',
-                             'model-v20-control4','model-v20-layers4','model-v20-layers2','model-v20-layers8']
+                             'model-v20-control4','model-v20-layers4','model-v20-layers2','model-v20-layers8','model-v21-source10']
 
 
 @pytest.mark.parametrize('identifier', ['../model','model-../../pkg','model-good/model-bad','pkg'])
@@ -55,6 +55,30 @@ def test_blind_review_is_complete_and_sample_bound():
     ratings[0]['kana']='いぬ'
     with pytest.raises(ValueError):
         summarize(report,mapping,ratings)
+
+
+def test_genre_review_requires_labels_and_joins_quality_with_copy_membership():
+    from scripts.review_genre import summarize as genre_summary
+    selected = review_selection([dict(status='success', text='猫', kana='ねこ')], 1, 0)
+    condition = dict(name='ce', review_selection=selected,
+                     metrics=dict(details=[dict(text='猫', exact=True, near=True)]))
+    report = dict(results=[condition])
+    mapping = [dict(blind_id=0, key='ce:0')]
+    row = dict(blind_id='0', status='success', text='猫', kana='ねこ', natural='1', reading_ok='1',
+               reviewer='Codex', reviewer_kind='agent', notes='語と読みが対応',
+               fiction_or_narrative='0', genre_notes='普通の対象')
+    result = genre_summary(report, mapping, [row])['ce']['agent']
+    assert result['acceptable_non_narrative_count'] == 1
+    assert result['acceptable_non_narrative_nonexact_count'] == 0
+    assert result['acceptable_non_narrative_not_near_count'] == 0
+    condition['metrics']['details'][0].update(exact=False, near=False)
+    assert genre_summary(report, mapping, [row])['ce']['agent']['acceptable_non_narrative_nonexact_count'] == 1
+    assert genre_summary(report, mapping, [dict(row, fiction_or_narrative='1')])['ce']['agent']['acceptable_non_narrative_count'] == 0
+    for field in ('fiction_or_narrative', 'genre_notes'):
+        with pytest.raises(ValueError):
+            genre_summary(report, mapping, [{k: v for k, v in row.items() if k != field}])
+    with pytest.raises(ValueError):
+        genre_summary(report, mapping, [dict(row, text='犬')])
 
 
 def test_semantic_probe_does_not_force_a_target_verb(tmp_path,monkeypatch):

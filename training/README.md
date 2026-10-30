@@ -1,5 +1,7 @@
 # Training
 
+[v21](../docs/compositional-generation-v21.md)は同じ10万文・4層・1万stepを維持し、`corpus_group_map` で元4出典をbaseへまとめ、`corpus_mixture` でbase 90%／追加stories 10%を各難易度に割り当てる。元出典のラベルや行を変更せず、base内は難易度ごとの一様抽選を維持する。`scripts.audit_data_diversity` も同じ設定を計算に使う。これは出典の比率で、物語ジャンル全体の上限ではない。品質・新規性と、明示的な物語調の点検を分けて比較する。
+
 [v20](../docs/compositional-generation-v20.md)は `scripts.diverse_stories` で近似・文体・構文・書き出しの集中を管理し、学習用10万文を作る。最終設定は `configs/everyday-v20-data.json`、データは `build/everyday-v20-selected-100k-data/`。2/4/8層と小データ4層の対照を、難易度内の一様抽選・固定1万stepで比較する。元のcorpus mixtureとは異なるためv19からの差を層数だけの効果としない。4モデル全てデモへ追加した。追加データの `additional_sources` は出典と検証済みMIT license_text/hashをexport・配布LICENSEへ保持する。
 
 [v19のデータ整理](../docs/compositional-generation-v19.md)は `scripts.curate_training_data` で元trainを保持したまま別のsubsetを作る。最終設定は `configs/everyday-v19-refined-data.json`、データは `build/everyday-v19-refined-data/`、学習は `configs/everyday-v19-refined.json`。除外理由・元行hash・代表行を追跡し、評価splitと語彙は維持する。初版には修飾の誤統合があり、修正版とともにデモへ残した。生成の自然な非一致文に安定した改善はなく、標準へは採用しない。

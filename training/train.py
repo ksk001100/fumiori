@@ -54,9 +54,19 @@ def load_checkpoint(path):
     return model.eval(), ck
 
 
-def sampling_weights(rows, lexical_balance=None, topic_balance=None, corpus_mixture=None):
+def sampling_weights(rows, lexical_balance=None, topic_balance=None, corpus_mixture=None, corpus_group_map=None):
     """Equal expected mass for each observed difficulty; no held-out rows used."""
     counts = {d: sum(r['ids'][1] == d for r in rows) for d in (3, 4, 5)}
+    groups_for_rows = [r.get('training_group') for r in rows]
+    if corpus_group_map is not None:
+        if (corpus_mixture is None or not isinstance(corpus_group_map, dict)
+                or set(corpus_group_map) != set(groups_for_rows)
+                or any(not isinstance(v, str) for v in corpus_group_map.values())):
+            raise ValueError('corpus_group_map requires a mixture and an explicit mapping for every observed source')
+        groups_for_rows = [corpus_group_map[g] for g in groups_for_rows]
+        if any({g for r, g in zip(rows, groups_for_rows) if r['ids'][1] == d} != set(corpus_mixture)
+               for d, count in counts.items() if count):
+            raise ValueError('mapped mixture must have every group at every observed difficulty')
     if lexical_balance is None and topic_balance is None and corpus_mixture is None:
         return torch.tensor([1.0 / counts[r['ids'][1]] for r in rows], dtype=torch.float64)
     from scripts.diversity import lexical_factors, topic_factors
@@ -66,13 +76,13 @@ def sampling_weights(rows, lexical_balance=None, topic_balance=None, corpus_mixt
     if corpus_mixture is not None:
         if (not corpus_mixture or any(not isinstance(k, str) or not math.isfinite(v) or v <= 0
                                      for k, v in corpus_mixture.items())
-                or any(r.get('training_group') not in corpus_mixture for r in rows)):
+                or any(g not in corpus_mixture for g in groups_for_rows)):
             raise ValueError('corpus mixture requires positive finite masses and explicit training_group labels')
-        groups = {(r['ids'][1], r['training_group']) for r in rows}
-        group_totals = {key: sum(f for r, f in zip(rows, factors)
-                                if (r['ids'][1], r['training_group']) == key) for key in groups}
-        factors = [f * corpus_mixture[r['training_group']] / group_totals[(r['ids'][1], r['training_group'])]
-                   for r, f in zip(rows, factors)]
+        groups = {(r['ids'][1], g) for r, g in zip(rows, groups_for_rows)}
+        group_totals = {key: sum(f for r, f, g in zip(rows, factors, groups_for_rows)
+                                if (r['ids'][1], g) == key) for key in groups}
+        factors = [f * corpus_mixture[g] / group_totals[(r['ids'][1], g)]
+                   for r, f, g in zip(rows, factors, groups_for_rows)]
     totals = {d: sum(f for r, f in zip(rows, factors) if r['ids'][1] == d) for d in counts}
     return torch.tensor([f / totals[r['ids'][1]] for r, f in zip(rows, factors)], dtype=torch.float64)
 
@@ -216,9 +226,9 @@ def train(config_path):
             raise ValueError('invalid or unacknowledged model-reviewed repair training')
         repairs = RepairData(rc['data_dir'],manifest['vocab_sha256'],
             hashlib.sha256((data/'manifest.json').read_bytes()).hexdigest(),device)
-    if any(c.get(k) is not None for k in ('lexical_balance', 'topic_balance', 'corpus_mixture')) and not c.get('balance_difficulties', False):
+    if any(c.get(k) is not None for k in ('lexical_balance', 'topic_balance', 'corpus_mixture', 'corpus_group_map')) and not c.get('balance_difficulties', False):
         raise ValueError('lexical/topic balance requires balance_difficulties')
-    weights = sampling_weights(rows['train'], c.get('lexical_balance'), c.get('topic_balance'), c.get('corpus_mixture')).to(device) if c.get('balance_difficulties', False) else None
+    weights = sampling_weights(rows['train'], c.get('lexical_balance'), c.get('topic_balance'), c.get('corpus_mixture'), c.get('corpus_group_map')).to(device) if c.get('balance_difficulties', False) else None
     if c.get('branch_balance') is not None:
         from .branches import branch_weights
         branch_config = dict(c['branch_balance'])

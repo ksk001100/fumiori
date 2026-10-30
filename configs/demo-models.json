@@ -112,5 +112,11 @@
     "directory": "models/everyday-v20-layers8-3mb",
     "label": "v20 10万文・8層（約2.6MB）",
     "description": "同じ10万文を深く細い構造で学ぶ比較用モデルです。速度・容量・自然さの結果は研究記録で確認できます。"
+  },
+  {
+    "id": "model-v21-source10",
+    "directory": "models/everyday-v21-source10-3mb",
+    "label": "v21 物語ソース10%・4層（約2.5MB）",
+    "description": "同じ10万文を使い、追加した物語データの学習比率を各難易度10%に抑えた比較用モデルです。出典の比率であり、出力の物語率や品質を保証する値ではありません。"
   }
 ]
