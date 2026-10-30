@@ -70,5 +70,11 @@
     "directory": "models/everyday-v17-expanded-3mb",
     "label": "v17 新規文2518件追加（約2.5MB）",
     "description": "重複・評価用組合せ等を除いた新規文2518件を追加した比較用モデルです。教師や学習文一覧は実行時に不要で、品質は実験記録で確認できます。"
+  },
+  {
+    "id": "model-v18-expanded-base",
+    "directory": "models/everyday-v18-expanded-base-3mb",
+    "label": "v18 新規文追加・通常比率（約2.5MB）",
+    "description": "v17の新規文2518件を通常の学習比率で学ぶ比較用モデルです。文の追加と抽選比率の影響を分けて調べ、標準への採用条件とは区別します。"
   }
 ]

@@ -1,5 +1,7 @@
 # Training
 
+[v18](../docs/compositional-generation-v18.md)はv17の追加データを通常比率65/15/15/5で学び、文追加×抽選比率の2×2比較を完成する。語彙・構造・初期値・最終5,000stepを維持する。既存seedで4条件、新しい887000台で通常比率の対照と追加モデルを評価し、採点票の再利用と新規点検を区別する。新モデルもデモへ追加した。新seedでは自然な非一致文の増加が再現せず、標準には採用しない。
+
 [v17](../docs/compositional-generation-v17.md)はローカル教師の新規文500件／2,518件を追加し、同じ語彙・構造・最終5,000stepで比較する。`scripts.prepare_word_teacher` が原本・few-shot train由来・辞書・語彙hashを照合し、旧splitと既存評価出力の重複・評価用組合せを除外する。新teacher-testは学習に含めない。比較のコピー参照は各条件trainの和集合で、`evaluate_candidates` の `common_reference_data` と条件別 `data` で指定する。全モデルをデモへ追加した。
 
 [v16](../docs/compositional-generation-v16.md)は分岐補正の頻度を数える基準を比較する。`branch_balance.frequency_source` は省略時 `uniform_rows`、`sampling_mass` では難易度・corpus mixture等を適用した実際のtrain行抽選質量を使う。明示的な抽選重みがない場合は後者を拒否する。表は学習時だけ使い、配布モデルへ入れない。試作2モデルはデモへ追加している。

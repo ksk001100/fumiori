@@ -1,5 +1,7 @@
 # 学習設定
 
+`everyday-v18-expanded-base.json` はv17全追加データを通常比率で学ぶ固定5,000step設定。`everyday-v18-evaluation.json` は文追加×比率の4条件、`everyday-v18-fresh-seeds.json` は新しい生成seed887000台で通常比率の2条件を比較する。[事前条件](../docs/everyday-v18-protocol.json)と[v18記録](../docs/compositional-generation-v18.md)を参照。
+
 `everyday-v17-data.json` は教師文を旧語彙へ対応付け、500件／全2,518件を追加する設定。`everyday-v17-{small,expanded}.json` は最終5,000stepを使う学習設定。`everyday-v17-evaluation.json` は条件別 `data` と実際のtrain和集合に一致する `common_reference_data` を指定し、異なる参照による見かけの新規性を避ける。[v17記録](../docs/compositional-generation-v17.md)を参照。
 
 `everyday-v16-branch-{count,mass}.json` はv15比率変更モデルと同じ条件で、分岐の頻度源 `uniform_rows` / `sampling_mass` だけを比較する。`everyday-v16-evaluation.json` はv15の不変な対照2種類と新モデル2種類を同じ開発seedで評価する。[v16記録](../docs/compositional-generation-v16.md)を参照。

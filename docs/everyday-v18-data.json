@@ -1,0 +1,15 @@
+{
+  "source": "v17 expanded data, unchanged; no new external or teacher data",
+  "parent_record_sha256": "b643616062fc4d97820124c61551187adb5521a8c9516ccc24c41d4f736c3c3a",
+  "data_path": "build/everyday-v17-expanded-data",
+  "manifest_sha256": "2e50e64c01f340505a38fbcbaed17b6c21c7907ab0d071d4a3b06b088407245e",
+  "split_sha256": {
+    "train.jsonl": "82754b16eb8f4613b33c52e152c46138b5f2852f3424635571c19c58ca9b0ef8",
+    "validation.jsonl": "863993ae4a82795e8f2d91e88a29fd2fe1a5051e75131ae71c9f17d419a9c8c0",
+    "test.jsonl": "85fa5fc5ab1498683e17c8c6325ee356eff947b43465bc0cb0ad2a2e987fdca8",
+    "family-test.jsonl": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e",
+    "teacher-test.jsonl": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777"
+  },
+  "holdout_sha256": "89e199b05a28252e8d6b6623ef367ec231b6ca20a21624c5631cfbcbbb1a4746",
+  "vocab_sha256": "5191ec3cc63fd68612181079a63228e37a84303cd34ee6b0c5e34004255f1dbe"
+}

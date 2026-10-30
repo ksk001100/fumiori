@@ -1,5 +1,7 @@
 # アプリ・Webデモ用の配布モデル
 
+`everyday-v18-expanded-base-3mb/` はv17で追加した2,518文を通常比率65/15/15/5で学ぶ比較用モデル。文追加と抽選比率の2×2比較を補い、新しい生成seedでも確認する。コピー率は両seed群で低下したが、自然な非一致文の増加は新seedで再現せず、標準へは昇格していない。[v18記録](../docs/compositional-generation-v18.md)を参照。
+
 `stories-v2-diverse-3mb/` は `build/fumiori-stories-v2-diverse-3mb/` の配布用5ファイル。
 GitHub Actionsはこのモデルを使い、学習・データ取得なしでWebデモをビルドする。
 ビルド時にmanifestのSHA-256と実ファイルの一致を検証する。
@@ -16,7 +18,7 @@ GitHub Actionsはこのモデルを使い、学習・データ取得なしでWeb
 
 `everyday-v17-{small,expanded}-3mb/` は各2,528,193 bytes。語彙・構造・5,000stepを保ち、ローカル教師の新規文を500件／2,518件追加して再学習した比較用2モデル。自然で読みが合う非一致文は同じ混合比の対照より増えたが、近似文が多く、独立人手評価もなく標準には採用しない。両モデルをデモへ追加した。[v17記録](../docs/compositional-generation-v17.md)を参照。
 
-登録した全12モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
+登録した全13モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
 
 ```powershell
 python scripts/build_wasm.py --model-catalog configs/demo-models.json

@@ -1,0 +1,74 @@
+{
+  "sources": [
+    {
+      "version": 15,
+      "paths": {
+        "report": "docs\\everyday-v15-measurements.json",
+        "mapping": "docs\\everyday-v15-review-map.json",
+        "ratings": "docs\\everyday-v15-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "86f14ba32e60f02d79a779909060138b8522c0c1d695361a5b589038f370792c",
+        "mapping": "d90a59e4979d487dba18d42d204dfd055f9fbdc82ea2a54858942c67d1c01ac4",
+        "ratings": "e63456b574864bba60fab9c55763252bef96e3dcc687ab7c7741cfd0a0c816a2"
+      }
+    },
+    {
+      "version": 16,
+      "paths": {
+        "report": "docs\\everyday-v16-measurements.json",
+        "mapping": "docs\\everyday-v16-review-map.json",
+        "ratings": "docs\\everyday-v16-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "3a1b51dac8c38b8ae09a16b51f5b8ef363cf4b047f04f5c219cac3df2c816a72",
+        "mapping": "bfafae581752c153477ff438c749e6d4b4c90411ace87e1cfaa531c2389e5f3c",
+        "ratings": "035a0d118fba4f68b602271b42ef827affb049445d39803602442f938aa294ed"
+      }
+    },
+    {
+      "version": 17,
+      "paths": {
+        "report": "docs\\everyday-v17-measurements.json",
+        "mapping": "docs\\everyday-v17-review-map.json",
+        "ratings": "docs\\everyday-v17-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "fd883563865aa6f53e80fbd396ebaf1e0096bd487945e129e7c05851b0819789",
+        "mapping": "1a34d4b4629335a34f7da089847ffee74f08221e98878e5c518709d98e1c086a",
+        "ratings": "e71210b59801ea16e6e7ce56d11326da6fa484bf6f5da674039a5d10854ee7d3"
+      }
+    }
+  ],
+  "report_sha256": "322842e2c916033a8fda7fe9c1e613d692762d2bdb7a5101282878d45908e1bd",
+  "mapping_sha256": "fce7d40e8a9840eae0f3a2fdedc814fcc323f399848adfdc6e2bfb8755e9ff71",
+  "unchanged_control_rows": 0,
+  "identical_text_kana_rows": 4,
+  "new_rows": 196,
+  "reused": [
+    {
+      "blind_id": "113",
+      "source_version": 17,
+      "source_blind_id": "227",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "135",
+      "source_version": 15,
+      "source_blind_id": "233",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "142",
+      "source_version": 15,
+      "source_blind_id": "99",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "182",
+      "source_version": 17,
+      "source_blind_id": "124",
+      "kind": "identical_text_kana"
+    }
+  ]
+}
