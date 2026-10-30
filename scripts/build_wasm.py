@@ -3,10 +3,41 @@ import argparse
 import hashlib
 from html import escape
 import json
+import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+
+RUNTIME_FILES = ('manifest.json', 'model-config.json', 'vocab.json', 'model.safetensors', 'LICENSE')
+
+
+def verify_runtime(directory):
+    manifest = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
+    for name, key in [('model-config.json', 'config_sha256'), ('vocab.json', 'vocab_sha256'),
+                      ('model.safetensors', 'weights_sha256')]:
+        if hashlib.sha256((directory / name).read_bytes()).hexdigest() != manifest[key]:
+            raise ValueError(f'checksum mismatch: {name}')
+    for name in RUNTIME_FILES:
+        if not (directory / name).is_file():
+            raise ValueError(f'missing runtime file: {name}')
+
+
+def load_catalog(path):
+    rows = json.loads(Path(path).read_text(encoding='utf-8'))
+    if not isinstance(rows, list) or not rows:
+        raise ValueError('model catalog must be a nonempty list')
+    result = {}
+    for row in rows:
+        name = row['id']
+        if not re.fullmatch(r'model-[a-z0-9-]+', name) or name in result:
+            raise ValueError('invalid or duplicate catalog model ID')
+        if not row['label'].strip() or not row['description'].strip():
+            raise ValueError('catalog requires visible labels and limitations')
+        verify_runtime(Path(row['directory']))
+        result[name] = row
+    return result
 
 
 def main():
@@ -14,20 +45,15 @@ def main():
     source = parser.add_mutually_exclusive_group()
     source.add_argument('--models', nargs='+', choices=['model', 'model-int8'], default=['model-int8'])
     source.add_argument('--runtime-model', type=Path, help='Build INT8 demo from an existing five-file runtime bundle (no training exports required)')
+    source.add_argument('--model-catalog', type=Path, help='Build all separately selectable runtime bundles listed in a JSON catalog')
     parser.add_argument('--experimental-model', type=Path, help='Add a separately selectable experimental five-file runtime bundle')
     parser.add_argument('--experimental-label', help='Override the label of the optional experimental model')
     parser.add_argument('--output', type=Path, default=Path('build/web'), help='Use a separate directory to test a candidate without replacing the running demo')
     args = parser.parse_args()
-    runtime_files = ('manifest.json', 'model-config.json', 'vocab.json', 'model.safetensors', 'LICENSE')
-    def verify_runtime(directory):
-        manifest = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
-        for name, key in [('model-config.json', 'config_sha256'), ('vocab.json', 'vocab_sha256'),
-                          ('model.safetensors', 'weights_sha256')]:
-            if hashlib.sha256((directory / name).read_bytes()).hexdigest() != manifest[key]:
-                raise ValueError(f'checksum mismatch: {name}')
-        for name in runtime_files:
-            if not (directory / name).is_file():
-                raise ValueError(f'missing runtime file: {name}')
+    runtime_files = RUNTIME_FILES
+    if args.model_catalog and args.experimental_model:
+        parser.error('--experimental-model cannot be combined with --model-catalog')
+    catalog = load_catalog(args.model_catalog) if args.model_catalog else {}
     if args.runtime_model:
         verify_runtime(args.runtime_model)
         args.models = ['model-int8']
@@ -53,13 +79,15 @@ def main():
               'model-experimental': experimental_label}
     descriptions = {'model': '現在の標準モデルです。', 'model-int8': '現在の標準モデルです。',
                     'model-experimental': '品質を検証中の試作です。学習文の再現や重複、不自然な文・読みが残ります。'}
-    displayed = args.models + (['model-experimental'] if args.experimental_model else [])
+    labels.update({name: row['label'] for name, row in catalog.items()})
+    descriptions.update({name: row['description'] for name, row in catalog.items()})
+    displayed = list(catalog) if catalog else args.models + (['model-experimental'] if args.experimental_model else [])
     start = page.index('<select id="model">') + len('<select id="model">')
     end = page.index('</select>', start)
     page = page[:start] + ''.join(f'<option value="{name}" data-description="{escape(descriptions[name], quote=True)}">{escape(labels[name])}</option>' for name in displayed) + page[end:]
     (out / 'index.html').write_text(page, encoding='utf-8')
     for model in displayed:
-        runtime_source = args.experimental_model if model == 'model-experimental' else args.runtime_model
+        runtime_source = Path(catalog[model]['directory']) if catalog else args.experimental_model if model == 'model-experimental' else args.runtime_model
         if runtime_source:
             target = out / model
             target.mkdir(exist_ok=True)

@@ -1,0 +1,3398 @@
+{
+  "audit_sha256": "6c2bc81e683d246b4d10b2cd9a6fae0001bc643dc26b09f68f833802a14bff98",
+  "script_sha256": "1a5f32454a04b39c0c359333bfbec32ef1ce07e1368bd025dc4430321952f04f",
+  "scope": "Greedy FP32 PyTorch completion conditioned only on noun+case prefix and fixed positive-derived difficulty. No slot template, no target-verb forcing. Not a WASM API, not full subject/object/location/tense control; no automatic semantic or reading certification.",
+  "results": [
+    {
+      "checkpoint": "build/checkpoints/everyday-v14-holdout-ce.pt",
+      "checkpoint_sha256": "f44c530f0dfca9281a41a915b460903126a0d249aa1f9e866f1b985fd855057a",
+      "samples": [
+        {
+          "id": "comb-001",
+          "prefix": "水を",
+          "text": "水を注ぐ",
+          "kana": "みずをそそぐ",
+          "ids": [
+            0,
+            3,
+            172,
+            9,
+            4650,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "水を飲む。",
+          "negative": "水を読む。"
+        },
+        {
+          "id": "comb-002",
+          "prefix": "お茶を",
+          "text": "お茶を入れる",
+          "kana": "おちゃをいれる",
+          "ids": [
+            0,
+            3,
+            35,
+            599,
+            9,
+            471,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "お茶を飲む。",
+          "negative": "お茶を着る。"
+        },
+        {
+          "id": "comb-003",
+          "prefix": "牛乳を",
+          "text": "牛乳をください",
+          "kana": "ぎゅうにゅうをください",
+          "ids": [
+            0,
+            3,
+            459,
+            9,
+            394,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "牛乳を飲む。",
+          "negative": "牛乳を履く。"
+        },
+        {
+          "id": "comb-004",
+          "prefix": "コーヒーを",
+          "text": "コーヒーを作る",
+          "kana": "こーひーをつくる",
+          "ids": [
+            0,
+            3,
+            179,
+            9,
+            163,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "コーヒーを飲む。",
+          "negative": "コーヒーを畳む。"
+        },
+        {
+          "id": "comb-005",
+          "prefix": "ジュースを",
+          "text": "ジュースをください",
+          "kana": "じゅーすをください",
+          "ids": [
+            0,
+            3,
+            1825,
+            9,
+            394,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ジュースを飲む。",
+          "negative": "ジュースを書く。"
+        },
+        {
+          "id": "comb-006",
+          "prefix": "パンを",
+          "text": "パンをトーストする",
+          "kana": "ぱんをとーすとする",
+          "ids": [
+            0,
+            3,
+            330,
+            9,
+            4093,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "パンを食べる。",
+          "negative": "パンを読む。"
+        },
+        {
+          "id": "comb-007",
+          "prefix": "ご飯を",
+          "text": "ご飯を作る",
+          "kana": "ごはんをつくる",
+          "ids": [
+            0,
+            3,
+            900,
+            9,
+            163,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ご飯を食べる。",
+          "negative": "ご飯を履く。"
+        },
+        {
+          "id": "comb-008",
+          "prefix": "りんごを",
+          "text": "りんごを描いた",
+          "kana": "りんごをえがいた",
+          "ids": [
+            0,
+            3,
+            1109,
+            9,
+            981,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "りんごを食べる。",
+          "negative": "りんごを着る。"
+        },
+        {
+          "id": "comb-009",
+          "prefix": "魚を",
+          "text": "魚を食べる",
+          "kana": "さかなをたべる",
+          "ids": [
+            0,
+            3,
+            485,
+            9,
+            193,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "魚を焼く。",
+          "negative": "魚を読む。"
+        },
+        {
+          "id": "comb-010",
+          "prefix": "肉を",
+          "text": "肉をお願いします",
+          "kana": "にくをおねがいします",
+          "ids": [
+            0,
+            3,
+            872,
+            9,
+            35,
+            345,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "肉を焼く。",
+          "negative": "肉を履く。"
+        },
+        {
+          "id": "comb-011",
+          "prefix": "野菜を",
+          "text": "野菜を買う",
+          "kana": "やさいをかう",
+          "ids": [
+            0,
+            3,
+            681,
+            9,
+            233,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "野菜を切る。",
+          "negative": "野菜を読む。"
+        },
+        {
+          "id": "comb-012",
+          "prefix": "卵を",
+          "text": "卵を買った",
+          "kana": "たまごをかった",
+          "ids": [
+            0,
+            3,
+            1271,
+            9,
+            229,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "卵を焼く。",
+          "negative": "卵を着る。"
+        },
+        {
+          "id": "comb-013",
+          "prefix": "ケーキを",
+          "text": "ケーキを皿に盛る",
+          "kana": "けーきをさらにもる",
+          "ids": [
+            0,
+            3,
+            362,
+            9,
+            1191,
+            11,
+            1866,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ケーキを食べる。",
+          "negative": "ケーキを履く。"
+        },
+        {
+          "id": "comb-014",
+          "prefix": "スープを",
+          "text": "スープを器に盛る",
+          "kana": "すーぷをうつわにもる",
+          "ids": [
+            0,
+            3,
+            469,
+            9,
+            2168,
+            11,
+            1866,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "スープを飲む。",
+          "negative": "スープを畳む。"
+        },
+        {
+          "id": "comb-015",
+          "prefix": "弁当を",
+          "text": "弁当を作る",
+          "kana": "べんとうをつくる",
+          "ids": [
+            0,
+            3,
+            2090,
+            9,
+            163,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "弁当を食べる。",
+          "negative": "弁当を着る。"
+        },
+        {
+          "id": "comb-016",
+          "prefix": "本を",
+          "text": "本を買う",
+          "kana": "ほんをかう",
+          "ids": [
+            0,
+            3,
+            50,
+            9,
+            233,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "本を読む。",
+          "negative": "本を飲む。"
+        },
+        {
+          "id": "comb-017",
+          "prefix": "新聞を",
+          "text": "新聞を開く",
+          "kana": "しんぶんをひらく",
+          "ids": [
+            0,
+            3,
+            360,
+            9,
+            1812,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "新聞を読む。",
+          "negative": "新聞を履く。"
+        },
+        {
+          "id": "comb-018",
+          "prefix": "雑誌を",
+          "text": "雑誌を読み直す",
+          "kana": "ざっしをよみなおす",
+          "ids": [
+            0,
+            3,
+            644,
+            9,
+            493,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "雑誌を読む。",
+          "negative": "雑誌を飲む。"
+        },
+        {
+          "id": "comb-019",
+          "prefix": "手紙を",
+          "text": "手紙を読む",
+          "kana": "てがみをよむ",
+          "ids": [
+            0,
+            3,
+            186,
+            9,
+            107,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "手紙を書く。",
+          "negative": "手紙を履く。"
+        },
+        {
+          "id": "comb-020",
+          "prefix": "日記を",
+          "text": "日記を整理する",
+          "kana": "にっきをせいりする",
+          "ids": [
+            0,
+            3,
+            421,
+            9,
+            1539,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "日記を書く。",
+          "negative": "日記を飲む。"
+        },
+        {
+          "id": "comb-021",
+          "prefix": "名前を",
+          "text": "名前を教えてください",
+          "kana": "なまえをおしえてください",
+          "ids": [
+            0,
+            3,
+            232,
+            9,
+            812,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "名前を書く。",
+          "negative": "名前を食べる。"
+        },
+        {
+          "id": "comb-022",
+          "prefix": "住所を",
+          "text": "住所を教えてください",
+          "kana": "じゅうしょをおしえてください",
+          "ids": [
+            0,
+            3,
+            775,
+            9,
+            812,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "住所を書く。",
+          "negative": "住所を着る。"
+        },
+        {
+          "id": "comb-023",
+          "prefix": "記事を",
+          "text": "記事を確認する",
+          "kana": "きじをかくにんする",
+          "ids": [
+            0,
+            3,
+            500,
+            9,
+            414,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "記事を読む。",
+          "negative": "記事を履く。"
+        },
+        {
+          "id": "comb-024",
+          "prefix": "小説を",
+          "text": "小説を読み直す",
+          "kana": "しょうせつをよみなおす",
+          "ids": [
+            0,
+            3,
+            292,
+            9,
+            493,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "小説を読む。",
+          "negative": "小説を飲む。"
+        },
+        {
+          "id": "comb-025",
+          "prefix": "絵を",
+          "text": "絵を見てごらん",
+          "kana": "えをみてごらん",
+          "ids": [
+            0,
+            3,
+            51,
+            9,
+            285,
+            762,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "絵を描く。",
+          "negative": "絵を履く。"
+        },
+        {
+          "id": "comb-026",
+          "prefix": "シャツを",
+          "text": "シャツを畳む",
+          "kana": "しゃつをたたむ",
+          "ids": [
+            0,
+            3,
+            537,
+            9,
+            2320,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "シャツを着る。",
+          "negative": "シャツを飲む。"
+        },
+        {
+          "id": "comb-027",
+          "prefix": "服を",
+          "text": "服を整理する",
+          "kana": "ふくをせいりする",
+          "ids": [
+            0,
+            3,
+            374,
+            9,
+            1539,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "服を着る。",
+          "negative": "服を食べる。"
+        },
+        {
+          "id": "comb-028",
+          "prefix": "上着を",
+          "text": "上着を洗う",
+          "kana": "うわぎをあらう",
+          "ids": [
+            0,
+            3,
+            875,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "上着を着る。",
+          "negative": "上着を飲む。"
+        },
+        {
+          "id": "comb-029",
+          "prefix": "靴を",
+          "text": "靴を脱ぐ",
+          "kana": "くつをぬぐ",
+          "ids": [
+            0,
+            3,
+            551,
+            9,
+            7519,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "靴を履く。",
+          "negative": "靴を飲む。"
+        },
+        {
+          "id": "comb-030",
+          "prefix": "靴下を",
+          "text": "靴下を洗う",
+          "kana": "くつしたをあらう",
+          "ids": [
+            0,
+            3,
+            1595,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "靴下を履く。",
+          "negative": "靴下を読む。"
+        },
+        {
+          "id": "comb-031",
+          "prefix": "ズボンを",
+          "text": "ズボンを見つけた",
+          "kana": "ずぼんをみつけた",
+          "ids": [
+            0,
+            3,
+            4091,
+            9,
+            480,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ズボンを履く。",
+          "negative": "ズボンを飲む。"
+        },
+        {
+          "id": "comb-033",
+          "prefix": "コートを",
+          "text": "コートをお願いします",
+          "kana": "こーとをおねがいします",
+          "ids": [
+            0,
+            3,
+            963,
+            9,
+            35,
+            345,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "コートを着る。",
+          "negative": "コートを食べる。"
+        },
+        {
+          "id": "comb-034",
+          "prefix": "セーターを",
+          "text": "セーターを洗う",
+          "kana": "せーたーをあらう",
+          "ids": [
+            0,
+            3,
+            942,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "セーターを着る。",
+          "negative": "セーターを飲む。"
+        },
+        {
+          "id": "comb-035",
+          "prefix": "スカートを",
+          "text": "スカートを洗う",
+          "kana": "すかーとをあらう",
+          "ids": [
+            0,
+            3,
+            2751,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "スカートを履く。",
+          "negative": "スカートを飲む。"
+        },
+        {
+          "id": "comb-036",
+          "prefix": "皿を",
+          "text": "皿を盛る",
+          "kana": "さらをもる",
+          "ids": [
+            0,
+            3,
+            1191,
+            9,
+            1866,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "皿を洗う。",
+          "negative": "皿を履く。"
+        },
+        {
+          "id": "comb-037",
+          "prefix": "茶碗を",
+          "text": "茶碗を洗う",
+          "kana": "ちゃわんをあらう",
+          "ids": [
+            0,
+            3,
+            5846,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "茶碗を洗う。",
+          "negative": "茶碗を着る。"
+        },
+        {
+          "id": "comb-038",
+          "prefix": "コップを",
+          "text": "コップを丁寧に混ぜる",
+          "kana": "こっぷをていねいにまぜる",
+          "ids": [
+            0,
+            3,
+            1712,
+            9,
+            1973,
+            5756,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "コップを洗う。",
+          "negative": "コップを履く。"
+        },
+        {
+          "id": "comb-039",
+          "prefix": "タオルを",
+          "text": "タオルを洗う",
+          "kana": "たおるをあらう",
+          "ids": [
+            0,
+            3,
+            1074,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "タオルを畳む。",
+          "negative": "タオルを飲む。"
+        },
+        {
+          "id": "comb-040",
+          "prefix": "布団を",
+          "text": "布団を見て、満月が輝いていた",
+          "kana": "ふとんをみて、まんげつがかがやいていた",
+          "ids": [
+            0,
+            3,
+            6827,
+            9,
+            285,
+            16,
+            5762,
+            12,
+            2557,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "布団を干す。",
+          "negative": "布団を飲む。"
+        },
+        {
+          "id": "comb-041",
+          "prefix": "傘を",
+          "text": "傘をたたむ",
+          "kana": "かさをたたむ",
+          "ids": [
+            0,
+            3,
+            291,
+            9,
+            6004,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "傘を差す。",
+          "negative": "傘を飲む。"
+        },
+        {
+          "id": "comb-042",
+          "prefix": "窓を",
+          "text": "窓を拭く",
+          "kana": "まどをふく",
+          "ids": [
+            0,
+            3,
+            182,
+            9,
+            6870,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "窓を開ける。",
+          "negative": "窓を食べる。"
+        },
+        {
+          "id": "comb-043",
+          "prefix": "ドアを",
+          "text": "ドアを開けた",
+          "kana": "どあをあけた",
+          "ids": [
+            0,
+            3,
+            321,
+            9,
+            1459,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ドアを閉める。",
+          "negative": "ドアを飲む。"
+        },
+        {
+          "id": "comb-044",
+          "prefix": "鍵を",
+          "text": "鍵を閉める",
+          "kana": "かぎをしめる",
+          "ids": [
+            0,
+            3,
+            444,
+            9,
+            3229,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "鍵をかける。",
+          "negative": "鍵を食べる。"
+        },
+        {
+          "id": "comb-045",
+          "prefix": "歯を",
+          "text": "歯を痛いんです",
+          "kana": "はをいたいんです",
+          "ids": [
+            0,
+            3,
+            984,
+            9,
+            722,
+            25,
+            22,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "歯を磨く。",
+          "negative": "歯を履く。"
+        },
+        {
+          "id": "comb-046",
+          "prefix": "髪を",
+          "text": "髪を切りました",
+          "kana": "かみをきりました",
+          "ids": [
+            0,
+            3,
+            1127,
+            9,
+            3533,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "髪を洗う。",
+          "negative": "髪を飲む。"
+        },
+        {
+          "id": "comb-047",
+          "prefix": "顔を",
+          "text": "顔を取って下さい",
+          "kana": "かおをとってください",
+          "ids": [
+            0,
+            3,
+            315,
+            9,
+            5024,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "顔を洗う。",
+          "negative": "顔を履く。"
+        },
+        {
+          "id": "comb-048",
+          "prefix": "手を",
+          "text": "手を貸してくれませんか",
+          "kana": "てをかしてくれませんか",
+          "ids": [
+            0,
+            3,
+            157,
+            9,
+            2707,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "手を洗う。",
+          "negative": "手を着る。"
+        },
+        {
+          "id": "comb-049",
+          "prefix": "風呂に",
+          "text": "風呂にゆっくりつかりたいな",
+          "kana": "ふろにゆっくりつかりたいな",
+          "ids": [
+            0,
+            3,
+            615,
+            11,
+            383,
+            8020,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "風呂に入る。",
+          "negative": "風呂に咲く。"
+        },
+        {
+          "id": "comb-050",
+          "prefix": "椅子に",
+          "text": "椅子に水を入れる",
+          "kana": "いすにみずをいれる",
+          "ids": [
+            0,
+            3,
+            740,
+            11,
+            172,
+            9,
+            471,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "椅子に座る。",
+          "negative": "椅子に咲く。"
+        },
+        {
+          "id": "comb-051",
+          "prefix": "駅に",
+          "text": "駅に向かう",
+          "kana": "えきにむかう",
+          "ids": [
+            0,
+            3,
+            147,
+            11,
+            242,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "駅に着く。",
+          "negative": "駅に咲く。"
+        },
+        {
+          "id": "comb-053",
+          "prefix": "家に",
+          "text": "家にいるといけないの",
+          "kana": "いえにいるといけないの",
+          "ids": [
+            0,
+            3,
+            40,
+            11,
+            100,
+            15,
+            2461,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "家に帰る。",
+          "negative": "家に咲く。"
+        },
+        {
+          "id": "comb-054",
+          "prefix": "部屋に",
+          "text": "部屋に白い雪が積もる",
+          "kana": "へやにしろいゆきがつもる",
+          "ids": [
+            0,
+            3,
+            86,
+            11,
+            512,
+            271,
+            12,
+            5241,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "部屋に入る。",
+          "negative": "部屋に咲く。"
+        },
+        {
+          "id": "comb-055",
+          "prefix": "図書館で",
+          "text": "図書館で本を借りた",
+          "kana": "としょかんでほんをかりた",
+          "ids": [
+            0,
+            3,
+            146,
+            14,
+            50,
+            9,
+            748,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "図書館で読む。",
+          "negative": "図書館で泳ぐ。"
+        },
+        {
+          "id": "comb-056",
+          "prefix": "プールで",
+          "text": "プールで行く",
+          "kana": "ぷーるでいく",
+          "ids": [
+            0,
+            3,
+            1604,
+            14,
+            48,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "プールで泳ぐ。",
+          "negative": "プールで咲く。"
+        },
+        {
+          "id": "comb-057",
+          "prefix": "海で",
+          "text": "海で鶯が鳴いた",
+          "kana": "うみでうぐいすがないた",
+          "ids": [
+            0,
+            3,
+            332,
+            14,
+            2725,
+            12,
+            4015,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "海で泳ぐ。",
+          "negative": "海で咲く。"
+        },
+        {
+          "id": "comb-058",
+          "prefix": "公園で",
+          "text": "公園でブランコに乗る",
+          "kana": "こうえんでぶらんこにのる",
+          "ids": [
+            0,
+            3,
+            75,
+            14,
+            7214,
+            11,
+            991,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "公園で遊ぶ。",
+          "negative": "公園で咲く。"
+        },
+        {
+          "id": "comb-059",
+          "prefix": "道を",
+          "text": "道を渡った",
+          "kana": "みちをわたった",
+          "ids": [
+            0,
+            3,
+            231,
+            9,
+            2679,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "道を歩く。",
+          "negative": "道を飲む。"
+        },
+        {
+          "id": "comb-061",
+          "prefix": "橋を",
+          "text": "橋を描く",
+          "kana": "はしをえがく",
+          "ids": [
+            0,
+            3,
+            392,
+            9,
+            58,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "橋を渡る。",
+          "negative": "橋を飲む。"
+        },
+        {
+          "id": "comb-062",
+          "prefix": "車を",
+          "text": "車を買う",
+          "kana": "くるまをかう",
+          "ids": [
+            0,
+            3,
+            78,
+            9,
+            233,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "車を運転する。",
+          "negative": "車を飲む。"
+        },
+        {
+          "id": "comb-063",
+          "prefix": "自転車に",
+          "text": "自転車に行く",
+          "kana": "じてんしゃにいく",
+          "ids": [
+            0,
+            3,
+            211,
+            11,
+            48,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "自転車に乗る。",
+          "negative": "自転車に咲く。"
+        },
+        {
+          "id": "comb-064",
+          "prefix": "電車に",
+          "text": "電車に向かう",
+          "kana": "でんしゃにむかう",
+          "ids": [
+            0,
+            3,
+            185,
+            11,
+            242,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "電車に乗る。",
+          "negative": "電車に咲く。"
+        },
+        {
+          "id": "comb-065",
+          "prefix": "バスに",
+          "text": "バスに行く",
+          "kana": "ばすにいく",
+          "ids": [
+            0,
+            3,
+            159,
+            11,
+            48,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "バスに乗る。",
+          "negative": "バスに咲く。"
+        },
+        {
+          "id": "comb-066",
+          "prefix": "猫が",
+          "text": "猫が庭で遊ぶ",
+          "kana": "ねこがにわであそぶ",
+          "ids": [
+            0,
+            3,
+            156,
+            12,
+            102,
+            14,
+            918,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "猫が鳴く。",
+          "negative": "猫が咲く。"
+        },
+        {
+          "id": "comb-067",
+          "prefix": "犬が",
+          "text": "犬が庭で遊んでいる",
+          "kana": "いぬがにわであそんでいる",
+          "ids": [
+            0,
+            3,
+            108,
+            12,
+            102,
+            14,
+            1513,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "犬が吠える。",
+          "negative": "犬が咲く。"
+        },
+        {
+          "id": "comb-069",
+          "prefix": "花が",
+          "text": "花が好きです",
+          "kana": "はながすきです",
+          "ids": [
+            0,
+            3,
+            119,
+            12,
+            55,
+            22,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "花が咲く。",
+          "negative": "花が吠える。"
+        },
+        {
+          "id": "comb-070",
+          "prefix": "桜が",
+          "text": "桜が満開だった",
+          "kana": "さくらがまんかいだった",
+          "ids": [
+            0,
+            3,
+            799,
+            12,
+            2420,
+            45,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "桜が咲く。",
+          "negative": "桜が泳ぐ。"
+        },
+        {
+          "id": "comb-071",
+          "prefix": "雨が",
+          "text": "雨が止んだ",
+          "kana": "あめがやんだ",
+          "ids": [
+            0,
+            3,
+            99,
+            12,
+            5183,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "雨が降る。",
+          "negative": "雨が吠える。"
+        },
+        {
+          "id": "comb-072",
+          "prefix": "雪が",
+          "text": "雪が降り積もった",
+          "kana": "ゆきがふりつもった",
+          "ids": [
+            0,
+            3,
+            271,
+            12,
+            8753,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "雪が降る。",
+          "negative": "雪が食べる。"
+        },
+        {
+          "id": "comb-073",
+          "prefix": "風が",
+          "text": "風が吹き抜ける",
+          "kana": "かぜがふきぬける",
+          "ids": [
+            0,
+            3,
+            354,
+            12,
+            4166,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "風が吹く。",
+          "negative": "風が履く。"
+        },
+        {
+          "id": "comb-074",
+          "prefix": "月が",
+          "text": "月が川を照らす",
+          "kana": "つきがかわをてらす",
+          "ids": [
+            0,
+            3,
+            728,
+            12,
+            247,
+            9,
+            1936,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "月が出る。",
+          "negative": "月が吠える。"
+        },
+        {
+          "id": "comb-077",
+          "prefix": "電話が",
+          "text": "電話がかかってきた",
+          "kana": "でんわがかかってきた",
+          "ids": [
+            0,
+            3,
+            130,
+            12,
+            4399,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "電話が鳴る。",
+          "negative": "電話が咲く。"
+        },
+        {
+          "id": "comb-078",
+          "prefix": "時計が",
+          "text": "時計がある",
+          "kana": "とけいがある",
+          "ids": [
+            0,
+            3,
+            380,
+            12,
+            37,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "時計が止まる。",
+          "negative": "時計が吠える。"
+        },
+        {
+          "id": "comb-080",
+          "prefix": "子供が",
+          "text": "子供が庭で遊んでいる",
+          "kana": "こどもがにわであそんでいる",
+          "ids": [
+            0,
+            3,
+            117,
+            12,
+            102,
+            14,
+            1513,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "子供が笑う。",
+          "negative": "子供が咲く。"
+        },
+        {
+          "id": "comb-081",
+          "prefix": "音楽を",
+          "text": "音楽をかけてリラックスする",
+          "kana": "おんがくをかけてりらっくすする",
+          "ids": [
+            0,
+            3,
+            282,
+            9,
+            1316,
+            1075,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "音楽を聴く。",
+          "negative": "音楽を履く。"
+        },
+        {
+          "id": "comb-082",
+          "prefix": "歌を",
+          "text": "歌を始める",
+          "kana": "うたをはじめる",
+          "ids": [
+            0,
+            3,
+            526,
+            9,
+            1840,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "歌を歌う。",
+          "negative": "歌を飲む。"
+        },
+        {
+          "id": "comb-083",
+          "prefix": "ピアノを",
+          "text": "ピアノを練習する",
+          "kana": "ぴあのをれんしゅうする",
+          "ids": [
+            0,
+            3,
+            451,
+            9,
+            366,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ピアノを弾く。",
+          "negative": "ピアノを飲む。"
+        },
+        {
+          "id": "comb-084",
+          "prefix": "ギターを",
+          "text": "ギターを練習する",
+          "kana": "ぎたーをれんしゅうする",
+          "ids": [
+            0,
+            3,
+            772,
+            9,
+            366,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ギターを弾く。",
+          "negative": "ギターを食べる。"
+        },
+        {
+          "id": "comb-085",
+          "prefix": "写真を",
+          "text": "写真を見つけた",
+          "kana": "しゃしんをみつけた",
+          "ids": [
+            0,
+            3,
+            123,
+            9,
+            480,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "写真を撮る。",
+          "negative": "写真を履く。"
+        },
+        {
+          "id": "comb-086",
+          "prefix": "映画を",
+          "text": "映画を始める",
+          "kana": "えいがをはじめる",
+          "ids": [
+            0,
+            3,
+            151,
+            9,
+            1840,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "映画を見る。",
+          "negative": "映画を飲む。"
+        },
+        {
+          "id": "comb-087",
+          "prefix": "ラジオを",
+          "text": "ラジオを消しなさい",
+          "kana": "らじおをけしなさい",
+          "ids": [
+            0,
+            3,
+            695,
+            9,
+            3177,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ラジオを聞く。",
+          "negative": "ラジオを履く。"
+        },
+        {
+          "id": "comb-088",
+          "prefix": "テレビを",
+          "text": "テレビをつける",
+          "kana": "てれびをつける",
+          "ids": [
+            0,
+            3,
+            155,
+            9,
+            1027,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "テレビを見る。",
+          "negative": "テレビを飲む。"
+        },
+        {
+          "id": "comb-089",
+          "prefix": "宿題を",
+          "text": "宿題をやりなさい",
+          "kana": "しゅくだいをやりなさい",
+          "ids": [
+            0,
+            3,
+            349,
+            9,
+            1600,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "宿題を終える。",
+          "negative": "宿題を飲む。"
+        },
+        {
+          "id": "comb-090",
+          "prefix": "問題を",
+          "text": "問題を解決した",
+          "kana": "もんだいをかいけつした",
+          "ids": [
+            0,
+            3,
+            112,
+            9,
+            833,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "問題を解く。",
+          "negative": "問題を履く。"
+        },
+        {
+          "id": "comb-092",
+          "prefix": "荷物を",
+          "text": "荷物を閉める",
+          "kana": "にもつをしめる",
+          "ids": [
+            0,
+            3,
+            1870,
+            9,
+            3229,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "荷物を運ぶ。",
+          "negative": "荷物を飲む。"
+        },
+        {
+          "id": "comb-093",
+          "prefix": "箱を",
+          "text": "箱を見たことがない",
+          "kana": "ばこをみたことがない",
+          "ids": [
+            0,
+            3,
+            7499,
+            9,
+            141,
+            20,
+            12,
+            29,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "箱を開ける。",
+          "negative": "箱を飲む。"
+        },
+        {
+          "id": "comb-094",
+          "prefix": "財布を",
+          "text": "財布を拾った",
+          "kana": "さいふをひろった",
+          "ids": [
+            0,
+            3,
+            1122,
+            9,
+            3152,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "財布を探す。",
+          "negative": "財布を飲む。"
+        },
+        {
+          "id": "comb-095",
+          "prefix": "切符を",
+          "text": "切符を洗う",
+          "kana": "きっぷをあらう",
+          "ids": [
+            0,
+            3,
+            1204,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "切符を買う。",
+          "negative": "切符を着る。"
+        },
+        {
+          "id": "comb-096",
+          "prefix": "予定を",
+          "text": "予定を確認した",
+          "kana": "よていをかくにんした",
+          "ids": [
+            0,
+            3,
+            210,
+            9,
+            846,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "予定を決める。",
+          "negative": "予定を飲む。"
+        },
+        {
+          "id": "comb-097",
+          "prefix": "約束を",
+          "text": "約束をした",
+          "kana": "やくそくをした",
+          "ids": [
+            0,
+            3,
+            218,
+            9,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "約束を守る。",
+          "negative": "約束を履く。"
+        },
+        {
+          "id": "comb-099",
+          "prefix": "部屋を",
+          "text": "部屋を掃除する",
+          "kana": "へやをそうじする",
+          "ids": [
+            0,
+            3,
+            86,
+            9,
+            371,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "部屋を掃除する。",
+          "negative": "部屋を飲む。"
+        },
+        {
+          "id": "comb-100",
+          "prefix": "靴を",
+          "text": "靴を脱ぐ",
+          "kana": "くつをぬぐ",
+          "ids": [
+            0,
+            3,
+            551,
+            9,
+            7519,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "靴を磨く。",
+          "negative": "靴を食べる。"
+        }
+      ]
+    },
+    {
+      "checkpoint": "build/checkpoints/everyday-v14-holdout-smooth.pt",
+      "checkpoint_sha256": "53fa80f4d3a78bf9268f2af2237fd32b945cae952ec31cb50b9d2b3e989d72bc",
+      "samples": [
+        {
+          "id": "comb-001",
+          "prefix": "水を",
+          "text": "水を注ぐ",
+          "kana": "みずをそそぐ",
+          "ids": [
+            0,
+            3,
+            172,
+            9,
+            4650,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "水を飲む。",
+          "negative": "水を読む。"
+        },
+        {
+          "id": "comb-002",
+          "prefix": "お茶を",
+          "text": "お茶を入れる",
+          "kana": "おちゃをいれる",
+          "ids": [
+            0,
+            3,
+            35,
+            599,
+            9,
+            471,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "お茶を飲む。",
+          "negative": "お茶を着る。"
+        },
+        {
+          "id": "comb-003",
+          "prefix": "牛乳を",
+          "text": "牛乳をください",
+          "kana": "ぎゅうにゅうをください",
+          "ids": [
+            0,
+            3,
+            459,
+            9,
+            394,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "牛乳を飲む。",
+          "negative": "牛乳を履く。"
+        },
+        {
+          "id": "comb-004",
+          "prefix": "コーヒーを",
+          "text": "コーヒーを作る",
+          "kana": "こーひーをつくる",
+          "ids": [
+            0,
+            3,
+            179,
+            9,
+            163,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "コーヒーを飲む。",
+          "negative": "コーヒーを畳む。"
+        },
+        {
+          "id": "comb-005",
+          "prefix": "ジュースを",
+          "text": "ジュースを冷やす",
+          "kana": "じゅーすをひやす",
+          "ids": [
+            0,
+            3,
+            1825,
+            9,
+            4992,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ジュースを飲む。",
+          "negative": "ジュースを書く。"
+        },
+        {
+          "id": "comb-006",
+          "prefix": "パンを",
+          "text": "パンをトーストする",
+          "kana": "ぱんをとーすとする",
+          "ids": [
+            0,
+            3,
+            330,
+            9,
+            4093,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "パンを食べる。",
+          "negative": "パンを読む。"
+        },
+        {
+          "id": "comb-007",
+          "prefix": "ご飯を",
+          "text": "ご飯を食べる",
+          "kana": "ごはんをたべる",
+          "ids": [
+            0,
+            3,
+            900,
+            9,
+            193,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ご飯を食べる。",
+          "negative": "ご飯を履く。"
+        },
+        {
+          "id": "comb-008",
+          "prefix": "りんごを",
+          "text": "りんごを描いた",
+          "kana": "りんごをえがいた",
+          "ids": [
+            0,
+            3,
+            1109,
+            9,
+            981,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "りんごを食べる。",
+          "negative": "りんごを着る。"
+        },
+        {
+          "id": "comb-009",
+          "prefix": "魚を",
+          "text": "魚を食べる",
+          "kana": "さかなをたべる",
+          "ids": [
+            0,
+            3,
+            485,
+            9,
+            193,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "魚を焼く。",
+          "negative": "魚を読む。"
+        },
+        {
+          "id": "comb-010",
+          "prefix": "肉を",
+          "text": "肉をお願いします",
+          "kana": "にくをおねがいします",
+          "ids": [
+            0,
+            3,
+            872,
+            9,
+            35,
+            345,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "肉を焼く。",
+          "negative": "肉を履く。"
+        },
+        {
+          "id": "comb-011",
+          "prefix": "野菜を",
+          "text": "野菜を食べる",
+          "kana": "やさいをたべる",
+          "ids": [
+            0,
+            3,
+            681,
+            9,
+            193,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "野菜を切る。",
+          "negative": "野菜を読む。"
+        },
+        {
+          "id": "comb-012",
+          "prefix": "卵を",
+          "text": "卵を洗う",
+          "kana": "たまごをあらう",
+          "ids": [
+            0,
+            3,
+            1271,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "卵を焼く。",
+          "negative": "卵を着る。"
+        },
+        {
+          "id": "comb-013",
+          "prefix": "ケーキを",
+          "text": "ケーキを皿に盛る",
+          "kana": "けーきをさらにもる",
+          "ids": [
+            0,
+            3,
+            362,
+            9,
+            1191,
+            11,
+            1866,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ケーキを食べる。",
+          "negative": "ケーキを履く。"
+        },
+        {
+          "id": "comb-014",
+          "prefix": "スープを",
+          "text": "スープを器に盛る",
+          "kana": "すーぷをうつわにもる",
+          "ids": [
+            0,
+            3,
+            469,
+            9,
+            2168,
+            11,
+            1866,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "スープを飲む。",
+          "negative": "スープを畳む。"
+        },
+        {
+          "id": "comb-015",
+          "prefix": "弁当を",
+          "text": "弁当を描く",
+          "kana": "べんとうをえがく",
+          "ids": [
+            0,
+            3,
+            2090,
+            9,
+            58,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "弁当を食べる。",
+          "negative": "弁当を着る。"
+        },
+        {
+          "id": "comb-016",
+          "prefix": "本を",
+          "text": "本を買う",
+          "kana": "ほんをかう",
+          "ids": [
+            0,
+            3,
+            50,
+            9,
+            233,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "本を読む。",
+          "negative": "本を飲む。"
+        },
+        {
+          "id": "comb-017",
+          "prefix": "新聞を",
+          "text": "新聞を開く",
+          "kana": "しんぶんをひらく",
+          "ids": [
+            0,
+            3,
+            360,
+            9,
+            1812,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "新聞を読む。",
+          "negative": "新聞を履く。"
+        },
+        {
+          "id": "comb-018",
+          "prefix": "雑誌を",
+          "text": "雑誌を読み直す",
+          "kana": "ざっしをよみなおす",
+          "ids": [
+            0,
+            3,
+            644,
+            9,
+            493,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "雑誌を読む。",
+          "negative": "雑誌を飲む。"
+        },
+        {
+          "id": "comb-019",
+          "prefix": "手紙を",
+          "text": "手紙を読む",
+          "kana": "てがみをよむ",
+          "ids": [
+            0,
+            3,
+            186,
+            9,
+            107,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "手紙を書く。",
+          "negative": "手紙を履く。"
+        },
+        {
+          "id": "comb-020",
+          "prefix": "日記を",
+          "text": "日記を整理する",
+          "kana": "にっきをせいりする",
+          "ids": [
+            0,
+            3,
+            421,
+            9,
+            1539,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "日記を書く。",
+          "negative": "日記を飲む。"
+        },
+        {
+          "id": "comb-021",
+          "prefix": "名前を",
+          "text": "名前を教えてください",
+          "kana": "なまえをおしえてください",
+          "ids": [
+            0,
+            3,
+            232,
+            9,
+            812,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "名前を書く。",
+          "negative": "名前を食べる。"
+        },
+        {
+          "id": "comb-022",
+          "prefix": "住所を",
+          "text": "住所を教えてください",
+          "kana": "じゅうしょをおしえてください",
+          "ids": [
+            0,
+            3,
+            775,
+            9,
+            812,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "住所を書く。",
+          "negative": "住所を着る。"
+        },
+        {
+          "id": "comb-023",
+          "prefix": "記事を",
+          "text": "記事を確認する",
+          "kana": "きじをかくにんする",
+          "ids": [
+            0,
+            3,
+            500,
+            9,
+            414,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "記事を読む。",
+          "negative": "記事を履く。"
+        },
+        {
+          "id": "comb-024",
+          "prefix": "小説を",
+          "text": "小説を箱にしまう",
+          "kana": "しょうせつをはこにしまう",
+          "ids": [
+            0,
+            3,
+            292,
+            9,
+            1099,
+            11,
+            540,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "小説を読む。",
+          "negative": "小説を飲む。"
+        },
+        {
+          "id": "comb-025",
+          "prefix": "絵を",
+          "text": "絵を見てごらん",
+          "kana": "えをみてごらん",
+          "ids": [
+            0,
+            3,
+            51,
+            9,
+            285,
+            762,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "絵を描く。",
+          "negative": "絵を履く。"
+        },
+        {
+          "id": "comb-026",
+          "prefix": "シャツを",
+          "text": "シャツを洗う",
+          "kana": "しゃつをあらう",
+          "ids": [
+            0,
+            3,
+            537,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "シャツを着る。",
+          "negative": "シャツを飲む。"
+        },
+        {
+          "id": "comb-027",
+          "prefix": "服を",
+          "text": "服を整理する",
+          "kana": "ふくをせいりする",
+          "ids": [
+            0,
+            3,
+            374,
+            9,
+            1539,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "服を着る。",
+          "negative": "服を食べる。"
+        },
+        {
+          "id": "comb-028",
+          "prefix": "上着を",
+          "text": "上着を洗う",
+          "kana": "うわぎをあらう",
+          "ids": [
+            0,
+            3,
+            875,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "上着を着る。",
+          "negative": "上着を飲む。"
+        },
+        {
+          "id": "comb-029",
+          "prefix": "靴を",
+          "text": "靴を描く",
+          "kana": "くつをえがく",
+          "ids": [
+            0,
+            3,
+            551,
+            9,
+            58,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "靴を履く。",
+          "negative": "靴を飲む。"
+        },
+        {
+          "id": "comb-030",
+          "prefix": "靴下を",
+          "text": "靴下を洗う",
+          "kana": "くつしたをあらう",
+          "ids": [
+            0,
+            3,
+            1595,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "靴下を履く。",
+          "negative": "靴下を読む。"
+        },
+        {
+          "id": "comb-031",
+          "prefix": "ズボンを",
+          "text": "ズボンを見つけた",
+          "kana": "ずぼんをみつけた",
+          "ids": [
+            0,
+            3,
+            4091,
+            9,
+            480,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ズボンを履く。",
+          "negative": "ズボンを飲む。"
+        },
+        {
+          "id": "comb-033",
+          "prefix": "コートを",
+          "text": "コートをお願いします",
+          "kana": "こーとをおねがいします",
+          "ids": [
+            0,
+            3,
+            963,
+            9,
+            35,
+            345,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "コートを着る。",
+          "negative": "コートを食べる。"
+        },
+        {
+          "id": "comb-034",
+          "prefix": "セーターを",
+          "text": "セーターを洗う",
+          "kana": "せーたーをあらう",
+          "ids": [
+            0,
+            3,
+            942,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "セーターを着る。",
+          "negative": "セーターを飲む。"
+        },
+        {
+          "id": "comb-035",
+          "prefix": "スカートを",
+          "text": "スカートをお願いします",
+          "kana": "すかーとをおねがいします",
+          "ids": [
+            0,
+            3,
+            2751,
+            9,
+            35,
+            345,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "スカートを履く。",
+          "negative": "スカートを飲む。"
+        },
+        {
+          "id": "comb-036",
+          "prefix": "皿を",
+          "text": "皿を盛る",
+          "kana": "さらをもる",
+          "ids": [
+            0,
+            3,
+            1191,
+            9,
+            1866,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "皿を洗う。",
+          "negative": "皿を履く。"
+        },
+        {
+          "id": "comb-037",
+          "prefix": "茶碗を",
+          "text": "茶碗を洗う",
+          "kana": "ちゃわんをあらう",
+          "ids": [
+            0,
+            3,
+            5846,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "茶碗を洗う。",
+          "negative": "茶碗を着る。"
+        },
+        {
+          "id": "comb-038",
+          "prefix": "コップを",
+          "text": "コップを丁寧に混ぜる",
+          "kana": "こっぷをていねいにまぜる",
+          "ids": [
+            0,
+            3,
+            1712,
+            9,
+            1973,
+            5756,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "コップを洗う。",
+          "negative": "コップを履く。"
+        },
+        {
+          "id": "comb-039",
+          "prefix": "タオルを",
+          "text": "タオルを洗う",
+          "kana": "たおるをあらう",
+          "ids": [
+            0,
+            3,
+            1074,
+            9,
+            729,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "タオルを畳む。",
+          "negative": "タオルを飲む。"
+        },
+        {
+          "id": "comb-040",
+          "prefix": "布団を",
+          "text": "布団を見上げて、花を見る",
+          "kana": "ふとんをみあげて、はなをみる",
+          "ids": [
+            0,
+            3,
+            6827,
+            9,
+            7019,
+            16,
+            119,
+            9,
+            160,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "布団を干す。",
+          "negative": "布団を飲む。"
+        },
+        {
+          "id": "comb-041",
+          "prefix": "傘を",
+          "text": "傘を畳んだ",
+          "kana": "かさをたたんだ",
+          "ids": [
+            0,
+            3,
+            291,
+            9,
+            7876,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "傘を差す。",
+          "negative": "傘を飲む。"
+        },
+        {
+          "id": "comb-042",
+          "prefix": "窓を",
+          "text": "窓を拭く",
+          "kana": "まどをふく",
+          "ids": [
+            0,
+            3,
+            182,
+            9,
+            6870,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "窓を開ける。",
+          "negative": "窓を食べる。"
+        },
+        {
+          "id": "comb-043",
+          "prefix": "ドアを",
+          "text": "ドアを開けた",
+          "kana": "どあをあけた",
+          "ids": [
+            0,
+            3,
+            321,
+            9,
+            1459,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ドアを閉める。",
+          "negative": "ドアを飲む。"
+        },
+        {
+          "id": "comb-044",
+          "prefix": "鍵を",
+          "text": "鍵を閉める",
+          "kana": "かぎをしめる",
+          "ids": [
+            0,
+            3,
+            444,
+            9,
+            3229,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "鍵をかける。",
+          "negative": "鍵を食べる。"
+        },
+        {
+          "id": "comb-045",
+          "prefix": "歯を",
+          "text": "歯を痛いんだ",
+          "kana": "はをいたいんだ",
+          "ids": [
+            0,
+            3,
+            984,
+            9,
+            722,
+            25,
+            17,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "歯を磨く。",
+          "negative": "歯を履く。"
+        },
+        {
+          "id": "comb-046",
+          "prefix": "髪を",
+          "text": "髪を見つけた",
+          "kana": "かみをみつけた",
+          "ids": [
+            0,
+            3,
+            1127,
+            9,
+            480,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "髪を洗う。",
+          "negative": "髪を飲む。"
+        },
+        {
+          "id": "comb-047",
+          "prefix": "顔を",
+          "text": "顔を出す",
+          "kana": "かおをだす",
+          "ids": [
+            0,
+            3,
+            315,
+            9,
+            1158,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "顔を洗う。",
+          "negative": "顔を履く。"
+        },
+        {
+          "id": "comb-048",
+          "prefix": "手を",
+          "text": "手を開けてください",
+          "kana": "てをあけてください",
+          "ids": [
+            0,
+            3,
+            157,
+            9,
+            3025,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "手を洗う。",
+          "negative": "手を着る。"
+        },
+        {
+          "id": "comb-049",
+          "prefix": "風呂に",
+          "text": "風呂にゆっくりつかりたいな",
+          "kana": "ふろにゆっくりつかりたいな",
+          "ids": [
+            0,
+            3,
+            615,
+            11,
+            383,
+            8020,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "風呂に入る。",
+          "negative": "風呂に咲く。"
+        },
+        {
+          "id": "comb-050",
+          "prefix": "椅子に",
+          "text": "椅子に水を入れる",
+          "kana": "いすにみずをいれる",
+          "ids": [
+            0,
+            3,
+            740,
+            11,
+            172,
+            9,
+            471,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "椅子に座る。",
+          "negative": "椅子に咲く。"
+        },
+        {
+          "id": "comb-051",
+          "prefix": "駅に",
+          "text": "駅に向かう",
+          "kana": "えきにむかう",
+          "ids": [
+            0,
+            3,
+            147,
+            11,
+            242,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "駅に着く。",
+          "negative": "駅に咲く。"
+        },
+        {
+          "id": "comb-053",
+          "prefix": "家に",
+          "text": "家に入った",
+          "kana": "いえにはいった",
+          "ids": [
+            0,
+            3,
+            40,
+            11,
+            889,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "家に帰る。",
+          "negative": "家に咲く。"
+        },
+        {
+          "id": "comb-054",
+          "prefix": "部屋に",
+          "text": "部屋に入った",
+          "kana": "へやにはいった",
+          "ids": [
+            0,
+            3,
+            86,
+            11,
+            889,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "部屋に入る。",
+          "negative": "部屋に咲く。"
+        },
+        {
+          "id": "comb-055",
+          "prefix": "図書館で",
+          "text": "図書館で本を借りた",
+          "kana": "としょかんでほんをかりた",
+          "ids": [
+            0,
+            3,
+            146,
+            14,
+            50,
+            9,
+            748,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "図書館で読む。",
+          "negative": "図書館で泳ぐ。"
+        },
+        {
+          "id": "comb-056",
+          "prefix": "プールで",
+          "text": "プールで友達と思う",
+          "kana": "ぷーるでともだちとおもう",
+          "ids": [
+            0,
+            3,
+            1604,
+            14,
+            54,
+            15,
+            101,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "プールで泳ぐ。",
+          "negative": "プールで咲く。"
+        },
+        {
+          "id": "comb-057",
+          "prefix": "海で",
+          "text": "海で鶯が鳴いた",
+          "kana": "うみでうぐいすがないた",
+          "ids": [
+            0,
+            3,
+            332,
+            14,
+            2725,
+            12,
+            4015,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "海で泳ぐ。",
+          "negative": "海で咲く。"
+        },
+        {
+          "id": "comb-058",
+          "prefix": "公園で",
+          "text": "公園でブランコに乗る",
+          "kana": "こうえんでぶらんこにのる",
+          "ids": [
+            0,
+            3,
+            75,
+            14,
+            7214,
+            11,
+            991,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "公園で遊ぶ。",
+          "negative": "公園で咲く。"
+        },
+        {
+          "id": "comb-059",
+          "prefix": "道を",
+          "text": "道を渡った",
+          "kana": "みちをわたった",
+          "ids": [
+            0,
+            3,
+            231,
+            9,
+            2679,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "道を歩く。",
+          "negative": "道を飲む。"
+        },
+        {
+          "id": "comb-061",
+          "prefix": "橋を",
+          "text": "橋を描く",
+          "kana": "はしをえがく",
+          "ids": [
+            0,
+            3,
+            392,
+            9,
+            58,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "橋を渡る。",
+          "negative": "橋を飲む。"
+        },
+        {
+          "id": "comb-062",
+          "prefix": "車を",
+          "text": "車を買う",
+          "kana": "くるまをかう",
+          "ids": [
+            0,
+            3,
+            78,
+            9,
+            233,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "車を運転する。",
+          "negative": "車を飲む。"
+        },
+        {
+          "id": "comb-063",
+          "prefix": "自転車に",
+          "text": "自転車に向かう",
+          "kana": "じてんしゃにむかう",
+          "ids": [
+            0,
+            3,
+            211,
+            11,
+            242,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "自転車に乗る。",
+          "negative": "自転車に咲く。"
+        },
+        {
+          "id": "comb-064",
+          "prefix": "電車に",
+          "text": "電車に向かう",
+          "kana": "でんしゃにむかう",
+          "ids": [
+            0,
+            3,
+            185,
+            11,
+            242,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "電車に乗る。",
+          "negative": "電車に咲く。"
+        },
+        {
+          "id": "comb-065",
+          "prefix": "バスに",
+          "text": "バスに行く",
+          "kana": "ばすにいく",
+          "ids": [
+            0,
+            3,
+            159,
+            11,
+            48,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "バスに乗る。",
+          "negative": "バスに咲く。"
+        },
+        {
+          "id": "comb-066",
+          "prefix": "猫が",
+          "text": "猫が膝の上にいる",
+          "kana": "ねこがひざのうえにいる",
+          "ids": [
+            0,
+            3,
+            156,
+            12,
+            5838,
+            10,
+            240,
+            11,
+            100,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "猫が鳴く。",
+          "negative": "猫が咲く。"
+        },
+        {
+          "id": "comb-067",
+          "prefix": "犬が",
+          "text": "犬が庭で遊んでいる",
+          "kana": "いぬがにわであそんでいる",
+          "ids": [
+            0,
+            3,
+            108,
+            12,
+            102,
+            14,
+            1513,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "犬が吠える。",
+          "negative": "犬が咲く。"
+        },
+        {
+          "id": "comb-069",
+          "prefix": "花が",
+          "text": "花が大好きです",
+          "kana": "はながだいすきです",
+          "ids": [
+            0,
+            3,
+            119,
+            12,
+            323,
+            22,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "花が咲く。",
+          "negative": "花が吠える。"
+        },
+        {
+          "id": "comb-070",
+          "prefix": "桜が",
+          "text": "桜が満開だ",
+          "kana": "さくらがまんかいだ",
+          "ids": [
+            0,
+            3,
+            799,
+            12,
+            2420,
+            17,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "桜が咲く。",
+          "negative": "桜が泳ぐ。"
+        },
+        {
+          "id": "comb-071",
+          "prefix": "雨が",
+          "text": "雨が止んだ",
+          "kana": "あめがやんだ",
+          "ids": [
+            0,
+            3,
+            99,
+            12,
+            5183,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "雨が降る。",
+          "negative": "雨が吠える。"
+        },
+        {
+          "id": "comb-072",
+          "prefix": "雪が",
+          "text": "雪が降り積もった",
+          "kana": "ゆきがふりつもった",
+          "ids": [
+            0,
+            3,
+            271,
+            12,
+            8753,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "雪が降る。",
+          "negative": "雪が食べる。"
+        },
+        {
+          "id": "comb-073",
+          "prefix": "風が",
+          "text": "風がおさまった",
+          "kana": "かぜがおさまった",
+          "ids": [
+            0,
+            3,
+            354,
+            12,
+            4392,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "風が吹く。",
+          "negative": "風が履く。"
+        },
+        {
+          "id": "comb-074",
+          "prefix": "月が",
+          "text": "月が川を照らす",
+          "kana": "つきがかわをてらす",
+          "ids": [
+            0,
+            3,
+            728,
+            12,
+            247,
+            9,
+            1936,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "月が出る。",
+          "negative": "月が吠える。"
+        },
+        {
+          "id": "comb-077",
+          "prefix": "電話が",
+          "text": "電話がかかってきた",
+          "kana": "でんわがかかってきた",
+          "ids": [
+            0,
+            3,
+            130,
+            12,
+            4399,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "電話が鳴る。",
+          "negative": "電話が咲く。"
+        },
+        {
+          "id": "comb-078",
+          "prefix": "時計が",
+          "text": "時計がある",
+          "kana": "とけいがある",
+          "ids": [
+            0,
+            3,
+            380,
+            12,
+            37,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "時計が止まる。",
+          "negative": "時計が吠える。"
+        },
+        {
+          "id": "comb-080",
+          "prefix": "子供が",
+          "text": "子供が庭で遊ぶ",
+          "kana": "こどもがにわであそぶ",
+          "ids": [
+            0,
+            3,
+            117,
+            12,
+            102,
+            14,
+            918,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "子供が笑う。",
+          "negative": "子供が咲く。"
+        },
+        {
+          "id": "comb-081",
+          "prefix": "音楽を",
+          "text": "音楽をかけてリラックスした",
+          "kana": "おんがくをかけてりらっくすした",
+          "ids": [
+            0,
+            3,
+            282,
+            9,
+            1316,
+            1075,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "音楽を聴く。",
+          "negative": "音楽を履く。"
+        },
+        {
+          "id": "comb-082",
+          "prefix": "歌を",
+          "text": "歌を書きます",
+          "kana": "うたをかきます",
+          "ids": [
+            0,
+            3,
+            526,
+            9,
+            3358,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "歌を歌う。",
+          "negative": "歌を飲む。"
+        },
+        {
+          "id": "comb-083",
+          "prefix": "ピアノを",
+          "text": "ピアノを練習する",
+          "kana": "ぴあのをれんしゅうする",
+          "ids": [
+            0,
+            3,
+            451,
+            9,
+            366,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ピアノを弾く。",
+          "negative": "ピアノを飲む。"
+        },
+        {
+          "id": "comb-084",
+          "prefix": "ギターを",
+          "text": "ギターを練習する",
+          "kana": "ぎたーをれんしゅうする",
+          "ids": [
+            0,
+            3,
+            772,
+            9,
+            366,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ギターを弾く。",
+          "negative": "ギターを食べる。"
+        },
+        {
+          "id": "comb-085",
+          "prefix": "写真を",
+          "text": "写真を見つけた",
+          "kana": "しゃしんをみつけた",
+          "ids": [
+            0,
+            3,
+            123,
+            9,
+            480,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "写真を撮る。",
+          "negative": "写真を履く。"
+        },
+        {
+          "id": "comb-086",
+          "prefix": "映画を",
+          "text": "映画を始める",
+          "kana": "えいがをはじめる",
+          "ids": [
+            0,
+            3,
+            151,
+            9,
+            1840,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "映画を見る。",
+          "negative": "映画を飲む。"
+        },
+        {
+          "id": "comb-087",
+          "prefix": "ラジオを",
+          "text": "ラジオをつける",
+          "kana": "らじおをつける",
+          "ids": [
+            0,
+            3,
+            695,
+            9,
+            1027,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "ラジオを聞く。",
+          "negative": "ラジオを履く。"
+        },
+        {
+          "id": "comb-088",
+          "prefix": "テレビを",
+          "text": "テレビをつける",
+          "kana": "てれびをつける",
+          "ids": [
+            0,
+            3,
+            155,
+            9,
+            1027,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "テレビを見る。",
+          "negative": "テレビを飲む。"
+        },
+        {
+          "id": "comb-089",
+          "prefix": "宿題を",
+          "text": "宿題をやりなさい",
+          "kana": "しゅくだいをやりなさい",
+          "ids": [
+            0,
+            3,
+            349,
+            9,
+            1600,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "宿題を終える。",
+          "negative": "宿題を飲む。"
+        },
+        {
+          "id": "comb-090",
+          "prefix": "問題を",
+          "text": "問題を解決した",
+          "kana": "もんだいをかいけつした",
+          "ids": [
+            0,
+            3,
+            112,
+            9,
+            833,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "問題を解く。",
+          "negative": "問題を履く。"
+        },
+        {
+          "id": "comb-092",
+          "prefix": "荷物を",
+          "text": "荷物を閉める",
+          "kana": "にもつをしめる",
+          "ids": [
+            0,
+            3,
+            1870,
+            9,
+            3229,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "荷物を運ぶ。",
+          "negative": "荷物を飲む。"
+        },
+        {
+          "id": "comb-093",
+          "prefix": "箱を",
+          "text": "箱を見たことがない",
+          "kana": "ばこをみたことがない",
+          "ids": [
+            0,
+            3,
+            7499,
+            9,
+            141,
+            20,
+            12,
+            29,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "箱を開ける。",
+          "negative": "箱を飲む。"
+        },
+        {
+          "id": "comb-094",
+          "prefix": "財布を",
+          "text": "財布を拾った",
+          "kana": "さいふをひろった",
+          "ids": [
+            0,
+            3,
+            1122,
+            9,
+            3152,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "財布を探す。",
+          "negative": "財布を飲む。"
+        },
+        {
+          "id": "comb-095",
+          "prefix": "切符を",
+          "text": "切符をお持ちですか",
+          "kana": "きっぷをおもちですか",
+          "ids": [
+            0,
+            3,
+            1204,
+            9,
+            35,
+            1998,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "切符を買う。",
+          "negative": "切符を着る。"
+        },
+        {
+          "id": "comb-096",
+          "prefix": "予定を",
+          "text": "予定を確認した",
+          "kana": "よていをかくにんした",
+          "ids": [
+            0,
+            3,
+            210,
+            9,
+            846,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "予定を決める。",
+          "negative": "予定を飲む。"
+        },
+        {
+          "id": "comb-097",
+          "prefix": "約束を",
+          "text": "約束をした",
+          "kana": "やくそくをした",
+          "ids": [
+            0,
+            3,
+            218,
+            9,
+            21,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "約束を守る。",
+          "negative": "約束を履く。"
+        },
+        {
+          "id": "comb-099",
+          "prefix": "部屋を",
+          "text": "部屋を掃除する",
+          "kana": "へやをそうじする",
+          "ids": [
+            0,
+            3,
+            86,
+            9,
+            371,
+            27,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "部屋を掃除する。",
+          "negative": "部屋を飲む。"
+        },
+        {
+          "id": "comb-100",
+          "prefix": "靴を",
+          "text": "靴を描く",
+          "kana": "くつをえがく",
+          "ids": [
+            0,
+            3,
+            551,
+            9,
+            58,
+            7
+          ],
+          "terminated": true,
+          "error": null,
+          "positive": "靴を磨く。",
+          "negative": "靴を食べる。"
+        }
+      ]
+    }
+  ]
+}

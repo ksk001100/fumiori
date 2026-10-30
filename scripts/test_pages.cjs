@@ -33,6 +33,10 @@ const path = require('node:path');
     const html = await fs.readFile(path.join(root, 'index.html'), 'utf8');
     assert.match(html, /new Worker\('\.\/worker\.js\?v=[a-f0-9]{20}'/);
     const models = await page.locator('#model option').evaluateAll(options => options.map(o => o.value));
+    if (process.env.FUMIORI_REQUIRE_CATALOG) {
+      const catalog = JSON.parse(await fs.readFile(process.env.FUMIORI_REQUIRE_CATALOG, 'utf8'));
+      assert.deepEqual(models, catalog.map(row => row.id));
+    }
     if (process.env.FUMIORI_REQUIRE_EXPERIMENTAL) assert(models.includes('model-experimental'));
     const visits = models.length > 1 ? [...models, models[0]] : models;
     const timings = [];

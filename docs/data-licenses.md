@@ -1,5 +1,7 @@
 # データの由来と配布範囲
 
+v14の2モデルは既存v13の除去splitを用い、外部文や新しい教師出力は追加していない。Tatoeba、既存の自作文、辞書、合成教師に関する親manifestの出典と配布LICENSEを継承する。[実験記録](compositional-generation-v14.md)を参照。
+
 ## 現行モデルと従来モデルの学習データ
 
 現行のstories-v2-diverse-3mbは、自作の対応付き散文2,500文と、日本語SimpleStoriesから生成条件を満たす28,300文を追加した合計30,800文で学習した。従来のstories-v1-3mbは同じ自作散文と日本語SimpleStoriesから追加した97,500文の合計10万文。

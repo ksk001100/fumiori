@@ -77,8 +77,8 @@ Pythonの学習・データ処理・検証スクリプトを変更した場合�
 WASM・Webデモや配布モデルを変更した場合:
 
 ```powershell
-python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v3-3mb
-node scripts/smoke_wasm.mjs model-int8 model-experimental
+python scripts/build_wasm.py --model-catalog configs/demo-models.json
+node scripts/smoke_wasm.mjs model-int8 model-experimental model-v14-ce model-v14-smooth
 $env:FUMIORI_REQUIRE_EXPERIMENTAL = '1'
 node scripts/test_pages.cjs
 ```

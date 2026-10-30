@@ -1,0 +1,26 @@
+[
+  {
+    "id": "model-int8",
+    "directory": "models/stories-v2-diverse-3mb",
+    "label": "標準 v2（約2.9MB）",
+    "description": "現在の標準モデルです。童話調への偏り、不自然な文や文脈上の誤読が残ります。"
+  },
+  {
+    "id": "model-experimental",
+    "directory": "models/everyday-v3-3mb",
+    "label": "日常文 v3・比較用（約2.4MB）",
+    "description": "比較用の試作です。自然さの点検結果は良好でしたが、学習文の再現と重複が多く残ります。"
+  },
+  {
+    "id": "model-v14-ce",
+    "directory": "models/everyday-v14-holdout-ce-3mb",
+    "label": "組合せ実験 v14・通常CE（約2.5MB）",
+    "description": "組合せを除いたデータから学び直した比較用の試作です。自然さ・意味の相性・読みは保証されず、標準への採用はしていません。"
+  },
+  {
+    "id": "model-v14-smooth",
+    "directory": "models/everyday-v14-holdout-smooth-3mb",
+    "label": "組合せ実験 v14・平滑化CE（約2.5MB）",
+    "description": "通常CEと同じ条件でlabel smoothing 0.05を加えた試作です。品質改善は採点結果と別に判断し、不自然な文や誤読が残ります。標準への採用はしていません。"
+  }
+]

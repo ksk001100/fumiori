@@ -1,5 +1,7 @@
 # Training
 
+[v14](../docs/compositional-generation-v14.md)は既存v13の除去splitから通常CEと平滑化CEを同じ初期値・学習量で比較する。`configs/everyday-v14-holdout-{ce,smooth}.json` が学習設定、`configs/everyday-v14-evaluation.json` がサンプリング・候補選別の比較設定。新モデル2種類は比較用としてデモへ追加している。
+
 構成的一般化の研究は[Phase 1の現状分析・評価手順・改善計画](../docs/compositional-generation-phase1.md)を参照。既存の学習を変更せず、標準モデルの部分コピー・文字／単語新規性と自然さ・読みの評価票を追加している。[実測結果](../docs/compositional-generation-phase1-results.md)は学習改善の成果と区別する。
 
 現行モデルは `configs/stories-v2-diverse-3mb.json` / `scripts/stories_pipeline.py` を使用する。日本語SimpleStoriesの公開trainの一部と対応付き散文を合わせ、生成条件を満たす30,800文で学習する。

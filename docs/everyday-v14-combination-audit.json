@@ -1,0 +1,5863 @@
+{
+  "version": 1,
+  "scope": "Model-authored literal everyday contrasts; exploratory checkpoint diagnostic, not unseen-combination evaluation or naturalness accuracy",
+  "pairs_sha256": "176bfea07585ddcba5d23c15b00b7360063b77e50545fc4d6a18a49dcfbb2a1f",
+  "script_sha256": "a8a12a85439b2575416f2368dc3bef9b458d59adb491083d0dbcb8cc90d0813b",
+  "parent_manifest_sha256": "77fcaffa8a8ebd4fcb1a3206e3482f50a69a447424f637f767aaab1af538ea94",
+  "vocab_sha256": "5191ec3cc63fd68612181079a63228e37a84303cd34ee6b0c5e34004255f1dbe",
+  "analyzer": {
+    "SudachiPy": "0.7.0",
+    "SudachiDict-core": "20261015"
+  },
+  "overlap_rule": "normalized noun + adjacent particle + subsequent verb in punctuation span; inflections and dictionary variants, no synonym/dependency guarantee",
+  "sources": [
+    {
+      "path": "build/everyday-v13-combination-holdout-final/train.jsonl",
+      "sha256": "0d0f8f1f89c161bea69c40c61267b56ad9cabd5252d19525da20dafa88646ff9",
+      "rows": 56593
+    },
+    {
+      "path": "build/everyday-v13-combination-holdout-final/validation.jsonl",
+      "sha256": "863993ae4a82795e8f2d91e88a29fd2fe1a5051e75131ae71c9f17d419a9c8c0",
+      "rows": 2692
+    },
+    {
+      "path": "build/everyday-v13-combination-holdout-final/test.jsonl",
+      "sha256": "85fa5fc5ab1498683e17c8c6325ee356eff947b43465bc0cb0ad2a2e987fdca8",
+      "rows": 2642
+    },
+    {
+      "path": "build/everyday-v13-combination-holdout-final/family-test.jsonl",
+      "sha256": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e",
+      "rows": 145
+    }
+  ],
+  "cases": [
+    {
+      "id": "comb-001",
+      "prefix": "水を",
+      "positive": "水を飲む。",
+      "negative": "水を読む。",
+      "positive_key": [
+        "水",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "水",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-002",
+      "prefix": "お茶を",
+      "positive": "お茶を飲む。",
+      "negative": "お茶を着る。",
+      "positive_key": [
+        "茶",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "茶",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-003",
+      "prefix": "牛乳を",
+      "positive": "牛乳を飲む。",
+      "negative": "牛乳を履く。",
+      "positive_key": [
+        "牛乳",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "牛乳",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-004",
+      "prefix": "コーヒーを",
+      "positive": "コーヒーを飲む。",
+      "negative": "コーヒーを畳む。",
+      "positive_key": [
+        "コーヒー",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "コーヒー",
+        "を",
+        "畳む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-005",
+      "prefix": "ジュースを",
+      "positive": "ジュースを飲む。",
+      "negative": "ジュースを書く。",
+      "positive_key": [
+        "ジュース",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "ジュース",
+        "を",
+        "書く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-006",
+      "prefix": "パンを",
+      "positive": "パンを食べる。",
+      "negative": "パンを読む。",
+      "positive_key": [
+        "パン",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "パン",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-007",
+      "prefix": "ご飯を",
+      "positive": "ご飯を食べる。",
+      "negative": "ご飯を履く。",
+      "positive_key": [
+        "御飯",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "御飯",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-008",
+      "prefix": "りんごを",
+      "positive": "りんごを食べる。",
+      "negative": "りんごを着る。",
+      "positive_key": [
+        "林檎",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "林檎",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-009",
+      "prefix": "魚を",
+      "positive": "魚を焼く。",
+      "negative": "魚を読む。",
+      "positive_key": [
+        "魚",
+        "を",
+        "焼く"
+      ],
+      "negative_key": [
+        "魚",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-010",
+      "prefix": "肉を",
+      "positive": "肉を焼く。",
+      "negative": "肉を履く。",
+      "positive_key": [
+        "肉",
+        "を",
+        "焼く"
+      ],
+      "negative_key": [
+        "肉",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-011",
+      "prefix": "野菜を",
+      "positive": "野菜を切る。",
+      "negative": "野菜を読む。",
+      "positive_key": [
+        "野菜",
+        "を",
+        "切る"
+      ],
+      "negative_key": [
+        "野菜",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-012",
+      "prefix": "卵を",
+      "positive": "卵を焼く。",
+      "negative": "卵を着る。",
+      "positive_key": [
+        "卵",
+        "を",
+        "焼く"
+      ],
+      "negative_key": [
+        "卵",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-013",
+      "prefix": "ケーキを",
+      "positive": "ケーキを食べる。",
+      "negative": "ケーキを履く。",
+      "positive_key": [
+        "ケーキ",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "ケーキ",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-014",
+      "prefix": "スープを",
+      "positive": "スープを飲む。",
+      "negative": "スープを畳む。",
+      "positive_key": [
+        "スープ",
+        "を",
+        "飲む"
+      ],
+      "negative_key": [
+        "スープ",
+        "を",
+        "畳む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-015",
+      "prefix": "弁当を",
+      "positive": "弁当を食べる。",
+      "negative": "弁当を着る。",
+      "positive_key": [
+        "弁当",
+        "を",
+        "食べる"
+      ],
+      "negative_key": [
+        "弁当",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-016",
+      "prefix": "本を",
+      "positive": "本を読む。",
+      "negative": "本を飲む。",
+      "positive_key": [
+        "本",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "本",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-017",
+      "prefix": "新聞を",
+      "positive": "新聞を読む。",
+      "negative": "新聞を履く。",
+      "positive_key": [
+        "新聞",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "新聞",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-018",
+      "prefix": "雑誌を",
+      "positive": "雑誌を読む。",
+      "negative": "雑誌を飲む。",
+      "positive_key": [
+        "雑誌",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "雑誌",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-019",
+      "prefix": "手紙を",
+      "positive": "手紙を書く。",
+      "negative": "手紙を履く。",
+      "positive_key": [
+        "手紙",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "手紙",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-020",
+      "prefix": "日記を",
+      "positive": "日記を書く。",
+      "negative": "日記を飲む。",
+      "positive_key": [
+        "日記",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "日記",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-021",
+      "prefix": "名前を",
+      "positive": "名前を書く。",
+      "negative": "名前を食べる。",
+      "positive_key": [
+        "名前",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "名前",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-022",
+      "prefix": "住所を",
+      "positive": "住所を書く。",
+      "negative": "住所を着る。",
+      "positive_key": [
+        "住所",
+        "を",
+        "書く"
+      ],
+      "negative_key": [
+        "住所",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-023",
+      "prefix": "記事を",
+      "positive": "記事を読む。",
+      "negative": "記事を履く。",
+      "positive_key": [
+        "記事",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "記事",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-024",
+      "prefix": "小説を",
+      "positive": "小説を読む。",
+      "negative": "小説を飲む。",
+      "positive_key": [
+        "小説",
+        "を",
+        "読む"
+      ],
+      "negative_key": [
+        "小説",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-025",
+      "prefix": "絵を",
+      "positive": "絵を描く。",
+      "negative": "絵を履く。",
+      "positive_key": [
+        "絵",
+        "を",
+        "描く"
+      ],
+      "negative_key": [
+        "絵",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-026",
+      "prefix": "シャツを",
+      "positive": "シャツを着る。",
+      "negative": "シャツを飲む。",
+      "positive_key": [
+        "シャツ",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "シャツ",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-027",
+      "prefix": "服を",
+      "positive": "服を着る。",
+      "negative": "服を食べる。",
+      "positive_key": [
+        "服",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "服",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-028",
+      "prefix": "上着を",
+      "positive": "上着を着る。",
+      "negative": "上着を飲む。",
+      "positive_key": [
+        "上着",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "上着",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-029",
+      "prefix": "靴を",
+      "positive": "靴を履く。",
+      "negative": "靴を飲む。",
+      "positive_key": [
+        "靴",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "靴",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-030",
+      "prefix": "靴下を",
+      "positive": "靴下を履く。",
+      "negative": "靴下を読む。",
+      "positive_key": [
+        "靴下",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "靴下",
+        "を",
+        "読む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-031",
+      "prefix": "ズボンを",
+      "positive": "ズボンを履く。",
+      "negative": "ズボンを飲む。",
+      "positive_key": [
+        "ズボン",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "ズボン",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-032",
+      "prefix": "帽子を",
+      "positive": "帽子をかぶる。",
+      "negative": "帽子を飲む。",
+      "positive_key": [
+        "帽子",
+        "を",
+        "被る"
+      ],
+      "negative_key": [
+        "帽子",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-033",
+      "prefix": "コートを",
+      "positive": "コートを着る。",
+      "negative": "コートを食べる。",
+      "positive_key": [
+        "コート",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "コート",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-034",
+      "prefix": "セーターを",
+      "positive": "セーターを着る。",
+      "negative": "セーターを飲む。",
+      "positive_key": [
+        "セーター",
+        "を",
+        "着る"
+      ],
+      "negative_key": [
+        "セーター",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-035",
+      "prefix": "スカートを",
+      "positive": "スカートを履く。",
+      "negative": "スカートを飲む。",
+      "positive_key": [
+        "スカート",
+        "を",
+        "履く"
+      ],
+      "negative_key": [
+        "スカート",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-036",
+      "prefix": "皿を",
+      "positive": "皿を洗う。",
+      "negative": "皿を履く。",
+      "positive_key": [
+        "皿",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "皿",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-037",
+      "prefix": "茶碗を",
+      "positive": "茶碗を洗う。",
+      "negative": "茶碗を着る。",
+      "positive_key": [
+        "茶碗",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "茶碗",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-038",
+      "prefix": "コップを",
+      "positive": "コップを洗う。",
+      "negative": "コップを履く。",
+      "positive_key": [
+        "コップ",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "コップ",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-039",
+      "prefix": "タオルを",
+      "positive": "タオルを畳む。",
+      "negative": "タオルを飲む。",
+      "positive_key": [
+        "タオル",
+        "を",
+        "畳む"
+      ],
+      "negative_key": [
+        "タオル",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-040",
+      "prefix": "布団を",
+      "positive": "布団を干す。",
+      "negative": "布団を飲む。",
+      "positive_key": [
+        "布団",
+        "を",
+        "干す"
+      ],
+      "negative_key": [
+        "布団",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-041",
+      "prefix": "傘を",
+      "positive": "傘を差す。",
+      "negative": "傘を飲む。",
+      "positive_key": [
+        "傘",
+        "を",
+        "差す"
+      ],
+      "negative_key": [
+        "傘",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-042",
+      "prefix": "窓を",
+      "positive": "窓を開ける。",
+      "negative": "窓を食べる。",
+      "positive_key": [
+        "窓",
+        "を",
+        "開ける"
+      ],
+      "negative_key": [
+        "窓",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-043",
+      "prefix": "ドアを",
+      "positive": "ドアを閉める。",
+      "negative": "ドアを飲む。",
+      "positive_key": [
+        "ドア",
+        "を",
+        "閉める"
+      ],
+      "negative_key": [
+        "ドア",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-044",
+      "prefix": "鍵を",
+      "positive": "鍵をかける。",
+      "negative": "鍵を食べる。",
+      "positive_key": [
+        "鍵",
+        "を",
+        "かける"
+      ],
+      "negative_key": [
+        "鍵",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-045",
+      "prefix": "歯を",
+      "positive": "歯を磨く。",
+      "negative": "歯を履く。",
+      "positive_key": [
+        "歯",
+        "を",
+        "磨く"
+      ],
+      "negative_key": [
+        "歯",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-046",
+      "prefix": "髪を",
+      "positive": "髪を洗う。",
+      "negative": "髪を飲む。",
+      "positive_key": [
+        "髪",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "髪",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-047",
+      "prefix": "顔を",
+      "positive": "顔を洗う。",
+      "negative": "顔を履く。",
+      "positive_key": [
+        "顔",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "顔",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-048",
+      "prefix": "手を",
+      "positive": "手を洗う。",
+      "negative": "手を着る。",
+      "positive_key": [
+        "手",
+        "を",
+        "洗う"
+      ],
+      "negative_key": [
+        "手",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-049",
+      "prefix": "風呂に",
+      "positive": "風呂に入る。",
+      "negative": "風呂に咲く。",
+      "positive_key": [
+        "風呂",
+        "に",
+        "入る"
+      ],
+      "negative_key": [
+        "風呂",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-050",
+      "prefix": "椅子に",
+      "positive": "椅子に座る。",
+      "negative": "椅子に咲く。",
+      "positive_key": [
+        "椅子",
+        "に",
+        "座る"
+      ],
+      "negative_key": [
+        "椅子",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-051",
+      "prefix": "駅に",
+      "positive": "駅に着く。",
+      "negative": "駅に咲く。",
+      "positive_key": [
+        "駅",
+        "に",
+        "着く"
+      ],
+      "negative_key": [
+        "駅",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-052",
+      "prefix": "学校に",
+      "positive": "学校に通う。",
+      "negative": "学校に咲く。",
+      "positive_key": [
+        "学校",
+        "に",
+        "通う"
+      ],
+      "negative_key": [
+        "学校",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-053",
+      "prefix": "家に",
+      "positive": "家に帰る。",
+      "negative": "家に咲く。",
+      "positive_key": [
+        "家",
+        "に",
+        "帰る"
+      ],
+      "negative_key": [
+        "家",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-054",
+      "prefix": "部屋に",
+      "positive": "部屋に入る。",
+      "negative": "部屋に咲く。",
+      "positive_key": [
+        "部屋",
+        "に",
+        "入る"
+      ],
+      "negative_key": [
+        "部屋",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-055",
+      "prefix": "図書館で",
+      "positive": "図書館で読む。",
+      "negative": "図書館で泳ぐ。",
+      "positive_key": [
+        "図書館",
+        "で",
+        "読む"
+      ],
+      "negative_key": [
+        "図書館",
+        "で",
+        "泳ぐ"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-056",
+      "prefix": "プールで",
+      "positive": "プールで泳ぐ。",
+      "negative": "プールで咲く。",
+      "positive_key": [
+        "プール",
+        "で",
+        "泳ぐ"
+      ],
+      "negative_key": [
+        "プール",
+        "で",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-057",
+      "prefix": "海で",
+      "positive": "海で泳ぐ。",
+      "negative": "海で咲く。",
+      "positive_key": [
+        "海",
+        "で",
+        "泳ぐ"
+      ],
+      "negative_key": [
+        "海",
+        "で",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-058",
+      "prefix": "公園で",
+      "positive": "公園で遊ぶ。",
+      "negative": "公園で咲く。",
+      "positive_key": [
+        "公園",
+        "で",
+        "遊ぶ"
+      ],
+      "negative_key": [
+        "公園",
+        "で",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-059",
+      "prefix": "道を",
+      "positive": "道を歩く。",
+      "negative": "道を飲む。",
+      "positive_key": [
+        "道",
+        "を",
+        "歩く"
+      ],
+      "negative_key": [
+        "道",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-060",
+      "prefix": "階段を",
+      "positive": "階段を上る。",
+      "negative": "階段を飲む。",
+      "positive_key": [
+        "階段",
+        "を",
+        "上る"
+      ],
+      "negative_key": [
+        "階段",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-061",
+      "prefix": "橋を",
+      "positive": "橋を渡る。",
+      "negative": "橋を飲む。",
+      "positive_key": [
+        "橋",
+        "を",
+        "渡る"
+      ],
+      "negative_key": [
+        "橋",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-062",
+      "prefix": "車を",
+      "positive": "車を運転する。",
+      "negative": "車を飲む。",
+      "positive_key": [
+        "車",
+        "を",
+        "運転する"
+      ],
+      "negative_key": [
+        "車",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-063",
+      "prefix": "自転車に",
+      "positive": "自転車に乗る。",
+      "negative": "自転車に咲く。",
+      "positive_key": [
+        "自転車",
+        "に",
+        "乗る"
+      ],
+      "negative_key": [
+        "自転車",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-064",
+      "prefix": "電車に",
+      "positive": "電車に乗る。",
+      "negative": "電車に咲く。",
+      "positive_key": [
+        "電車",
+        "に",
+        "乗る"
+      ],
+      "negative_key": [
+        "電車",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-065",
+      "prefix": "バスに",
+      "positive": "バスに乗る。",
+      "negative": "バスに咲く。",
+      "positive_key": [
+        "バス",
+        "に",
+        "乗る"
+      ],
+      "negative_key": [
+        "バス",
+        "に",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-066",
+      "prefix": "猫が",
+      "positive": "猫が鳴く。",
+      "negative": "猫が咲く。",
+      "positive_key": [
+        "猫",
+        "が",
+        "鳴く"
+      ],
+      "negative_key": [
+        "猫",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-067",
+      "prefix": "犬が",
+      "positive": "犬が吠える。",
+      "negative": "犬が咲く。",
+      "positive_key": [
+        "犬",
+        "が",
+        "吠える"
+      ],
+      "negative_key": [
+        "犬",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-068",
+      "prefix": "鳥が",
+      "positive": "鳥が飛ぶ。",
+      "negative": "鳥が沸く。",
+      "positive_key": [
+        "鳥",
+        "が",
+        "飛ぶ"
+      ],
+      "negative_key": [
+        "鳥",
+        "が",
+        "沸く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-069",
+      "prefix": "花が",
+      "positive": "花が咲く。",
+      "negative": "花が吠える。",
+      "positive_key": [
+        "花",
+        "が",
+        "咲く"
+      ],
+      "negative_key": [
+        "花",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-070",
+      "prefix": "桜が",
+      "positive": "桜が咲く。",
+      "negative": "桜が泳ぐ。",
+      "positive_key": [
+        "桜",
+        "が",
+        "咲く"
+      ],
+      "negative_key": [
+        "桜",
+        "が",
+        "泳ぐ"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-071",
+      "prefix": "雨が",
+      "positive": "雨が降る。",
+      "negative": "雨が吠える。",
+      "positive_key": [
+        "雨",
+        "が",
+        "降る"
+      ],
+      "negative_key": [
+        "雨",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-072",
+      "prefix": "雪が",
+      "positive": "雪が降る。",
+      "negative": "雪が食べる。",
+      "positive_key": [
+        "雪",
+        "が",
+        "降る"
+      ],
+      "negative_key": [
+        "雪",
+        "が",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-073",
+      "prefix": "風が",
+      "positive": "風が吹く。",
+      "negative": "風が履く。",
+      "positive_key": [
+        "風",
+        "が",
+        "吹く"
+      ],
+      "negative_key": [
+        "風",
+        "が",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-074",
+      "prefix": "月が",
+      "positive": "月が出る。",
+      "negative": "月が吠える。",
+      "positive_key": [
+        "月",
+        "が",
+        "出る"
+      ],
+      "negative_key": [
+        "月",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-075",
+      "prefix": "星が",
+      "positive": "星が光る。",
+      "negative": "星が食べる。",
+      "positive_key": [
+        "星",
+        "が",
+        "光る"
+      ],
+      "negative_key": [
+        "星",
+        "が",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-076",
+      "prefix": "湯が",
+      "positive": "湯が沸く。",
+      "negative": "湯が吠える。",
+      "positive_key": [
+        "湯",
+        "が",
+        "沸く"
+      ],
+      "negative_key": [
+        "湯",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-077",
+      "prefix": "電話が",
+      "positive": "電話が鳴る。",
+      "negative": "電話が咲く。",
+      "positive_key": [
+        "電話",
+        "が",
+        "鳴る"
+      ],
+      "negative_key": [
+        "電話",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-078",
+      "prefix": "時計が",
+      "positive": "時計が止まる。",
+      "negative": "時計が吠える。",
+      "positive_key": [
+        "時計",
+        "が",
+        "止まる"
+      ],
+      "negative_key": [
+        "時計",
+        "が",
+        "吠える"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-079",
+      "prefix": "赤ちゃんが",
+      "positive": "赤ちゃんが泣く。",
+      "negative": "赤ちゃんが沸く。",
+      "positive_key": [
+        "赤ちゃん",
+        "が",
+        "泣く"
+      ],
+      "negative_key": [
+        "赤ちゃん",
+        "が",
+        "沸く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-080",
+      "prefix": "子供が",
+      "positive": "子供が笑う。",
+      "negative": "子供が咲く。",
+      "positive_key": [
+        "子供",
+        "が",
+        "笑う"
+      ],
+      "negative_key": [
+        "子供",
+        "が",
+        "咲く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-081",
+      "prefix": "音楽を",
+      "positive": "音楽を聴く。",
+      "negative": "音楽を履く。",
+      "positive_key": [
+        "音楽",
+        "を",
+        "聞く"
+      ],
+      "negative_key": [
+        "音楽",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-082",
+      "prefix": "歌を",
+      "positive": "歌を歌う。",
+      "negative": "歌を飲む。",
+      "positive_key": [
+        "歌",
+        "を",
+        "歌う"
+      ],
+      "negative_key": [
+        "歌",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-083",
+      "prefix": "ピアノを",
+      "positive": "ピアノを弾く。",
+      "negative": "ピアノを飲む。",
+      "positive_key": [
+        "ピアノ",
+        "を",
+        "弾く"
+      ],
+      "negative_key": [
+        "ピアノ",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-084",
+      "prefix": "ギターを",
+      "positive": "ギターを弾く。",
+      "negative": "ギターを食べる。",
+      "positive_key": [
+        "ギター",
+        "を",
+        "弾く"
+      ],
+      "negative_key": [
+        "ギター",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-085",
+      "prefix": "写真を",
+      "positive": "写真を撮る。",
+      "negative": "写真を履く。",
+      "positive_key": [
+        "写真",
+        "を",
+        "撮る"
+      ],
+      "negative_key": [
+        "写真",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-086",
+      "prefix": "映画を",
+      "positive": "映画を見る。",
+      "negative": "映画を飲む。",
+      "positive_key": [
+        "映画",
+        "を",
+        "見る"
+      ],
+      "negative_key": [
+        "映画",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-087",
+      "prefix": "ラジオを",
+      "positive": "ラジオを聞く。",
+      "negative": "ラジオを履く。",
+      "positive_key": [
+        "ラジオ",
+        "を",
+        "聞く"
+      ],
+      "negative_key": [
+        "ラジオ",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-088",
+      "prefix": "テレビを",
+      "positive": "テレビを見る。",
+      "negative": "テレビを飲む。",
+      "positive_key": [
+        "テレビ",
+        "を",
+        "見る"
+      ],
+      "negative_key": [
+        "テレビ",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-089",
+      "prefix": "宿題を",
+      "positive": "宿題を終える。",
+      "negative": "宿題を飲む。",
+      "positive_key": [
+        "宿題",
+        "を",
+        "終える"
+      ],
+      "negative_key": [
+        "宿題",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-090",
+      "prefix": "問題を",
+      "positive": "問題を解く。",
+      "negative": "問題を履く。",
+      "positive_key": [
+        "問題",
+        "を",
+        "解く"
+      ],
+      "negative_key": [
+        "問題",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-091",
+      "prefix": "切手を",
+      "positive": "切手を貼る。",
+      "negative": "切手を履く。",
+      "positive_key": [
+        "切手",
+        "を",
+        "張る"
+      ],
+      "negative_key": [
+        "切手",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-092",
+      "prefix": "荷物を",
+      "positive": "荷物を運ぶ。",
+      "negative": "荷物を飲む。",
+      "positive_key": [
+        "荷物",
+        "を",
+        "運ぶ"
+      ],
+      "negative_key": [
+        "荷物",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-093",
+      "prefix": "箱を",
+      "positive": "箱を開ける。",
+      "negative": "箱を飲む。",
+      "positive_key": [
+        "箱",
+        "を",
+        "開ける"
+      ],
+      "negative_key": [
+        "箱",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-094",
+      "prefix": "財布を",
+      "positive": "財布を探す。",
+      "negative": "財布を飲む。",
+      "positive_key": [
+        "財布",
+        "を",
+        "探す"
+      ],
+      "negative_key": [
+        "財布",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-095",
+      "prefix": "切符を",
+      "positive": "切符を買う。",
+      "negative": "切符を着る。",
+      "positive_key": [
+        "切符",
+        "を",
+        "買う"
+      ],
+      "negative_key": [
+        "切符",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-096",
+      "prefix": "予定を",
+      "positive": "予定を決める。",
+      "negative": "予定を飲む。",
+      "positive_key": [
+        "予定",
+        "を",
+        "決める"
+      ],
+      "negative_key": [
+        "予定",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-097",
+      "prefix": "約束を",
+      "positive": "約束を守る。",
+      "negative": "約束を履く。",
+      "positive_key": [
+        "約束",
+        "を",
+        "守る"
+      ],
+      "negative_key": [
+        "約束",
+        "を",
+        "履く"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-098",
+      "prefix": "時間を",
+      "positive": "時間を計る。",
+      "negative": "時間を着る。",
+      "positive_key": [
+        "時間",
+        "を",
+        "測る"
+      ],
+      "negative_key": [
+        "時間",
+        "を",
+        "着る"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-099",
+      "prefix": "部屋を",
+      "positive": "部屋を掃除する。",
+      "negative": "部屋を飲む。",
+      "positive_key": [
+        "部屋",
+        "を",
+        "掃除する"
+      ],
+      "negative_key": [
+        "部屋",
+        "を",
+        "飲む"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    },
+    {
+      "id": "comb-100",
+      "prefix": "靴を",
+      "positive": "靴を磨く。",
+      "negative": "靴を食べる。",
+      "positive_key": [
+        "靴",
+        "を",
+        "磨く"
+      ],
+      "negative_key": [
+        "靴",
+        "を",
+        "食べる"
+      ],
+      "overlap": {
+        "positive": {},
+        "negative": {}
+      }
+    }
+  ],
+  "encoded": [
+    {
+      "id": "comb-001",
+      "ids": [
+        [
+          0,
+          3,
+          172,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          172,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-002",
+      "ids": [
+        [
+          0,
+          3,
+          35,
+          599,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          35,
+          599,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 5,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-003",
+      "ids": [
+        [
+          0,
+          3,
+          459,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          459,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-004",
+      "ids": [
+        [
+          0,
+          3,
+          179,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          179,
+          9,
+          2320,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-005",
+      "ids": [
+        [
+          0,
+          3,
+          1825,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1825,
+          9,
+          284,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-006",
+      "ids": [
+        [
+          0,
+          3,
+          330,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          330,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-007",
+      "ids": [
+        [
+          0,
+          3,
+          900,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          900,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-008",
+      "ids": [
+        [
+          0,
+          3,
+          1109,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1109,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-009",
+      "ids": [
+        [
+          0,
+          3,
+          485,
+          9,
+          7464,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          485,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-010",
+      "ids": [
+        [
+          0,
+          3,
+          872,
+          9,
+          7464,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          872,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-011",
+      "ids": [
+        [
+          0,
+          3,
+          681,
+          9,
+          1331,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          681,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-012",
+      "ids": [
+        [
+          0,
+          3,
+          1271,
+          9,
+          7464,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1271,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-013",
+      "ids": [
+        [
+          0,
+          3,
+          362,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          362,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-014",
+      "ids": [
+        [
+          0,
+          3,
+          469,
+          9,
+          266,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          469,
+          9,
+          2320,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-015",
+      "ids": [
+        [
+          0,
+          3,
+          2090,
+          9,
+          193,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          2090,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-016",
+      "ids": [
+        [
+          0,
+          3,
+          50,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          50,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-017",
+      "ids": [
+        [
+          0,
+          3,
+          360,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          360,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-018",
+      "ids": [
+        [
+          0,
+          3,
+          644,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          644,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-019",
+      "ids": [
+        [
+          0,
+          3,
+          186,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          186,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-020",
+      "ids": [
+        [
+          0,
+          3,
+          421,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          421,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-021",
+      "ids": [
+        [
+          0,
+          3,
+          232,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          232,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-022",
+      "ids": [
+        [
+          0,
+          3,
+          775,
+          9,
+          284,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          775,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-023",
+      "ids": [
+        [
+          0,
+          3,
+          500,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          500,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-024",
+      "ids": [
+        [
+          0,
+          3,
+          292,
+          9,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          292,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-025",
+      "ids": [
+        [
+          0,
+          3,
+          51,
+          9,
+          58,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          51,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-026",
+      "ids": [
+        [
+          0,
+          3,
+          537,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          537,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-027",
+      "ids": [
+        [
+          0,
+          3,
+          374,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          374,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-028",
+      "ids": [
+        [
+          0,
+          3,
+          875,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          875,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-029",
+      "ids": [
+        [
+          0,
+          3,
+          551,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          551,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-030",
+      "ids": [
+        [
+          0,
+          3,
+          1595,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1595,
+          9,
+          107,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-031",
+      "ids": [
+        [
+          0,
+          3,
+          4091,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          4091,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-033",
+      "ids": [
+        [
+          0,
+          3,
+          963,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          963,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-034",
+      "ids": [
+        [
+          0,
+          3,
+          942,
+          9,
+          1582,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          942,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-035",
+      "ids": [
+        [
+          0,
+          3,
+          2751,
+          9,
+          7350,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          2751,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-036",
+      "ids": [
+        [
+          0,
+          3,
+          1191,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1191,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-037",
+      "ids": [
+        [
+          0,
+          3,
+          5846,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          5846,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-038",
+      "ids": [
+        [
+          0,
+          3,
+          1712,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1712,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-039",
+      "ids": [
+        [
+          0,
+          3,
+          1074,
+          9,
+          2320,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1074,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-040",
+      "ids": [
+        [
+          0,
+          3,
+          6827,
+          9,
+          1728,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          6827,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-041",
+      "ids": [
+        [
+          0,
+          3,
+          291,
+          9,
+          8321,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          291,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-042",
+      "ids": [
+        [
+          0,
+          3,
+          182,
+          9,
+          1175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          182,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-043",
+      "ids": [
+        [
+          0,
+          3,
+          321,
+          9,
+          3229,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          321,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-044",
+      "ids": [
+        [
+          0,
+          3,
+          444,
+          9,
+          1815,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          444,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-045",
+      "ids": [
+        [
+          0,
+          3,
+          984,
+          9,
+          1939,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          984,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-046",
+      "ids": [
+        [
+          0,
+          3,
+          1127,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1127,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-047",
+      "ids": [
+        [
+          0,
+          3,
+          315,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          315,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-048",
+      "ids": [
+        [
+          0,
+          3,
+          157,
+          9,
+          729,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          157,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-049",
+      "ids": [
+        [
+          0,
+          3,
+          615,
+          11,
+          843,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          615,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-050",
+      "ids": [
+        [
+          0,
+          3,
+          740,
+          11,
+          2286,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          740,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-051",
+      "ids": [
+        [
+          0,
+          3,
+          147,
+          11,
+          1743,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          147,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-053",
+      "ids": [
+        [
+          0,
+          3,
+          40,
+          11,
+          708,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          40,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-054",
+      "ids": [
+        [
+          0,
+          3,
+          86,
+          11,
+          843,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          86,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-055",
+      "ids": [
+        [
+          0,
+          3,
+          146,
+          14,
+          107,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          146,
+          14,
+          1410,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-056",
+      "ids": [
+        [
+          0,
+          3,
+          1604,
+          14,
+          1410,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1604,
+          14,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-057",
+      "ids": [
+        [
+          0,
+          3,
+          332,
+          14,
+          1410,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          332,
+          14,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-058",
+      "ids": [
+        [
+          0,
+          3,
+          75,
+          14,
+          918,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          75,
+          14,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-059",
+      "ids": [
+        [
+          0,
+          3,
+          231,
+          9,
+          568,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          231,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-061",
+      "ids": [
+        [
+          0,
+          3,
+          392,
+          9,
+          2419,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          392,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-062",
+      "ids": [
+        [
+          0,
+          3,
+          78,
+          9,
+          326,
+          27,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          78,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-063",
+      "ids": [
+        [
+          0,
+          3,
+          211,
+          11,
+          991,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          211,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-064",
+      "ids": [
+        [
+          0,
+          3,
+          185,
+          11,
+          991,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          185,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-065",
+      "ids": [
+        [
+          0,
+          3,
+          159,
+          11,
+          991,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          159,
+          11,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-066",
+      "ids": [
+        [
+          0,
+          3,
+          156,
+          12,
+          7590,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          156,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-067",
+      "ids": [
+        [
+          0,
+          3,
+          108,
+          12,
+          7304,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          108,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-069",
+      "ids": [
+        [
+          0,
+          3,
+          119,
+          12,
+          1725,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          119,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-070",
+      "ids": [
+        [
+          0,
+          3,
+          799,
+          12,
+          1725,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          799,
+          12,
+          1410,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-071",
+      "ids": [
+        [
+          0,
+          3,
+          99,
+          12,
+          1126,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          99,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-072",
+      "ids": [
+        [
+          0,
+          3,
+          271,
+          12,
+          1126,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          271,
+          12,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-073",
+      "ids": [
+        [
+          0,
+          3,
+          354,
+          12,
+          4554,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          354,
+          12,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-074",
+      "ids": [
+        [
+          0,
+          3,
+          728,
+          12,
+          510,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          728,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-077",
+      "ids": [
+        [
+          0,
+          3,
+          130,
+          12,
+          3717,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          130,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-078",
+      "ids": [
+        [
+          0,
+          3,
+          380,
+          12,
+          3607,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          380,
+          12,
+          7304,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-080",
+      "ids": [
+        [
+          0,
+          3,
+          117,
+          12,
+          3391,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          117,
+          12,
+          1725,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-081",
+      "ids": [
+        [
+          0,
+          3,
+          282,
+          9,
+          1282,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          282,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-082",
+      "ids": [
+        [
+          0,
+          3,
+          526,
+          9,
+          1799,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          526,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-083",
+      "ids": [
+        [
+          0,
+          3,
+          451,
+          9,
+          2175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          451,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-084",
+      "ids": [
+        [
+          0,
+          3,
+          772,
+          9,
+          2175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          772,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-085",
+      "ids": [
+        [
+          0,
+          3,
+          123,
+          9,
+          386,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          123,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-086",
+      "ids": [
+        [
+          0,
+          3,
+          151,
+          9,
+          160,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          151,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-087",
+      "ids": [
+        [
+          0,
+          3,
+          695,
+          9,
+          520,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          695,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-088",
+      "ids": [
+        [
+          0,
+          3,
+          155,
+          9,
+          160,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          155,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-089",
+      "ids": [
+        [
+          0,
+          3,
+          349,
+          9,
+          4298,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          349,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-090",
+      "ids": [
+        [
+          0,
+          3,
+          112,
+          9,
+          2214,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          112,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-092",
+      "ids": [
+        [
+          0,
+          3,
+          1870,
+          9,
+          2342,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1870,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-093",
+      "ids": [
+        [
+          0,
+          3,
+          7499,
+          9,
+          1175,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          7499,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-094",
+      "ids": [
+        [
+          0,
+          3,
+          1122,
+          9,
+          811,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1122,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-095",
+      "ids": [
+        [
+          0,
+          3,
+          1204,
+          9,
+          233,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          1204,
+          9,
+          1582,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-096",
+      "ids": [
+        [
+          0,
+          3,
+          210,
+          9,
+          882,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          210,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-097",
+      "ids": [
+        [
+          0,
+          3,
+          218,
+          9,
+          966,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          218,
+          9,
+          7350,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-099",
+      "ids": [
+        [
+          0,
+          3,
+          86,
+          9,
+          371,
+          27,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          86,
+          9,
+          266,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    },
+    {
+      "id": "comb-100",
+      "ids": [
+        [
+          0,
+          3,
+          551,
+          9,
+          1939,
+          7,
+          1
+        ],
+        [
+          0,
+          3,
+          551,
+          9,
+          193,
+          7,
+          1
+        ]
+      ],
+      "prefix_length": 4,
+      "difficulty": 3
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "comb-032",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "かぶる"
+      ]
+    },
+    {
+      "id": "comb-052",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "通う"
+      ]
+    },
+    {
+      "id": "comb-060",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "上る"
+      ]
+    },
+    {
+      "id": "comb-068",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "沸く"
+      ]
+    },
+    {
+      "id": "comb-075",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "光る"
+      ]
+    },
+    {
+      "id": "comb-076",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "沸く"
+      ]
+    },
+    {
+      "id": "comb-079",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "沸く"
+      ]
+    },
+    {
+      "id": "comb-091",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "貼る"
+      ]
+    },
+    {
+      "id": "comb-098",
+      "reason": "out_of_vocabulary",
+      "missing": [
+        "計る"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "path": "build/checkpoints/everyday-v14-holdout-ce.pt",
+      "sha256": "f44c530f0dfca9281a41a915b460903126a0d249aa1f9e866f1b985fd855057a",
+      "records": [
+        {
+          "id": "comb-001",
+          "log_odds": 3.1490511894226074,
+          "prior_log_odds": 0.5662374496459961,
+          "context_gain": 2.5828137397766113,
+          "positive_probability": 0.0007386571378447115,
+          "negative_probability": 3.168307739542797e-05
+        },
+        {
+          "id": "comb-002",
+          "log_odds": 1.1845512390136719,
+          "prior_log_odds": 1.1960411071777344,
+          "context_gain": -0.0114898681640625,
+          "positive_probability": 0.0006484459736384451,
+          "negative_probability": 0.0001983488618861884
+        },
+        {
+          "id": "comb-003",
+          "log_odds": 13.303558349609375,
+          "prior_log_odds": 7.0427045822143555,
+          "context_gain": 6.2608537673950195,
+          "positive_probability": 0.009753348305821419,
+          "negative_probability": 1.6273911995767776e-08
+        },
+        {
+          "id": "comb-004",
+          "log_odds": 4.90093469619751,
+          "prior_log_odds": 2.168760299682617,
+          "context_gain": 2.7321743965148926,
+          "positive_probability": 0.0056574647314846516,
+          "negative_probability": 4.208942118566483e-05
+        },
+        {
+          "id": "comb-005",
+          "log_odds": 2.458158493041992,
+          "prior_log_odds": -1.6843366622924805,
+          "context_gain": 4.142495155334473,
+          "positive_probability": 0.007179480977356434,
+          "negative_probability": 0.0006145091610960662
+        },
+        {
+          "id": "comb-006",
+          "log_odds": 5.537572860717773,
+          "prior_log_odds": 0.5922431945800781,
+          "context_gain": 4.945329666137695,
+          "positive_probability": 0.00690270122140646,
+          "negative_probability": 2.716950621106662e-05
+        },
+        {
+          "id": "comb-007",
+          "log_odds": 12.847831726074219,
+          "prior_log_odds": 7.0687103271484375,
+          "context_gain": 5.779121398925781,
+          "positive_probability": 0.07749682664871216,
+          "negative_probability": 2.0395840749642957e-07
+        },
+        {
+          "id": "comb-008",
+          "log_odds": 2.9650306701660156,
+          "prior_log_odds": 1.2220468521118164,
+          "context_gain": 1.7429838180541992,
+          "positive_probability": 0.0013377208961173892,
+          "negative_probability": 6.897139974171296e-05
+        },
+        {
+          "id": "comb-009",
+          "log_odds": 2.1894540786743164,
+          "prior_log_odds": -2.3938913345336914,
+          "context_gain": 4.583345413208008,
+          "positive_probability": 0.0009374874061904848,
+          "negative_probability": 0.00010497783659957349
+        },
+        {
+          "id": "comb-010",
+          "log_odds": 7.6121625900268555,
+          "prior_log_odds": 4.082575798034668,
+          "context_gain": 3.5295867919921875,
+          "positive_probability": 0.0006498649017885327,
+          "negative_probability": 3.2129418059412274e-07
+        },
+        {
+          "id": "comb-011",
+          "log_odds": -2.531430721282959,
+          "prior_log_odds": -2.540022850036621,
+          "context_gain": 0.00859212875366211,
+          "positive_probability": 7.623706915182993e-05,
+          "negative_probability": 0.0009584127692505717
+        },
+        {
+          "id": "comb-012",
+          "log_odds": 3.177302837371826,
+          "prior_log_odds": -1.7640876770019531,
+          "context_gain": 4.941390514373779,
+          "positive_probability": 0.0013332485686987638,
+          "negative_probability": 5.559376222663559e-05
+        },
+        {
+          "id": "comb-013",
+          "log_odds": 13.032205581665039,
+          "prior_log_odds": 7.0687103271484375,
+          "context_gain": 5.963495254516602,
+          "positive_probability": 0.00504273409023881,
+          "negative_probability": 1.1037006864000887e-08
+        },
+        {
+          "id": "comb-014",
+          "log_odds": 5.095641136169434,
+          "prior_log_odds": 2.168760299682617,
+          "context_gain": 2.9268808364868164,
+          "positive_probability": 0.0004742670862469822,
+          "negative_probability": 2.9041173092991812e-06
+        },
+        {
+          "id": "comb-015",
+          "log_odds": 3.2434306144714355,
+          "prior_log_odds": 1.2220468521118164,
+          "context_gain": 2.021383762359619,
+          "positive_probability": 0.0017113162903115153,
+          "negative_probability": 6.679227954009548e-05
+        },
+        {
+          "id": "comb-016",
+          "log_odds": 2.7593822479248047,
+          "prior_log_odds": -0.5662374496459961,
+          "context_gain": 3.325619697570801,
+          "positive_probability": 0.010954199358820915,
+          "negative_probability": 0.0006937391008250415
+        },
+        {
+          "id": "comb-017",
+          "log_odds": 13.698244094848633,
+          "prior_log_odds": 6.476467132568359,
+          "context_gain": 7.221776962280273,
+          "positive_probability": 0.013740542344748974,
+          "negative_probability": 1.5450119406068552e-08
+        },
+        {
+          "id": "comb-018",
+          "log_odds": 7.433492183685303,
+          "prior_log_odds": -0.5662374496459961,
+          "context_gain": 7.999729633331299,
+          "positive_probability": 0.015551242046058178,
+          "negative_probability": 9.192644029099029e-06
+        },
+        {
+          "id": "comb-019",
+          "log_odds": 11.183218002319336,
+          "prior_log_odds": 8.727041244506836,
+          "context_gain": 2.4561767578125,
+          "positive_probability": 0.0015521548921242356,
+          "negative_probability": 2.158366463334005e-08
+        },
+        {
+          "id": "comb-020",
+          "log_odds": 6.591349124908447,
+          "prior_log_odds": 1.6843366622924805,
+          "context_gain": 4.907012462615967,
+          "positive_probability": 0.09467285871505737,
+          "negative_probability": 0.000129908905364573
+        },
+        {
+          "id": "comb-021",
+          "log_odds": -3.5352888107299805,
+          "prior_log_odds": 1.6583309173583984,
+          "context_gain": -5.193619728088379,
+          "positive_probability": 0.0001636673987377435,
+          "negative_probability": 0.005614596884697676
+        },
+        {
+          "id": "comb-022",
+          "log_odds": 0.673797607421875,
+          "prior_log_odds": 2.880377769470215,
+          "context_gain": -2.20658016204834,
+          "positive_probability": 2.3280192181118764e-05,
+          "negative_probability": 1.1867519788211212e-05
+        },
+        {
+          "id": "comb-023",
+          "log_odds": 10.764287948608398,
+          "prior_log_odds": 6.476467132568359,
+          "context_gain": 4.287820816040039,
+          "positive_probability": 0.0034822849556803703,
+          "negative_probability": 7.361959575291621e-08
+        },
+        {
+          "id": "comb-024",
+          "log_odds": 5.977016448974609,
+          "prior_log_odds": -0.5662374496459961,
+          "context_gain": 6.5432538986206055,
+          "positive_probability": 0.03420807793736458,
+          "negative_probability": 8.676474681124091e-05
+        },
+        {
+          "id": "comb-025",
+          "log_odds": 14.031645774841309,
+          "prior_log_odds": 2.675835609436035,
+          "context_gain": 11.355810165405273,
+          "positive_probability": 0.03781764209270477,
+          "negative_probability": 3.0466889455738055e-08
+        },
+        {
+          "id": "comb-026",
+          "log_odds": -1.8179988861083984,
+          "prior_log_odds": -1.1960411071777344,
+          "context_gain": -0.6219577789306641,
+          "positive_probability": 3.100795947830193e-05,
+          "negative_probability": 0.00019099416385870427
+        },
+        {
+          "id": "comb-027",
+          "log_odds": -3.216102123260498,
+          "prior_log_odds": -1.2220468521118164,
+          "context_gain": -1.9940552711486816,
+          "positive_probability": 2.9323246053536423e-05,
+          "negative_probability": 0.0007310506189242005
+        },
+        {
+          "id": "comb-028",
+          "log_odds": -4.0855255126953125,
+          "prior_log_odds": -1.1960411071777344,
+          "context_gain": -2.889484405517578,
+          "positive_probability": 3.3122723834821954e-06,
+          "negative_probability": 0.00019699138647411019
+        },
+        {
+          "id": "comb-029",
+          "log_odds": -5.582094192504883,
+          "prior_log_odds": -7.0427045822143555,
+          "context_gain": 1.4606103897094727,
+          "positive_probability": 4.565766431596785e-09,
+          "negative_probability": 1.2127921991123003e-06
+        },
+        {
+          "id": "comb-030",
+          "log_odds": -6.897974967956543,
+          "prior_log_odds": -6.476467132568359,
+          "context_gain": -0.4215078353881836,
+          "positive_probability": 2.3132143311954678e-08,
+          "negative_probability": 2.2907006496097893e-05
+        },
+        {
+          "id": "comb-031",
+          "log_odds": -7.668160915374756,
+          "prior_log_odds": -7.0427045822143555,
+          "context_gain": -0.6254563331604004,
+          "positive_probability": 2.0937758904437942e-07,
+          "negative_probability": 0.0004478887713048607
+        },
+        {
+          "id": "comb-033",
+          "log_odds": 2.049483299255371,
+          "prior_log_odds": -1.2220468521118164,
+          "context_gain": 3.2715301513671875,
+          "positive_probability": 0.0004575799102894962,
+          "negative_probability": 5.8936951973009855e-05
+        },
+        {
+          "id": "comb-034",
+          "log_odds": -3.4328689575195312,
+          "prior_log_odds": -1.1960411071777344,
+          "context_gain": -2.236827850341797,
+          "positive_probability": 4.3976374399790075e-06,
+          "negative_probability": 0.0001361744070891291
+        },
+        {
+          "id": "comb-035",
+          "log_odds": -6.932374954223633,
+          "prior_log_odds": -7.0427045822143555,
+          "context_gain": 0.11032962799072266,
+          "positive_probability": 3.635234122612019e-07,
+          "negative_probability": 0.0003725843271240592
+        },
+        {
+          "id": "comb-036",
+          "log_odds": 7.301541328430176,
+          "prior_log_odds": 4.695779800415039,
+          "context_gain": 2.6057615280151367,
+          "positive_probability": 0.0013387980870902538,
+          "negative_probability": 9.030171099766449e-07
+        },
+        {
+          "id": "comb-037",
+          "log_odds": 9.735075950622559,
+          "prior_log_odds": -1.150883674621582,
+          "context_gain": 10.88595962524414,
+          "positive_probability": 0.4366472661495209,
+          "negative_probability": 2.5836936401901767e-05
+        },
+        {
+          "id": "comb-038",
+          "log_odds": 9.833162307739258,
+          "prior_log_odds": 4.695779800415039,
+          "context_gain": 5.137382507324219,
+          "positive_probability": 0.0025010360404849052,
+          "negative_probability": 1.3416277511169028e-07
+        },
+        {
+          "id": "comb-039",
+          "log_odds": 4.948744773864746,
+          "prior_log_odds": -2.168760299682617,
+          "context_gain": 7.117505073547363,
+          "positive_probability": 0.029941247776150703,
+          "negative_probability": 0.00021235249005258083
+        },
+        {
+          "id": "comb-040",
+          "log_odds": -3.2066612243652344,
+          "prior_log_odds": -2.35628604888916,
+          "context_gain": -0.8503751754760742,
+          "positive_probability": 1.5211444406304508e-06,
+          "negative_probability": 3.75669333152473e-05
+        },
+        {
+          "id": "comb-041",
+          "log_odds": -3.9242095947265625,
+          "prior_log_odds": -6.8990583419799805,
+          "context_gain": 2.974848747253418,
+          "positive_probability": 4.2094416841109705e-08,
+          "negative_probability": 2.130527036570129e-06
+        },
+        {
+          "id": "comb-042",
+          "log_odds": 10.285232543945312,
+          "prior_log_odds": -2.470553398132324,
+          "context_gain": 12.755785942077637,
+          "positive_probability": 0.021805059164762497,
+          "negative_probability": 7.442822038683516e-07
+        },
+        {
+          "id": "comb-043",
+          "log_odds": 9.614925384521484,
+          "prior_log_odds": -2.6600236892700195,
+          "context_gain": 12.274949073791504,
+          "positive_probability": 0.01567644067108631,
+          "negative_probability": 1.0460167914061458e-06
+        },
+        {
+          "id": "comb-044",
+          "log_odds": 3.096859931945801,
+          "prior_log_odds": -3.3601837158203125,
+          "context_gain": 6.457043647766113,
+          "positive_probability": 0.000470046594273299,
+          "negative_probability": 2.1241819922579452e-05
+        },
+        {
+          "id": "comb-045",
+          "log_odds": 1.7584247589111328,
+          "prior_log_odds": 0.912841796875,
+          "context_gain": 0.8455829620361328,
+          "positive_probability": 2.7665678317134734e-06,
+          "negative_probability": 4.767241534864297e-07
+        },
+        {
+          "id": "comb-046",
+          "log_odds": 0.5922651290893555,
+          "prior_log_odds": -2.3469247817993164,
+          "context_gain": 2.939189910888672,
+          "positive_probability": 0.000891439791303128,
+          "negative_probability": 0.0004930313443765044
+        },
+        {
+          "id": "comb-047",
+          "log_odds": 3.9911327362060547,
+          "prior_log_odds": 4.695779800415039,
+          "context_gain": -0.7046470642089844,
+          "positive_probability": 3.033412212971598e-05,
+          "negative_probability": 5.605372734862613e-07
+        },
+        {
+          "id": "comb-048",
+          "log_odds": 3.111147880554199,
+          "prior_log_odds": -1.150883674621582,
+          "context_gain": 4.262031555175781,
+          "positive_probability": 0.00055740523384884,
+          "negative_probability": 2.4832286726450548e-05
+        },
+        {
+          "id": "comb-049",
+          "log_odds": 3.2649059295654297,
+          "prior_log_odds": 3.019519805908203,
+          "context_gain": 0.24538612365722656,
+          "positive_probability": 0.0013923421502113342,
+          "negative_probability": 5.318820694810711e-05
+        },
+        {
+          "id": "comb-050",
+          "log_odds": 2.9930124282836914,
+          "prior_log_odds": 5.709074020385742,
+          "context_gain": -2.716061592102051,
+          "positive_probability": 0.0011701540788635612,
+          "negative_probability": 5.866705032531172e-05
+        },
+        {
+          "id": "comb-051",
+          "log_odds": 6.961925506591797,
+          "prior_log_odds": 1.9113874435424805,
+          "context_gain": 5.050538063049316,
+          "positive_probability": 0.0001613178610568866,
+          "negative_probability": 1.528117081761593e-07
+        },
+        {
+          "id": "comb-053",
+          "log_odds": 1.6326379776000977,
+          "prior_log_odds": 2.8083438873291016,
+          "context_gain": -1.175705909729004,
+          "positive_probability": 6.144373764982447e-05,
+          "negative_probability": 1.200692895508837e-05
+        },
+        {
+          "id": "comb-054",
+          "log_odds": 2.4544477462768555,
+          "prior_log_odds": 3.019519805908203,
+          "context_gain": -0.5650720596313477,
+          "positive_probability": 0.0006157094030641019,
+          "negative_probability": 5.289597902446985e-05
+        },
+        {
+          "id": "comb-055",
+          "log_odds": 1.0665225982666016,
+          "prior_log_odds": -0.5272884368896484,
+          "context_gain": 1.59381103515625,
+          "positive_probability": 5.437557888399169e-07,
+          "negative_probability": 1.871625840976776e-07
+        },
+        {
+          "id": "comb-056",
+          "log_odds": 4.348637580871582,
+          "prior_log_odds": 4.843382835388184,
+          "context_gain": -0.49474525451660156,
+          "positive_probability": 0.0003279367520008236,
+          "negative_probability": 4.238388555677375e-06
+        },
+        {
+          "id": "comb-057",
+          "log_odds": 1.227396011352539,
+          "prior_log_odds": 4.843382835388184,
+          "context_gain": -3.6159868240356445,
+          "positive_probability": 0.00043716831714846194,
+          "negative_probability": 0.00012811423221137375
+        },
+        {
+          "id": "comb-058",
+          "log_odds": 5.108256816864014,
+          "prior_log_odds": 2.7338008880615234,
+          "context_gain": 2.3744559288024902,
+          "positive_probability": 0.0010832734405994415,
+          "negative_probability": 6.550136731675593e-06
+        },
+        {
+          "id": "comb-059",
+          "log_odds": 2.4035234451293945,
+          "prior_log_odds": -0.41700172424316406,
+          "context_gain": 2.8205251693725586,
+          "positive_probability": 0.00020216606208123267,
+          "negative_probability": 1.8275584807270207e-05
+        },
+        {
+          "id": "comb-061",
+          "log_odds": 3.6878104209899902,
+          "prior_log_odds": 0.5090847015380859,
+          "context_gain": 3.1787257194519043,
+          "positive_probability": 0.0007923984667286277,
+          "negative_probability": 1.9831149984383956e-05
+        },
+        {
+          "id": "comb-062",
+          "log_odds": 5.9880218505859375,
+          "prior_log_odds": 1.4782981872558594,
+          "context_gain": 4.509723663330078,
+          "positive_probability": 0.04654945433139801,
+          "negative_probability": 0.00011677499423967674
+        },
+        {
+          "id": "comb-063",
+          "log_odds": 6.679713726043701,
+          "prior_log_odds": 1.4947624206542969,
+          "context_gain": 5.184951305389404,
+          "positive_probability": 0.0173354335129261,
+          "negative_probability": 2.177568785555195e-05
+        },
+        {
+          "id": "comb-064",
+          "log_odds": 3.8743791580200195,
+          "prior_log_odds": 1.4947624206542969,
+          "context_gain": 2.3796167373657227,
+          "positive_probability": 0.0010910998098552227,
+          "negative_probability": 2.265911825816147e-05
+        },
+        {
+          "id": "comb-065",
+          "log_odds": 6.552421569824219,
+          "prior_log_odds": 1.4947624206542969,
+          "context_gain": 5.057659149169922,
+          "positive_probability": 0.006670061964541674,
+          "negative_probability": 9.515888450550847e-06
+        },
+        {
+          "id": "comb-066",
+          "log_odds": 0.9834079742431641,
+          "prior_log_odds": -0.2855682373046875,
+          "context_gain": 1.2689762115478516,
+          "positive_probability": 6.203127122716978e-05,
+          "negative_probability": 2.3201819203677587e-05
+        },
+        {
+          "id": "comb-067",
+          "log_odds": -5.010618209838867,
+          "prior_log_odds": -0.6454620361328125,
+          "context_gain": -4.365156173706055,
+          "positive_probability": 1.7662495110926102e-07,
+          "negative_probability": 2.6493291443330236e-05
+        },
+        {
+          "id": "comb-069",
+          "log_odds": 9.022886276245117,
+          "prior_log_odds": 0.6454620361328125,
+          "context_gain": 8.377424240112305,
+          "positive_probability": 0.0012771282345056534,
+          "negative_probability": 1.5404400244278804e-07
+        },
+        {
+          "id": "comb-070",
+          "log_odds": 5.010485649108887,
+          "prior_log_odds": -4.843382835388184,
+          "context_gain": 9.85386848449707,
+          "positive_probability": 4.813015038962476e-05,
+          "negative_probability": 3.2091568868963805e-07
+        },
+        {
+          "id": "comb-071",
+          "log_odds": 6.332106590270996,
+          "prior_log_odds": 2.0524654388427734,
+          "context_gain": 4.279641151428223,
+          "positive_probability": 0.0020822982769459486,
+          "negative_probability": 3.702917183545651e-06
+        },
+        {
+          "id": "comb-072",
+          "log_odds": 7.239341735839844,
+          "prior_log_odds": -3.5013341903686523,
+          "context_gain": 10.740675926208496,
+          "positive_probability": 0.001693784724920988,
+          "negative_probability": 1.2157717037553084e-06
+        },
+        {
+          "id": "comb-073",
+          "log_odds": 2.6471052169799805,
+          "prior_log_odds": 2.285281181335449,
+          "context_gain": 0.36182403564453125,
+          "positive_probability": 2.0940156900906004e-05,
+          "negative_probability": 1.4837363551123417e-06
+        },
+        {
+          "id": "comb-074",
+          "log_odds": 2.5070266723632812,
+          "prior_log_odds": 3.8666582107543945,
+          "context_gain": -1.3596315383911133,
+          "positive_probability": 3.07170034830051e-06,
+          "negative_probability": 2.5037502382474486e-07
+        },
+        {
+          "id": "comb-077",
+          "log_odds": 4.092903137207031,
+          "prior_log_odds": -0.5637903213500977,
+          "context_gain": 4.656693458557129,
+          "positive_probability": 2.3823447918402962e-05,
+          "negative_probability": 3.976302025421319e-07
+        },
+        {
+          "id": "comb-078",
+          "log_odds": 8.219439506530762,
+          "prior_log_odds": 5.280221939086914,
+          "context_gain": 2.9392175674438477,
+          "positive_probability": 0.00030669703846797347,
+          "negative_probability": 8.261375228357792e-08
+        },
+        {
+          "id": "comb-080",
+          "log_odds": -0.026625633239746094,
+          "prior_log_odds": 3.045834541320801,
+          "context_gain": -3.072460174560547,
+          "positive_probability": 8.386453555431217e-05,
+          "negative_probability": 8.612747478764504e-05
+        },
+        {
+          "id": "comb-081",
+          "log_odds": 5.267711639404297,
+          "prior_log_odds": 3.070897102355957,
+          "context_gain": 2.19681453704834,
+          "positive_probability": 3.4312768548261374e-05,
+          "negative_probability": 1.7689585263269691e-07
+        },
+        {
+          "id": "comb-082",
+          "log_odds": -2.4445457458496094,
+          "prior_log_odds": -0.23363208770751953,
+          "context_gain": -2.21091365814209,
+          "positive_probability": 1.8133865523850545e-05,
+          "negative_probability": 0.00020899846276734024
+        },
+        {
+          "id": "comb-083",
+          "log_odds": 5.758975028991699,
+          "prior_log_odds": -4.91505241394043,
+          "context_gain": 10.674027442932129,
+          "positive_probability": 3.832705624517985e-05,
+          "negative_probability": 1.2089668643966434e-07
+        },
+        {
+          "id": "comb-084",
+          "log_odds": 0.8813290596008301,
+          "prior_log_odds": -4.941058158874512,
+          "context_gain": 5.822387218475342,
+          "positive_probability": 0.0005906011792831123,
+          "negative_probability": 0.0002446459257043898
+        },
+        {
+          "id": "comb-085",
+          "log_odds": 2.7180891036987305,
+          "prior_log_odds": 3.68300724029541,
+          "context_gain": -0.9649181365966797,
+          "positive_probability": 1.1957614560742513e-06,
+          "negative_probability": 7.892116116181569e-08
+        },
+        {
+          "id": "comb-086",
+          "log_odds": 4.4287872314453125,
+          "prior_log_odds": 0.18823528289794922,
+          "context_gain": 4.240551948547363,
+          "positive_probability": 0.005823071580380201,
+          "negative_probability": 6.946311623323709e-05
+        },
+        {
+          "id": "comb-087",
+          "log_odds": 4.798464775085449,
+          "prior_log_odds": 7.4021759033203125,
+          "context_gain": -2.6037111282348633,
+          "positive_probability": 6.889090400363784e-06,
+          "negative_probability": 5.6782578639058556e-08
+        },
+        {
+          "id": "comb-088",
+          "log_odds": 4.878442287445068,
+          "prior_log_odds": 0.18823528289794922,
+          "context_gain": 4.690207004547119,
+          "positive_probability": 0.0012773274211212993,
+          "negative_probability": 9.719002264318988e-06
+        },
+        {
+          "id": "comb-089",
+          "log_odds": -3.104741096496582,
+          "prior_log_odds": -2.2079877853393555,
+          "context_gain": -0.8967533111572266,
+          "positive_probability": 3.193078009644523e-05,
+          "negative_probability": 0.0007121663074940443
+        },
+        {
+          "id": "comb-090",
+          "log_odds": 10.182846069335938,
+          "prior_log_odds": 3.432539939880371,
+          "context_gain": 6.750306129455566,
+          "positive_probability": 0.0011938245734199882,
+          "negative_probability": 4.514263096666582e-08
+        },
+        {
+          "id": "comb-092",
+          "log_odds": 0.6911258697509766,
+          "prior_log_odds": -3.5118370056152344,
+          "context_gain": 4.202962875366211,
+          "positive_probability": 0.0005140192806720734,
+          "negative_probability": 0.0002575296675786376
+        },
+        {
+          "id": "comb-093",
+          "log_odds": -4.012627601623535,
+          "prior_log_odds": -2.444547653198242,
+          "context_gain": -1.568079948425293,
+          "positive_probability": 4.514151441981085e-06,
+          "negative_probability": 0.0002495963126420975
+        },
+        {
+          "id": "comb-094",
+          "log_odds": -0.41770458221435547,
+          "prior_log_odds": -3.9619579315185547,
+          "context_gain": 3.544253349304199,
+          "positive_probability": 0.00011001698294421658,
+          "negative_probability": 0.00016705771849956363
+        },
+        {
+          "id": "comb-095",
+          "log_odds": 5.188334941864014,
+          "prior_log_odds": -1.6528701782226562,
+          "context_gain": 6.84120512008667,
+          "positive_probability": 0.020981917157769203,
+          "negative_probability": 0.00011710621765814722
+        },
+        {
+          "id": "comb-096",
+          "log_odds": 6.968010902404785,
+          "prior_log_odds": -1.4360485076904297,
+          "context_gain": 8.404059410095215,
+          "positive_probability": 0.0004206396115478128,
+          "negative_probability": 3.9604222479283635e-07
+        },
+        {
+          "id": "comb-097",
+          "log_odds": 8.617755889892578,
+          "prior_log_odds": 3.5243453979492188,
+          "context_gain": 5.093410491943359,
+          "positive_probability": 0.0001609625614946708,
+          "negative_probability": 2.91126038831635e-08
+        },
+        {
+          "id": "comb-099",
+          "log_odds": 11.774335861206055,
+          "prior_log_odds": 2.7116498947143555,
+          "context_gain": 9.0626859664917,
+          "positive_probability": 0.2436331957578659,
+          "negative_probability": 1.8758904616333894e-06
+        },
+        {
+          "id": "comb-100",
+          "log_odds": -3.349867820739746,
+          "prior_log_odds": -6.1558685302734375,
+          "context_gain": 2.8060007095336914,
+          "positive_probability": 4.826111776878861e-08,
+          "negative_probability": 1.3753920029557776e-06
+        }
+      ],
+      "preferred": 72,
+      "total": 91,
+      "prior_preferred": 49,
+      "positive_context_gain": 67,
+      "mean_log_odds": 3.5756309687436283
+    },
+    {
+      "path": "build/checkpoints/everyday-v14-holdout-smooth.pt",
+      "sha256": "53fa80f4d3a78bf9268f2af2237fd32b945cae952ec31cb50b9d2b3e989d72bc",
+      "records": [
+        {
+          "id": "comb-001",
+          "log_odds": 2.8167266845703125,
+          "prior_log_odds": 0.6445064544677734,
+          "context_gain": 2.172220230102539,
+          "positive_probability": 0.003932417836040258,
+          "negative_probability": 0.00023516398505307734
+        },
+        {
+          "id": "comb-002",
+          "log_odds": 2.969170093536377,
+          "prior_log_odds": 0.8962430953979492,
+          "context_gain": 2.0729269981384277,
+          "positive_probability": 0.000602535845246166,
+          "negative_probability": 3.0937750125303864e-05
+        },
+        {
+          "id": "comb-003",
+          "log_odds": 8.090860366821289,
+          "prior_log_odds": 2.28525447845459,
+          "context_gain": 5.805605888366699,
+          "positive_probability": 0.006689414847642183,
+          "negative_probability": 2.049142267424031e-06
+        },
+        {
+          "id": "comb-004",
+          "log_odds": 4.490866184234619,
+          "prior_log_odds": 2.59433650970459,
+          "context_gain": 1.8965296745300293,
+          "positive_probability": 0.004175974987447262,
+          "negative_probability": 4.6816559915896505e-05
+        },
+        {
+          "id": "comb-005",
+          "log_odds": 4.482961177825928,
+          "prior_log_odds": -1.1030550003051758,
+          "context_gain": 5.5860161781311035,
+          "positive_probability": 0.03744617849588394,
+          "negative_probability": 0.0004231381753925234
+        },
+        {
+          "id": "comb-006",
+          "log_odds": 3.987471580505371,
+          "prior_log_odds": 0.38977527618408203,
+          "context_gain": 3.597696304321289,
+          "positive_probability": 0.0024929905775934458,
+          "negative_probability": 4.623637141776271e-05
+        },
+        {
+          "id": "comb-007",
+          "log_odds": 10.830313682556152,
+          "prior_log_odds": 2.0305233001708984,
+          "context_gain": 8.799790382385254,
+          "positive_probability": 0.14789056777954102,
+          "negative_probability": 2.926813522208249e-06
+        },
+        {
+          "id": "comb-008",
+          "log_odds": 2.1989498138427734,
+          "prior_log_odds": 0.6415119171142578,
+          "context_gain": 1.5574378967285156,
+          "positive_probability": 0.0009655506582930684,
+          "negative_probability": 0.00010709847992984578
+        },
+        {
+          "id": "comb-009",
+          "log_odds": 1.7906560897827148,
+          "prior_log_odds": -0.9196863174438477,
+          "context_gain": 2.7103424072265625,
+          "positive_probability": 0.0008812315063551068,
+          "negative_probability": 0.00014703406486660242
+        },
+        {
+          "id": "comb-010",
+          "log_odds": 4.579938888549805,
+          "prior_log_odds": 0.7210617065429688,
+          "context_gain": 3.858877182006836,
+          "positive_probability": 0.00030679971678182483,
+          "negative_probability": 3.1463914638152346e-06
+        },
+        {
+          "id": "comb-011",
+          "log_odds": -2.003716468811035,
+          "prior_log_odds": -1.3290414810180664,
+          "context_gain": -0.6746749877929688,
+          "positive_probability": 0.00011154049570905045,
+          "negative_probability": 0.0008272476843558252
+        },
+        {
+          "id": "comb-012",
+          "log_odds": 2.5388545989990234,
+          "prior_log_odds": -0.6679496765136719,
+          "context_gain": 3.2068042755126953,
+          "positive_probability": 0.000403670797822997,
+          "negative_probability": 3.1872546969680116e-05
+        },
+        {
+          "id": "comb-013",
+          "log_odds": 8.42998218536377,
+          "prior_log_odds": 2.0305233001708984,
+          "context_gain": 6.399458885192871,
+          "positive_probability": 0.004728839732706547,
+          "negative_probability": 1.0319528200852801e-06
+        },
+        {
+          "id": "comb-014",
+          "log_odds": 4.660467147827148,
+          "prior_log_odds": 2.59433650970459,
+          "context_gain": 2.0661306381225586,
+          "positive_probability": 0.000162390002515167,
+          "negative_probability": 1.5365409353762516e-06
+        },
+        {
+          "id": "comb-015",
+          "log_odds": 3.366837501525879,
+          "prior_log_odds": 0.6415119171142578,
+          "context_gain": 2.725325584411621,
+          "positive_probability": 0.001464660745114088,
+          "negative_probability": 5.0528695282991976e-05
+        },
+        {
+          "id": "comb-016",
+          "log_odds": 3.362290859222412,
+          "prior_log_odds": -0.6445064544677734,
+          "context_gain": 4.0067973136901855,
+          "positive_probability": 0.011460218578577042,
+          "negative_probability": 0.0003971627738792449
+        },
+        {
+          "id": "comb-017",
+          "log_odds": 9.162759780883789,
+          "prior_log_odds": 1.6407480239868164,
+          "context_gain": 7.522011756896973,
+          "positive_probability": 0.018040625378489494,
+          "negative_probability": 1.8919757849289454e-06
+        },
+        {
+          "id": "comb-018",
+          "log_odds": 7.548173904418945,
+          "prior_log_odds": -0.6445064544677734,
+          "context_gain": 8.192680358886719,
+          "positive_probability": 0.03372451663017273,
+          "negative_probability": 1.7775239030015655e-05
+        },
+        {
+          "id": "comb-019",
+          "log_odds": 5.626029968261719,
+          "prior_log_odds": 3.3883094787597656,
+          "context_gain": 2.237720489501953,
+          "positive_probability": 0.0007824451895430684,
+          "negative_probability": 2.8190329430799466e-06
+        },
+        {
+          "id": "comb-020",
+          "log_odds": 6.802051067352295,
+          "prior_log_odds": 1.1030550003051758,
+          "context_gain": 5.698996067047119,
+          "positive_probability": 0.14646309614181519,
+          "negative_probability": 0.0001627926976652816
+        },
+        {
+          "id": "comb-021",
+          "log_odds": -1.8518686294555664,
+          "prior_log_odds": 1.3577861785888672,
+          "context_gain": -3.2096548080444336,
+          "positive_probability": 0.0005195618141442537,
+          "negative_probability": 0.003310499479994178
+        },
+        {
+          "id": "comb-022",
+          "log_odds": 1.5674810409545898,
+          "prior_log_odds": 1.999298095703125,
+          "context_gain": -0.43181705474853516,
+          "positive_probability": 9.952599066309631e-05,
+          "negative_probability": 2.0758126993314363e-05
+        },
+        {
+          "id": "comb-023",
+          "log_odds": 6.5592546463012695,
+          "prior_log_odds": 1.6407480239868164,
+          "context_gain": 4.918506622314453,
+          "positive_probability": 0.001665061921812594,
+          "negative_probability": 2.3592951947648544e-06
+        },
+        {
+          "id": "comb-024",
+          "log_odds": 6.135645866394043,
+          "prior_log_odds": -0.6445064544677734,
+          "context_gain": 6.780152320861816,
+          "positive_probability": 0.02240370586514473,
+          "negative_probability": 4.8488953325431794e-05
+        },
+        {
+          "id": "comb-025",
+          "log_odds": 8.347339630126953,
+          "prior_log_odds": -0.15303611755371094,
+          "context_gain": 8.500375747680664,
+          "positive_probability": 0.012196785770356655,
+          "negative_probability": 2.890958512580255e-06
+        },
+        {
+          "id": "comb-026",
+          "log_odds": -2.454893112182617,
+          "prior_log_odds": -0.8962430953979492,
+          "context_gain": -1.558650016784668,
+          "positive_probability": 5.8255762269254774e-05,
+          "negative_probability": 0.0006783993449062109
+        },
+        {
+          "id": "comb-027",
+          "log_odds": -1.3671350479125977,
+          "prior_log_odds": -0.6415119171142578,
+          "context_gain": -0.7256231307983398,
+          "positive_probability": 7.617936353199184e-05,
+          "negative_probability": 0.0002989348431583494
+        },
+        {
+          "id": "comb-028",
+          "log_odds": -4.362857341766357,
+          "prior_log_odds": -0.8962430953979492,
+          "context_gain": -3.466614246368408,
+          "positive_probability": 4.879025254922453e-06,
+          "negative_probability": 0.00038291109376586974
+        },
+        {
+          "id": "comb-029",
+          "log_odds": -1.2664737701416016,
+          "prior_log_odds": -2.28525447845459,
+          "context_gain": 1.0187807083129883,
+          "positive_probability": 1.524502067695721e-06,
+          "negative_probability": 5.409418463386828e-06
+        },
+        {
+          "id": "comb-030",
+          "log_odds": -4.358918190002441,
+          "prior_log_odds": -1.6407480239868164,
+          "context_gain": -2.718170166015625,
+          "positive_probability": 1.1227816685277503e-06,
+          "negative_probability": 8.777067705523223e-05
+        },
+        {
+          "id": "comb-031",
+          "log_odds": -4.517704963684082,
+          "prior_log_odds": -2.28525447845459,
+          "context_gain": -2.232450485229492,
+          "positive_probability": 2.6199609237664845e-06,
+          "negative_probability": 0.0002400540979579091
+        },
+        {
+          "id": "comb-033",
+          "log_odds": 0.5032682418823242,
+          "prior_log_odds": -0.6415119171142578,
+          "context_gain": 1.144780158996582,
+          "positive_probability": 0.0002953600196633488,
+          "negative_probability": 0.0001785603817552328
+        },
+        {
+          "id": "comb-034",
+          "log_odds": -1.161393165588379,
+          "prior_log_odds": -0.8962430953979492,
+          "context_gain": -0.2651500701904297,
+          "positive_probability": 4.150916538492311e-06,
+          "negative_probability": 1.3259606930660084e-05
+        },
+        {
+          "id": "comb-035",
+          "log_odds": -4.373927116394043,
+          "prior_log_odds": -2.28525447845459,
+          "context_gain": -2.088672637939453,
+          "positive_probability": 2.4593600755906664e-06,
+          "negative_probability": 0.00019516167230904102
+        },
+        {
+          "id": "comb-036",
+          "log_odds": 5.646167278289795,
+          "prior_log_odds": -0.5213775634765625,
+          "context_gain": 6.167544841766357,
+          "positive_probability": 0.002508471952751279,
+          "negative_probability": 8.857476132106967e-06
+        },
+        {
+          "id": "comb-037",
+          "log_odds": 5.947566032409668,
+          "prior_log_odds": -1.9103889465332031,
+          "context_gain": 7.857954978942871,
+          "positive_probability": 0.108601413667202,
+          "negative_probability": 0.0002836876083165407
+        },
+        {
+          "id": "comb-038",
+          "log_odds": 4.746701240539551,
+          "prior_log_odds": -0.5213775634765625,
+          "context_gain": 5.268078804016113,
+          "positive_probability": 0.0006016995175741613,
+          "negative_probability": 5.222921572567429e-06
+        },
+        {
+          "id": "comb-039",
+          "log_odds": 3.5467190742492676,
+          "prior_log_odds": -2.59433650970459,
+          "context_gain": 6.141055583953857,
+          "positive_probability": 0.020939139649271965,
+          "negative_probability": 0.0006034458638168871
+        },
+        {
+          "id": "comb-040",
+          "log_odds": -1.8424911499023438,
+          "prior_log_odds": -1.407191276550293,
+          "context_gain": -0.4352998733520508,
+          "positive_probability": 6.058359758753795e-06,
+          "negative_probability": 3.824184022960253e-05
+        },
+        {
+          "id": "comb-041",
+          "log_odds": 1.8905010223388672,
+          "prior_log_odds": -2.2882699966430664,
+          "context_gain": 4.178771018981934,
+          "positive_probability": 3.167336444676039e-06,
+          "negative_probability": 4.782555720339587e-07
+        },
+        {
+          "id": "comb-042",
+          "log_odds": 7.986332893371582,
+          "prior_log_odds": -1.3238506317138672,
+          "context_gain": 9.31018352508545,
+          "positive_probability": 0.05045674741268158,
+          "negative_probability": 1.7159271010314114e-05
+        },
+        {
+          "id": "comb-043",
+          "log_odds": 7.164403915405273,
+          "prior_log_odds": -1.541539192199707,
+          "context_gain": 8.70594310760498,
+          "positive_probability": 0.011685610748827457,
+          "negative_probability": 9.04045555216726e-06
+        },
+        {
+          "id": "comb-044",
+          "log_odds": 3.1100149154663086,
+          "prior_log_odds": -2.4315185546875,
+          "context_gain": 5.541533470153809,
+          "positive_probability": 0.0008860314846970141,
+          "negative_probability": 3.951726102968678e-05
+        },
+        {
+          "id": "comb-045",
+          "log_odds": 0.8747167587280273,
+          "prior_log_odds": -1.9242420196533203,
+          "context_gain": 2.7989587783813477,
+          "positive_probability": 9.130470971285831e-06,
+          "negative_probability": 3.8072248571552336e-06
+        },
+        {
+          "id": "comb-046",
+          "log_odds": 1.567143440246582,
+          "prior_log_odds": -2.8066320419311523,
+          "context_gain": 4.373775482177734,
+          "positive_probability": 0.0029757595621049404,
+          "negative_probability": 0.0006208634586073458
+        },
+        {
+          "id": "comb-047",
+          "log_odds": 1.9095983505249023,
+          "prior_log_odds": -0.5213775634765625,
+          "context_gain": 2.430975914001465,
+          "positive_probability": 5.059649265604094e-05,
+          "negative_probability": 7.495358204323566e-06
+        },
+        {
+          "id": "comb-048",
+          "log_odds": 3.451244354248047,
+          "prior_log_odds": -1.9103889465332031,
+          "context_gain": 5.36163330078125,
+          "positive_probability": 0.0010133389150723815,
+          "negative_probability": 3.2129082683240995e-05
+        },
+        {
+          "id": "comb-049",
+          "log_odds": 2.6092824935913086,
+          "prior_log_odds": 2.2726879119873047,
+          "context_gain": 0.3365945816040039,
+          "positive_probability": 0.005544437561184168,
+          "negative_probability": 0.00040800031274557114
+        },
+        {
+          "id": "comb-050",
+          "log_odds": 0.8467550277709961,
+          "prior_log_odds": 3.3530006408691406,
+          "context_gain": -2.5062456130981445,
+          "positive_probability": 0.0002468399761710316,
+          "negative_probability": 0.00010584599658614025
+        },
+        {
+          "id": "comb-051",
+          "log_odds": 5.1040802001953125,
+          "prior_log_odds": 0.3696765899658203,
+          "context_gain": 4.734403610229492,
+          "positive_probability": 0.00026280415477231145,
+          "negative_probability": 1.5957260757204494e-06
+        },
+        {
+          "id": "comb-053",
+          "log_odds": -0.050449371337890625,
+          "prior_log_odds": 1.3424205780029297,
+          "context_gain": -1.3928699493408203,
+          "positive_probability": 3.90645072911866e-05,
+          "negative_probability": 4.108584835194051e-05
+        },
+        {
+          "id": "comb-054",
+          "log_odds": 2.626286506652832,
+          "prior_log_odds": 2.2726879119873047,
+          "context_gain": 0.35359859466552734,
+          "positive_probability": 0.001988783711567521,
+          "negative_probability": 0.0001438817853340879
+        },
+        {
+          "id": "comb-055",
+          "log_odds": 1.106912612915039,
+          "prior_log_odds": -0.49410438537597656,
+          "context_gain": 1.6010169982910156,
+          "positive_probability": 1.544870542602439e-06,
+          "negative_probability": 5.107002607473987e-07
+        },
+        {
+          "id": "comb-056",
+          "log_odds": 3.8716931343078613,
+          "prior_log_odds": 2.599278450012207,
+          "context_gain": 1.2724146842956543,
+          "positive_probability": 0.0007095552864484489,
+          "negative_probability": 1.4775128875044174e-05
+        },
+        {
+          "id": "comb-057",
+          "log_odds": -0.4333181381225586,
+          "prior_log_odds": 2.599278450012207,
+          "context_gain": -3.0325965881347656,
+          "positive_probability": 7.447032839991152e-05,
+          "negative_probability": 0.00011486056610010564
+        },
+        {
+          "id": "comb-058",
+          "log_odds": 4.648979663848877,
+          "prior_log_odds": 1.7839174270629883,
+          "context_gain": 2.8650622367858887,
+          "positive_probability": 0.00216569472104311,
+          "negative_probability": 2.0728650270029902e-05
+        },
+        {
+          "id": "comb-059",
+          "log_odds": 1.6632719039916992,
+          "prior_log_odds": -0.38593578338623047,
+          "context_gain": 2.0492076873779297,
+          "positive_probability": 0.00019938989134971052,
+          "negative_probability": 3.778794780373573e-05
+        },
+        {
+          "id": "comb-061",
+          "log_odds": 2.31174898147583,
+          "prior_log_odds": 0.09269332885742188,
+          "context_gain": 2.219055652618408,
+          "positive_probability": 0.0005615346599370241,
+          "negative_probability": 5.564123421208933e-05
+        },
+        {
+          "id": "comb-062",
+          "log_odds": 6.779230117797852,
+          "prior_log_odds": 1.2014904022216797,
+          "context_gain": 5.577739715576172,
+          "positive_probability": 0.06704694032669067,
+          "negative_probability": 7.624244608450681e-05
+        },
+        {
+          "id": "comb-063",
+          "log_odds": 5.647519588470459,
+          "prior_log_odds": 0.06184577941894531,
+          "context_gain": 5.585673809051514,
+          "positive_probability": 0.03988421708345413,
+          "negative_probability": 0.00014064181596040726
+        },
+        {
+          "id": "comb-064",
+          "log_odds": 2.712545394897461,
+          "prior_log_odds": 0.06184577941894531,
+          "context_gain": 2.6506996154785156,
+          "positive_probability": 0.0012193673755973577,
+          "negative_probability": 8.092656207736582e-05
+        },
+        {
+          "id": "comb-065",
+          "log_odds": 5.857872009277344,
+          "prior_log_odds": 0.06184577941894531,
+          "context_gain": 5.796026229858398,
+          "positive_probability": 0.013505632989108562,
+          "negative_probability": 3.858988202409819e-05
+        },
+        {
+          "id": "comb-066",
+          "log_odds": 1.7878847122192383,
+          "prior_log_odds": -0.43255043029785156,
+          "context_gain": 2.22043514251709,
+          "positive_probability": 0.00012860179413110018,
+          "negative_probability": 2.1516842025448568e-05
+        },
+        {
+          "id": "comb-067",
+          "log_odds": -1.3203907012939453,
+          "prior_log_odds": 0.4103565216064453,
+          "context_gain": -1.7307472229003906,
+          "positive_probability": 5.144243004906457e-06,
+          "negative_probability": 1.926459481182974e-05
+        },
+        {
+          "id": "comb-069",
+          "log_odds": 4.602993488311768,
+          "prior_log_odds": -0.4103565216064453,
+          "context_gain": 5.013350009918213,
+          "positive_probability": 0.00042472401401028037,
+          "negative_probability": 4.256495230947621e-06
+        },
+        {
+          "id": "comb-070",
+          "log_odds": 4.9347333908081055,
+          "prior_log_odds": -2.599278450012207,
+          "context_gain": 7.5340118408203125,
+          "positive_probability": 5.1950159104308113e-05,
+          "negative_probability": 3.736451787972328e-07
+        },
+        {
+          "id": "comb-071",
+          "log_odds": 4.024281024932861,
+          "prior_log_odds": -0.2407245635986328,
+          "context_gain": 4.265005588531494,
+          "positive_probability": 0.0015594348078593612,
+          "negative_probability": 2.7876880267285742e-05
+        },
+        {
+          "id": "comb-072",
+          "log_odds": 5.271183490753174,
+          "prior_log_odds": -2.3253173828125,
+          "context_gain": 7.596500873565674,
+          "positive_probability": 0.0012224582023918629,
+          "negative_probability": 6.280411525949603e-06
+        },
+        {
+          "id": "comb-073",
+          "log_odds": 1.305476188659668,
+          "prior_log_odds": -0.17362594604492188,
+          "context_gain": 1.4791021347045898,
+          "positive_probability": 3.282053512521088e-05,
+          "negative_probability": 8.895790415408555e-06
+        },
+        {
+          "id": "comb-074",
+          "log_odds": 0.6350269317626953,
+          "prior_log_odds": 0.34848594665527344,
+          "context_gain": 0.2865409851074219,
+          "positive_probability": 8.904668902687263e-06,
+          "negative_probability": 4.718772743217414e-06
+        },
+        {
+          "id": "comb-077",
+          "log_odds": 0.5985031127929688,
+          "prior_log_odds": -0.6243953704833984,
+          "context_gain": 1.2228984832763672,
+          "positive_probability": 9.714823136164341e-06,
+          "negative_probability": 5.339594736142317e-06
+        },
+        {
+          "id": "comb-078",
+          "log_odds": 5.61533260345459,
+          "prior_log_odds": 2.214923858642578,
+          "context_gain": 3.4004087448120117,
+          "positive_probability": 0.0005736153689213097,
+          "negative_probability": 2.0888767267024377e-06
+        },
+        {
+          "id": "comb-080",
+          "log_odds": 0.7433586120605469,
+          "prior_log_odds": 1.3074207305908203,
+          "context_gain": -0.5640621185302734,
+          "positive_probability": 9.599641634849831e-05,
+          "negative_probability": 4.5647655497305095e-05
+        },
+        {
+          "id": "comb-081",
+          "log_odds": 2.9091272354125977,
+          "prior_log_odds": -0.9775772094726562,
+          "context_gain": 3.886704444885254,
+          "positive_probability": 7.288591586984694e-05,
+          "negative_probability": 3.973980255977949e-06
+        },
+        {
+          "id": "comb-082",
+          "log_odds": -3.250565528869629,
+          "prior_log_odds": -0.013524055480957031,
+          "context_gain": -3.237041473388672,
+          "positive_probability": 1.9477705791359767e-05,
+          "negative_probability": 0.0005026208236813545
+        },
+        {
+          "id": "comb-083",
+          "log_odds": 8.501643180847168,
+          "prior_log_odds": -2.666254997253418,
+          "context_gain": 11.167898178100586,
+          "positive_probability": 0.0007103051175363362,
+          "negative_probability": 1.442873411861001e-07
+        },
+        {
+          "id": "comb-084",
+          "log_odds": 1.039614200592041,
+          "prior_log_odds": -2.4115238189697266,
+          "context_gain": 3.4511380195617676,
+          "positive_probability": 0.0020339631009846926,
+          "negative_probability": 0.000719191157259047
+        },
+        {
+          "id": "comb-085",
+          "log_odds": -0.5609502792358398,
+          "prior_log_odds": 0.22083091735839844,
+          "context_gain": -0.7817811965942383,
+          "positive_probability": 1.3994701930641895e-06,
+          "negative_probability": 2.4523433239664882e-06
+        },
+        {
+          "id": "comb-086",
+          "log_odds": 4.207798480987549,
+          "prior_log_odds": -0.5936975479125977,
+          "context_gain": 4.8014960289001465,
+          "positive_probability": 0.011338040232658386,
+          "negative_probability": 0.00016869969840627164
+        },
+        {
+          "id": "comb-087",
+          "log_odds": 2.2490882873535156,
+          "prior_log_odds": 2.146757125854492,
+          "context_gain": 0.10233116149902344,
+          "positive_probability": 1.0863775969482958e-05,
+          "negative_probability": 1.1460780342531507e-06
+        },
+        {
+          "id": "comb-088",
+          "log_odds": 1.7197308540344238,
+          "prior_log_odds": -0.5936975479125977,
+          "context_gain": 2.3134284019470215,
+          "positive_probability": 0.00038937677163630724,
+          "negative_probability": 6.974296411499381e-05
+        },
+        {
+          "id": "comb-089",
+          "log_odds": -1.4168567657470703,
+          "prior_log_odds": -2.0743722915649414,
+          "context_gain": 0.6575155258178711,
+          "positive_probability": 0.00018027742044068873,
+          "negative_probability": 0.0007434887811541557
+        },
+        {
+          "id": "comb-090",
+          "log_odds": 6.314040660858154,
+          "prior_log_odds": 0.10524749755859375,
+          "context_gain": 6.2087931632995605,
+          "positive_probability": 0.0018921600421890616,
+          "negative_probability": 3.42613793691271e-06
+        },
+        {
+          "id": "comb-092",
+          "log_odds": 0.7273478507995605,
+          "prior_log_odds": -2.5349740982055664,
+          "context_gain": 3.262321949005127,
+          "positive_probability": 0.00087212142534554,
+          "negative_probability": 0.0004213992797303945
+        },
+        {
+          "id": "comb-093",
+          "log_odds": -3.9015631675720215,
+          "prior_log_odds": -1.5785818099975586,
+          "context_gain": -2.322981357574463,
+          "positive_probability": 1.2624815099115949e-05,
+          "negative_probability": 0.0006246725097298622
+        },
+        {
+          "id": "comb-094",
+          "log_odds": -1.6884088516235352,
+          "prior_log_odds": -3.190030097961426,
+          "context_gain": 1.5016212463378906,
+          "positive_probability": 5.6177301303250715e-05,
+          "negative_probability": 0.0003039677394554019
+        },
+        {
+          "id": "comb-095",
+          "log_odds": 5.564859390258789,
+          "prior_log_odds": -0.5930538177490234,
+          "context_gain": 6.1579132080078125,
+          "positive_probability": 0.019458087161183357,
+          "negative_probability": 7.452681165887043e-05
+        },
+        {
+          "id": "comb-096",
+          "log_odds": 6.440375804901123,
+          "prior_log_odds": -1.6027021408081055,
+          "context_gain": 8.043077945709229,
+          "positive_probability": 0.0010353409452363849,
+          "negative_probability": 1.652204218771658e-06
+        },
+        {
+          "id": "comb-097",
+          "log_odds": 2.462082862854004,
+          "prior_log_odds": -0.297027587890625,
+          "context_gain": 2.759110450744629,
+          "positive_probability": 8.672304829815403e-05,
+          "negative_probability": 7.3937635534093715e-06
+        },
+        {
+          "id": "comb-099",
+          "log_odds": 11.682909965515137,
+          "prior_log_odds": 2.2530951499938965,
+          "context_gain": 9.42981481552124,
+          "positive_probability": 0.15240620076656342,
+          "negative_probability": 1.2858179161412409e-06
+        },
+        {
+          "id": "comb-100",
+          "log_odds": -1.3268260955810547,
+          "prior_log_odds": -3.9547653198242188,
+          "context_gain": 2.627939224243164,
+          "positive_probability": 1.2321094118306064e-06,
+          "negative_probability": 4.6438963181572035e-06
+        }
+      ],
+      "preferred": 71,
+      "total": 91,
+      "prior_preferred": 38,
+      "positive_context_gain": 72,
+      "mean_log_odds": 2.794531015249399
+    }
+  ]
+}

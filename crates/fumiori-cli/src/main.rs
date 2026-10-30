@@ -9,6 +9,7 @@ use std::{
     path::{Path, PathBuf},
     time::Instant,
 };
+mod candidates;
 #[derive(Parser)]
 #[command(version, about = "Offline Japanese paired-token generator")]
 struct Args {
@@ -34,6 +35,8 @@ impl Level {
 }
 #[derive(Subcommand)]
 enum Commands {
+    /// Compare 1/2/4 candidates using the student's mean token log probability.
+    EvaluateCandidates(candidates::CandidateArgs),
     Generate {
         #[arg(
             long,
@@ -169,6 +172,7 @@ fn dice(a: &str, b: &str) -> f64 {
 }
 fn main() -> Result<()> {
     match Args::parse().command {
+        Commands::EvaluateCandidates(args) => candidates::run(args),
         Commands::Generate {
             model,
             fallback_only,

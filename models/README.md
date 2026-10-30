@@ -8,11 +8,13 @@ GitHub Actionsはこのモデルを使い、学習・データ取得なしでWeb
 
 `everyday-v8-32mb/` は過去の比較用の研究資産。最新のデモビルドには含めない。
 
-両方を含むデモのビルド:
+`everyday-v14-holdout-ce-3mb/` と `everyday-v14-holdout-smooth-3mb/` は各2,527,550 bytesの比較用モデル。語の組合せを除去したv13データから同じ初期値・5,000stepで学習し、後者のみlabel smoothing 0.05を追加した。標準への採用はしていない。品質・読み・新規性の課題と実測は[v14記録](../docs/compositional-generation-v14.md)を参照。
+
+4モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
 
 ```powershell
-python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb --experimental-model models/everyday-v3-3mb
-node scripts/smoke_wasm.mjs model-int8 model-experimental
+python scripts/build_wasm.py --model-catalog configs/demo-models.json
+node scripts/smoke_wasm.mjs model-int8 model-experimental model-v14-ce model-v14-smooth
 ```
 
 アプリに組み込む場合は [GitHubの `models/stories-v2-diverse-3mb/`](https://github.com/ksk001100/fumiori/tree/main/models/stories-v2-diverse-3mb) の5ファイルをまとめて取得し、アプリの配置先に同梱する。読み込み例とCargoのGit依存の指定は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。
