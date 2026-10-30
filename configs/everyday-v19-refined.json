@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "precision": "bf16",
+  "threads": 2,
+  "data_dir": "build/everyday-v19-refined-data",
+  "allow_auto_aligned": true,
+  "steps": 5000,
+  "batch_size": 128,
+  "log_every": 500,
+  "learning_rate": 0.001,
+  "select_best_validation": false,
+  "early_stopping_patience": 0,
+  "validation_min_delta": 0.0001,
+  "balance_difficulties": true,
+  "weight_decay": 0.1,
+  "model": {
+    "d_model": 128,
+    "n_heads": 4,
+    "n_layers": 4,
+    "d_ff": 384,
+    "max_seq_len": 64,
+    "dropout": 0.1
+  },
+  "lr_schedule": "cosine",
+  "warmup_steps": 200,
+  "min_lr_ratio": 0.1,
+  "train_loss_samples": 2048,
+  "corpus_mixture": {
+    "tatoeba": 0.65,
+    "teacher": 0.15,
+    "everyday": 0.15,
+    "paired": 0.05
+  },
+  "validation_corpus_mixture": {
+    "tatoeba": 0.65,
+    "teacher": 0.15,
+    "everyday": 0.15,
+    "paired": 0.05
+  },
+  "checkpoint": "build/checkpoints/everyday-v19-refined.pt",
+  "require_generation_eligible": true,
+  "label_smoothing": 0.0,
+  "independent_data_rng": true,
+  "noun_context_dropout": 0
+}

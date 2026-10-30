@@ -1,0 +1,45 @@
+{
+  "report_sha256": "a8cbca74e7a8b7584228b2e41dec1c4f3621872c66d37a2e38ce33b2428888df",
+  "mapping_sha256": "f9657c26fcb7f9c83a2e6327d68646f7e53695e289a0cf88cbe9c9f83bca1bef",
+  "ratings_sha256": "e0e6d8ac016e026d7fe48d2c39c266d4614a0ceb58af60ef6270f052ee33d8df",
+  "by_condition": {
+    "expanded-base-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.68,
+          "reading_accuracy": 0.99,
+          "joint_rate": 0.68
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    },
+    "refined-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.74,
+          "reading_accuracy": 1.0,
+          "joint_rate": 0.74
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # Training
 
+[v19のデータ整理](../docs/compositional-generation-v19.md)は `scripts.curate_training_data` で元trainを保持したまま別のsubsetを作る。最終設定は `configs/everyday-v19-refined-data.json`、データは `build/everyday-v19-refined-data/`、学習は `configs/everyday-v19-refined.json`。除外理由・元行hash・代表行を追跡し、評価splitと語彙は維持する。初版には修飾の誤統合があり、修正版とともにデモへ残した。生成の自然な非一致文に安定した改善はなく、標準へは採用しない。
+
+[学習データの多様性監査](../docs/training-data-diversity-audit.md)は完全重複・1単語差・文字列近似・名詞を伏せた構文群を調べ、現在の抽選比率での偏りも計算する。`scripts.audit_data_diversity` はオフライン診断のみで、データを削除したり推論を変更したりしない。
+
 [v18](../docs/compositional-generation-v18.md)はv17の追加データを通常比率65/15/15/5で学び、文追加×抽選比率の2×2比較を完成する。語彙・構造・初期値・最終5,000stepを維持する。既存seedで4条件、新しい887000台で通常比率の対照と追加モデルを評価し、採点票の再利用と新規点検を区別する。新モデルもデモへ追加した。新seedでは自然な非一致文の増加が再現せず、標準には採用しない。
 
 [v17](../docs/compositional-generation-v17.md)はローカル教師の新規文500件／2,518件を追加し、同じ語彙・構造・最終5,000stepで比較する。`scripts.prepare_word_teacher` が原本・few-shot train由来・辞書・語彙hashを照合し、旧splitと既存評価出力の重複・評価用組合せを除外する。新teacher-testは学習に含めない。比較のコピー参照は各条件trainの和集合で、`evaluate_candidates` の `common_reference_data` と条件別 `data` で指定する。全モデルをデモへ追加した。

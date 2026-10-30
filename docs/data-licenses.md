@@ -1,5 +1,7 @@
 # データの由来と配布範囲
 
+v19はv17-expandedのtrainから行を選別したsubsetで、新しい外部データ・教師文・修正文は追加しない。元の各行の出典・著者・ライセンスを保持し、除外した行の出典対応も[v19データ記録](everyday-v19-data.json)へ残す。合成文6行の点検表は[data/curation-v19](../data/curation-v19/README.md)。Tatoeba、合成教師、自作文、辞書等の親manifestと配布LICENSEを継承し、整理後コーパス全体をCC0とする主張ではない。[整理と比較](compositional-generation-v19.md)を参照。
+
 v18はv17-expandedと同じ準備データを使い、新しい教師出力・外部データ・修正文を追加しない。変更は学習中のcorpus mixtureのみで、出典・ライセンスをv17から継承する。[v18記録](compositional-generation-v18.md)を参照。
 
 v17の2モデルはv13除去済みtrainに、既存ローカル `llm-jp/llm-jp-3.1-1.8b-instruct4` の新規出力500件／2,518件を追加する。教師revision・モデルファイル・few-shot train由来・原本のhashは[v17データ記録](everyday-v17-data.json)に保持し、配布manifestとLICENSEにも教師ソースを追記した。教師モデルのメタデータはApache-2.0だが、合成文や混合コーパス全体をApache-2.0またはCC0とする主張ではない。教師・プロンプト・生成文一覧はアプリへ配布しない。元のTatoeba・自作文・辞書等の出典を継承する。[実験記録](compositional-generation-v17.md)を参照。

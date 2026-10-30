@@ -1,0 +1,11 @@
+{
+  "base": "build/everyday-v17-expanded-data",
+  "merged": "build/everyday-v19-refined-merged",
+  "output": "build/everyday-v19-refined-data",
+  "pairs": "data/combinations-v13/pairs.tsv",
+  "exclusions": "data/curation-v19/exclusions.json",
+  "quarantine_terms": [
+    "自殺"
+  ],
+  "pattern_limit": 32
+}

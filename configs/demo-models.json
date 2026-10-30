@@ -76,5 +76,17 @@
     "directory": "models/everyday-v18-expanded-base-3mb",
     "label": "v18 新規文追加・通常比率（約2.5MB）",
     "description": "v17の新規文2518件を通常の学習比率で学ぶ比較用モデルです。文の追加と抽選比率の影響を分けて調べ、標準への採用条件とは区別します。"
+  },
+  {
+    "id": "model-v19-curated",
+    "directory": "models/everyday-v19-curated-3mb",
+    "label": "v19 データ整理・初版（比較用）",
+    "description": "整理初版の試作です。一部の意味が異なる文を統合する問題が見つかり、修正版との比較用に残しています。標準には採用していません。"
+  },
+  {
+    "id": "model-v19-refined",
+    "directory": "models/everyday-v19-refined-3mb",
+    "label": "v19 データ整理・修正版（約2.5MB）",
+    "description": "重複や構文の集中を整理し、確認した読みの問題を除いた学習データで学ぶ試作です。元の語彙と構造を保ち、品質の比較結果は研究記録に残します。"
   }
 ]
