@@ -15,3 +15,12 @@ jobs:
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - run: cargo test --workspace --locked
       - run: cargo build --locked --release -p fumiori-wasm --target wasm32-unknown-unknown
+      - name: Check out pinned model fixtures
+        uses: actions/checkout@v4
+        with:
+          repository: ksk001100/fumiori-models
+          ref: b521266cbe8875bf891276ddff13c14629bd2a0f
+          path: build/model-fixtures
+          persist-credentials: false
+      - name: Generate with the standard model
+        run: cargo run --locked --release -p fumiori-cli -- generate --model build/model-fixtures/models/stories-v2-diverse-3mb --difficulty mixed --count 10 --seed 3432

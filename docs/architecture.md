@@ -4,14 +4,14 @@
 
 ## Rust利用
 
-CargoのGit依存の指定とモデルの取得・配置は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。以下はモデルをアプリの `fumiori-models/models/stories-v2-diverse-3mb/` に配置した場合の例。
+CargoのGit依存の指定とモデルの取得・配置は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。以下はモデルをアプリの `../fumiori-models/models/stories-v2-diverse-3mb/` に配置した場合の例。
 
 ```rust,no_run
 use fumiori_core::Difficulty;
 use fumiori_inference::TypingGenerator;
 
 fn main() -> anyhow::Result<()> {
-    let mut generator = TypingGenerator::load("fumiori-models/models/stories-v2-diverse-3mb")?;
+    let mut generator = TypingGenerator::load("../fumiori-models/models/stories-v2-diverse-3mb")?;
     let mut options = generator.default_options();
     options.difficulty = Difficulty::Normal;
     options.seed = Some(42);

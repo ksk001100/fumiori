@@ -21,15 +21,15 @@ Cargo依存にモデルは含まれない。[モデルリポジトリ](https://g
 リポジトリ全体を取得する場合、モデルを使うだけならsubmoduleの取得は不要。
 
 ```powershell
-git clone https://github.com/ksk001100/fumiori-models.git
-cargo run --release -p fumiori-cli -- generate --model fumiori-models/models/stories-v2-diverse-3mb --difficulty mixed --count 10 --seed 3432
+git clone https://github.com/ksk001100/fumiori-models.git ../fumiori-models
+cargo run --release -p fumiori-cli -- generate --model ../fumiori-models/models/stories-v2-diverse-3mb --difficulty mixed --count 10 --seed 3432
 ```
 
 ```rust,no_run
 use fumiori_inference::TypingGenerator;
 
 fn main() -> anyhow::Result<()> {
-    let mut generator = TypingGenerator::load("fumiori-models/models/stories-v2-diverse-3mb")?;
+    let mut generator = TypingGenerator::load("../fumiori-models/models/stories-v2-diverse-3mb")?;
     let options = generator.default_options();
     let prompt = generator.generate(&options)?;
     println!("{} / {}", prompt.text, prompt.kana);
