@@ -1,1 +1,0 @@
-{"vocab_size":8802,"d_model":128,"n_heads":4,"n_layers":4,"d_ff":384,"max_seq_len":64,"dropout":0.1,"version":"0.1.0","approximate_gelu":false,"architecture":"gpt2","rope_theta":10000.0,"norm_eps":1e-05}

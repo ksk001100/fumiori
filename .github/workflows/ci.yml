@@ -1,5 +1,7 @@
-name: offline-poc
+name: Rust library
 on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -9,13 +11,7 @@ jobs:
         with:
           components: rustfmt, clippy
           targets: wasm32-unknown-unknown
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cpu
-      - run: pip install -r training/requirements.txt -r training/stories-requirements.txt
       - run: cargo fmt --all -- --check
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - run: cargo test --workspace --locked
-      - run: python -m pytest -q
       - run: cargo build --locked --release -p fumiori-wasm --target wasm32-unknown-unknown

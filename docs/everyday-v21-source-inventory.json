@@ -1,8 +1,0 @@
-{
-  "source_manifest_sha256": "492f1a840b0131376a1ff4f73c6100978446e70e135ac8d73d2d950c502415c1",
-  "raw_sentences": 248941,
-  "normalized_shape_ok": 225911,
-  "normalized_shape_with_Hrkt_transcription": 225911,
-  "normalized_shape_without_Hrkt_transcription": 0,
-  "interpretation": "All shape-compatible raw sentences have an Hrkt record. This count does not establish how many additional rows pass reading agreement, frozen vocabulary, length, deduplication and protected splits. No new data accepted and no filter relaxed in v21."
-}

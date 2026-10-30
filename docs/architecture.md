@@ -4,14 +4,14 @@
 
 ## Rust利用
 
-CargoのGit依存の指定とモデルの取得・配置は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。以下はモデルをアプリの `models/stories-v2-diverse-3mb/` に配置した場合の例。
+CargoのGit依存の指定とモデルの取得・配置は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。以下はモデルをアプリの `fumiori-models/models/stories-v2-diverse-3mb/` に配置した場合の例。
 
 ```rust,no_run
 use fumiori_core::Difficulty;
 use fumiori_inference::TypingGenerator;
 
 fn main() -> anyhow::Result<()> {
-    let mut generator = TypingGenerator::load("models/stories-v2-diverse-3mb")?;
+    let mut generator = TypingGenerator::load("fumiori-models/models/stories-v2-diverse-3mb")?;
     let mut options = generator.default_options();
     options.difficulty = Difficulty::Normal;
     options.seed = Some(42);
@@ -37,12 +37,12 @@ fn main() -> anyhow::Result<()> {
 
 このモデルは静的fallbackを禁止し、生成失敗はエラーになる。
 
-学習はCUDA/PyTorch、アプリ推論はRust/Candle CPU。WASM版も同じgeneratorを呼び、Web Workerで同期推論を実行する。詳細は [モデルの設計と評価](three-mb-generation.md)。
+学習はCUDA/PyTorch、アプリ推論はRust/Candle CPU。WASM版も同じgeneratorを呼び、Web Workerで同期推論を実行する。詳細は [モデルの設計と評価](https://github.com/ksk001100/fumiori-models/blob/main/docs/three-mb-generation.md)。
 
 ## 次期モデルの試作
 
-GPT-2型に加え、研究用にLlama型のRMSNorm・RoPE・SwiGLUとblock-128 INT4保存を扱う。INT4もロード時にFP32へ復元して演算する。生成では最後の位置だけを出力語彙へ射影し、subwordの合法候補は共通prefixをまとめて照合する。KV cacheは未実装。大型研究モデルは最新の3MB上限を超えるため、現在のデモには標準v2と小型v3を配置する。測定条件と品質の限界は [軽量化記録](lightweight-generation.md) を参照。
+GPT-2型に加え、研究用にLlama型のRMSNorm・RoPE・SwiGLUとblock-128 INT4保存を扱う。INT4もロード時にFP32へ復元して演算する。生成では最後の位置だけを出力語彙へ射影し、subwordの合法候補は共通prefixをまとめて照合する。KV cacheは未実装。大型研究モデルは最新の3MB上限を超えるため、比較デモのモデル一覧はfumiori-modelsのconfigs/demo-models.jsonで管理する。測定条件と品質の限界は [軽量化記録](https://github.com/ksk001100/fumiori-models/blob/main/docs/lightweight-generation.md) を参照。
 
 `sentencepiece_lexicon_v1` 形式では、モデルがsubword IDを予測し、単語の辞書を使って表記・かな・品詞に分割する。辞書のtrieは単語の綴りを制約するために使う。文型や全文一覧は含めない。同じ表記の読みは、学習データの直前2語の観測数と語の頻度から選ぶため、未見の文脈の読みまで保証できない。
 
-`generation_defaults.history_size` を省略したモデルは履歴16件。`set_history_size(0)` で重複回避を無効にできる。CLIの `evaluate-seeds` は各要求に別のseedを設定し、履歴を無効化・消去して重複を測る。標準配布モデルは引き続き上記の現行モデル。試作の評価は [日常文モデルの実験](everyday-generation.md) を参照。
+`generation_defaults.history_size` を省略したモデルは履歴16件。`set_history_size(0)` で重複回避を無効にできる。CLIの `evaluate-seeds` は各要求に別のseedを設定し、履歴を無効化・消去して重複を測る。標準配布モデルは引き続き上記の現行モデル。試作の評価は [日常文モデルの実験](https://github.com/ksk001100/fumiori-models/blob/main/docs/everyday-generation.md) を参照。

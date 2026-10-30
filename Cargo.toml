@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/fumiori-core", "crates/fumiori-data", "crates/fumiori-inference", "crates/fumiori-cli", "crates/fumiori-wasm"]
+members = ["crates/fumiori-core", "crates/fumiori-inference", "crates/fumiori-cli", "crates/fumiori-wasm"]
 
 [workspace.package]
 version = "0.1.0"
