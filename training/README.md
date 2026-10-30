@@ -2,7 +2,7 @@
 
 [v21](../docs/compositional-generation-v21.md)は同じ10万文・4層・1万stepを維持し、`corpus_group_map` で元4出典をbaseへまとめ、`corpus_mixture` でbase 90%／追加stories 10%を各難易度に割り当てる。元出典のラベルや行を変更せず、base内は難易度ごとの一様抽選を維持する。`scripts.audit_data_diversity` も同じ設定を計算に使う。これは出典の比率で、物語ジャンル全体の上限ではない。品質・新規性と、明示的な物語調の点検を分けて比較する。
 
-[v20](../docs/compositional-generation-v20.md)は `scripts.diverse_stories` で近似・文体・構文・書き出しの集中を管理し、学習用10万文を作る。最終設定は `configs/everyday-v20-data.json`、データは `build/everyday-v20-selected-100k-data/`。2/4/8層と小データ4層の対照を、難易度内の一様抽選・固定1万stepで比較する。元のcorpus mixtureとは異なるためv19からの差を層数だけの効果としない。4モデル全てデモへ追加した。追加データの `additional_sources` は出典と検証済みMIT license_text/hashをexport・配布LICENSEへ保持する。
+[v20](../docs/compositional-generation-v20.md)は `scripts.diverse_stories` で文字列近似・丁寧体等の表現差・構文・書き出しの集中を抑え、学習用10万文を作る。最終設定は `configs/everyday-v20-data.json`、データは `build/everyday-v20-selected-100k-data/`。2/4/8層と小データ4層の対照を、難易度内の一様抽選・固定1万stepで比較する。ただし追加ソースは物語で、ジャンルの偏りは残る。元のcorpus mixtureとは異なるためv19からの差を層数だけの効果としない。4モデル全てデモへ追加した。追加データの `additional_sources` は出典と検証済みMIT license_text/hashをexport・配布LICENSEへ保持する。
 
 [v19のデータ整理](../docs/compositional-generation-v19.md)は `scripts.curate_training_data` で元trainを保持したまま別のsubsetを作る。最終設定は `configs/everyday-v19-refined-data.json`、データは `build/everyday-v19-refined-data/`、学習は `configs/everyday-v19-refined.json`。除外理由・元行hash・代表行を追跡し、評価splitと語彙は維持する。初版には修飾の誤統合があり、修正版とともにデモへ残した。生成の自然な非一致文に安定した改善はなく、標準へは採用しない。
 
@@ -20,7 +20,7 @@
 
 構成的一般化の研究は[Phase 1の現状分析・評価手順・改善計画](../docs/compositional-generation-phase1.md)を参照。既存の学習を変更せず、標準モデルの部分コピー・文字／単語新規性と自然さ・読みの評価票を追加している。[実測結果](../docs/compositional-generation-phase1-results.md)は学習改善の成果と区別する。
 
-現行モデルは `configs/stories-v2-diverse-3mb.json` / `scripts/stories_pipeline.py` を使用する。日本語SimpleStoriesの公開trainの一部と対応付き散文を合わせ、生成条件を満たす30,800文で学習する。
+標準配布モデルv2の再現は `configs/stories-v2-diverse-3mb.json` / `scripts/stories_pipeline.py` を使用する。日本語SimpleStoriesの公開trainの一部と対応付き散文を合わせ、生成条件を満たす30,800文で学習する。
 
 ```powershell
 py -3.12 -m pip --python .venv/Scripts/python.exe install -r training/stories-requirements.txt
@@ -42,10 +42,10 @@ checkpointは `build/checkpoints/stories-v2-diverse-3mb.pt`、データは `buil
 
 語彙の偏りを抑える候補の学習・比較手順は[多様性改善](../docs/diversity.md)を参照。`lexical_balance` は学習splitのみから重みを計算し、文章自体を書き換えない。指定しない既存設定のサンプリング動作は従来どおり。
 
-最新の3MB実験は [小型モデルの改善実験](../docs/compact-generation-research.md)。`branch_balance` はtrainの同一prefixに対する次トークンの頻度から学習lossの重みを作る。推論ファイルには含めない。今回の設定では通常学習より改善せず、標準への採用は行っていない。
+過去のv11の3MB実験は [小型モデルの改善実験](../docs/compact-generation-research.md)。`branch_balance` はtrainの同一prefixに対する次トークンの頻度から学習lossの重みを作る。推論ファイルには含めない。今回の設定では通常学習より改善せず、標準への採用は行っていない。
 
 続く [v12の修正学習](../docs/compact-repair-research.md) では `repair_auxiliary` により、通常のCEへ複数修正のsuffix CEと誤り箇所のunlikelihoodを加えられる。明示的に `allow_model_reviewed_repairs` を指定し、親データと修正splitのhashを照合する。修正表は推論へ配布しない。研究用であり、今回の候補は採用していない。
 
 修正データ準備の単体テストは形態素解析をモック化し、SudachiPy未導入でも保留データの除外と学習用seedの検証を実行する。実辞書を使う解析・文体重複キーのテストには `training/prose-requirements.txt` の依存が必要で、SudachiPyまたはSudachiDict-coreが未導入の場合は該当テストだけスキップする。辞書を使わないデータ整理のテストは実行する。
 
-[v13の組合せ診断](../docs/combination-generalization-research.md)は100対の共起検査と再学習用splitを用意する。`scripts.prepare_combination_holdout` が付ける `combination_holdout` manifestでは、`initialize_from` と `repair_auxiliary` を拒否し、`holdout.json` のSHA-256を検証する。元データを学習済みの重みから続けても未見の組合せにはならないため、共通の乱数初期値から比較する。現時点で再学習による転移の確認は未実施。
+[v13の組合せ診断](../docs/combination-generalization-research.md)は100対の共起検査と再学習用splitを用意する。`scripts.prepare_combination_holdout` が付ける `combination_holdout` manifestでは、`initialize_from` と `repair_auxiliary` を拒否し、`holdout.json` のSHA-256を検証する。元データを学習済みの重みから続けても未見の組合せにはならないため、共通の乱数初期値から比較する。v13の診断作成時には再学習は未実施だった。後続の[v14](../docs/compositional-generation-v14.md)以降で、除去splitからの再学習と生成評価を実施したが、一般化の目標を達成したとは判定していない。

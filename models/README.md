@@ -9,7 +9,7 @@
 `everyday-v18-expanded-base-3mb/` はv17で追加した2,518文を通常比率65/15/15/5で学ぶ比較用モデル。文追加と抽選比率の2×2比較を補い、新しい生成seedでも確認する。コピー率は両seed群で低下したが、自然な非一致文の増加は新seedで再現せず、標準へは昇格していない。[v18記録](../docs/compositional-generation-v18.md)を参照。
 
 `stories-v2-diverse-3mb/` は `build/fumiori-stories-v2-diverse-3mb/` の配布用5ファイル。
-GitHub Actionsはこのモデルを使い、学習・データ取得なしでWebデモをビルドする。
+GitHub Actionsは標準モデルを含む `configs/demo-models.json` の全モデルを使い、学習・データ取得なしでWebデモをビルドする。
 ビルド時にmanifestのSHA-256と実ファイルの一致を検証する。
 
 `everyday-v3-3mb/` は2,423,935 bytesの小型試作の5ファイル。以前の日常文v3を、3MB・0.1秒という最新目標に対する比較基準としてデモに使う。生成設定は点検時のtemperature 1.0、top-p 0.95、履歴128件。自然さの点検結果は良好だったが新規率は約33〜34%であり、新規生成の目標を達成したモデルとしての昇格ではない。[速度](../docs/lightweight-generation.md) と [品質の限界](../docs/everyday-generation.md) を参照。
@@ -38,8 +38,13 @@ node scripts/smoke_wasm.mjs --catalog configs/demo-models.json
 ```powershell
 python -m training.package --model build/model-int8 --output build/fumiori-stories-v2-diverse-3mb --strip-token-metadata
 Copy-Item build/fumiori-stories-v2-diverse-3mb/* models/stories-v2-diverse-3mb/
-python scripts/build_wasm.py --runtime-model models/stories-v2-diverse-3mb
-node scripts/smoke_wasm.mjs model-int8
+python scripts/build_wasm.py --model-catalog configs/demo-models.json
+node scripts/smoke_wasm.mjs --catalog configs/demo-models.json
+$env:FUMIORI_REQUIRE_EXPERIMENTAL = '1'
+$env:FUMIORI_REQUIRE_CATALOG = 'configs/demo-models.json'
+node scripts/test_pages.cjs
 ```
+
+試作モデルを追加するときは標準モデルとは別のディレクトリへ5ファイルを置き、`configs/demo-models.json` に固有のID・パス・表示名・制限を登録する。上記と同じ一覧指定で再ビルドし、WASM・実ブラウザーの読み込みと生成を確認する。Pagesのワークフローもこの一覧を参照する。PlaywrightとChromiumの準備は `.github/workflows/pages.yml` に合わせる。
 
 出典・学習データのライセンスは同梱manifestと[データの由来](../docs/data-licenses.md)を参照。

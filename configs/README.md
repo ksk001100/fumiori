@@ -18,7 +18,7 @@
 
 `novelty-baseline-v1.json` は学習設定ではなく、標準モデルのPhase 1評価条件。重み・データmanifestのhash、難易度、独立seed、サンプリング、評価票の抽出条件を固定する。[実行手順と指標の定義](../docs/compositional-generation-phase1.md)を参照。
 
-現行設定は `stories-v2-diverse-3mb.json`。`stories-v1-3mb.json` とそのデータ・checkpointは従来モデルの設定として保持する。
+標準配布モデルの設定は `stories-v2-diverse-3mb.json`。最新の比較実験は上記v21の設定を参照。`stories-v1-3mb.json` とそのデータ・checkpointは従来モデルの設定として保持する。
 
 `data/paired-v1` の対応付き散文と日本語SimpleStoriesを入力に、`scripts/stories_pipeline.py` でデータ準備・学習・export・評価を実行する。
 
