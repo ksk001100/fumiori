@@ -88,5 +88,29 @@
     "directory": "models/everyday-v19-refined-3mb",
     "label": "v19 データ整理・修正版（約2.5MB）",
     "description": "重複や構文の集中を整理し、確認した読みの問題を除いた学習データで学ぶ試作です。元の語彙と構造を保ち、品質の比較結果は研究記録に残します。"
+  },
+  {
+    "id": "model-v20-control4",
+    "directory": "models/everyday-v20-control4-3mb",
+    "label": "v20 対照・約5.7万文・4層（約2.5MB）",
+    "description": "データ追加の効果を調べる対照です。従来の整理済み文を、今回と同じ学習量・抽選方法で学び直しました。"
+  },
+  {
+    "id": "model-v20-layers4",
+    "directory": "models/everyday-v20-layers4-3mb",
+    "label": "v20 10万文・4層（約2.5MB）",
+    "description": "近似文と構文の集中を抑えた10万文で学ぶ試作です。物語調の文も含み、標準には採用していません。"
+  },
+  {
+    "id": "model-v20-layers2",
+    "directory": "models/everyday-v20-layers2-3mb",
+    "label": "v20 10万文・2層（約2.5MB）",
+    "description": "同じ10万文を浅く広い構造で学ぶ比較用モデルです。4層・8層と近いパラメータ数で比べています。"
+  },
+  {
+    "id": "model-v20-layers8",
+    "directory": "models/everyday-v20-layers8-3mb",
+    "label": "v20 10万文・8層（約2.6MB）",
+    "description": "同じ10万文を深く細い構造で学ぶ比較用モデルです。速度・容量・自然さの結果は研究記録で確認できます。"
   }
 ]

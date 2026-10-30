@@ -1,5 +1,7 @@
 # 学習設定
 
+`everyday-v20-data.json` は固定語彙のまま近似・文体・構文集中を抑えて10万文へ拡充する設定。`everyday-v20-{control4,layers4,layers2,layers8}.json` は同じ1万step・難易度内一様抽選でのデータ／構造比較。`everyday-v20-evaluation.json` は開始seed920000・各100件点検、`everyday-v20-fresh-seeds.json` は上位候補と対照を開始seed930000・各60件点検する探索的追試。[v20記録](../docs/compositional-generation-v20.md)を参照。
+
 `everyday-v19-refined-data.json` は最終の整理設定、`everyday-v19-refined.json` は同じ通常比率・固定5,000stepでの再学習。`everyday-v19-evaluation.json` と `everyday-v19-fresh-seeds.json` は開始seed887000／900000の比較で、整理前の全trainを共通参照にする。`everyday-v19-data.json` / `everyday-v19-curated.json` は既知の誤統合を持つ初版の追跡用。再実行時は既存成果を上書きしない新しい出力先を使う。[v19記録](../docs/compositional-generation-v19.md)を参照。
 
 `everyday-v18-expanded-base.json` はv17全追加データを通常比率で学ぶ固定5,000step設定。`everyday-v18-evaluation.json` は文追加×比率の4条件、`everyday-v18-fresh-seeds.json` は新しい生成seed887000台で通常比率の2条件を比較する。[事前条件](../docs/everyday-v18-protocol.json)と[v18記録](../docs/compositional-generation-v18.md)を参照。

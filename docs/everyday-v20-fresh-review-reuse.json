@@ -1,0 +1,121 @@
+{
+  "sources": [
+    {
+      "version": "15",
+      "paths": {
+        "report": "docs\\everyday-v15-measurements.json",
+        "mapping": "docs\\everyday-v15-review-map.json",
+        "ratings": "docs\\everyday-v15-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "86f14ba32e60f02d79a779909060138b8522c0c1d695361a5b589038f370792c",
+        "mapping": "d90a59e4979d487dba18d42d204dfd055f9fbdc82ea2a54858942c67d1c01ac4",
+        "ratings": "e63456b574864bba60fab9c55763252bef96e3dcc687ab7c7741cfd0a0c816a2"
+      }
+    },
+    {
+      "version": "16",
+      "paths": {
+        "report": "docs\\everyday-v16-measurements.json",
+        "mapping": "docs\\everyday-v16-review-map.json",
+        "ratings": "docs\\everyday-v16-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "3a1b51dac8c38b8ae09a16b51f5b8ef363cf4b047f04f5c219cac3df2c816a72",
+        "mapping": "bfafae581752c153477ff438c749e6d4b4c90411ace87e1cfaa531c2389e5f3c",
+        "ratings": "035a0d118fba4f68b602271b42ef827affb049445d39803602442f938aa294ed"
+      }
+    },
+    {
+      "version": "17",
+      "paths": {
+        "report": "docs\\everyday-v17-measurements.json",
+        "mapping": "docs\\everyday-v17-review-map.json",
+        "ratings": "docs\\everyday-v17-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "fd883563865aa6f53e80fbd396ebaf1e0096bd487945e129e7c05851b0819789",
+        "mapping": "1a34d4b4629335a34f7da089847ffee74f08221e98878e5c518709d98e1c086a",
+        "ratings": "e71210b59801ea16e6e7ce56d11326da6fa484bf6f5da674039a5d10854ee7d3"
+      }
+    },
+    {
+      "version": "18-development",
+      "paths": {
+        "report": "docs\\everyday-v18-development-measurements.json",
+        "mapping": "docs\\everyday-v18-development-review-map.json",
+        "ratings": "docs\\everyday-v18-development-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "d102f4bb807ef88ec8d3214bf7d50b21d4b2bed7469bbfb78b576d0ad279f3be",
+        "mapping": "05f1096a148c26354c928d527b5d3fe4ee7b8196784ed75848a92fd807789da7",
+        "ratings": "b1fe9ca4ff644bb43053876f1b2fc300d0fafd8e26cf90f215f0fddc991e56a9"
+      }
+    },
+    {
+      "version": "18-fresh",
+      "paths": {
+        "report": "docs\\everyday-v18-fresh-measurements.json",
+        "mapping": "docs\\everyday-v18-fresh-review-map.json",
+        "ratings": "docs\\everyday-v18-fresh-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "322842e2c916033a8fda7fe9c1e613d692762d2bdb7a5101282878d45908e1bd",
+        "mapping": "fce7d40e8a9840eae0f3a2fdedc814fcc323f399848adfdc6e2bfb8755e9ff71",
+        "ratings": "71ab2f0046d7bf562fd63592be7c8e8e1278e41c90ef7b160dcda82d4b84505a"
+      }
+    },
+    {
+      "version": "19-development",
+      "paths": {
+        "report": "docs\\everyday-v19-development-measurements.json",
+        "mapping": "docs\\everyday-v19-development-review-map.json",
+        "ratings": "docs\\everyday-v19-development-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "a8cbca74e7a8b7584228b2e41dec1c4f3621872c66d37a2e38ce33b2428888df",
+        "mapping": "f9657c26fcb7f9c83a2e6327d68646f7e53695e289a0cf88cbe9c9f83bca1bef",
+        "ratings": "e0e6d8ac016e026d7fe48d2c39c266d4614a0ceb58af60ef6270f052ee33d8df"
+      }
+    },
+    {
+      "version": "19-fresh",
+      "paths": {
+        "report": "docs\\everyday-v19-fresh-measurements.json",
+        "mapping": "docs\\everyday-v19-fresh-review-map.json",
+        "ratings": "docs\\everyday-v19-fresh-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "83087736aafb9be7d5b0051c4519d9e545c65237b62bea189dfd7fe1eb20996b",
+        "mapping": "9363b4e4287677f514f236dbbe9dee9e886f2bd6a904bbcf79e59519d8e06e5a",
+        "ratings": "ef0de12f5dc642cf18b435a51026cc82cada1a5ec8d25c7de8518986d4545e82"
+      }
+    },
+    {
+      "version": "20",
+      "paths": {
+        "report": "docs\\everyday-v20-measurements.json",
+        "mapping": "docs\\everyday-v20-review-map.json",
+        "ratings": "docs\\everyday-v20-blind-agent-review.csv"
+      },
+      "sha256": {
+        "report": "912a912d2f9cf0d417454420ce472db73c0465873410d1cc5a403bd240c4a685",
+        "mapping": "454bb54daa6ddcbbe1e94f56f00066ca4c9f94da1f2bcf6bfac6fd8cbe69f6ea",
+        "ratings": "3dcc2870013412ff37d87e348e7b2e057d2a3b197ab72f369d36194396ccd2dc"
+      }
+    }
+  ],
+  "report_sha256": "820a1b504c8b6c0b1ce71c1b6c855319f4ded2be41652cac5dcf6999325033f4",
+  "mapping_sha256": "5e3f6570ca5950cee28c024be9b4c1538472703eec58e71ca1a87fda7dd31383",
+  "unchanged_control_rows": 0,
+  "identical_text_kana_rows": 1,
+  "new_rows": 179,
+  "reused": [
+    {
+      "blind_id": "80",
+      "source_version": "16",
+      "source_blind_id": "141",
+      "kind": "identical_text_kana"
+    }
+  ]
+}

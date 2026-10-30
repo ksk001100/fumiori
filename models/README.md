@@ -1,5 +1,7 @@
 # アプリ・Webデモ用の配布モデル
 
+`everyday-v20-{control4,layers4,layers2,layers8}-3mb/` は約5.7万文の対照4層と、10万文の2/4/8層の比較用4モデル。容量は各約2.53〜2.56MB。今回の標本では4層が品質面で先行、2層が速い。8層はCPU90件中2件で100msを超えた。全モデルをデモへ追加したが標準への採用ではない。[v20記録](../docs/compositional-generation-v20.md)を参照。
+
 `everyday-v19-{curated,refined}-3mb/` は各2,528,193 bytesのデータ整理モデル。初版curatedは一部の意味が異なる修飾を統合した問題があり比較用に残す。最終候補はrefinedだが、整理前に対する自然な非一致文の安定改善はなく標準へは採用しない。両モデルともデモで選択できる。[v19記録](../docs/compositional-generation-v19.md)を参照。
 
 `everyday-v18-expanded-base-3mb/` はv17で追加した2,518文を通常比率65/15/15/5で学ぶ比較用モデル。文追加と抽選比率の2×2比較を補い、新しい生成seedでも確認する。コピー率は両seed群で低下したが、自然な非一致文の増加は新seedで再現せず、標準へは昇格していない。[v18記録](../docs/compositional-generation-v18.md)を参照。
@@ -20,7 +22,7 @@ GitHub Actionsはこのモデルを使い、学習・データ取得なしでWeb
 
 `everyday-v17-{small,expanded}-3mb/` は各2,528,193 bytes。語彙・構造・5,000stepを保ち、ローカル教師の新規文を500件／2,518件追加して再学習した比較用2モデル。自然で読みが合う非一致文は同じ混合比の対照より増えたが、近似文が多く、独立人手評価もなく標準には採用しない。両モデルをデモへ追加した。[v17記録](../docs/compositional-generation-v17.md)を参照。
 
-登録した全15モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
+登録した全19モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
 
 ```powershell
 python scripts/build_wasm.py --model-catalog configs/demo-models.json

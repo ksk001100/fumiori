@@ -1,5 +1,7 @@
 # データの由来と配布範囲
 
+v20はv19の整理済み57,354文へ、取得済みSimpleStories-JAの公開trainから42,646文を追加する。revision・原本hash・作品hashを保持し、既存のTatoeba・自作文・教師・辞書等の出典も継承する。追加ソースのMIT metadataとnoticeを配布manifestとLICENSEへ追加し、混合コーパス全体をCC0としない。新しい外部取得やAPI教師生成はない。[データ出典とhash](everyday-v20-data.json)、[選別と品質の限界](compositional-generation-v20.md)を参照。
+
 v19はv17-expandedのtrainから行を選別したsubsetで、新しい外部データ・教師文・修正文は追加しない。元の各行の出典・著者・ライセンスを保持し、除外した行の出典対応も[v19データ記録](everyday-v19-data.json)へ残す。合成文6行の点検表は[data/curation-v19](../data/curation-v19/README.md)。Tatoeba、合成教師、自作文、辞書等の親manifestと配布LICENSEを継承し、整理後コーパス全体をCC0とする主張ではない。[整理と比較](compositional-generation-v19.md)を参照。
 
 v18はv17-expandedと同じ準備データを使い、新しい教師出力・外部データ・修正文を追加しない。変更は学習中のcorpus mixtureのみで、出典・ライセンスをv17から継承する。[v18記録](compositional-generation-v18.md)を参照。

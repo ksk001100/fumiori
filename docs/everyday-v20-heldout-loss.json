@@ -1,0 +1,101 @@
+{
+  "scope": "FP32 next-token CE including difficulty/period/EOS, PAD ignored; likelihood is not naturalness or semantic novelty",
+  "results": [
+    {
+      "name": "control4",
+      "checkpoint_sha256": "dc1288cda1b32939f6041166b925db3c9a2cd9ff954345fd9c0596e4d8c26c0f",
+      "splits": {
+        "stories-test": {
+          "nll": 4.138289971761345,
+          "tokens": 12767,
+          "rows": 1000,
+          "data_sha256": "43d74b69b211d10f315f21f12238324ee464f1a7182fdfcedbc8c645d15c7d2b"
+        },
+        "family-test": {
+          "nll": 3.661744331655327,
+          "tokens": 1304,
+          "rows": 145,
+          "data_sha256": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e"
+        },
+        "teacher-test": {
+          "nll": 2.3050546202152216,
+          "tokens": 3496,
+          "rows": 282,
+          "data_sha256": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777"
+        }
+      }
+    },
+    {
+      "name": "layers4",
+      "checkpoint_sha256": "9b6f8fa5f14e2be0566c7c5334830fb7c56d08706d6c6aafc856b77fe9eaf23e",
+      "splits": {
+        "stories-test": {
+          "nll": 2.1341727529162573,
+          "tokens": 12767,
+          "rows": 1000,
+          "data_sha256": "43d74b69b211d10f315f21f12238324ee464f1a7182fdfcedbc8c645d15c7d2b"
+        },
+        "family-test": {
+          "nll": 3.282129983411976,
+          "tokens": 1304,
+          "rows": 145,
+          "data_sha256": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e"
+        },
+        "teacher-test": {
+          "nll": 2.2595646177467548,
+          "tokens": 3496,
+          "rows": 282,
+          "data_sha256": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777"
+        }
+      }
+    },
+    {
+      "name": "layers2",
+      "checkpoint_sha256": "05888179bcbb7342c3853860419147bf1a0325557e69c32e0d506a92baf123df",
+      "splits": {
+        "stories-test": {
+          "nll": 2.139661971391242,
+          "tokens": 12767,
+          "rows": 1000,
+          "data_sha256": "43d74b69b211d10f315f21f12238324ee464f1a7182fdfcedbc8c645d15c7d2b"
+        },
+        "family-test": {
+          "nll": 3.4379988281639076,
+          "tokens": 1304,
+          "rows": 145,
+          "data_sha256": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e"
+        },
+        "teacher-test": {
+          "nll": 2.246967287712839,
+          "tokens": 3496,
+          "rows": 282,
+          "data_sha256": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777"
+        }
+      }
+    },
+    {
+      "name": "layers8",
+      "checkpoint_sha256": "d3ba6304ab0eaf9b0ac541cf292e77f75b1d13cf290ea7966c6b5b373f91db87",
+      "splits": {
+        "stories-test": {
+          "nll": 2.147318042584217,
+          "tokens": 12767,
+          "rows": 1000,
+          "data_sha256": "43d74b69b211d10f315f21f12238324ee464f1a7182fdfcedbc8c645d15c7d2b"
+        },
+        "family-test": {
+          "nll": 3.203965716018267,
+          "tokens": 1304,
+          "rows": 145,
+          "data_sha256": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e"
+        },
+        "teacher-test": {
+          "nll": 2.3120987675146325,
+          "tokens": 3496,
+          "rows": 282,
+          "data_sha256": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777"
+        }
+      }
+    }
+  ]
+}

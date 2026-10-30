@@ -8,6 +8,7 @@ stories-v2-diverse-3mbの利用・組み込み・学習に関する文書。
 | [architecture.md](architecture.md) | モデル構成と公開API |
 | [three-mb-generation.md](three-mb-generation.md) | データ、モデル、品質評価、再現手順 |
 | [evaluation.md](evaluation.md) | 評価条件と検証コマンド |
+| [compositional-generation-v20.md](compositional-generation-v20.md) | 近似を抑えた学習10万文、ほぼ同容量の2/4/8層と小データ対照の比較 |
 | [compositional-generation-v19.md](compositional-generation-v19.md) | 重複・構文集中・確認済み誤りの整理、修正版の再学習とデモ追加 |
 | [training-data-diversity-audit.md](training-data-diversity-audit.md) | 学習文の完全・近似重複、構文集中、実際の抽選質量とsplit間の近似 |
 | [compositional-generation-v18.md](compositional-generation-v18.md) | 文追加×学習比率の2×2比較、新しい生成seedでの点検とデモ追加 |

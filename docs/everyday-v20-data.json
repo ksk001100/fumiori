@@ -1,0 +1,1248 @@
+{
+  "manifest": {
+    "description": "Conservative combination holdout; frozen inherited vocabulary; retrain from random initialization only",
+    "source": {
+      "dataset": "Tatoeba Japanese",
+      "dataset_url": "https://tatoeba.org/en/downloads",
+      "license": "CC-BY-2.0-FR",
+      "attribution": "Tatoeba.org and its contributors",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "files": {
+        "jpn_sentences_detailed.tsv.bz2": {
+          "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences_detailed.tsv.bz2",
+          "bytes": 4462126,
+          "sha256": "e305ecf638ab24cd57b0b5f9fcdc342267ef4a3fdb19c71621f1a49baaf6d84f"
+        },
+        "jpn_transcriptions.tsv.bz2": {
+          "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_transcriptions.tsv.bz2",
+          "bytes": 4280771,
+          "sha256": "dc7a9059f4e1d25aad8e7884266887509ad0dbfb18384e87076ca947ce273be3"
+        }
+      },
+      "note": "Public weekly export; contributor names and sentence IDs retained in prepared data. Transcriptions without a username are not marked reviewed by Tatoeba."
+    },
+    "dictionary": {
+      "name": "SudachiDict-core",
+      "version": "20261015",
+      "analyzer": "0.7.0",
+      "license": "Apache-2.0",
+      "url": "https://github.com/WorksApplications/SudachiDict"
+    },
+    "splits": {
+      "train": 100000,
+      "validation": 2692,
+      "test": 2642,
+      "family-test": 145,
+      "teacher-test": 282,
+      "stories-test": 1000
+    },
+    "split_sha256": {
+      "train.jsonl": "aee2b5205a65eb681fa3cd0774edf980631c61e1aa59e16dae9f389b71731a34",
+      "validation.jsonl": "863993ae4a82795e8f2d91e88a29fd2fe1a5051e75131ae71c9f17d419a9c8c0",
+      "test.jsonl": "85fa5fc5ab1498683e17c8c6325ee356eff947b43465bc0cb0ad2a2e987fdca8",
+      "family-test.jsonl": "500b66236cfdf7b52ff969252f10e43f252b240ff844b1039965e7906dde840e",
+      "teacher-test.jsonl": "7e9ef24d13917ba410ffbe159b5506266496a6a9bfc70627888fdb6810cee777",
+      "stories-test.jsonl": "43d74b69b211d10f315f21f12238324ee464f1a7182fdfcedbc8c645d15c7d2b"
+    },
+    "vocab_sha256": "5191ec3cc63fd68612181079a63228e37a84303cd34ee6b0c5e34004255f1dbe",
+    "stats": {
+      "unknown_proper_or_grammar": 73854,
+      "reading_disagreement": 26520,
+      "shape_or_missing_transcription": 23030,
+      "length_or_reading_shape": 6657,
+      "duplicate_or_protected": 203,
+      "vocabulary_filtered_train": 58475,
+      "vocabulary_filtered_test": 1950,
+      "vocabulary_filtered_validation": 2092,
+      "vocabulary_filtered_family-test": 148
+    },
+    "source_generator_sha256": "31ea0772c8ee0d426b189412c31fd26a009eb06cb8e078b7f78c79ac5a84e790",
+    "split_strategy": "Normalized bodies partitioned by SHA256 before train-only vocabulary selection; older held-out bodies protected",
+    "independent_human_review": "pending",
+    "parent_manifest_sha256": "1d94e7654216684b919beb59ec845a2756d66d087f3ea359b3af2be1a5413b0a",
+    "subword_preparation_stats": {
+      "lexical_boundary_train": 2681,
+      "unrepresentable_train": 80,
+      "lexical_boundary_validation": 76,
+      "unrepresentable_validation": 15,
+      "lexical_boundary_test": 76,
+      "unrepresentable_test": 13
+    },
+    "synthetic_sources": [
+      {
+        "teacher": {
+          "model": "llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "revision": "f19510db409090bb1737f24f868d17c4bdc86c8e",
+          "license": "Apache-2.0",
+          "authors": "LLM-jp",
+          "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "role": "offline training teacher only; never packaged for application inference",
+          "files": {
+            "config.json": {
+              "bytes": 720,
+              "sha256": "ccddfc0fe467edcd90f3b250bc9043788b108d0105fe15e90b9b97900bc10bca",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/config.json"
+            },
+            "generation_config.json": {
+              "bytes": 111,
+              "sha256": "ae9c013449dab45501dd67d85b191b5d6068339c2eefd071cf542e04e71f1511",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/generation_config.json"
+            },
+            "model.safetensors": {
+              "bytes": 3735253776,
+              "sha256": "a5608664cb63ed2ee32c26ecdcf88d12f7ed8b45230761b96b857aa64ef65ed3",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/model.safetensors"
+            },
+            "tokenizer.json": {
+              "bytes": 6409995,
+              "sha256": "d0fcf4e1e7a08e855273824678363335b0cd707937332ec1cc48eee259065219",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer.json"
+            },
+            "tokenizer_config.json": {
+              "bytes": 2397,
+              "sha256": "0301e48490b6834df0661966aa8beb9236104e248b8b771b64b773537edb8ca1",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer_config.json"
+            },
+            "special_tokens_map.json": {
+              "bytes": 996,
+              "sha256": "26a314575f93e92920df4aacab5af1d6fe5f7f5bb5fc9c8cef2fd738259ec5ab",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/special_tokens_map.json"
+            },
+            "README.md": {
+              "bytes": 14748,
+              "sha256": "100e1b56d9a7ee0653315fe6b665e9f9839054eaae0ccf41f8f2a3b8e74aece4",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/README.md"
+            }
+          }
+        },
+        "generation": {
+          "seed": 671003,
+          "offset": 72,
+          "requests": 720,
+          "batch_size": 16,
+          "temperature": 0.85,
+          "top_p": 0.95,
+          "repetition_penalty": 1.05,
+          "max_new_tokens": 192
+        },
+        "source_script_sha256": "796a96aec57252fa6784119b458774b8304aa216ffeaea3358de0b7c8b15781b",
+        "fewshot_training_sha256": "83a03921891e29159ffadd9c7e7f25c4ad128186dbcc48df991c76087c2bc9e7",
+        "raw_sha256": "f2d9fe6586ae88c7ce09750cdd115d9580ccd1b4815e83552ae80efb5d6bdc97",
+        "quality": "synthetic; not independently reviewed",
+        "inference_use": "none; prompts and teacher never used by deployed student"
+      },
+      {
+        "teacher": {
+          "model": "llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "revision": "f19510db409090bb1737f24f868d17c4bdc86c8e",
+          "license": "Apache-2.0",
+          "authors": "LLM-jp",
+          "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4",
+          "role": "offline training teacher only; never packaged for application inference",
+          "files": {
+            "config.json": {
+              "bytes": 720,
+              "sha256": "ccddfc0fe467edcd90f3b250bc9043788b108d0105fe15e90b9b97900bc10bca",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/config.json"
+            },
+            "generation_config.json": {
+              "bytes": 111,
+              "sha256": "ae9c013449dab45501dd67d85b191b5d6068339c2eefd071cf542e04e71f1511",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/generation_config.json"
+            },
+            "model.safetensors": {
+              "bytes": 3735253776,
+              "sha256": "a5608664cb63ed2ee32c26ecdcf88d12f7ed8b45230761b96b857aa64ef65ed3",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/model.safetensors"
+            },
+            "tokenizer.json": {
+              "bytes": 6409995,
+              "sha256": "d0fcf4e1e7a08e855273824678363335b0cd707937332ec1cc48eee259065219",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer.json"
+            },
+            "tokenizer_config.json": {
+              "bytes": 2397,
+              "sha256": "0301e48490b6834df0661966aa8beb9236104e248b8b771b64b773537edb8ca1",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/tokenizer_config.json"
+            },
+            "special_tokens_map.json": {
+              "bytes": 996,
+              "sha256": "26a314575f93e92920df4aacab5af1d6fe5f7f5bb5fc9c8cef2fd738259ec5ab",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/special_tokens_map.json"
+            },
+            "README.md": {
+              "bytes": 14748,
+              "sha256": "100e1b56d9a7ee0653315fe6b665e9f9839054eaae0ccf41f8f2a3b8e74aece4",
+              "url": "https://huggingface.co/llm-jp/llm-jp-3.1-1.8b-instruct4/resolve/f19510db409090bb1737f24f868d17c4bdc86c8e/README.md"
+            }
+          }
+        },
+        "generation": {
+          "seed": 840100,
+          "offset": 10000,
+          "requests": 1440,
+          "batch_size": 16,
+          "temperature": 0.85,
+          "top_p": 0.95,
+          "repetition_penalty": 1.05,
+          "max_new_tokens": 192
+        },
+        "source_script_sha256": "a589c700ff1ed75b6966c9bda9343c0de1426f53289bef077d81e1b5d34f604f",
+        "fewshot_training_sha256": "79952a6aafcfd543d3158275d1d8920d299fa3b325a6d6e3bbc7dc5a722bb3fd",
+        "fewshot_training_path": "build\\v17-examples\\train.jsonl",
+        "raw_sha256": "cd5cfff0182c9974aed1cece1bc833820fdc1ac00d8f0b6a97fc1eea53367811",
+        "quality": "synthetic; not independently reviewed",
+        "inference_use": "none; prompts and teacher never used by deployed student"
+      }
+    ],
+    "teacher_preparation_stats": {
+      "raw_sentences": 5153,
+      "duplicate_or_existing_body": 529,
+      "unrepresented_subword": 420,
+      "kana_length": 250,
+      "dictionary_or_boundary": 1216,
+      "accepted_train": 2451,
+      "accepted_3": 438,
+      "word_not_in_training_lexicon_test": 29,
+      "accepted_4": 905,
+      "accepted_5": 1333,
+      "accepted_test": 100,
+      "accepted_validation": 125,
+      "word_not_in_training_lexicon_validation": 33
+    },
+    "new_dictionary_words": 902,
+    "teacher_split_strategy": "SHA256 normalized body: 90% train/5% validation/5% test; all prior bodies excluded",
+    "compact_word_stats": {
+      "train.jsonl": {
+        "input": 59599,
+        "kept": 59599,
+        "rejected": {}
+      },
+      "validation.jsonl": {
+        "input": 3045,
+        "kept": 3040,
+        "rejected": {
+          "unseen_word": 5
+        }
+      },
+      "test.jsonl": {
+        "input": 2944,
+        "kept": 2940,
+        "rejected": {
+          "unseen_word": 4
+        }
+      },
+      "family-test.jsonl": {
+        "input": 152,
+        "kept": 152,
+        "rejected": {}
+      }
+    },
+    "augmentation_parent_manifest_sha256": "77fcaffa8a8ebd4fcb1a3206e3482f50a69a447424f637f767aaab1af538ea94",
+    "teacher_expansion": {
+      "script_sha256": "e832812b55b215799c0526ecbad7c276598bc523ae562c1e19dff2b4b04144ab",
+      "config_sha256": "1185ed30e4992501b2e8ef99742b1dbb1d8f53fe63e796584d1884c6f26efe15",
+      "new_train": 2518,
+      "new_teacher_test": 282,
+      "candidate_new_train": 2518,
+      "stats": {
+        "raw_sentences": 10256,
+        "out_of_vocabulary": 2107,
+        "dictionary_or_boundary": 2227,
+        "protected_combination": 1461,
+        "kana_length": 166,
+        "ambiguous_lexeme_reading": 433,
+        "duplicate_or_protected": 1062
+      },
+      "protected_reports": [
+        {
+          "path": "docs/everyday-v14-measurements.json",
+          "sha256": "f8f6e33763194a008315d018c4f26878fbcb326c9d0c4210a9b99828f3e32b25"
+        },
+        {
+          "path": "docs/everyday-v15-measurements.json",
+          "sha256": "86f14ba32e60f02d79a779909060138b8522c0c1d695361a5b589038f370792c"
+        },
+        {
+          "path": "docs/everyday-v16-measurements.json",
+          "sha256": "3a1b51dac8c38b8ae09a16b51f5b8ef363cf4b047f04f5c219cac3df2c816a72"
+        }
+      ],
+      "reading_policy": "Reject existing surface/POS with multiple readings, OOV and lexical boundary collisions; dictionary agreement is not contextual certification"
+    },
+    "additional_sources": [
+      {
+        "dataset": "SimpleStories/SimpleStories-JA",
+        "revision": "d25370316dd77ec0ee4fd9db57bfe57075cf4b90",
+        "upstream_path": "data/train-00000-of-00004.parquet",
+        "sha256": "54bd792d9442c0bc1471d061bdc2228c889d2e3dd5c9a9fe258cd7791bd8ae1b",
+        "bytes": 178169487,
+        "license": "MIT",
+        "authors": "The SimpleStories Project",
+        "dataset_url": "https://huggingface.co/datasets/SimpleStories/SimpleStories-JA",
+        "paper": "https://arxiv.org/abs/2504.09184",
+        "downloaded_split": "train",
+        "note": "synthetic gpt-4o-mini stories; not independently human-reviewed",
+        "license_text": "MIT License\n\nCopyright (c) The SimpleStories Project\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+        "license_text_sha256": "a6036deec82be1c4ab86656ea918aaa2419662ce680b3e43dc0edc377b66be35"
+      }
+    ],
+    "diverse_expansion": {
+      "parent_manifest_sha256": "8f8d73ec8af7b397fa3bfcb996dcfa2476c484fcea261760eef376901acf5869",
+      "report_sha256": "d263f3cd122137eab7f27df85fc8568d5e477dba1d18c21a0e0b03d017c1ec70",
+      "policy": "Original rows plus near/style/pattern-capped prose; fixed word IDs; whole-story heldout; metadata topic quotas do not certify actual semantics"
+    },
+    "combination_holdout": {
+      "pairs_sha256": "176bfea07585ddcba5d23c15b00b7360063b77e50545fc4d6a18a49dcfbb2a1f",
+      "report_sha256": "6cf8bccc607c8d097ac61863f9e69713076276c8d2cccfa2950a4e898895ccc6",
+      "components_observed": 96,
+      "total": 100,
+      "initialization": "random only; no prior task-trained checkpoint"
+    }
+  },
+  "manifest_sha256": "70a0c78fef0b483e2f3a25bc9000a9ebaf88ec0f369725153a45f3eea848c5aa",
+  "expansion": {
+    "config_sha256": "854548da62332a8f6920a6f25ecf125a46bebdfba9e22b94c37a41505a4888b9",
+    "script_sha256": "bc425f6f74cdcba25f5871fb7e63046ebf5f6f9d8372e9d538bea58c866f4798",
+    "source": {
+      "dataset": "SimpleStories/SimpleStories-JA",
+      "revision": "d25370316dd77ec0ee4fd9db57bfe57075cf4b90",
+      "upstream_path": "data/train-00000-of-00004.parquet",
+      "sha256": "54bd792d9442c0bc1471d061bdc2228c889d2e3dd5c9a9fe258cd7791bd8ae1b",
+      "bytes": 178169487,
+      "license": "MIT",
+      "authors": "The SimpleStories Project",
+      "dataset_url": "https://huggingface.co/datasets/SimpleStories/SimpleStories-JA",
+      "paper": "https://arxiv.org/abs/2504.09184",
+      "downloaded_split": "train",
+      "note": "synthetic gpt-4o-mini stories; not independently human-reviewed"
+    },
+    "stats": {
+      "stories_scanned": 62949,
+      "raw_fragments": 678222,
+      "shape_or_context": 327677,
+      "out_of_vocabulary": 166011,
+      "dictionary_or_boundary": 88350,
+      "ambiguous_lexeme_reading": 15605,
+      "near_duplicate": 2083,
+      "duplicate_or_protected": 1470,
+      "kana_length": 1349,
+      "protected_combination": 2255,
+      "reviewed_context_reading": 605,
+      "repeated_candidate": 16107,
+      "style_duplicate": 571,
+      "diversity_cap": 12493
+    },
+    "added_train": 42646,
+    "added_test": 1000,
+    "topics": {
+      "海賊の物語": 644,
+      "秘密の組織": 856,
+      "過去の時代への旅": 929,
+      "ヒーローの伝説": 934,
+      "上京": 983,
+      "喋れる動物たち": 715,
+      "縄文時代": 745,
+      "大空": 793,
+      "宝探し": 851,
+      "芸術": 806,
+      "怪談話": 936,
+      "巨大な生物": 813,
+      "温泉旅行": 843,
+      "庭園の秘密": 750,
+      "奇妙な乗り物": 852,
+      "音楽": 839,
+      "宇宙探検": 948,
+      "孤島の冒険": 819,
+      "江戸の生活": 820,
+      "水中の冒険": 670,
+      "日常生活": 826,
+      "夏の祭り": 683,
+      "未知の宇宙": 860,
+      "神秘的な生き物たち": 680,
+      "恐竜の時代": 479,
+      "平安時代での冒険": 715,
+      "ロボットと未来技術": 1110,
+      "時間旅行": 927,
+      "兄弟の競争": 768,
+      "忍びと侍": 614,
+      "小さな世界": 812,
+      "仮想空間": 726,
+      "魔法の国": 721,
+      "季節の移り変わり": 981,
+      "不思議な森": 685,
+      "王国の物語": 948,
+      "謎の地図": 987,
+      "異世界": 832,
+      "明治維新": 737,
+      "体育と競技": 840,
+      "夢の世界": 862,
+      "滅んでいた文明": 784,
+      "休日の冒険": 878,
+      "地下の世界": 805,
+      "昔話": 802,
+      "バブル時代": 746,
+      "お化け話": 505,
+      "学校生活のドラマ": 751,
+      "魔法の道具": 746,
+      "宇宙人との出会い": 597,
+      "雪国への旅": 788,
+      "隠された財宝": 715,
+      "探偵と謎解き": 1190
+    },
+    "difficulty": {
+      "4": 17889,
+      "5": 21447,
+      "3": 3310
+    },
+    "largest_pattern": 32,
+    "largest_start": 500,
+    "protection": [
+      {
+        "path": "build/everyday-v17-expanded-data/train.jsonl",
+        "sha256": "82754b16eb8f4613b33c52e152c46138b5f2852f3424635571c19c58ca9b0ef8"
+      },
+      {
+        "path": "build/stories-v1-data/validation.jsonl",
+        "sha256": "9e31893150cc01f69b91645e1a19c94d6c1135c39ba998fe2fd822af004d3bd7"
+      },
+      {
+        "path": "build/stories-v1-data/test.jsonl",
+        "sha256": "86a1063f9ea0fee8d552ce585752d4f7782b614235d49e1856c3b34a13b6c834"
+      },
+      {
+        "path": "build/stories-v1-data/family-test.jsonl",
+        "sha256": "35c1244c71290fd5cac45ed9874cd062a51f6ba60a5e16eb462941cc8849ac69"
+      },
+      {
+        "path": "build/stories-v2-data/validation.jsonl",
+        "sha256": "084982fa2c26536a030994b4eaae66a35a8def54e3ffbc1d4a4ce3368eb8fff6"
+      },
+      {
+        "path": "build/stories-v2-data/test.jsonl",
+        "sha256": "acaa5070b6cec96620c602e97237ab70911d9abbfbdb44df529fd8073b0296d3"
+      },
+      {
+        "path": "build/stories-v2-data/family-test.jsonl",
+        "sha256": "35c1244c71290fd5cac45ed9874cd062a51f6ba60a5e16eb462941cc8849ac69"
+      },
+      {
+        "path": "docs/diversity-baseline-measurements.json",
+        "sha256": "0962399c6ead4cea636e55909d7eb199e5a362ca31ea8ef7e0c15fe5cac0ebd9"
+      },
+      {
+        "path": "docs/everyday-v14-measurements.json",
+        "sha256": "f8f6e33763194a008315d018c4f26878fbcb326c9d0c4210a9b99828f3e32b25"
+      },
+      {
+        "path": "docs/everyday-v15-measurements.json",
+        "sha256": "86f14ba32e60f02d79a779909060138b8522c0c1d695361a5b589038f370792c"
+      },
+      {
+        "path": "docs/everyday-v16-measurements.json",
+        "sha256": "3a1b51dac8c38b8ae09a16b51f5b8ef363cf4b047f04f5c219cac3df2c816a72"
+      },
+      {
+        "path": "docs/everyday-v17-measurements.json",
+        "sha256": "fd883563865aa6f53e80fbd396ebaf1e0096bd487945e129e7c05851b0819789"
+      },
+      {
+        "path": "docs/everyday-v18-development-measurements.json",
+        "sha256": "d102f4bb807ef88ec8d3214bf7d50b21d4b2bed7469bbfb78b576d0ad279f3be"
+      },
+      {
+        "path": "docs/everyday-v18-fresh-measurements.json",
+        "sha256": "322842e2c916033a8fda7fe9c1e613d692762d2bdb7a5101282878d45908e1bd"
+      },
+      {
+        "path": "docs/everyday-v19-development-measurements.json",
+        "sha256": "a8cbca74e7a8b7584228b2e41dec1c4f3621872c66d37a2e38ce33b2428888df"
+      },
+      {
+        "path": "docs/everyday-v19-fresh-measurements.json",
+        "sha256": "83087736aafb9be7d5b0051c4519d9e545c65237b62bea189dfd7fe1eb20996b"
+      },
+      {
+        "path": "docs/everyday-v3-3mb-confirmation-measurements.json",
+        "sha256": "1f229f15aa4d1ce87f412ddc4b572adc189a2a5c3c3867f6072aedf1bc8c92e2"
+      },
+      {
+        "path": "docs/everyday-v3-3mb-development-measurements.json",
+        "sha256": "933d890298cf7a23c846b1b2570de8d0e32531cacbdc7f037e76648276350cc7"
+      },
+      {
+        "path": "docs/everyday-v3-small-development-measurements.json",
+        "sha256": "fc58bba2a10d69cc4a84ed709bb06e4e39b2405fa0f8f0364832aa54214f5b3c"
+      },
+      {
+        "path": "docs/everyday-v3-t120-development-measurements.json",
+        "sha256": "f589be8f5bdbee1ca6c22d548691305cb04470f6d51bca11bd7c38463b1e63bd"
+      },
+      {
+        "path": "docs/lightweight-speed-measurements.json",
+        "sha256": "0346b7cd5e1c472f6198fd132481bd3249a97b90c71917787c198fd9e599fb38"
+      },
+      {
+        "path": "docs/novelty-baseline-v1-measurements.json",
+        "sha256": "d1d61d09d342f380ea8d4f9ee64db3f6f679e3d50bcd14644ff47027c8912aed"
+      },
+      {
+        "path": "docs/stories-v1-3mb-confirmation-measurements.json",
+        "sha256": "6b1138895c1fb3a705d408aa602823f74797ed8862833b2e81ae574aac1252ad"
+      },
+      {
+        "path": "docs/stories-v1-3mb-development-measurements.json",
+        "sha256": "90138a27578329a05f9b09be57f3eb1b25a1a6d02b1619f83e38c3c3478e766d"
+      },
+      {
+        "path": "docs/stories-v2-diverse-3mb-confirmation-measurements.json",
+        "sha256": "5cd6955dffeded7e1fa0055ade3ed96f2c65a0b7063a6b039de0f9fe7818e61d"
+      },
+      {
+        "path": "docs/stories-v2-diverse-3mb-development-measurements.json",
+        "sha256": "3ac41cd94f050c39c781b77a4d31b29378788bfbf0e94a1829ca9d7d3a8be309"
+      },
+      {
+        "path": "docs/stories-v2-diverse-3mb-t075-development-measurements.json",
+        "sha256": "41309ea3e51ddea8259309d42b6ac91ccd49f4855b736dad81116fee1f7fd811"
+      },
+      {
+        "path": "docs/stories-v2-lexical-only-development-measurements.json",
+        "sha256": "360ade12c2a9153c8b23cabee5881ad2f9a15388dc9166574e75c195436492c2"
+      }
+    ],
+    "seconds": 47.00420730000042,
+    "upstream_stories": 521853,
+    "source_exhausted": false,
+    "target_unfilled": false
+  },
+  "expansion_sha256": "d263f3cd122137eab7f27df85fc8568d5e477dba1d18c21a0e0b03d017c1ec70",
+  "holdout": {
+    "pairs_sha256": "176bfea07585ddcba5d23c15b00b7360063b77e50545fc4d6a18a49dcfbb2a1f",
+    "script_sha256": "581b8d2e103d218ed9f9e7185d24676e40555e75161ddf4827360a5bab48b846",
+    "extractor_sha256": "a8a12a85439b2575416f2368dc3bef9b458d59adb491083d0dbcb8cc90d0813b",
+    "removals": {
+      "train.jsonl": [],
+      "validation.jsonl": [],
+      "test.jsonl": [],
+      "family-test.jsonl": [],
+      "teacher-test.jsonl": [],
+      "stories-test.jsonl": []
+    },
+    "coverage": [
+      {
+        "id": "comb-001",
+        "noun_count": 604,
+        "positive_verb_count": 234,
+        "negative_verb_count": 468,
+        "components_observed": true
+      },
+      {
+        "id": "comb-002",
+        "noun_count": 99,
+        "positive_verb_count": 234,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-003",
+        "noun_count": 90,
+        "positive_verb_count": 234,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-004",
+        "noun_count": 200,
+        "positive_verb_count": 234,
+        "negative_verb_count": 55,
+        "components_observed": true
+      },
+      {
+        "id": "comb-005",
+        "noun_count": 26,
+        "positive_verb_count": 234,
+        "negative_verb_count": 362,
+        "components_observed": true
+      },
+      {
+        "id": "comb-006",
+        "noun_count": 124,
+        "positive_verb_count": 1010,
+        "negative_verb_count": 468,
+        "components_observed": true
+      },
+      {
+        "id": "comb-007",
+        "noun_count": 61,
+        "positive_verb_count": 1010,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-008",
+        "noun_count": 144,
+        "positive_verb_count": 1010,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-009",
+        "noun_count": 712,
+        "positive_verb_count": 19,
+        "negative_verb_count": 468,
+        "components_observed": true
+      },
+      {
+        "id": "comb-010",
+        "noun_count": 62,
+        "positive_verb_count": 19,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-011",
+        "noun_count": 157,
+        "positive_verb_count": 107,
+        "negative_verb_count": 468,
+        "components_observed": true
+      },
+      {
+        "id": "comb-012",
+        "noun_count": 56,
+        "positive_verb_count": 19,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-013",
+        "noun_count": 126,
+        "positive_verb_count": 1010,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-014",
+        "noun_count": 97,
+        "positive_verb_count": 234,
+        "negative_verb_count": 55,
+        "components_observed": true
+      },
+      {
+        "id": "comb-015",
+        "noun_count": 76,
+        "positive_verb_count": 1010,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-016",
+        "noun_count": 1135,
+        "positive_verb_count": 468,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-017",
+        "noun_count": 86,
+        "positive_verb_count": 468,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-018",
+        "noun_count": 52,
+        "positive_verb_count": 468,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-019",
+        "noun_count": 203,
+        "positive_verb_count": 362,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-020",
+        "noun_count": 72,
+        "positive_verb_count": 362,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-021",
+        "noun_count": 203,
+        "positive_verb_count": 362,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-022",
+        "noun_count": 53,
+        "positive_verb_count": 362,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-023",
+        "noun_count": 54,
+        "positive_verb_count": 468,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-024",
+        "noun_count": 123,
+        "positive_verb_count": 468,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-025",
+        "noun_count": 482,
+        "positive_verb_count": 213,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-026",
+        "noun_count": 80,
+        "positive_verb_count": 84,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-027",
+        "noun_count": 140,
+        "positive_verb_count": 84,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-028",
+        "noun_count": 43,
+        "positive_verb_count": 84,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-029",
+        "noun_count": 97,
+        "positive_verb_count": 9,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-030",
+        "noun_count": 27,
+        "positive_verb_count": 9,
+        "negative_verb_count": 468,
+        "components_observed": true
+      },
+      {
+        "id": "comb-031",
+        "noun_count": 9,
+        "positive_verb_count": 9,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-032",
+        "noun_count": 139,
+        "positive_verb_count": 7,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-033",
+        "noun_count": 43,
+        "positive_verb_count": 84,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-034",
+        "noun_count": 39,
+        "positive_verb_count": 84,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-035",
+        "noun_count": 17,
+        "positive_verb_count": 9,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-036",
+        "noun_count": 37,
+        "positive_verb_count": 120,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-037",
+        "noun_count": 6,
+        "positive_verb_count": 120,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-038",
+        "noun_count": 28,
+        "positive_verb_count": 120,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-039",
+        "noun_count": 45,
+        "positive_verb_count": 55,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-040",
+        "noun_count": 5,
+        "positive_verb_count": 106,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-041",
+        "noun_count": 169,
+        "positive_verb_count": 2,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-042",
+        "noun_count": 307,
+        "positive_verb_count": 238,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-043",
+        "noun_count": 158,
+        "positive_verb_count": 36,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-044",
+        "noun_count": 162,
+        "positive_verb_count": 375,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-045",
+        "noun_count": 28,
+        "positive_verb_count": 20,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-046",
+        "noun_count": 43,
+        "positive_verb_count": 120,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-047",
+        "noun_count": 253,
+        "positive_verb_count": 120,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-048",
+        "noun_count": 497,
+        "positive_verb_count": 120,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-049",
+        "noun_count": 54,
+        "positive_verb_count": 649,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-050",
+        "noun_count": 72,
+        "positive_verb_count": 344,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-051",
+        "noun_count": 308,
+        "positive_verb_count": 643,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-052",
+        "noun_count": 761,
+        "positive_verb_count": 6,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-053",
+        "noun_count": 1406,
+        "positive_verb_count": 628,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-054",
+        "noun_count": 594,
+        "positive_verb_count": 649,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-055",
+        "noun_count": 343,
+        "positive_verb_count": 468,
+        "negative_verb_count": 274,
+        "components_observed": true
+      },
+      {
+        "id": "comb-056",
+        "noun_count": 30,
+        "positive_verb_count": 274,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-057",
+        "noun_count": 1032,
+        "positive_verb_count": 274,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-058",
+        "noun_count": 942,
+        "positive_verb_count": 2652,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-059",
+        "noun_count": 609,
+        "positive_verb_count": 661,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-060",
+        "noun_count": 17,
+        "positive_verb_count": 227,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-061",
+        "noun_count": 103,
+        "positive_verb_count": 98,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-062",
+        "noun_count": 579,
+        "positive_verb_count": 41,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-063",
+        "noun_count": 223,
+        "positive_verb_count": 370,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-064",
+        "noun_count": 239,
+        "positive_verb_count": 370,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-065",
+        "noun_count": 264,
+        "positive_verb_count": 370,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-066",
+        "noun_count": 805,
+        "positive_verb_count": 19,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-067",
+        "noun_count": 629,
+        "positive_verb_count": 7,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-068",
+        "noun_count": 539,
+        "positive_verb_count": 409,
+        "negative_verb_count": 0,
+        "components_observed": false
+      },
+      {
+        "id": "comb-069",
+        "noun_count": 1415,
+        "positive_verb_count": 72,
+        "negative_verb_count": 7,
+        "components_observed": true
+      },
+      {
+        "id": "comb-070",
+        "noun_count": 72,
+        "positive_verb_count": 72,
+        "negative_verb_count": 274,
+        "components_observed": true
+      },
+      {
+        "id": "comb-071",
+        "noun_count": 424,
+        "positive_verb_count": 45,
+        "negative_verb_count": 7,
+        "components_observed": true
+      },
+      {
+        "id": "comb-072",
+        "noun_count": 453,
+        "positive_verb_count": 45,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-073",
+        "noun_count": 120,
+        "positive_verb_count": 29,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-074",
+        "noun_count": 241,
+        "positive_verb_count": 1018,
+        "negative_verb_count": 7,
+        "components_observed": true
+      },
+      {
+        "id": "comb-075",
+        "noun_count": 1947,
+        "positive_verb_count": 23,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-076",
+        "noun_count": 111,
+        "positive_verb_count": 0,
+        "negative_verb_count": 7,
+        "components_observed": false
+      },
+      {
+        "id": "comb-077",
+        "noun_count": 310,
+        "positive_verb_count": 47,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-078",
+        "noun_count": 229,
+        "positive_verb_count": 81,
+        "negative_verb_count": 7,
+        "components_observed": true
+      },
+      {
+        "id": "comb-079",
+        "noun_count": 67,
+        "positive_verb_count": 160,
+        "negative_verb_count": 0,
+        "components_observed": false
+      },
+      {
+        "id": "comb-080",
+        "noun_count": 827,
+        "positive_verb_count": 439,
+        "negative_verb_count": 72,
+        "components_observed": true
+      },
+      {
+        "id": "comb-081",
+        "noun_count": 573,
+        "positive_verb_count": 1287,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-082",
+        "noun_count": 204,
+        "positive_verb_count": 157,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-083",
+        "noun_count": 88,
+        "positive_verb_count": 20,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-084",
+        "noun_count": 59,
+        "positive_verb_count": 20,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      },
+      {
+        "id": "comb-085",
+        "noun_count": 190,
+        "positive_verb_count": 14,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-086",
+        "noun_count": 194,
+        "positive_verb_count": 3177,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-087",
+        "noun_count": 64,
+        "positive_verb_count": 1287,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-088",
+        "noun_count": 202,
+        "positive_verb_count": 3177,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-089",
+        "noun_count": 155,
+        "positive_verb_count": 52,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-090",
+        "noun_count": 436,
+        "positive_verb_count": 28,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-091",
+        "noun_count": 19,
+        "positive_verb_count": 13,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-092",
+        "noun_count": 28,
+        "positive_verb_count": 73,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-093",
+        "noun_count": 40,
+        "positive_verb_count": 238,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-094",
+        "noun_count": 47,
+        "positive_verb_count": 813,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-095",
+        "noun_count": 31,
+        "positive_verb_count": 824,
+        "negative_verb_count": 84,
+        "components_observed": true
+      },
+      {
+        "id": "comb-096",
+        "noun_count": 285,
+        "positive_verb_count": 324,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-097",
+        "noun_count": 346,
+        "positive_verb_count": 268,
+        "negative_verb_count": 9,
+        "components_observed": true
+      },
+      {
+        "id": "comb-098",
+        "noun_count": 1767,
+        "positive_verb_count": 0,
+        "negative_verb_count": 84,
+        "components_observed": false
+      },
+      {
+        "id": "comb-099",
+        "noun_count": 594,
+        "positive_verb_count": 37,
+        "negative_verb_count": 234,
+        "components_observed": true
+      },
+      {
+        "id": "comb-100",
+        "noun_count": 97,
+        "positive_verb_count": 20,
+        "negative_verb_count": 1010,
+        "components_observed": true
+      }
+    ],
+    "restrictions": [
+      "No prior task-trained checkpoints or v12 repair auxiliary data",
+      "All additional future training sources must pass the same exclusion",
+      "Dictionary normalization is not synonym or semantic leakage detection",
+      "Inherited vocabulary preserves prior corpus word identities and counts; only sequence-combination holdout",
+      "Existing corpus validation/test also filtered; not comparable to original validation loss"
+    ]
+  },
+  "source_card_sha256": "1dbe06648bbbdd41f64c50707e9ac584a919ea13a7a513151a320fc45af49fbf",
+  "old_heldout_bytes_unchanged": true,
+  "whole_story_train_test_disjoint": true,
+  "new_unique_stories": 28028,
+  "train_total": 100000,
+  "new_rows": 42646
+}

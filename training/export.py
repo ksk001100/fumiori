@@ -7,10 +7,23 @@ import torch
 from .train import load_checkpoint
 
 
+def additional_data_attribution(data_manifest):
+    sources, notices = [], []
+    for origin in data_manifest.get('additional_sources', []):
+        text = origin.get('license_text', '')
+        if (origin.get('license') != 'MIT' or not text
+                or hashlib.sha256(text.encode('utf-8')).hexdigest() != origin.get('license_text_sha256')):
+            raise ValueError('additional data needs a verified supported MIT license notice')
+        sources.append({k:origin[k] for k in ('dataset','revision','license','authors','dataset_url','paper','sha256') if k in origin})
+        notices.append('\n\nAdditional training data: '+origin['dataset']+'\n'+origin['authors']+'\n'+origin['dataset_url']+'\n'+text)
+    return sources, ''.join(notices)
+
+
 def export(checkpoint, output, generation_mode=None, polite_boundary_guard=False, normalize_morph_readings=False, lexical_boundary_guard=False, subword_start_temperature=None):
     if generation_mode not in (None, 'autoregressive'):
         raise ValueError('unsupported generation mode')
     model, ck = load_checkpoint(checkpoint)
+    extra_sources, extra_notices = additional_data_attribution(ck['data_manifest'])
     out = Path(output)
     out.mkdir(parents=True, exist_ok=True)
     save_file({k: v.contiguous() for k, v in model.state_dict().items()}, out / "model.safetensors")
@@ -118,9 +131,16 @@ def export(checkpoint, output, generation_mode=None, polite_boundary_guard=False
                         + 'Teacher weights license: ' + teacher['license'] + '\n'
                         + 'Teacher weights are not included. Training text was model-generated; '
                           'its quality was not independently certified.\n')
+        notices += extra_notices
         notices = notices.encode()
         (out/'THIRD_PARTY_NOTICES.txt').write_bytes(notices)
         manifest['third_party_notices_sha256'] = hashlib.sha256(notices).hexdigest()
+    elif extra_notices:
+        notices = extra_notices.encode('utf-8')
+        (out/'THIRD_PARTY_NOTICES.txt').write_bytes(notices)
+        manifest['third_party_notices_sha256'] = hashlib.sha256(notices).hexdigest()
+    if extra_sources:
+        manifest.setdefault('data_sources', []).extend(extra_sources)
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     fixtures = []
     with torch.no_grad():

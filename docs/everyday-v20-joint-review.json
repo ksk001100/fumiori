@@ -1,0 +1,181 @@
+{
+  "report_sha256": "912a912d2f9cf0d417454420ce472db73c0465873410d1cc5a403bd240c4a685",
+  "mapping_sha256": "454bb54daa6ddcbbe1e94f56f00066ca4c9f94da1f2bcf6bfac6fd8cbe69f6ea",
+  "ratings_sha256": "3dcc2870013412ff37d87e348e7b2e057d2a3b197ab72f369d36194396ccd2dc",
+  "script_sha256": "b741ab69173d0f3da36687a69c41c4cfcdba8a46f36efc37446a267ba2621cee",
+  "scope": "NFKC/terminal-period training membership and character-bigram Dice only, not semantic novelty. Joint means explicit naturalness AND reading labels. Rates among rated successes; incomplete reviews are not gates.",
+  "by_condition": {
+    "control4-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 14,
+            "natural": 14,
+            "reading": 14,
+            "joint": 14
+          },
+          "train_nonexact": {
+            "reviewed": 86,
+            "natural": 61,
+            "reading": 86,
+            "joint": 61
+          },
+          "joint_nonexact_count": 61,
+          "joint_nonexact_rate_among_rated": 0.61,
+          "joint_not_near_count": 49,
+          "joint_not_near_rate_among_rated": 0.49
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    },
+    "layers4-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 8,
+            "natural": 8,
+            "reading": 8,
+            "joint": 8
+          },
+          "train_nonexact": {
+            "reviewed": 92,
+            "natural": 78,
+            "reading": 92,
+            "joint": 78
+          },
+          "joint_nonexact_count": 78,
+          "joint_nonexact_rate_among_rated": 0.78,
+          "joint_not_near_count": 68,
+          "joint_not_near_rate_among_rated": 0.68
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    },
+    "layers2-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 11,
+            "natural": 11,
+            "reading": 11,
+            "joint": 11
+          },
+          "train_nonexact": {
+            "reviewed": 89,
+            "natural": 74,
+            "reading": 89,
+            "joint": 74
+          },
+          "joint_nonexact_count": 74,
+          "joint_nonexact_rate_among_rated": 0.74,
+          "joint_not_near_count": 61,
+          "joint_not_near_rate_among_rated": 0.61
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    },
+    "layers8-n1": {
+      "selected": 100,
+      "by_reviewer_kind": {
+        "agent": {
+          "rated": 100,
+          "train_exact": {
+            "reviewed": 3,
+            "natural": 3,
+            "reading": 3,
+            "joint": 3
+          },
+          "train_nonexact": {
+            "reviewed": 97,
+            "natural": 71,
+            "reading": 97,
+            "joint": 71
+          },
+          "joint_nonexact_count": 71,
+          "joint_nonexact_rate_among_rated": 0.71,
+          "joint_not_near_count": 63,
+          "joint_not_near_rate_among_rated": 0.63
+        },
+        "independent_human": {
+          "rated": 0,
+          "train_exact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "train_nonexact": {
+            "reviewed": 0,
+            "natural": 0,
+            "reading": 0,
+            "joint": 0
+          },
+          "joint_nonexact_count": 0,
+          "joint_nonexact_rate_among_rated": null,
+          "joint_not_near_count": 0,
+          "joint_not_near_rate_among_rated": null
+        }
+      }
+    }
+  }
+}

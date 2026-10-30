@@ -1,0 +1,38 @@
+{
+  "pattern": "少年|少女|男の子|女の子|魔法|王国|冒険",
+  "scope": "Literal keyword proxy, not a human narrative-style or naturalness label. Nature and ordinary descriptions are not excluded.",
+  "phases": {
+    "evaluation": {
+      "control4-n1": {
+        "count": 2,
+        "total": 600
+      },
+      "layers4-n1": {
+        "count": 53,
+        "total": 600
+      },
+      "layers2-n1": {
+        "count": 51,
+        "total": 600
+      },
+      "layers8-n1": {
+        "count": 49,
+        "total": 600
+      }
+    },
+    "fresh": {
+      "control4-n1": {
+        "count": 10,
+        "total": 600
+      },
+      "layers4-n1": {
+        "count": 36,
+        "total": 600
+      },
+      "layers2-n1": {
+        "count": 42,
+        "total": 600
+      }
+    }
+  }
+}

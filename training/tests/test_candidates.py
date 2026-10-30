@@ -13,7 +13,8 @@ def test_catalog_retains_all_published_model_variants():
     catalog = load_catalog('configs/demo-models.json')
     assert list(catalog) == ['model-int8','model-experimental','model-v14-ce','model-v14-smooth',
                              'model-v15-base','model-v15-context','model-v15-quality','model-v15-quality-context',
-                             'model-v16-branch-count','model-v16-branch-mass','model-v17-small','model-v17-expanded','model-v18-expanded-base','model-v19-curated','model-v19-refined']
+                             'model-v16-branch-count','model-v16-branch-mass','model-v17-small','model-v17-expanded','model-v18-expanded-base','model-v19-curated','model-v19-refined',
+                             'model-v20-control4','model-v20-layers4','model-v20-layers2','model-v20-layers8']
 
 
 @pytest.mark.parametrize('identifier', ['../model','model-../../pkg','model-good/model-bad','pkg'])

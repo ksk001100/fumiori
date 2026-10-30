@@ -1,0 +1,42 @@
+{
+  "data": "build/everyday-v19-refined-data",
+  "common_reference_data": "build/everyday-v20-selected-100k-data",
+  "seed": 920000,
+  "samples": 600,
+  "review_count": 100,
+  "review_seed": 9101,
+  "near_threshold": 0.8,
+  "conditions": [
+    {
+      "name": "control4",
+      "model": "models/everyday-v20-control4-3mb",
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "max_candidates": 1
+    },
+    {
+      "name": "layers4",
+      "model": "models/everyday-v20-layers4-3mb",
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "max_candidates": 1,
+      "data": "build/everyday-v20-selected-100k-data"
+    },
+    {
+      "name": "layers2",
+      "model": "models/everyday-v20-layers2-3mb",
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "max_candidates": 1,
+      "data": "build/everyday-v20-selected-100k-data"
+    },
+    {
+      "name": "layers8",
+      "model": "models/everyday-v20-layers8-3mb",
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "max_candidates": 1,
+      "data": "build/everyday-v20-selected-100k-data"
+    }
+  ]
+}

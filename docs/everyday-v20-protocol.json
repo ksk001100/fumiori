@@ -1,0 +1,84 @@
+{
+  "goal": "100000 train sentences without copying or templated padding; frozen vocabulary; near/style/pattern-capped addition from licensed local prose; old heldouts unchanged, new1000 heldout sentences partitioned by whole source story",
+  "data_config_sha256": "58f89fb99ea991d82325c831ddd80588414ab23fea3107230243fe64a16c7cbf",
+  "pilot": "10000 stories yielded9549 train and1000 heldout under fixed filtering; no generation evaluation used",
+  "models": {
+    "control4": {
+      "config": "configs/everyday-v20-control4.json",
+      "sha256": "b0ee757e78b3f9bb5a794e075495118ab32f153cade1e50e92aba1b7433a4c84",
+      "layers": 4,
+      "width": 128
+    },
+    "layers4": {
+      "config": "configs/everyday-v20-layers4.json",
+      "sha256": "90ea7c355048a37c552f1b3c6aff6c35282a13e5d32ca4c4bf3dc5254203e4b5",
+      "layers": 4,
+      "width": 128
+    },
+    "layers2": {
+      "config": "configs/everyday-v20-layers2.json",
+      "sha256": "a87e13b7435687612452bbdf5424db91b6a785ed80964d2ae453bc9c6ab3761f",
+      "layers": 2,
+      "width": 152
+    },
+    "layers8": {
+      "config": "configs/everyday-v20-layers8.json",
+      "sha256": "325f1a1160da91ae2a213f934faec9f62c03019405430bec852814b79ec91a09",
+      "layers": 8,
+      "width": 104
+    }
+  },
+  "training": "All from random initialization, final10000 steps, batch128, difficulty-balanced uniform row sampling, no corpus mixture; small-data4-layer control separates sampling/training budget from adding data. Same seed42. Do not claim global architecture optimality.",
+  "evaluation": "One shared new generation pool beginning920000,600 requests and100 prior-selected reviews per condition; original full100k union train reference. Frozen validation criterion and separate new-story heldout likelihood. Capacity<=3000000 bytes and CPU/WASM normal measured; all models in demo. Agent ratings not independent human review; no automatic promotion.",
+  "data_review_amendment": {
+    "timing": "Before any v20 student training or model generation evaluation",
+    "initial_candidate_train_sha256": "25898b2cf71db11e3587f5b9cbae261246de0b17c19595cd52459a610d81d70b",
+    "sample_sha256": "6d10ee1daa541a478bf6e251ec75b080051fd961961359b2da801063f6dc893a",
+    "finding": "Context-bound initial connectives, generator adverb/existence artifacts, and incorrect frozen reading 宇宙人/うちゅうにん in80 new-row sample. Rebuild with conservative exclusions; start cap1500->500. Narrative tone remains and must be measured, not assumed daily prose.",
+    "final_data_config_sha256": "f750b489d5befb05070e6eebbb94c6ec1c0b1014c37dd17ec693f7f54d79701c",
+    "final_model_config_sha256": {
+      "control4": "b0ee757e78b3f9bb5a794e075495118ab32f153cade1e50e92aba1b7433a4c84",
+      "layers2": "b034ebd494ab04d58b28633d8f70352ddf323aa51ffb3923f3c4b811ec7c638a",
+      "layers4": "4e1bf4da75c7696137fb7e49022221ccc2cecfe8d6f67a5b18e02ba3f4d99be0",
+      "layers8": "1a13767596612aa52c4830eb5b19173c10dfc150a9b48d793e4f228e921f0f85"
+    }
+  },
+  "second_data_review_amendment": {
+    "timing": "Before any student training",
+    "finding": "Whole-token exclusion missed split 宇宙+人. Added text/kana regression guard, uncertain standalone実/じつ quarantine, and habitual existential seed-artifact rule.",
+    "sample_sha256": "cea2b8bd94650dcc352498528eccb292dddcfbb77dfb38faffc1b99a07b589f6",
+    "data_config_sha256": "4fa698ae084beb328a2eb31a5e74d8eed52f61dc1358220046874f60d2a2ce27",
+    "model_config_sha256": {
+      "control4": "b0ee757e78b3f9bb5a794e075495118ab32f153cade1e50e92aba1b7433a4c84",
+      "layers2": "6d67d4b4e8a0a8443aa62cdfb19e393d0d6167688d275335a27e8ee1da09cadc",
+      "layers4": "08ce64cd4dacdebac38d9e2dbe665632e0933e43c7d7cffdba6d2c5b4d7d048b",
+      "layers8": "cfb29c79929e9336b56a5d04fac6d21d81bb7ee0b983d8cc3ef736f3e481ae75"
+    }
+  },
+  "final_data_amendment": {
+    "timing": "Before100k student training; small-data control already training independently",
+    "review_sha256": "24387f766d2bc31f779f1b7a6c222d220682071e45a5d21d2541fb8d54cee838",
+    "finding": "Two grammatical existence/location/connective issues in60-row review; conservative locative-de/existence rejection and やがて prefix exclusion.",
+    "data_config_sha256": "c89298b048b6b9184b7b8a4a1d5ac14f5be8ca169ecb26fc8300f49665f28e74",
+    "model_config_sha256": {
+      "control4": "b0ee757e78b3f9bb5a794e075495118ab32f153cade1e50e92aba1b7433a4c84",
+      "layers2": "5a93c7895c40d14e529b896e90701c67e864c43219fcdf2f7d2cc2f5bd148816",
+      "layers4": "d71c70f339c460bad04e53e31e19b09bd86b5f49a55ea6457a27502f73246ce6",
+      "layers8": "2416e867919f0676fcc3347cb45b52342abae5703862f4cc43d75b1975f95c1f"
+    }
+  },
+  "selected_data_config_sha256": "854548da62332a8f6920a6f25ecf125a46bebdfba9e22b94c37a41505a4888b9",
+  "selected_model_config_sha256": {
+    "control4": "b0ee757e78b3f9bb5a794e075495118ab32f153cade1e50e92aba1b7433a4c84",
+    "layers2": "2d9a29882c9f480a9233ae463fd584134bd28a52bc946425862b43da37b58877",
+    "layers4": "15e5d5c2061208ee38f478b3578b7ffaf61f92cd6d8ad8ebc4df22ecd3d105de",
+    "layers8": "1efbc856355cc765ef5130c6ea3cc5cf55b70c44112bc3d3c386b6c5efc48415"
+  },
+  "evaluation_config_sha256": "d40161b08d287759ee3ff2a8d43bffeb92585dd9043fefb36d888b3fa3c2087b",
+  "last_reading_amendment": "Before100k model training: reviewed sample found何より/なんより; add a direct text/kana quarantine. Sample itself contains one remaining awkward adverb clause and narrative/context-dependent prose, so not a corpus-wide quality certification.",
+  "additional_fresh_seed_plan": {
+    "timing": "After first400 reviews, before additional outputs. Selected2/4-layer candidates plus small-data control; no retraining or parameter changes.",
+    "config_sha256": "eec748e5e1d54a69b14612f749698525d61fdbc9f9b5d182000c186631b23529",
+    "scope": "New930000 pool,600 requests and60 prior-selected reviews per condition; exploratory follow-up, not independent human confirmation or reserved830000 gate.8-layer omitted after worse quality and slower first-pool timing."
+  }
+}
