@@ -1,0 +1,83 @@
+{
+  "report_sha256": "3a1b51dac8c38b8ae09a16b51f5b8ef363cf4b047f04f5c219cac3df2c816a72",
+  "mapping_sha256": "bfafae581752c153477ff438c749e6d4b4c90411ace87e1cfaa531c2389e5f3c",
+  "ratings_sha256": "035a0d118fba4f68b602271b42ef827affb049445d39803602442f938aa294ed",
+  "by_condition": {
+    "base-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.67,
+          "reading_accuracy": 0.98,
+          "joint_rate": 0.66
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    },
+    "quality-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.88,
+          "reading_accuracy": 0.98,
+          "joint_rate": 0.87
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    },
+    "branch-count-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.91,
+          "reading_accuracy": 0.97,
+          "joint_rate": 0.88
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    },
+    "branch-mass-n1": {
+      "selected": 100,
+      "unrated": 0,
+      "by_reviewer_kind": {
+        "independent_human": {
+          "rated": 0,
+          "natural_rate": null,
+          "reading_accuracy": null,
+          "joint_rate": null
+        },
+        "agent": {
+          "rated": 100,
+          "natural_rate": 0.77,
+          "reading_accuracy": 1.0,
+          "joint_rate": 0.77
+        }
+      },
+      "scope": "Rates among explicitly rated successes only; incomplete review is not a quality gate"
+    }
+  }
+}

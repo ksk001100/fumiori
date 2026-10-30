@@ -10,11 +10,15 @@ GitHub Actionsはこのモデルを使い、学習・データ取得なしでWeb
 
 `everyday-v14-holdout-ce-3mb/` と `everyday-v14-holdout-smooth-3mb/` は各2,527,550 bytesの比較用モデル。語の組合せを除去したv13データから同じ初期値・5,000stepで学習し、後者のみlabel smoothing 0.05を追加した。標準への採用はしていない。品質・読み・新規性の課題と実測は[v14記録](../docs/compositional-generation-v14.md)を参照。
 
-4モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
+`everyday-v15-{base,context,quality,quality-context}-3mb/` は各2,527,550 bytesの4条件の比較用モデル。乱数を分離した共通初期値から、名詞入力マスクとデータ比率変更を2×2で比較した。自然な非一致文を増やす改善は確認できず、標準には採用しない。[v15記録](../docs/compositional-generation-v15.md)を参照。
+
+`everyday-v16-branch-{count,mass}-3mb/` は各2,527,550 bytesの2モデル。従来の行数基準と実際の抽選質量を使う分岐補正を比較した。標準には採用しないが、比較用として両方デモへ追加している。[v16記録](../docs/compositional-generation-v16.md)を参照。
+
+登録した全10モデルを含むデモのビルド（一覧は `configs/demo-models.json`）:
 
 ```powershell
 python scripts/build_wasm.py --model-catalog configs/demo-models.json
-node scripts/smoke_wasm.mjs model-int8 model-experimental model-v14-ce model-v14-smooth
+node scripts/smoke_wasm.mjs --catalog configs/demo-models.json
 ```
 
 アプリに組み込む場合は [GitHubの `models/stories-v2-diverse-3mb/`](https://github.com/ksk001100/fumiori/tree/main/models/stories-v2-diverse-3mb) の5ファイルをまとめて取得し、アプリの配置先に同梱する。読み込み例とCargoのGit依存の指定は [READMEの組み込み手順](../README.md#rustアプリへの組み込み) を参照。

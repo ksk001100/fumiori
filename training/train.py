@@ -77,11 +77,29 @@ def sampling_weights(rows, lexical_balance=None, topic_balance=None, corpus_mixt
     return torch.tensor([f / totals[r['ids'][1]] for r, f in zip(rows, factors)], dtype=torch.float64)
 
 
-def noun_context(batch, noun_ids, probability):
+def noun_context(batch, noun_ids, probability, generator=None):
     """Mask input nouns only; original next-token targets stay untouched."""
     inputs = batch[:, :-1]
-    mask = noun_ids[inputs] & (torch.rand(inputs.shape, device=inputs.device) < probability)
+    mask = noun_ids[inputs] & (torch.rand(inputs.shape, device=inputs.device, generator=generator) < probability)
     return inputs.masked_fill(mask, 6)
+
+
+def training_generators(config, device):
+    """Optional isolated data/masking RNGs; retain legacy streams by default."""
+    enabled = config.get('independent_data_rng', False)
+    if not isinstance(enabled, bool):
+        raise ValueError('independent_data_rng must be boolean')
+    if not enabled:
+        return None, None
+    return tuple(torch.Generator(device=device).manual_seed(config['seed']+offset) for offset in (101,102))
+
+
+def state_digest(model):
+    digest = hashlib.sha256()
+    for name, tensor in sorted(model.state_dict().items()):
+        digest.update(json.dumps([name,str(tensor.dtype),list(tensor.shape)]).encode())
+        digest.update(tensor.detach().cpu().contiguous().view(torch.uint8).numpy().tobytes())
+    return digest.hexdigest()
 
 
 def learning_rate_at(config, step):
@@ -167,6 +185,9 @@ def train(config_path):
             raise ValueError('only block-128 INT4 QAT is supported')
         from .qat import enable_int4
         enable_int4(model)
+    data_rng, context_rng = training_generators(c, device)
+    initial_digest = state_digest(model) if data_rng is not None else None
+    sampling_digest = hashlib.sha256() if data_rng is not None else None
     smoothing = c.get('label_smoothing', 0.0)
     if not 0 <= smoothing < 1:
         raise ValueError('label_smoothing must be in [0, 1)')
@@ -195,13 +216,20 @@ def train(config_path):
             raise ValueError('invalid or unacknowledged model-reviewed repair training')
         repairs = RepairData(rc['data_dir'],manifest['vocab_sha256'],
             hashlib.sha256((data/'manifest.json').read_bytes()).hexdigest(),device)
-    if c.get('branch_balance') is not None:
-        from .branches import branch_weights
-        token_weights, branch_metadata = branch_weights(rows['train'], train_batch.shape[1], **c['branch_balance'])
-        token_weights = token_weights.to(device)
     if any(c.get(k) is not None for k in ('lexical_balance', 'topic_balance', 'corpus_mixture')) and not c.get('balance_difficulties', False):
         raise ValueError('lexical/topic balance requires balance_difficulties')
     weights = sampling_weights(rows['train'], c.get('lexical_balance'), c.get('topic_balance'), c.get('corpus_mixture')).to(device) if c.get('balance_difficulties', False) else None
+    if c.get('branch_balance') is not None:
+        from .branches import branch_weights
+        branch_config = dict(c['branch_balance'])
+        frequency_source = branch_config.pop('frequency_source', 'uniform_rows')
+        if frequency_source not in ('uniform_rows', 'sampling_mass'):
+            raise ValueError('invalid branch frequency_source')
+        if frequency_source == 'sampling_mass' and weights is None:
+            raise ValueError('sampling_mass branch balance requires explicit sampling weights')
+        row_weights = weights.detach().cpu().tolist() if frequency_source == 'sampling_mass' else None
+        token_weights, branch_metadata = branch_weights(rows['train'], train_batch.shape[1], row_weights=row_weights, **branch_config)
+        token_weights = token_weights.to(device)
     val_batch = tensor_batch(rows["validation"], device)
     validation_weights = c.get('validation_corpus_mixture')
     validation_groups = None
@@ -244,11 +272,14 @@ def train(config_path):
             group['lr'] = rate * group.get('lr_scale', 1.0)
         model.train()
         if weights is not None:
-            indices = torch.multinomial(weights, batch_size, replacement=True)
+            indices = torch.multinomial(weights, batch_size, replacement=True, generator=data_rng)
         else:
-            indices = torch.randperm(len(train_batch), device=device)[:batch_size] if len(train_batch) > batch_size else None
+            indices = torch.randperm(len(train_batch), device=device, generator=data_rng)[:batch_size] if len(train_batch) > batch_size else None
+        if sampling_digest is not None and step < c['steps']:
+            selected = indices if indices is not None else torch.arange(len(train_batch),device=device)
+            sampling_digest.update(selected.cpu().numpy().tobytes())
         sampled = train_batch if indices is None else train_batch[indices]
-        context = noun_context(sampled, noun_ids, context_dropout) if context_dropout else None
+        context = noun_context(sampled, noun_ids, context_dropout, context_rng) if context_dropout else None
         sampled_token_weights = None if token_weights is None else (token_weights if indices is None else token_weights[indices])
         with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=use_bf16):
             loss = loss_for(model, sampled, smoothing, context_ids=context, token_weights=sampled_token_weights)
@@ -288,6 +319,9 @@ def train(config_path):
     if device.type == 'cuda':
         torch.cuda.synchronize(device)
     metadata = dict(training_device=str(device), device_name=device_name, cuda_version=torch.version.cuda, initialization=initialization,
+                    controlled_rng=None if data_rng is None else dict(data_seed=c['seed']+101,context_seed=c['seed']+102,
+                        initial_state_sha256=initial_digest,training_row_draws_sha256=sampling_digest.hexdigest(),
+                        optimizer_batches=step,scope='row indices for optimizer steps only; model dropout uses the original global RNG'),
                     branch_balancing=branch_metadata,
                     repair_training=None if repairs is None else repairs.manifest,
                     peak_cuda_memory_bytes=torch.cuda.max_memory_allocated(device) if device.type == 'cuda' else None, selected_step=best_step if select_best else step,

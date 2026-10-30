@@ -78,8 +78,9 @@ WASM・Webデモや配布モデルを変更した場合:
 
 ```powershell
 python scripts/build_wasm.py --model-catalog configs/demo-models.json
-node scripts/smoke_wasm.mjs model-int8 model-experimental model-v14-ce model-v14-smooth
+node scripts/smoke_wasm.mjs --catalog configs/demo-models.json
 $env:FUMIORI_REQUIRE_EXPERIMENTAL = '1'
+$env:FUMIORI_REQUIRE_CATALOG = 'configs/demo-models.json'
 node scripts/test_pages.cjs
 ```
 

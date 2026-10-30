@@ -35,6 +35,35 @@ def test_prefixes_keep_difficulty_and_distant_context():
             branch_weights(rows, 6, **kwargs)
 
 
+def test_branch_distribution_uses_actual_sampling_mass_and_is_scale_invariant():
+    rows=[dict(ids=[0,4,7,9,1]),dict(ids=[0,4,8,9,1])]
+    uniform,_=branch_weights(rows,5,strength=.5,max_ratio=100)
+    assert (uniform==1).all()
+    corrected,metadata=branch_weights(rows,5,strength=.5,max_ratio=100,row_weights=[9.,1.])
+    mass=torch.tensor([.9,.1])*corrected[:,1]
+    torch.testing.assert_close(mass,torch.tensor([.75,.25]))
+    torch.testing.assert_close(corrected[:,0],torch.ones(2))
+    torch.testing.assert_close(corrected[:,2:],torch.ones(2,2))
+    scaled,_=branch_weights(rows,5,strength=.5,max_ratio=100,row_weights=[90.,10.])
+    torch.testing.assert_close(corrected,scaled)
+    assert metadata['frequency_source']=='sampling_mass' and metadata['row_mass_sha256']
+    for invalid in ([0.,1.],[-1.,2.],[float('nan'),1.],[1.]):
+        with pytest.raises(ValueError,match='row weights'):
+            branch_weights(rows,5,row_weights=invalid)
+
+
+def test_v16_controls_only_change_branch_frequency_source():
+    from pathlib import Path
+    baseline=json.loads(Path('configs/everyday-v15-quality.json').read_text())
+    for name,source in [('branch-count','uniform_rows'),('branch-mass','sampling_mass')]:
+        config=json.loads(Path(f'configs/everyday-v16-{name}.json').read_text())
+        branch=config.pop('branch_balance')
+        assert branch==dict(strength=.5,max_ratio=4.,frequency_source=source)
+        config.pop('checkpoint')
+        expected=baseline.copy();expected.pop('checkpoint')
+        assert config==expected
+
+
 def test_weighted_loss_matches_explicit_token_objective_and_masks_padding():
     torch.set_num_threads(2)
     m = Transformer(ModelConfig(vocab_size=12, d_model=16, n_heads=4, n_layers=1, d_ff=32))

@@ -22,5 +22,41 @@
     "directory": "models/everyday-v14-holdout-smooth-3mb",
     "label": "組合せ実験 v14・平滑化CE（約2.5MB）",
     "description": "通常CEと同じ条件でlabel smoothing 0.05を加えた試作です。品質改善は採点結果と別に判断し、不自然な文や誤読が残ります。標準への採用はしていません。"
+  },
+  {
+    "id": "model-v15-base",
+    "directory": "models/everyday-v15-base-3mb",
+    "label": "v15 比較基準（約2.5MB）",
+    "description": "学習の乱数を分離した比較用の試作です。v15の入力マスク・データ比率変更の効果を比べる基準で、標準への採用はしていません。"
+  },
+  {
+    "id": "model-v15-context",
+    "directory": "models/everyday-v15-context-3mb",
+    "label": "v15 名詞入力マスク（約2.5MB）",
+    "description": "学習中だけ名詞の入力を一部隠す試作です。推論時の追加モデルや辞書は不要ですが、自然さ・意味・文脈上の読みは保証しません。"
+  },
+  {
+    "id": "model-v15-quality",
+    "directory": "models/everyday-v15-quality-3mb",
+    "label": "v15 データ比率変更（約2.5MB）",
+    "description": "既存の合成文・自作文の学習比率を増やした試作です。自然さと新規性への影響を調べる比較候補で、標準への採用はしていません。"
+  },
+  {
+    "id": "model-v15-quality-context",
+    "directory": "models/everyday-v15-quality-context-3mb",
+    "label": "v15 比率変更＋入力マスク（約2.5MB）",
+    "description": "データ比率の変更と学習中の名詞入力マスクを組み合わせた試作です。効果と制限は実験記録に記載し、不自然な文・読みが残ります。"
+  },
+  {
+    "id": "model-v16-branch-count",
+    "directory": "models/everyday-v16-branch-count-3mb",
+    "label": "v16 分岐補正・行数基準（約2.5MB）",
+    "description": "学習文の行数から続きの偏りを補正する試作です。抽選比率を反映する候補との比較用で、自然さ・新規性・文脈読みの合格は保証しません。"
+  },
+  {
+    "id": "model-v16-branch-mass",
+    "directory": "models/everyday-v16-branch-mass-3mb",
+    "label": "v16 分岐補正・抽選比率基準（約2.5MB）",
+    "description": "実際の学習文の抽選比率から続きの偏りを補正する試作です。追加の文一覧や補正表は推論に使わず、効果と制限は実験記録に残します。"
   }
 ]

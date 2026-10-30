@@ -4,8 +4,11 @@ import assert from 'node:assert/strict';
 import init, { Generator } from '../build/web/pkg/fumiori_wasm.js';
 
 await init({ module_or_path: readFileSync(new URL('../build/web/pkg/fumiori_wasm_bg.wasm', import.meta.url)) });
-const models = process.argv.slice(2);
+const args = process.argv.slice(2);
+assert(args[0] !== '--catalog' || args.length === 2, 'usage: --catalog path/to/catalog.json');
+const models = args[0] === '--catalog' ? JSON.parse(readFileSync(args[1], 'utf8')).map(row => row.id) : args;
 for (const model of models.length ? models : ['model', 'model-int8']) {
+  assert.match(model, /^model(?:-[a-z0-9-]+)?$/);
   const read = name => readFileSync(new URL(`../build/web/${model}/${name}`, import.meta.url));
   const generator = new Generator(read('manifest.json'), read('model-config.json'), read('vocab.json'), read('model.safetensors'));
   const manifest = JSON.parse(read('manifest.json').toString('utf8'));

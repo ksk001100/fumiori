@@ -49,7 +49,7 @@ python scripts/serve_demo.py
 
 ブラウザで http://127.0.0.1:8000 を開く。Web Workerで生成する。ビルドには `wasm32-unknown-unknown` と `wasm-bindgen-cli 0.2.127` が必要。
 
-「モデル」で標準v2、小型の日常文v3、組合せ実験v14の通常CE／平滑化CEを選び、「読み込む」→「お題を生成」で試せる。選んだモデルだけをダウンロードする。モデル一覧は `configs/demo-models.json` で管理する。v14は組合せを除去したデータから学び直した約2.53MBの比較用モデルで、標準への採用はしていない。[v14の実験結果と制限](docs/compositional-generation-v14.md)を参照。標準は引き続きv2。目標は配布3MB以内・ふつうのお題0.1秒以内。[軽量化と速度](docs/lightweight-generation.md)、[日常文モデルの実験](docs/everyday-generation.md)も参照。
+「モデル」で標準v2、小型の日常文v3、v14・v15・v16の試作を選び、「読み込む」→「お題を生成」で試せる。選んだモデルだけをダウンロードする。モデル一覧は `configs/demo-models.json` で管理する。v16は分岐頻度の数え方を比較した各約2.53MBの2モデルで、標準への採用はしていない。[v16の実験結果と制限](docs/compositional-generation-v16.md)、[v15](docs/compositional-generation-v15.md)、[v14](docs/compositional-generation-v14.md)を参照。標準は引き続きv2。目標は配布3MB以内・ふつうのお題0.1秒以内。[軽量化と速度](docs/lightweight-generation.md)、[日常文モデルの実験](docs/everyday-generation.md)も参照。
 
 ### GitHub Pagesへの公開
 
@@ -59,12 +59,12 @@ PRではビルドと推論・ブラウザ検証のみを実行する。Actions�
 初回はGitHubリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する。
 公開URLはデプロイジョブの出力から確認できる。プロジェクトサイトの `/fumiori/` のようなサブパスにも対応する。
 
-公開ビルドは `configs/demo-models.json` に登録した標準v2、比較用v3、実験用v14の2種類のINT8保存モデルを使う。学習・PyTorch・`build/` 内の既存ファイルは不要。
+公開ビルドは `configs/demo-models.json` に登録した標準v2、比較用v3、実験用v14〜v16を含む全10モデルを使う。学習・PyTorch・`build/` 内の既存ファイルは不要。
 同じ構成をローカルで確認する場合:
 
 ```powershell
 python scripts/build_wasm.py --model-catalog configs/demo-models.json
-node scripts/smoke_wasm.mjs model-int8 model-experimental model-v14-ce model-v14-smooth
+node scripts/smoke_wasm.mjs --catalog configs/demo-models.json
 python scripts/serve_demo.py
 ```
 

@@ -1,5 +1,9 @@
 # データの由来と配布範囲
 
+v16の2モデルはv15と同じv13除去splitを使い、変更はtrain内の分岐頻度を数える基準とlossの重み付けのみ。新しい文・教師生成・修正文は追加せず、親manifestと配布LICENSEの出典を継承する。[v16記録](compositional-generation-v16.md)を参照。
+
+v15の4モデルもv13の同じ除去splitを使う。変更は学習時の抽選比率と入力マスクで、外部データ・教師生成・修正文の追加はない。親manifestと配布LICENSEの出典を継承する。[v15記録](compositional-generation-v15.md)を参照。
+
 v14の2モデルは既存v13の除去splitを用い、外部文や新しい教師出力は追加していない。Tatoeba、既存の自作文、辞書、合成教師に関する親manifestの出典と配布LICENSEを継承する。[実験記録](compositional-generation-v14.md)を参照。
 
 ## 現行モデルと従来モデルの学習データ

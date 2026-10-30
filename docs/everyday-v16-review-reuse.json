@@ -1,0 +1,1260 @@
+{
+  "source_report_sha256": "86f14ba32e60f02d79a779909060138b8522c0c1d695361a5b589038f370792c",
+  "source_mapping_sha256": "d90a59e4979d487dba18d42d204dfd055f9fbdc82ea2a54858942c67d1c01ac4",
+  "source_ratings_sha256": "e63456b574864bba60fab9c55763252bef96e3dcc687ab7c7741cfd0a0c816a2",
+  "target_report_sha256": "3a1b51dac8c38b8ae09a16b51f5b8ef363cf4b047f04f5c219cac3df2c816a72",
+  "target_mapping_sha256": "bfafae581752c153477ff438c749e6d4b4c90411ace87e1cfaa531c2389e5f3c",
+  "unchanged_control_rows": 200,
+  "identical_text_kana_rows": 8,
+  "new_unique_pairs": 187,
+  "reused": [
+    {
+      "blind_id": "0",
+      "key": "base-n1:167",
+      "source_blind_id": "0",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "2",
+      "key": "base-n1:414",
+      "source_blind_id": "2",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "3",
+      "key": "base-n1:214",
+      "source_blind_id": "3",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "4",
+      "key": "base-n1:26",
+      "source_blind_id": "4",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "5",
+      "key": "quality-n1:196",
+      "source_blind_id": "46",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "6",
+      "key": "base-n1:35",
+      "source_blind_id": "6",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "10",
+      "key": "quality-n1:400",
+      "source_blind_id": "208",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "11",
+      "key": "base-n1:36",
+      "source_blind_id": "11",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "12",
+      "key": "base-n1:512",
+      "source_blind_id": "12",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "18",
+      "key": "quality-n1:448",
+      "source_blind_id": "378",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "20",
+      "key": "base-n1:141",
+      "source_blind_id": "20",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "21",
+      "key": "quality-n1:143",
+      "source_blind_id": "62",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "22",
+      "key": "base-n1:334",
+      "source_blind_id": "22",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "25",
+      "key": "quality-n1:298",
+      "source_blind_id": "154",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "26",
+      "key": "base-n1:248",
+      "source_blind_id": "26",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "28",
+      "key": "base-n1:185",
+      "source_blind_id": "28",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "29",
+      "key": "base-n1:23",
+      "source_blind_id": "29",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "30",
+      "key": "quality-n1:68",
+      "source_blind_id": "89",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "31",
+      "key": "quality-n1:516",
+      "source_blind_id": "218",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "34",
+      "key": "base-n1:515",
+      "source_blind_id": "34",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "36",
+      "key": "quality-n1:240",
+      "source_blind_id": "167",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "37",
+      "key": "base-n1:226",
+      "source_blind_id": "37",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "38",
+      "key": "base-n1:143",
+      "source_blind_id": "38",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "40",
+      "key": "base-n1:25",
+      "source_blind_id": "40",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "41",
+      "key": "quality-n1:534",
+      "source_blind_id": "245",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "42",
+      "key": "quality-n1:215",
+      "source_blind_id": "122",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "45",
+      "key": "base-n1:124",
+      "source_blind_id": "45",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "48",
+      "key": "quality-n1:327",
+      "source_blind_id": "79",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "49",
+      "key": "quality-n1:167",
+      "source_blind_id": "166",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "50",
+      "key": "base-n1:529",
+      "source_blind_id": "50",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "51",
+      "key": "base-n1:216",
+      "source_blind_id": "51",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "53",
+      "key": "quality-n1:598",
+      "source_blind_id": "81",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "54",
+      "key": "base-n1:233",
+      "source_blind_id": "54",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "55",
+      "key": "quality-n1:336",
+      "source_blind_id": "283",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "58",
+      "key": "quality-n1:253",
+      "source_blind_id": "223",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "59",
+      "key": "quality-n1:414",
+      "source_blind_id": "47",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "61",
+      "key": "base-n1:21",
+      "source_blind_id": "61",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "63",
+      "key": "quality-n1:431",
+      "source_blind_id": "331",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "66",
+      "key": "base-n1:304",
+      "source_blind_id": "66",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "67",
+      "key": "quality-n1:437",
+      "source_blind_id": "250",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "69",
+      "key": "base-n1:197",
+      "source_blind_id": "69",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "70",
+      "key": "branch-count-n1:504",
+      "source_blind_id": "345",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "72",
+      "key": "quality-n1:515",
+      "source_blind_id": "294",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "73",
+      "key": "base-n1:177",
+      "source_blind_id": "73",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "74",
+      "key": "quality-n1:579",
+      "source_blind_id": "388",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "76",
+      "key": "base-n1:535",
+      "source_blind_id": "76",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "77",
+      "key": "quality-n1:233",
+      "source_blind_id": "75",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "78",
+      "key": "quality-n1:159",
+      "source_blind_id": "145",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "80",
+      "key": "quality-n1:155",
+      "source_blind_id": "267",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "82",
+      "key": "quality-n1:535",
+      "source_blind_id": "57",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "84",
+      "key": "quality-n1:257",
+      "source_blind_id": "196",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "85",
+      "key": "branch-count-n1:45",
+      "source_blind_id": "47",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "86",
+      "key": "base-n1:381",
+      "source_blind_id": "86",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "88",
+      "key": "base-n1:155",
+      "source_blind_id": "88",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "90",
+      "key": "quality-n1:396",
+      "source_blind_id": "286",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "93",
+      "key": "quality-n1:90",
+      "source_blind_id": "384",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "94",
+      "key": "base-n1:479",
+      "source_blind_id": "94",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "95",
+      "key": "base-n1:367",
+      "source_blind_id": "95",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "96",
+      "key": "quality-n1:62",
+      "source_blind_id": "158",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "98",
+      "key": "base-n1:138",
+      "source_blind_id": "98",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "102",
+      "key": "quality-n1:197",
+      "source_blind_id": "210",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "103",
+      "key": "base-n1:560",
+      "source_blind_id": "103",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "104",
+      "key": "quality-n1:214",
+      "source_blind_id": "342",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "106",
+      "key": "base-n1:320",
+      "source_blind_id": "106",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "107",
+      "key": "base-n1:225",
+      "source_blind_id": "107",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "108",
+      "key": "base-n1:496",
+      "source_blind_id": "108",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "109",
+      "key": "base-n1:61",
+      "source_blind_id": "109",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "110",
+      "key": "base-n1:534",
+      "source_blind_id": "110",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "112",
+      "key": "quality-n1:124",
+      "source_blind_id": "371",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "113",
+      "key": "quality-n1:45",
+      "source_blind_id": "85",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "114",
+      "key": "quality-n1:475",
+      "source_blind_id": "35",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "118",
+      "key": "quality-n1:216",
+      "source_blind_id": "220",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "120",
+      "key": "base-n1:513",
+      "source_blind_id": "120",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "121",
+      "key": "quality-n1:304",
+      "source_blind_id": "255",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "129",
+      "key": "base-n1:592",
+      "source_blind_id": "129",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "130",
+      "key": "quality-n1:529",
+      "source_blind_id": "321",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "132",
+      "key": "base-n1:341",
+      "source_blind_id": "132",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "133",
+      "key": "base-n1:243",
+      "source_blind_id": "133",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "135",
+      "key": "quality-n1:64",
+      "source_blind_id": "353",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "147",
+      "key": "base-n1:538",
+      "source_blind_id": "147",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "148",
+      "key": "quality-n1:479",
+      "source_blind_id": "226",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "150",
+      "key": "base-n1:576",
+      "source_blind_id": "150",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "152",
+      "key": "quality-n1:141",
+      "source_blind_id": "369",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "153",
+      "key": "quality-n1:154",
+      "source_blind_id": "292",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "156",
+      "key": "base-n1:258",
+      "source_blind_id": "156",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "157",
+      "key": "base-n1:227",
+      "source_blind_id": "157",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "160",
+      "key": "quality-n1:496",
+      "source_blind_id": "212",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "162",
+      "key": "quality-n1:521",
+      "source_blind_id": "60",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "163",
+      "key": "base-n1:412",
+      "source_blind_id": "163",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "164",
+      "key": "base-n1:516",
+      "source_blind_id": "164",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "165",
+      "key": "base-n1:448",
+      "source_blind_id": "165",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "168",
+      "key": "quality-n1:556",
+      "source_blind_id": "71",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "170",
+      "key": "base-n1:437",
+      "source_blind_id": "170",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "173",
+      "key": "branch-count-n1:536",
+      "source_blind_id": "62",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "174",
+      "key": "base-n1:579",
+      "source_blind_id": "174",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "177",
+      "key": "base-n1:327",
+      "source_blind_id": "177",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "178",
+      "key": "base-n1:336",
+      "source_blind_id": "178",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "181",
+      "key": "base-n1:521",
+      "source_blind_id": "181",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "183",
+      "key": "base-n1:400",
+      "source_blind_id": "183",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "184",
+      "key": "base-n1:196",
+      "source_blind_id": "184",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "185",
+      "key": "branch-mass-n1:90",
+      "source_blind_id": "197",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "187",
+      "key": "quality-n1:177",
+      "source_blind_id": "32",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "188",
+      "key": "base-n1:396",
+      "source_blind_id": "188",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "190",
+      "key": "quality-n1:7",
+      "source_blind_id": "209",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "198",
+      "key": "base-n1:230",
+      "source_blind_id": "198",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "199",
+      "key": "base-n1:159",
+      "source_blind_id": "199",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "200",
+      "key": "quality-n1:185",
+      "source_blind_id": "347",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "201",
+      "key": "quality-n1:358",
+      "source_blind_id": "355",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "205",
+      "key": "branch-count-n1:262",
+      "source_blind_id": "151",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "215",
+      "key": "base-n1:200",
+      "source_blind_id": "215",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "216",
+      "key": "quality-n1:227",
+      "source_blind_id": "343",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "217",
+      "key": "base-n1:262",
+      "source_blind_id": "217",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "221",
+      "key": "quality-n1:592",
+      "source_blind_id": "257",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "222",
+      "key": "quality-n1:226",
+      "source_blind_id": "395",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "228",
+      "key": "base-n1:240",
+      "source_blind_id": "228",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "229",
+      "key": "base-n1:298",
+      "source_blind_id": "229",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "230",
+      "key": "quality-n1:538",
+      "source_blind_id": "207",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "231",
+      "key": "base-n1:431",
+      "source_blind_id": "231",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "233",
+      "key": "base-n1:456",
+      "source_blind_id": "233",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "234",
+      "key": "base-n1:573",
+      "source_blind_id": "234",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "235",
+      "key": "quality-n1:512",
+      "source_blind_id": "265",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "236",
+      "key": "base-n1:383",
+      "source_blind_id": "236",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "237",
+      "key": "quality-n1:563",
+      "source_blind_id": "249",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "238",
+      "key": "base-n1:66",
+      "source_blind_id": "238",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "241",
+      "key": "base-n1:158",
+      "source_blind_id": "241",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "242",
+      "key": "base-n1:95",
+      "source_blind_id": "242",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "243",
+      "key": "quality-n1:23",
+      "source_blind_id": "287",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "244",
+      "key": "quality-n1:35",
+      "source_blind_id": "52",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "246",
+      "key": "base-n1:347",
+      "source_blind_id": "246",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "252",
+      "key": "quality-n1:290",
+      "source_blind_id": "16",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "254",
+      "key": "base-n1:555",
+      "source_blind_id": "254",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "256",
+      "key": "quality-n1:138",
+      "source_blind_id": "141",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "258",
+      "key": "quality-n1:91",
+      "source_blind_id": "131",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "259",
+      "key": "quality-n1:287",
+      "source_blind_id": "194",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "260",
+      "key": "base-n1:556",
+      "source_blind_id": "260",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "262",
+      "key": "base-n1:493",
+      "source_blind_id": "262",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "263",
+      "key": "base-n1:558",
+      "source_blind_id": "263",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "268",
+      "key": "quality-n1:381",
+      "source_blind_id": "341",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "270",
+      "key": "quality-n1:36",
+      "source_blind_id": "23",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "274",
+      "key": "quality-n1:513",
+      "source_blind_id": "169",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "275",
+      "key": "base-n1:563",
+      "source_blind_id": "275",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "276",
+      "key": "quality-n1:456",
+      "source_blind_id": "232",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "278",
+      "key": "quality-n1:412",
+      "source_blind_id": "224",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "280",
+      "key": "base-n1:7",
+      "source_blind_id": "280",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "281",
+      "key": "quality-n1:25",
+      "source_blind_id": "13",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "282",
+      "key": "quality-n1:10",
+      "source_blind_id": "239",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "284",
+      "key": "branch-count-n1:243",
+      "source_blind_id": "388",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "285",
+      "key": "quality-n1:245",
+      "source_blind_id": "64",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "286",
+      "key": "branch-count-n1:396",
+      "source_blind_id": "204",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "288",
+      "key": "quality-n1:243",
+      "source_blind_id": "284",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "290",
+      "key": "base-n1:593",
+      "source_blind_id": "290",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "293",
+      "key": "base-n1:524",
+      "source_blind_id": "293",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "298",
+      "key": "quality-n1:297",
+      "source_blind_id": "357",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "299",
+      "key": "quality-n1:341",
+      "source_blind_id": "264",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "302",
+      "key": "base-n1:475",
+      "source_blind_id": "302",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "303",
+      "key": "base-n1:91",
+      "source_blind_id": "303",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "305",
+      "key": "base-n1:64",
+      "source_blind_id": "305",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "306",
+      "key": "quality-n1:258",
+      "source_blind_id": "320",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "308",
+      "key": "quality-n1:66",
+      "source_blind_id": "124",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "309",
+      "key": "base-n1:253",
+      "source_blind_id": "309",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "310",
+      "key": "quality-n1:560",
+      "source_blind_id": "155",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "312",
+      "key": "base-n1:111",
+      "source_blind_id": "312",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "313",
+      "key": "quality-n1:259",
+      "source_blind_id": "91",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "314",
+      "key": "base-n1:90",
+      "source_blind_id": "314",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "315",
+      "key": "base-n1:257",
+      "source_blind_id": "315",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "316",
+      "key": "base-n1:504",
+      "source_blind_id": "316",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "322",
+      "key": "base-n1:536",
+      "source_blind_id": "322",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "324",
+      "key": "quality-n1:230",
+      "source_blind_id": "191",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "326",
+      "key": "quality-n1:21",
+      "source_blind_id": "197",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "327",
+      "key": "base-n1:215",
+      "source_blind_id": "327",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "332",
+      "key": "quality-n1:524",
+      "source_blind_id": "68",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "333",
+      "key": "quality-n1:536",
+      "source_blind_id": "173",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "334",
+      "key": "quality-n1:158",
+      "source_blind_id": "352",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "336",
+      "key": "base-n1:245",
+      "source_blind_id": "336",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "337",
+      "key": "quality-n1:558",
+      "source_blind_id": "97",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "339",
+      "key": "quality-n1:576",
+      "source_blind_id": "7",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "344",
+      "key": "quality-n1:573",
+      "source_blind_id": "14",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "346",
+      "key": "base-n1:290",
+      "source_blind_id": "346",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "348",
+      "key": "quality-n1:61",
+      "source_blind_id": "8",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "349",
+      "key": "quality-n1:225",
+      "source_blind_id": "240",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "356",
+      "key": "base-n1:187",
+      "source_blind_id": "356",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "358",
+      "key": "quality-n1:26",
+      "source_blind_id": "195",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "359",
+      "key": "quality-n1:334",
+      "source_blind_id": "136",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "360",
+      "key": "base-n1:358",
+      "source_blind_id": "360",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "361",
+      "key": "base-n1:68",
+      "source_blind_id": "361",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "362",
+      "key": "quality-n1:555",
+      "source_blind_id": "396",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "363",
+      "key": "quality-n1:248",
+      "source_blind_id": "189",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "364",
+      "key": "base-n1:287",
+      "source_blind_id": "364",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "366",
+      "key": "quality-n1:111",
+      "source_blind_id": "301",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "367",
+      "key": "quality-n1:367",
+      "source_blind_id": "351",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "368",
+      "key": "quality-n1:493",
+      "source_blind_id": "391",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "370",
+      "key": "base-n1:45",
+      "source_blind_id": "370",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "374",
+      "key": "base-n1:259",
+      "source_blind_id": "374",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "375",
+      "key": "quality-n1:504",
+      "source_blind_id": "70",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "376",
+      "key": "quality-n1:347",
+      "source_blind_id": "161",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "379",
+      "key": "quality-n1:320",
+      "source_blind_id": "338",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "380",
+      "key": "quality-n1:95",
+      "source_blind_id": "39",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "381",
+      "key": "base-n1:297",
+      "source_blind_id": "381",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "382",
+      "key": "base-n1:10",
+      "source_blind_id": "382",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "384",
+      "key": "branch-count-n1:90",
+      "source_blind_id": "362",
+      "kind": "identical_text_kana"
+    },
+    {
+      "blind_id": "385",
+      "key": "base-n1:598",
+      "source_blind_id": "385",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "386",
+      "key": "quality-n1:200",
+      "source_blind_id": "138",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "387",
+      "key": "quality-n1:593",
+      "source_blind_id": "273",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "390",
+      "key": "base-n1:154",
+      "source_blind_id": "390",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "394",
+      "key": "base-n1:62",
+      "source_blind_id": "394",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "397",
+      "key": "quality-n1:383",
+      "source_blind_id": "289",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "398",
+      "key": "quality-n1:262",
+      "source_blind_id": "205",
+      "kind": "unchanged_control"
+    },
+    {
+      "blind_id": "399",
+      "key": "quality-n1:187",
+      "source_blind_id": "65",
+      "kind": "unchanged_control"
+    }
+  ]
+}

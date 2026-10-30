@@ -1,5 +1,9 @@
 # Training
 
+[v16](../docs/compositional-generation-v16.md)は分岐補正の頻度を数える基準を比較する。`branch_balance.frequency_source` は省略時 `uniform_rows`、`sampling_mass` では難易度・corpus mixture等を適用した実際のtrain行抽選質量を使う。明示的な抽選重みがない場合は後者を拒否する。表は学習時だけ使い、配布モデルへ入れない。試作2モデルはデモへ追加している。
+
+[v15](../docs/compositional-generation-v15.md)は名詞入力マスクとcorpus mixtureを2×2で比較する。`independent_data_rng: true` により学習文抽選と入力マスクの乱数を分離し、初期重みと更新batch行番号列のSHA-256をcheckpointへ保存する。同じ混合比の対照実験でマスクの有無が抽選を変えないことを検査できる。省略した既存設定の乱数経路は従来どおり。試作4モデルは全てデモに追加している。
+
 [v14](../docs/compositional-generation-v14.md)は既存v13の除去splitから通常CEと平滑化CEを同じ初期値・学習量で比較する。`configs/everyday-v14-holdout-{ce,smooth}.json` が学習設定、`configs/everyday-v14-evaluation.json` がサンプリング・候補選別の比較設定。新モデル2種類は比較用としてデモへ追加している。
 
 構成的一般化の研究は[Phase 1の現状分析・評価手順・改善計画](../docs/compositional-generation-phase1.md)を参照。既存の学習を変更せず、標準モデルの部分コピー・文字／単語新規性と自然さ・読みの評価票を追加している。[実測結果](../docs/compositional-generation-phase1-results.md)は学習改善の成果と区別する。
